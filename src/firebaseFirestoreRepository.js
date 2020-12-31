@@ -3,9 +3,9 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: '',
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: '',
-    projectId: ''
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID
 };
 
 firebase.initializeApp(firebaseConfig);
