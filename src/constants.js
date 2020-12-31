@@ -1,3 +1,7 @@
+export const TRUE = 1;
+export const FALSE = 0;
+export const NO_SELECTION = -1;
+
 export const girls = [
     {
         id: '1',
