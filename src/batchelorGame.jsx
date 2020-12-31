@@ -21,6 +21,7 @@ class BatchelorGame extends React.Component {
             isLoading: true
         });
 
+        this.removeSelection = this.removeSelection.bind(this);
         this.onDragEnd = this.onDragEnd.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -31,12 +32,13 @@ class BatchelorGame extends React.Component {
             finalFour: [],
             finalTwo: [],
             finalOne: -1,
+            isTylerCameronApperance: constants.NO_SELECTION,
+            firstImpressionRose: -1,
             //TODO can happen any time but must be done before 1st episode
             firstOneOnOneDate: -1,
             firstTears: -1,
-            //TODO first episode specific
-            isTylerCameronApperance: constants.NO_SELECTION,
-            firstImpressionRose: -1,
+            //TODO first episode specific            
+            
             firstOutOfLimo: -1,
             firstKiss: -1, 
             //TODO (can be implemented after 1st episode)        
@@ -81,6 +83,12 @@ class BatchelorGame extends React.Component {
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
 
+    arrayRemoveByValue(array, value){
+        let index = array.indexOf(value);
+        array.splice(index, 1);
+        return array;
+    }
+
     handleChange(evt) {
         let picks = this.state.picks;
 
@@ -102,6 +110,37 @@ class BatchelorGame extends React.Component {
         this.savePicks(picks);
     }
    
+    removeSelection(id, listId){
+
+        let picks = this.state.picks;
+
+        if(listId === 'final-four'){
+            picks.finalFour = this.arrayRemoveByValue(picks.finalFour, id);
+        }
+
+        if(listId === 'final-two'){
+            picks.finalTwo = this.arrayRemoveByValue(picks.finalTwo, id);
+        }
+
+        if(listId === 'final-one'){
+            picks.finalOne = -1;
+        }
+
+        if(listId === 'first-impression'){
+            picks.firstImpressionRose = -1;
+        }
+
+        if(listId === 'first-out-of-limo'){
+            picks.firstOutOfLimo = -1;
+        }
+
+        this.setState({
+            picks: picks
+        });
+
+        this.savePicks(picks);
+    }
+    
     onDragEnd(result) {
         const { source, destination } = result;
         
@@ -136,11 +175,29 @@ class BatchelorGame extends React.Component {
             if(this.state.picks.finalOne >= 1){
                 toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
             }else {
-                picks.finalOne = this.state.picks.finalOne;
-                
+                picks.finalOne = this.state.picks.finalOne;                
                 picks.finalOne = result.draggableId;  
             }
         }
+
+        if(destination && destination.droppableId === 'first-impression'){
+            if(this.state.picks.firstImpressionRose >= 1){
+                toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+            }else {
+                picks.firstImpressionRose = this.state.picks.firstImpressionRose;
+                picks.firstImpressionRose = result.draggableId;
+            }
+        }
+
+        if(destination && destination.droppableId === 'first-out-of-limo'){
+            if(this.state.picks.firstOutOfLimo >= 1){
+                toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+            }else {
+                picks.firstOutOfLimo = this.state.picks.firstOutOfLimo;
+                picks.firstOutOfLimo = result.draggableId;
+            }
+        }
+        
         
         this.setState({
             picks: picks
@@ -155,24 +212,45 @@ class BatchelorGame extends React.Component {
             return(<div><p>Loading...</p></div>);
         }else{
 
-            let finalFourDisplay = 'no selections made';
+            let finalFourDisplay = 'No Selections Made';
             
             if(this.state.picks.finalFour.length > 0){
                 finalFourDisplay = this.state.picks.finalFour.map((id) => 
-                    <li className="list-group-item">{constants.girls[id - 1].name}</li>)
+                    <li className="list-group-item">{constants.girls[id - 1].name}
+                        <span className="remove-selection" onClick={() => this.removeSelection(id, 'final-four')}>X</span>
+                    </li>)
             }
 
-            let finalTwoDisplay = 'no selections made';
+            let finalTwoDisplay = 'No Selections Made';
             
             if(this.state.picks.finalTwo.length > 0){
                 finalTwoDisplay = this.state.picks.finalTwo.map((id) => 
-                    <li className="list-group-item">{constants.girls[id - 1].name}</li>)
+                    <li className="list-group-item">{constants.girls[id - 1].name}
+                        <span className="remove-selection" onClick={() => this.removeSelection(id, 'final-two')}>X</span>
+                    </li>)
             }
 
             let finalOneDisplay = 'No One Gets Final Rose';
 
             if(this.state.picks.finalOne > 0){
-                finalOneDisplay = <li className="list-group-item">{constants.girls[this.state.picks.finalOne - 1].name}</li>
+                finalOneDisplay = (<li className="list-group-item">{constants.girls[this.state.picks.finalOne - 1].name}
+                                        <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.finalOne, 'final-one')}>X</span>
+                                    </li>);
+            }
+
+            let firstImpressionRoseDisplay = 'No Selection';
+            if(this.state.picks.firstImpressionRose > 0){
+                firstImpressionRoseDisplay = (
+                    <li className="list-group-item">{constants.girls[this.state.picks.firstImpressionRose - 1].name}
+                        <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstImpressionRose, 'first-impression')}>X</span>
+                    </li>);
+            }
+
+            let firstOutOfLimoDisplay = 'No Selection';
+            if(this.state.picks.firstOutOfLimo > 0){
+                firstOutOfLimoDisplay = (<li className="list-group-item">{constants.girls[this.state.picks.firstOutOfLimo - 1].name}
+                                            <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstOutOfLimo, 'first-out-of-limo')}>X</span>
+                                         </li>);
             }
 
             return(
@@ -282,6 +360,46 @@ class BatchelorGame extends React.Component {
                                     </Card>
                                 </Col>
                                 <Col>
+                                    <Card>
+                                        <Card.Body>
+                                            <Card.Title>First Impression Rose</Card.Title>
+                                            <Card.Subtitle>Drag and Drop your pick here</Card.Subtitle>
+                                            
+                                            <Droppable droppableId="first-impression">
+                                                {                                                    
+                                                    (provided, snapshot) => (
+                                                        <ul className="list-group"  
+                                                            {...provided.droppableProps} 
+                                                            ref={provided.innerRef}
+                                                            isDraggingOver={snapshot.isDraggingOver} >
+                                                            {firstImpressionRoseDisplay}
+                                                        </ul>
+                                                    )
+                                                }
+                                            </Droppable>
+                                            
+                                        </Card.Body>
+                                    </Card>
+                                    <Card>
+                                        <Card.Body>
+                                            <Card.Title>First Out of Limo</Card.Title>
+                                            <Card.Subtitle>Drag and Drop your pick here</Card.Subtitle>
+                                            
+                                            <Droppable droppableId="first-out-of-limo">
+                                                {                                                    
+                                                    (provided, snapshot) => (
+                                                        <ul className="list-group"  
+                                                            {...provided.droppableProps} 
+                                                            ref={provided.innerRef}
+                                                            isDraggingOver={snapshot.isDraggingOver} >
+                                                            {firstOutOfLimoDisplay}
+                                                        </ul>
+                                                    )
+                                                }
+                                            </Droppable>
+                                            
+                                        </Card.Body>
+                                    </Card>
                                     <Card>
                                         <Card.Body>
                                             <Card.Title>Will Tyler Cameron Make an Apperance?</Card.Title>
