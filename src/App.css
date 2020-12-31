@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-size: 18px;
+  background-color: #dde0e2;
 }
 
 .App-logo {
@@ -37,8 +39,33 @@
   }
 }
 
+h3 {
+  color: #000000;
+  font-size: 1em;
+}
 
-.names-list{
+.card {
+  margin-bottom: 15px;
+}
+
+.card-title {
+  font-size: 1.2em;
   text-align: left;
-  list-style: none;
+  color: #6d0f14;
+}
+
+.card-subtitle {
+  font-size: .8em;
+  text-align: left;
+  color: #60686b;
+  margin-bottom: 5px;
+}
+
+.list-group-item {
+  text-align: left;
+  font-size: .8em;
+}
+
+.remove-selection{  
+  float: right;  
 }

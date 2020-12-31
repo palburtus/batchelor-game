@@ -292,6 +292,7 @@ class BatchelorGame extends React.Component {
                                     </Card>
                                 </Col>
                                 <Col>
+                                    <h3>Season Long Questions</h3>
                                     <Card>
                                         <Card.Body>
                                             <Card.Title>Final Four</Card.Title>
@@ -358,8 +359,9 @@ class BatchelorGame extends React.Component {
                                             <Card.Subtitle>Will add more season long question to come that will be locked in before week 3</Card.Subtitle>
                                         </Card.Body>
                                     </Card>
-                                </Col>
-                                <Col>
+                                    
+                                    <h3>Episode 1 Questions</h3>
+
                                     <Card>
                                         <Card.Body>
                                             <Card.Title>First Impression Rose</Card.Title>
@@ -402,7 +404,7 @@ class BatchelorGame extends React.Component {
                                     </Card>
                                     <Card>
                                         <Card.Body>
-                                            <Card.Title>Will Tyler Cameron Make an Apperance?</Card.Title>
+                                            <Card.Title><p>Tyler Cameron Makes an Apperance?</p></Card.Title>
                                             <Card.Subtitle>Must be shown on broadcast (excluding previews) during the 1st episode</Card.Subtitle>
                                             
                                             <Form.Group>
