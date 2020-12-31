@@ -2,7 +2,8 @@ import React from 'react';
 import { Container, ListGroup, ListGroupItem, Col, Row, Card, Form } from 'react-bootstrap';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { ToastContainer, toast } from 'react-toastify';
-import * as constants from './constants'
+import * as constants from './constants';
+import * as picksRepository from './firebaseFirestoreRepository';
 import 'react-toastify/dist/ReactToastify.css';
 
 class BatchelorGame extends React.Component {
@@ -46,7 +47,7 @@ class BatchelorGame extends React.Component {
     }
 
     async savePicks(picks){
-
+        picksRepository.upsertPicks("", picks);
     }
 
     handleChange(evt) {
