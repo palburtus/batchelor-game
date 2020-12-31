@@ -3,23 +3,35 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    apiKey: '',
     authDomain: '',
-    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID
+    projectId: ''
 };
+
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-export const upsertPicks = (token, picks) => {
+export const getPicks = (token) => {
+    return new Promise((resolve, reject) => {
+        
+        db.collection('picks').doc(token).get().then((doc) => {
+            var data = doc.data();
+            
+            if(data.picks){
+                resolve(data.picks); 
+            }else{
+                reject('Your account was not found');
+            }
+        }).catch((error) => { 
+            reject('Connection error please try again')
+        });                    
+    });    
+}
+
+export const upsertPicks = (email, token, picks) => {
    
-    debugger;
-    return db.collection('picks')
-        .add({
-            created: firebase.firestore.FieldValue.serverTimestamp(),
-            createdBy: token,
-            picks: picks
-        });
-
-    debugger;
-
+    return db.collection('picks').doc(token).set({
+        email: email,
+        picks: picks
+    });        
 }

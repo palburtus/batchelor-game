@@ -11,9 +11,13 @@ class BatchelorGame extends React.Component {
     constructor(props){
         super(props);
         
+        let email = this.getParameterByName('email');
+        let token = this.getParameterByName('token');
+
         this.state = ({
-            email: 'patrick.alburtus@gmail.com',
-            token: 'someguidgoeshere',
+            errorMessage: '',
+            email: email,
+            token: token,
             isLoading: true
         });
 
@@ -22,7 +26,7 @@ class BatchelorGame extends React.Component {
     }
 
     async componentDidMount(){
-
+        
         let picks = {
             finalFour: [],
             finalTwo: [],
@@ -40,19 +44,45 @@ class BatchelorGame extends React.Component {
             firstToLeaveOnOwn: -1                
         }
 
-        this.setState({ 
-            picks: picks,
-            isLoading: false 
-        });            
+        picksRepository.getPicks(this.state.token)
+            .then((response) => {
+                
+                if(response){
+                    picks = response;
+                }
+
+                this.setState({ 
+                    picks: picks,
+                    isLoading: false,
+                    errorMessage: ''
+                });     
+            }).catch((error) => {
+                this.setState({ 
+                    picks: picks,
+                    isLoading: false,
+                    errorMessage: error
+                });     
+            })               
     }
 
     async savePicks(picks){
-        picksRepository.upsertPicks("", picks);
+        picksRepository.upsertPicks(this.state.email, this.state.token, picks);
+    }
+
+    getParameterByName(name, url) {
+        if (!url) {
+            url = window.location.href;
+        }
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
 
     handleChange(evt) {
         let picks = this.state.picks;
-        debugger;
 
         if(evt.currentTarget.name === 'tylerCameronRadios'){
             
@@ -129,20 +159,20 @@ class BatchelorGame extends React.Component {
             
             if(this.state.picks.finalFour.length > 0){
                 finalFourDisplay = this.state.picks.finalFour.map((id) => 
-                    <li className="names-list-item">{constants.girls[id - 1].name}</li>)
+                    <li className="list-group-item">{constants.girls[id - 1].name}</li>)
             }
 
             let finalTwoDisplay = 'no selections made';
             
             if(this.state.picks.finalTwo.length > 0){
                 finalTwoDisplay = this.state.picks.finalTwo.map((id) => 
-                    <li className="names-list-item">{constants.girls[id - 1].name}</li>)
+                    <li className="list-group-item">{constants.girls[id - 1].name}</li>)
             }
 
             let finalOneDisplay = 'No One Gets Final Rose';
 
             if(this.state.picks.finalOne > 0){
-                finalOneDisplay = <li className="names-list-item">{constants.girls[this.state.picks.finalOne - 1].name}</li>
+                finalOneDisplay = <li className="list-group-item">{constants.girls[this.state.picks.finalOne - 1].name}</li>
             }
 
             return(
@@ -163,15 +193,13 @@ class BatchelorGame extends React.Component {
                                             
                                                 <Droppable droppableId="girls-list" isDropDisabled={true}>
                                                     {(provided) => (
-                                                        <ul className="names-list" {...provided.droppableProps} ref={provided.innerRef}>
+                                                        <ul className="list-group" {...provided.droppableProps} ref={provided.innerRef}>
                                                             {constants.girls.map(({id, name}, index) => {
                                                                 return (
                                                                     <Draggable key={id} draggableId={id} index={index}>
                                                                     {(provided) => (
-                                                                        <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                                                        <p>
+                                                                        <li className="list-group-item" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                                                             { name }
-                                                                        </p>
                                                                         </li>
                                                                     )}
                                                                     </Draggable>
@@ -194,7 +222,7 @@ class BatchelorGame extends React.Component {
                                                 <Droppable droppableId="final-four">
                                                     {                                                    
                                                         (provided, snapshot) => (
-                                                            <ul className="names-list"  
+                                                            <ul className="list-group"  
                                                                 {...provided.droppableProps} 
                                                                 ref={provided.innerRef}
                                                                 isDraggingOver={snapshot.isDraggingOver} >
@@ -214,7 +242,7 @@ class BatchelorGame extends React.Component {
                                                 <Droppable droppableId="final-two">
                                                     {                                                    
                                                         (provided, snapshot) => (
-                                                            <ul className="names-list"  
+                                                            <ul className="list-group"  
                                                                 {...provided.droppableProps} 
                                                                 ref={provided.innerRef}
                                                                 isDraggingOver={snapshot.isDraggingOver} >
@@ -234,7 +262,7 @@ class BatchelorGame extends React.Component {
                                                 <Droppable droppableId="final-one">
                                                     {                                                    
                                                         (provided, snapshot) => (
-                                                            <ul className="names-list"  
+                                                            <ul className="list-group"  
                                                                 {...provided.droppableProps} 
                                                                 ref={provided.innerRef}
                                                                 isDraggingOver={snapshot.isDraggingOver} >
@@ -260,8 +288,8 @@ class BatchelorGame extends React.Component {
                                             <Card.Subtitle>Must be shown on broadcast (excluding previews) during the 1st episode</Card.Subtitle>
                                             
                                             <Form.Group>
-                                                <Form.Check id="tylerCameronYes" type="radio" name="tylerCameronRadios" label="Yes" onChange={this.handleChange}/>
-                                                <Form.Check id="tylerCameronNo" type="radio" name="tylerCameronRadios" label="No" onChange={this.handleChange}/>
+                                                <Form.Check id="tylerCameronYes" checked={this.state.picks.isTylerCameronApperance === constants.TRUE} type="radio" name="tylerCameronRadios" label="Yes" onChange={this.handleChange}/>
+                                                <Form.Check id="tylerCameronNo" checked={this.state.picks.isTylerCameronApperance === constants.FALSE} type="radio" name="tylerCameronRadios" label="No" onChange={this.handleChange}/>
                                             </Form.Group>
 
                                         </Card.Body>
