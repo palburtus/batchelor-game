@@ -15,6 +15,8 @@ class BatchelorGame extends React.Component {
         let token = this.getParameterByName('token');
 
         this.state = ({
+            infoMessage: '',
+            warningMessage: '',
             errorMessage: '',
             email: email,
             token: token,
@@ -35,12 +37,13 @@ class BatchelorGame extends React.Component {
             isTylerCameronApperance: constants.NO_SELECTION,
             firstImpressionRose: -1,
             //TODO can happen any time but must be done before 1st episode
-            firstOneOnOneDate: -1,
             firstTears: -1,
             //TODO first episode specific            
-            
             firstOutOfLimo: -1,
-            firstKiss: -1, 
+            firstKiss: -1,
+            costumQuestion: -1, // info in text 
+            //TODO episode 2 potential questions
+            firstOneOnOneDate: -1,
             //TODO (can be implemented after 1st episode)        
             finalEight: [],
             firstToLeaveOnOwn: -1                
@@ -212,44 +215,57 @@ class BatchelorGame extends React.Component {
             return(<div><p>Loading...</p></div>);
         }else{
 
-            let finalFourDisplay = 'No Selections Made';
+            let noSelectionsMadeDisplay = <span className="no-selection">No Selections Made</span>;
+            let noSingleSelectionMadeDisplay = <span className="no-selection">No Selection Made</span>;
+
+            let finalFourDisplay = noSelectionsMadeDisplay;
             
             if(this.state.picks.finalFour.length > 0){
                 finalFourDisplay = this.state.picks.finalFour.map((id) => 
-                    <li className="list-group-item">{constants.girls[id - 1].name}
+                    <li className="list-group-item">
                         <span className="remove-selection" onClick={() => this.removeSelection(id, 'final-four')}>X</span>
+                        <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
+                        {constants.girls[id - 1].name}                        
                     </li>)
             }
 
-            let finalTwoDisplay = 'No Selections Made';
+            let finalTwoDisplay = noSelectionsMadeDisplay;
             
             if(this.state.picks.finalTwo.length > 0){
                 finalTwoDisplay = this.state.picks.finalTwo.map((id) => 
-                    <li className="list-group-item">{constants.girls[id - 1].name}
+                    <li className="list-group-item">
                         <span className="remove-selection" onClick={() => this.removeSelection(id, 'final-two')}>X</span>
+                        <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
+                        {constants.girls[id - 1].name}                        
                     </li>)
             }
 
-            let finalOneDisplay = 'No One Gets Final Rose';
+            let finalOneDisplay = <span className="no-selection">No One Gets Final Rose</span>;
 
             if(this.state.picks.finalOne > 0){
-                finalOneDisplay = (<li className="list-group-item">{constants.girls[this.state.picks.finalOne - 1].name}
+                finalOneDisplay = (<li className="list-group-item">
                                         <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.finalOne, 'final-one')}>X</span>
+                                        <img src={constants.girls[this.state.picks.finalOne].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>                
+                                        {constants.girls[this.state.picks.finalOne - 1].name}                                        
                                     </li>);
             }
 
-            let firstImpressionRoseDisplay = 'No Selection';
+            let firstImpressionRoseDisplay = noSingleSelectionMadeDisplay;
             if(this.state.picks.firstImpressionRose > 0){
                 firstImpressionRoseDisplay = (
-                    <li className="list-group-item">{constants.girls[this.state.picks.firstImpressionRose - 1].name}
+                    <li className="list-group-item">
                         <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstImpressionRose, 'first-impression')}>X</span>
+                        <img src={constants.girls[this.state.picks.firstImpressionRose].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
+                        {constants.girls[this.state.picks.firstImpressionRose - 1].name}                        
                     </li>);
             }
 
-            let firstOutOfLimoDisplay = 'No Selection';
+            let firstOutOfLimoDisplay = noSingleSelectionMadeDisplay;
             if(this.state.picks.firstOutOfLimo > 0){
-                firstOutOfLimoDisplay = (<li className="list-group-item">{constants.girls[this.state.picks.firstOutOfLimo - 1].name}
+                firstOutOfLimoDisplay = (<li className="list-group-item">
                                             <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstOutOfLimo, 'first-out-of-limo')}>X</span>
+                                            <img src={constants.girls[this.state.picks.firstOutOfLimo].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
+                                            {constants.girls[this.state.picks.firstOutOfLimo - 1].name}                                            
                                          </li>);
             }
 
@@ -266,18 +282,18 @@ class BatchelorGame extends React.Component {
                                                 Girls
                                             </Card.Title>
                                             <Card.Subtitle>
-                                                Drag Names from this List 
+                                                Drag Your Picks from this List 
                                             </Card.Subtitle>                                
                                             
                                                 <Droppable droppableId="girls-list" isDropDisabled={true}>
                                                     {(provided) => (
                                                         <ul className="list-group" {...provided.droppableProps} ref={provided.innerRef}>
-                                                            {constants.girls.map(({id, name}, index) => {
+                                                            {constants.girls.map(({id, name, thumb}, index) => {
                                                                 return (
                                                                     <Draggable key={id} draggableId={id} index={index}>
                                                                     {(provided) => (
                                                                         <li className="list-group-item" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                                                            { name }
+                                                                            <img src={thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>{ name }
                                                                         </li>
                                                                     )}
                                                                     </Draggable>
@@ -292,11 +308,66 @@ class BatchelorGame extends React.Component {
                                     </Card>
                                 </Col>
                                 <Col>
-                                    <h3>Season Long Questions</h3>
+                                <h3>Week 1 Questions</h3>
+                                <h4>Answers due every Monday by 5pm EST</h4>
+                                <Card>
+                                    <Card.Body>
+                                        <Card.Title>First Impression Rose</Card.Title>
+                                        <Card.Subtitle>Drag and Drop your pick here</Card.Subtitle>
+                                        
+                                        <Droppable droppableId="first-impression">
+                                            {                                                    
+                                                (provided, snapshot) => (
+                                                    <ul className="list-group"  
+                                                        {...provided.droppableProps} 
+                                                        ref={provided.innerRef}
+                                                        isDraggingOver={snapshot.isDraggingOver} >
+                                                        {firstImpressionRoseDisplay}
+                                                    </ul>
+                                                )
+                                            }
+                                        </Droppable>
+                                        
+                                    </Card.Body>
+                                </Card>
+                                <Card>
+                                    <Card.Body>
+                                        <Card.Title>First Out of Limo</Card.Title>
+                                        <Card.Subtitle>Drag and Drop your pick here</Card.Subtitle>
+                                        
+                                        <Droppable droppableId="first-out-of-limo">
+                                            {                                                    
+                                                (provided, snapshot) => (
+                                                    <ul className="list-group"  
+                                                        {...provided.droppableProps} 
+                                                        ref={provided.innerRef}
+                                                        isDraggingOver={snapshot.isDraggingOver} >
+                                                        {firstOutOfLimoDisplay}
+                                                    </ul>
+                                                )
+                                            }
+                                        </Droppable>
+                                        
+                                    </Card.Body>
+                                </Card>
+                                <Card>
+                                    <Card.Body>
+                                        <Card.Title><p>Tyler Cameron Makes an Apperance?</p></Card.Title>
+                                        <Card.Subtitle>Must be shown on broadcast (excluding previews)</Card.Subtitle>
+                                        
+                                        <Form.Group>
+                                            <Form.Check id="tylerCameronYes" checked={this.state.picks.isTylerCameronApperance === constants.TRUE} type="radio" name="tylerCameronRadios" label="Yes" onChange={this.handleChange}/>
+                                            <Form.Check id="tylerCameronNo" checked={this.state.picks.isTylerCameronApperance === constants.FALSE} type="radio" name="tylerCameronRadios" label="No" onChange={this.handleChange}/>
+                                        </Form.Group>
+
+                                    </Card.Body>
+                                </Card>      
+                                    <h3>Season Questions</h3>
+                                    <h4>Answers due before week 4 at 5pm EST</h4>
                                     <Card>
                                         <Card.Body>
                                             <Card.Title>Final Four</Card.Title>
-                                            <Card.Subtitle>Drag 4 Selection (order doesn't matter)</Card.Subtitle>
+                                            <Card.Subtitle>Drag 4 Selections (order doesn't matter)</Card.Subtitle>
                                             
                                                 <Droppable droppableId="final-four">
                                                     {                                                    
@@ -316,7 +387,7 @@ class BatchelorGame extends React.Component {
                                     <Card>
                                         <Card.Body>
                                             <Card.Title>Final Two</Card.Title>
-                                            <Card.Subtitle>Drag 2 Selection (order doesn't matter)</Card.Subtitle>
+                                            <Card.Subtitle>Drag 2 Selections (order doesn't matter)</Card.Subtitle>
                                             
                                                 <Droppable droppableId="final-two">
                                                     {                                                    
@@ -358,62 +429,7 @@ class BatchelorGame extends React.Component {
                                             <Card.Title>More to come</Card.Title>
                                             <Card.Subtitle>Will add more season long question to come that will be locked in before week 3</Card.Subtitle>
                                         </Card.Body>
-                                    </Card>
-                                    
-                                    <h3>Episode 1 Questions</h3>
-
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>First Impression Rose</Card.Title>
-                                            <Card.Subtitle>Drag and Drop your pick here</Card.Subtitle>
-                                            
-                                            <Droppable droppableId="first-impression">
-                                                {                                                    
-                                                    (provided, snapshot) => (
-                                                        <ul className="list-group"  
-                                                            {...provided.droppableProps} 
-                                                            ref={provided.innerRef}
-                                                            isDraggingOver={snapshot.isDraggingOver} >
-                                                            {firstImpressionRoseDisplay}
-                                                        </ul>
-                                                    )
-                                                }
-                                            </Droppable>
-                                            
-                                        </Card.Body>
-                                    </Card>
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>First Out of Limo</Card.Title>
-                                            <Card.Subtitle>Drag and Drop your pick here</Card.Subtitle>
-                                            
-                                            <Droppable droppableId="first-out-of-limo">
-                                                {                                                    
-                                                    (provided, snapshot) => (
-                                                        <ul className="list-group"  
-                                                            {...provided.droppableProps} 
-                                                            ref={provided.innerRef}
-                                                            isDraggingOver={snapshot.isDraggingOver} >
-                                                            {firstOutOfLimoDisplay}
-                                                        </ul>
-                                                    )
-                                                }
-                                            </Droppable>
-                                            
-                                        </Card.Body>
-                                    </Card>
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title><p>Tyler Cameron Makes an Apperance?</p></Card.Title>
-                                            <Card.Subtitle>Must be shown on broadcast (excluding previews) during the 1st episode</Card.Subtitle>
-                                            
-                                            <Form.Group>
-                                                <Form.Check id="tylerCameronYes" checked={this.state.picks.isTylerCameronApperance === constants.TRUE} type="radio" name="tylerCameronRadios" label="Yes" onChange={this.handleChange}/>
-                                                <Form.Check id="tylerCameronNo" checked={this.state.picks.isTylerCameronApperance === constants.FALSE} type="radio" name="tylerCameronRadios" label="No" onChange={this.handleChange}/>
-                                            </Form.Group>
-
-                                        </Card.Body>
-                                    </Card>                    
+                                    </Card>       
                                 </Col>
                             </Row>
                         </DragDropContext>

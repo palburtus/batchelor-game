@@ -39,9 +39,26 @@
   }
 }
 
+.navbar{
+  line-height: 1.5;
+  background-color: #6d0f14;
+  margin-bottom: 15px;
+}
+
+.navbar-brand{
+  color: #ffffff;
+  font-family: 'Lobster', cursive;
+}
+
 h3 {
   color: #000000;
   font-size: 1em;
+}
+
+h4 {
+  color: #6d0f14;
+  font-size: .7em;
+  margin-bottom: 10px;
 }
 
 .card {
@@ -49,23 +66,30 @@ h3 {
 }
 
 .card-title {
-  font-size: 1.2em;
+  font-size: .8em;
   text-align: left;
   color: #6d0f14;
 }
 
 .card-subtitle {
-  font-size: .8em;
+  font-size: .7em;
   text-align: left;
   color: #60686b;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .list-group-item {
-  text-align: left;
+  text-align: center;
   font-size: .8em;
+}
+
+.no-selection{
+  font-size: .9em;
+  font-weight: 600;
 }
 
 .remove-selection{  
   float: right;  
+  color: #6d0f14;
+  font-weight: 900;
 }
