@@ -13,6 +13,7 @@ class BatchelorGame extends React.Component {
         
         let email = this.getParameterByName('email');
         let token = this.getParameterByName('token');
+        let name = this.getParameterByName('name');
 
         this.state = ({
             infoMessage: '',
@@ -20,6 +21,7 @@ class BatchelorGame extends React.Component {
             errorMessage: '',
             email: email,
             token: token,
+            name: name,
             isLoading: true
         });
 
@@ -71,9 +73,9 @@ class BatchelorGame extends React.Component {
     }
 
     async savePicks(picks){
-        picksRepository.upsertPicks(this.state.email, this.state.token, picks);
+        picksRepository.upsertPicks(this.state.email, this.state.token, this.state.name, picks);
     }
-
+    
     getParameterByName(name, url) {
         if (!url) {
             url = window.location.href;
@@ -245,7 +247,7 @@ class BatchelorGame extends React.Component {
             if(this.state.picks.finalOne > 0){
                 finalOneDisplay = (<li className="list-group-item">
                                         <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.finalOne, 'final-one')}>X</span>
-                                        <img src={constants.girls[this.state.picks.finalOne].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>                
+                                        <img src={constants.girls[this.state.picks.finalOne - 1].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>                
                                         {constants.girls[this.state.picks.finalOne - 1].name}                                        
                                     </li>);
             }
@@ -255,7 +257,7 @@ class BatchelorGame extends React.Component {
                 firstImpressionRoseDisplay = (
                     <li className="list-group-item">
                         <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstImpressionRose, 'first-impression')}>X</span>
-                        <img src={constants.girls[this.state.picks.firstImpressionRose].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
+                        <img src={constants.girls[this.state.picks.firstImpressionRose - 1].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
                         {constants.girls[this.state.picks.firstImpressionRose - 1].name}                        
                     </li>);
             }
@@ -264,7 +266,7 @@ class BatchelorGame extends React.Component {
             if(this.state.picks.firstOutOfLimo > 0){
                 firstOutOfLimoDisplay = (<li className="list-group-item">
                                             <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstOutOfLimo, 'first-out-of-limo')}>X</span>
-                                            <img src={constants.girls[this.state.picks.firstOutOfLimo].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
+                                            <img src={constants.girls[this.state.picks.firstOutOfLimo - 1].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
                                             {constants.girls[this.state.picks.firstOutOfLimo - 1].name}                                            
                                          </li>);
             }
@@ -276,6 +278,7 @@ class BatchelorGame extends React.Component {
                         <DragDropContext onDragEnd={this.onDragEnd}>
                             <Row>
                                 <Col>
+                                    <h3>Welcome {this.state.name}</h3>
                                     <Card>
                                         <Card.Body>
                                             <Card.Title>
@@ -312,7 +315,7 @@ class BatchelorGame extends React.Component {
                                 <h4>Answers due every Monday by 5pm EST</h4>
                                 <Card>
                                     <Card.Body>
-                                        <Card.Title>First Impression Rose</Card.Title>
+                                        <Card.Title>First Impression Rose (10 points)</Card.Title>
                                         <Card.Subtitle>Drag and Drop your pick here</Card.Subtitle>
                                         
                                         <Droppable droppableId="first-impression">
@@ -332,7 +335,7 @@ class BatchelorGame extends React.Component {
                                 </Card>
                                 <Card>
                                     <Card.Body>
-                                        <Card.Title>First Out of Limo</Card.Title>
+                                        <Card.Title>First Out of Limo (10 points)</Card.Title>
                                         <Card.Subtitle>Drag and Drop your pick here</Card.Subtitle>
                                         
                                         <Droppable droppableId="first-out-of-limo">
@@ -352,7 +355,7 @@ class BatchelorGame extends React.Component {
                                 </Card>
                                 <Card>
                                     <Card.Body>
-                                        <Card.Title><p>Tyler Cameron Makes an Apperance?</p></Card.Title>
+                                        <Card.Title><p>Tyler Cameron Makes an Apperance? (5 points)</p></Card.Title>
                                         <Card.Subtitle>Must be shown on broadcast (excluding previews)</Card.Subtitle>
                                         
                                         <Form.Group>
@@ -366,7 +369,7 @@ class BatchelorGame extends React.Component {
                                     <h4>Answers due before week 4 at 5pm EST</h4>
                                     <Card>
                                         <Card.Body>
-                                            <Card.Title>Final Four</Card.Title>
+                                            <Card.Title>Final Four (20 points each correct answer)</Card.Title>
                                             <Card.Subtitle>Drag 4 Selections (order doesn't matter)</Card.Subtitle>
                                             
                                                 <Droppable droppableId="final-four">
@@ -386,7 +389,7 @@ class BatchelorGame extends React.Component {
                                     </Card>
                                     <Card>
                                         <Card.Body>
-                                            <Card.Title>Final Two</Card.Title>
+                                            <Card.Title>Final Two (25 points each correct answer)</Card.Title>
                                             <Card.Subtitle>Drag 2 Selections (order doesn't matter)</Card.Subtitle>
                                             
                                                 <Droppable droppableId="final-two">
@@ -406,7 +409,7 @@ class BatchelorGame extends React.Component {
                                     </Card>
                                     <Card>
                                         <Card.Body>
-                                            <Card.Title>Final Rose</Card.Title>
+                                            <Card.Title>Final Rose (30 points)</Card.Title>
                                             <Card.Subtitle>Drag 1 Selection or don't leave a name if you think no one gets the final rose</Card.Subtitle>
                                             
                                                 <Droppable droppableId="final-one">

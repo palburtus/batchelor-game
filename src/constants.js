@@ -1,6 +1,51 @@
 export const TRUE = 1;
 export const FALSE = 0;
 export const NO_SELECTION = -1;
+export const NOT_SETTLED = 999;
+
+/*
+            
+           
+            
+            //TODO can happen any time but must be done before 1st episode
+            firstTears: -1,
+            //TODO first episode specific            
+            firstKiss: -1,
+            costumQuestion: -1, // info in text 
+            //TODO episode 2 potential questions
+            firstOneOnOneDate: -1,
+            //TODO (can be implemented after 1st episode)        
+            finalEight: [],
+            firstToLeaveOnOwn: -1         
+*/
+
+export const perfectPicks = {
+    finalFour: [NOT_SETTLED, NOT_SETTLED, NOT_SETTLED, NOT_SETTLED],
+    finalTwo: [NOT_SETTLED, NOT_SETTLED],
+    finalOne: NOT_SETTLED,
+    isTylerCameronApperance: NOT_SETTLED,
+    firstImpressionRose: NOT_SETTLED,
+    //TODO can happen any time but must be done before 1st episode
+    firstTears: NOT_SETTLED,
+    //TODO first episode specific            
+    firstOutOfLimo: NOT_SETTLED,
+    firstKiss: NOT_SETTLED,
+    costumQuestion: NOT_SETTLED, // info in text 
+    //TODO episode 2 potential questions
+    firstOneOnOneDate: NOT_SETTLED,
+    //TODO (can be implemented after 1st episode)        
+    finalEight: [NOT_SETTLED, NOT_SETTLED, NOT_SETTLED, NOT_SETTLED],
+    firstToLeaveOnOwn: NOT_SETTLED                
+}
+
+export const scoreMap = {
+    'finalOne' : 30,
+    'finalTwo' : 25,
+    'finalFour' : 20,
+    'isTylerCameronApperance' : 5,
+    'firstImpressionRose' : 10,
+    'firstOutOfLimo' : 10
+}
 
 export const girls = [
     {
