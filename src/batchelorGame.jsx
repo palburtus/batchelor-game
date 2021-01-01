@@ -4,6 +4,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { ToastContainer, toast } from 'react-toastify';
 import * as constants from './constants';
 import * as picksRepository from './firebaseFirestoreRepository';
+import * as gameService from './gameService';
 import 'react-toastify/dist/ReactToastify.css';
 
 class BatchelorGame extends React.Component {
@@ -58,8 +59,11 @@ class BatchelorGame extends React.Component {
                     picks = response;
                 }
 
+                let score = gameService.getScore(picks);
+
                 this.setState({ 
                     picks: picks,
+                    score: score,
                     isLoading: false,
                     errorMessage: ''
                 });     
@@ -75,7 +79,7 @@ class BatchelorGame extends React.Component {
     async savePicks(picks){
         picksRepository.upsertPicks(this.state.email, this.state.token, this.state.name, picks);
     }
-    
+
     getParameterByName(name, url) {
         if (!url) {
             url = window.location.href;
@@ -278,7 +282,7 @@ class BatchelorGame extends React.Component {
                         <DragDropContext onDragEnd={this.onDragEnd}>
                             <Row>
                                 <Col>
-                                    <h3>Welcome {this.state.name}</h3>
+                                    <h3>{this.state.name} Current Score: {this.state.score}</h3>
                                     <Card>
                                         <Card.Body>
                                             <Card.Title>
