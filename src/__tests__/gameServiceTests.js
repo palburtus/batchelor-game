@@ -8,11 +8,11 @@ test('default picks to equal 0', () => {
     expect(result).toBe(0);
 });
 
-test('perfect score to equal 105', () => {
+test('perfect score to equal 185', () => {
     
     let picks = {
-        finalFour: [],
-        finalTwo: [999, 999],
+        finalFour: [999, 1000, 1001, 1002],
+        finalTwo: [999, 1000],
         finalOne: 999,
         isTylerCameronApperance: 999,
         firstImpressionRose: 999,
@@ -31,7 +31,7 @@ test('perfect score to equal 105', () => {
 
     let result = gameService.getScore(picks);
 
-    expect(result).toBe(105);
+    expect(result).toBe(185);
 });
 
 test('first out of limo correct to equal 10', () => {
@@ -112,6 +112,86 @@ test('final two both correct reverse order to equal 50', () => {
     let result = gameService.getScore(picks);
 
     expect(result).toBe(50);
+});
+
+test('final four first correct to equal 20', () => {
+    
+    let picks = getDefaultPicks();
+    picks.finalFour = [999, 998, 997, 996];
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(20);
+});
+
+test('final four second correct to equal 20', () => {
+    
+    let picks = getDefaultPicks();
+    picks.finalFour = [998, 999, 997, 996];
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(20);
+});
+
+test('final four third correct to equal 20', () => {
+    
+    let picks = getDefaultPicks();
+    picks.finalFour = [998, 997, 999, 996];
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(20);
+});
+
+test('final four fourth correct to equal 20', () => {
+    
+    let picks = getDefaultPicks();
+    picks.finalFour = [998, 997, 996, 999];
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(20);
+});
+
+test('final four two answers correct to equal 40', () => {
+    
+    let picks = getDefaultPicks();
+    picks.finalFour = [1000, 997, 999, 996];
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(40);
+});
+
+test('final four three answers correct to equal 60', () => {
+    
+    let picks = getDefaultPicks();
+    picks.finalFour = [998, 1000, 999, 1001];
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(60);
+});
+
+test('final four all correct to equal 80', () => {
+    
+    let picks = getDefaultPicks();
+    picks.finalFour = [999, 1000, 1001, 1002];
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(80);
+});
+
+test('final four all correct out of order to equal 80', () => {
+    
+    let picks = getDefaultPicks();
+    picks.finalFour = [1001, 1002, 999, 1000];
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(80);
 });
 
 function getDefaultPicks() {

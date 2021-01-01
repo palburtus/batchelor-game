@@ -24,7 +24,12 @@ export const getScore = (picks) => {
             score += constants.scoreMap['finalTwo'];
         }
     }
-    
+
+    for(let i = 0; i < picks.finalFour.length; i++){
+        if(constants.perfectPicks.finalFour.indexOf(picks.finalFour[i]) >= 0){
+            score += constants.scoreMap['finalFour'];
+        }
+    }
 
     return score;
 }

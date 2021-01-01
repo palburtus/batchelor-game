@@ -3,24 +3,8 @@ export const FALSE = 0;
 export const NO_SELECTION = -1;
 export const NOT_SETTLED = 999;
 
-/*
-            
-           
-            
-            //TODO can happen any time but must be done before 1st episode
-            firstTears: -1,
-            //TODO first episode specific            
-            firstKiss: -1,
-            costumQuestion: -1, // info in text 
-            //TODO episode 2 potential questions
-            firstOneOnOneDate: -1,
-            //TODO (can be implemented after 1st episode)        
-            finalEight: [],
-            firstToLeaveOnOwn: -1         
-*/
-
 export const perfectPicks = {
-    finalFour: [NOT_SETTLED, NOT_SETTLED, NOT_SETTLED, NOT_SETTLED],
+    finalFour: [NOT_SETTLED, (NOT_SETTLED + 1), (NOT_SETTLED + 2), (NOT_SETTLED + 3)],
     finalTwo: [NOT_SETTLED, (NOT_SETTLED + 1)],
     finalOne: NOT_SETTLED,
     isTylerCameronApperance: NOT_SETTLED,
