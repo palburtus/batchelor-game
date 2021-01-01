@@ -21,7 +21,7 @@ export const NOT_SETTLED = 999;
 
 export const perfectPicks = {
     finalFour: [NOT_SETTLED, NOT_SETTLED, NOT_SETTLED, NOT_SETTLED],
-    finalTwo: [NOT_SETTLED, NOT_SETTLED],
+    finalTwo: [NOT_SETTLED, (NOT_SETTLED + 1)],
     finalOne: NOT_SETTLED,
     isTylerCameronApperance: NOT_SETTLED,
     firstImpressionRose: NOT_SETTLED,
