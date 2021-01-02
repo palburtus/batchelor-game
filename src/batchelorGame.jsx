@@ -11,14 +11,14 @@ class BatchelorGame extends React.Component {
     
     constructor(props){
         super(props);
-        
-        let email = this.getParameterByName('email');
+                
         let token = this.getParameterByName('token');
-        let name = this.getParameterByName('name');
+        let email = this.getParameterByName('email'); //populate from db
+        let name = this.getParameterByName('name'); //populate from db
         //TODO populate with cookies if null
         
 
-        //TODO add automatic epoc log outs
+        //TODO add automatic epoc lock outs
 
         this.state = ({
             infoMessage: '',
@@ -38,6 +38,7 @@ class BatchelorGame extends React.Component {
     async componentDidMount(){
         
         let picks = {
+            finalEight: [],
             finalFour: [],
             finalTwo: [],
             finalOne: -1,
@@ -51,7 +52,6 @@ class BatchelorGame extends React.Component {
             //TODO episode 2 potential questions
             firstOneOnOneDate: -1,
             //TODO (can be implemented after 1st episode)        
-            finalEight: [],
             firstToLeaveOnOwn: -1                
         }
 
@@ -126,6 +126,10 @@ class BatchelorGame extends React.Component {
 
         let picks = this.state.picks;
 
+        if(listId === 'final-eight'){
+            picks.finalEight = this.arrayRemoveByValue(picks.finalEight, id);
+        }
+
         if(listId === 'final-four'){
             picks.finalFour = this.arrayRemoveByValue(picks.finalFour, id);
         }
@@ -153,7 +157,7 @@ class BatchelorGame extends React.Component {
         if(listId === 'first-tears'){
             picks.firstTears = -1;
         }
-
+        
         this.setState({
             picks: picks
         });
@@ -165,6 +169,19 @@ class BatchelorGame extends React.Component {
         const { source, destination } = result;
         
         let picks = this.state.picks;
+
+        if(destination && destination.droppableId === 'final-eight'){
+            
+            if(this.state.picks.finalEight.length >= 8){
+                toast("You must remove a contestant first! (8 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+            }else if(this.state.picks.finalEight.includes(result.draggableId)){
+                toast("You have already added this contestant", { type: toast.TYPE.WARNING, hideProgressBar: true, autoClose: 2500});
+            }else {
+                picks.finalEight = this.state.picks.finalEight;
+                
+                picks.finalEight.push(result.draggableId);
+            }            
+        }
 
         if(destination && destination.droppableId === 'final-four'){
         
@@ -252,13 +269,24 @@ class BatchelorGame extends React.Component {
             let noSelectionsMadeDisplay = <span className="no-selection">No Selections Made</span>;
             let noSingleSelectionMadeDisplay = <span className="no-selection">No Selection Made</span>;
 
+            let finalEightDisplay = noSingleSelectionMadeDisplay;
+
+            if(this.state.picks.finalEight.length > 0){
+                finalEightDisplay = this.state.picks.finalEight.map((id) => 
+                    <li className="list-group-item">
+                        <span className="remove-selection" onClick={() => this.removeSelection(id, 'final-eight')}>X</span>
+                        <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
+                        {constants.girls[id - 1].name}                        
+                    </li>)
+            }
+
             let finalFourDisplay = noSelectionsMadeDisplay;
             
             if(this.state.picks.finalFour.length > 0){
                 finalFourDisplay = this.state.picks.finalFour.map((id) => 
                     <li className="list-group-item">
                         <span className="remove-selection" onClick={() => this.removeSelection(id, 'final-four')}>X</span>
-                        <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
+                        <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
                         {constants.girls[id - 1].name}                        
                     </li>)
             }
@@ -269,7 +297,7 @@ class BatchelorGame extends React.Component {
                 finalTwoDisplay = this.state.picks.finalTwo.map((id) => 
                     <li className="list-group-item">
                         <span className="remove-selection" onClick={() => this.removeSelection(id, 'final-two')}>X</span>
-                        <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
+                        <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
                         {constants.girls[id - 1].name}                        
                     </li>)
             }
@@ -279,7 +307,7 @@ class BatchelorGame extends React.Component {
             if(this.state.picks.finalOne > 0){
                 finalOneDisplay = (<li className="list-group-item">
                                         <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.finalOne, 'final-one')}>X</span>
-                                        <img src={constants.girls[this.state.picks.finalOne - 1].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>                
+                                        <img src={constants.girls[this.state.picks.finalOne - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>                
                                         {constants.girls[this.state.picks.finalOne - 1].name}                                        
                                     </li>);
             }
@@ -289,7 +317,7 @@ class BatchelorGame extends React.Component {
                 firstImpressionRoseDisplay = (
                     <li className="list-group-item">
                         <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstImpressionRose, 'first-impression')}>X</span>
-                        <img src={constants.girls[this.state.picks.firstImpressionRose - 1].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
+                        <img src={constants.girls[this.state.picks.firstImpressionRose - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
                         {constants.girls[this.state.picks.firstImpressionRose - 1].name}                        
                     </li>);
             }
@@ -298,7 +326,7 @@ class BatchelorGame extends React.Component {
             if(this.state.picks.firstOutOfLimo > 0){
                 firstOutOfLimoDisplay = (<li className="list-group-item">
                                             <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstOutOfLimo, 'first-out-of-limo')}>X</span>
-                                            <img src={constants.girls[this.state.picks.firstOutOfLimo - 1].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
+                                            <img src={constants.girls[this.state.picks.firstOutOfLimo - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
                                             {constants.girls[this.state.picks.firstOutOfLimo - 1].name}                                            
                                          </li>);
             }
@@ -308,7 +336,7 @@ class BatchelorGame extends React.Component {
                 firstKissDisplay = (
                     <li className="list-group-item">
                         <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstKiss, 'first-kiss')}>X</span>
-                        <img src={constants.girls[this.state.picks.firstKiss - 1].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
+                        <img src={constants.girls[this.state.picks.firstKiss - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
                         {constants.girls[this.state.picks.firstKiss - 1].name}                                            
                     </li>
                 );
@@ -319,7 +347,7 @@ class BatchelorGame extends React.Component {
                 firstTearsDisplay = (
                     <li className="list-group-item">
                         <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstTears, 'first-tears')}>X</span>
-                        <img src={constants.girls[this.state.picks.firstTears - 1].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
+                        <img src={constants.girls[this.state.picks.firstTears - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
                         {constants.girls[this.state.picks.firstTears - 1].name}                                            
                     </li>
                 );
@@ -350,7 +378,7 @@ class BatchelorGame extends React.Component {
                                                                     <Draggable key={id} draggableId={id} index={index}>
                                                                     {(provided) => (
                                                                         <li className="list-group-item" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                                                            <img src={thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>{ name }
+                                                                            <img src={thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>{ name }
                                                                         </li>
                                                                     )}
                                                                     </Draggable>
@@ -463,6 +491,26 @@ class BatchelorGame extends React.Component {
 
                                 <h3>Season Questions</h3>
                                 <h4>Answers due before week 4 at 5pm EST</h4>
+                                <Card>
+                                    <Card.Body>
+                                        <Card.Title>Final Eight (10 points each correct answer)</Card.Title>
+                                        <Card.Subtitle>8 Selections (order doesn't matter)</Card.Subtitle>
+                                            
+                                            <Droppable droppableId="final-eight">
+                                                {                                                    
+                                                    (provided, snapshot) => (
+                                                        <ul className="list-group"  
+                                                            {...provided.droppableProps} 
+                                                            ref={provided.innerRef}
+                                                            isDraggingOver={snapshot.isDraggingOver} >
+                                                            {finalEightDisplay}
+                                                        </ul>
+                                                    )
+                                                }
+                                            </Droppable>
+
+                                    </Card.Body>
+                                </Card>
                                 <Card>
                                     <Card.Body>
                                         <Card.Title>Final Four (20 points each correct answer)</Card.Title>
