@@ -15,6 +15,14 @@ export const getScore = (picks) => {
         score += constants.scoreMap['isTylerCameronApperance'];
     }
 
+    if(picks.firstKiss === constants.perfectPicks.firstKiss){
+        score += constants.scoreMap['firstKiss'];
+    }
+
+    if(picks.firstTears === constants.perfectPicks.firstTears){
+        score += constants.scoreMap['firstTears'];
+    }
+
     if(picks.finalOne === constants.perfectPicks.finalOne){
         score += constants.scoreMap['finalOne'];
     }

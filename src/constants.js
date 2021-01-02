@@ -9,11 +9,11 @@ export const perfectPicks = {
     finalOne: NOT_SETTLED,
     isTylerCameronApperance: NOT_SETTLED,
     firstImpressionRose: NOT_SETTLED,
-    //TODO can happen any time but must be done before 1st episode
-    firstTears: NOT_SETTLED,
-    //TODO first episode specific            
     firstOutOfLimo: NOT_SETTLED,
     firstKiss: NOT_SETTLED,
+    //TODO can happen any time but must be done before 1st episode
+    firstTears: NOT_SETTLED,
+    //TODO first episode specific                
     costumQuestion: NOT_SETTLED, // info in text 
     //TODO episode 2 potential questions
     firstOneOnOneDate: NOT_SETTLED,
@@ -28,7 +28,9 @@ export const scoreMap = {
     'finalFour' : 20,
     'isTylerCameronApperance' : 5,
     'firstImpressionRose' : 10,
-    'firstOutOfLimo' : 10
+    'firstOutOfLimo' : 10,
+    'firstKiss': 10,
+    'firstTears' : 10
 }
 
 export const girls = [

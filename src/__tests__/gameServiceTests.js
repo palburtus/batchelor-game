@@ -8,7 +8,7 @@ test('default picks to equal 0', () => {
     expect(result).toBe(0);
 });
 
-test('perfect score to equal 185', () => {
+test('perfect score to equal 205', () => {
     
     let picks = {
         finalFour: [999, 1000, 1001, 1002],
@@ -17,10 +17,9 @@ test('perfect score to equal 185', () => {
         isTylerCameronApperance: 999,
         firstImpressionRose: 999,
         firstOutOfLimo: 999,
-        //TODO can happen any time but must be done before 1st episode
-        firstTears: -1,
-        //TODO first episode specific            
-        firstKiss: -1,
+        firstKiss: 999,
+        firstTears: 999,
+        //TODO first episode specific        
         costumQuestion: -1, // info in text 
         //TODO episode 2 potential questions
         firstOneOnOneDate: -1,
@@ -31,7 +30,27 @@ test('perfect score to equal 185', () => {
 
     let result = gameService.getScore(picks);
 
-    expect(result).toBe(185);
+    expect(result).toBe(205);
+});
+
+test('first tears correct to equal 10', () => {
+    
+    let picks = getDefaultPicks();
+    picks.firstTears = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+});
+
+test('first kiss correct to equal 10', () => {
+    
+    let picks = getDefaultPicks();
+    picks.firstKiss = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
 });
 
 test('first out of limo correct to equal 10', () => {

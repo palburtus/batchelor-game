@@ -15,6 +15,10 @@ class BatchelorGame extends React.Component {
         let email = this.getParameterByName('email');
         let token = this.getParameterByName('token');
         let name = this.getParameterByName('name');
+        //TODO populate with cookies if null
+        
+
+        //TODO add automatic epoc log outs
 
         this.state = ({
             infoMessage: '',
@@ -39,11 +43,10 @@ class BatchelorGame extends React.Component {
             finalOne: -1,
             isTylerCameronApperance: constants.NO_SELECTION,
             firstImpressionRose: -1,
-            //TODO can happen any time but must be done before 1st episode
-            firstTears: -1,
-            //TODO first episode specific            
             firstOutOfLimo: -1,
             firstKiss: -1,
+            firstTears: -1,
+            //TODO first episode specific                        
             costumQuestion: -1, // info in text 
             //TODO episode 2 potential questions
             firstOneOnOneDate: -1,
@@ -143,6 +146,14 @@ class BatchelorGame extends React.Component {
             picks.firstOutOfLimo = -1;
         }
 
+        if(listId === 'first-kiss'){
+            picks.firstKiss = -1;
+        }
+
+        if(listId === 'first-tears'){
+            picks.firstTears = -1;
+        }
+
         this.setState({
             picks: picks
         });
@@ -206,7 +217,24 @@ class BatchelorGame extends React.Component {
                 picks.firstOutOfLimo = result.draggableId;
             }
         }
+
+        if(destination && destination.droppableId === 'first-kiss'){
+            if(this.state.picks.firstKiss >= 1){
+                toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+            }else{
+                picks.firstKiss = this.state.picks.firstKiss;
+                picks.firstKiss = result.draggableId;
+            }
+        }
         
+        if(destination && destination.droppableId === 'first-tears'){
+            if(this.state.picks.firstTears >= 1){
+                toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+            }else{
+                picks.firstTears = this.state.picks.firstTears;
+                picks.firstTears = result.draggableId;
+            }
+        }
         
         this.setState({
             picks: picks
@@ -273,6 +301,28 @@ class BatchelorGame extends React.Component {
                                             <img src={constants.girls[this.state.picks.firstOutOfLimo - 1].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
                                             {constants.girls[this.state.picks.firstOutOfLimo - 1].name}                                            
                                          </li>);
+            }
+
+            let firstKissDisplay = noSelectionsMadeDisplay;
+            if(this.state.picks.firstKiss > 0){
+                firstKissDisplay = (
+                    <li className="list-group-item">
+                        <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstKiss, 'first-kiss')}>X</span>
+                        <img src={constants.girls[this.state.picks.firstKiss - 1].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
+                        {constants.girls[this.state.picks.firstKiss - 1].name}                                            
+                    </li>
+                );
+            }
+            
+            let firstTearsDisplay = noSingleSelectionMadeDisplay;
+            if(this.state.picks.firstTears > 0){
+                firstTearsDisplay = (
+                    <li className="list-group-item">
+                        <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstTears, 'first-tears')}>X</span>
+                        <img src={constants.girls[this.state.picks.firstTears - 1].thumb} height="50px" width="50px" class="img-fluid" alt="..."></img>
+                        {constants.girls[this.state.picks.firstTears - 1].name}                                            
+                    </li>
+                );
             }
 
             return(
@@ -368,27 +418,69 @@ class BatchelorGame extends React.Component {
                                         </Form.Group>
 
                                     </Card.Body>
-                                </Card>      
-                                    <h3>Season Questions</h3>
-                                    <h4>Answers due before week 4 at 5pm EST</h4>
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>Final Four (20 points each correct answer)</Card.Title>
-                                            <Card.Subtitle>Drag 4 Selections (order doesn't matter)</Card.Subtitle>
-                                            
-                                                <Droppable droppableId="final-four">
-                                                    {                                                    
-                                                        (provided, snapshot) => (
-                                                            <ul className="list-group"  
-                                                                {...provided.droppableProps} 
-                                                                ref={provided.innerRef}
-                                                                isDraggingOver={snapshot.isDraggingOver} >
-                                                                {finalFourDisplay}
-                                                            </ul>
-                                                        )
-                                                    }
-                                                </Droppable>
+                                </Card>   
+                                <Card>
+                                    <Card.Body>
+                                        <Card.Title>First Kiss (10 points)</Card.Title>
+                                        <Card.Subtitle>Drag and Drop your pick here</Card.Subtitle>
+
+                                        <Droppable droppableId="first-kiss">
+                                            {                                                    
+                                                (provided, snapshot) => (
+                                                    <ul className="list-group"  
+                                                        {...provided.droppableProps} 
+                                                        ref={provided.innerRef}
+                                                        isDraggingOver={snapshot.isDraggingOver} >
+                                                        {firstKissDisplay}
+                                                    </ul>
+                                                )
+                                            }
+                                        </Droppable>
+
+                                    </Card.Body>
+                                </Card>
+                                
+                                <Card>
+                                    <Card.Body>
+                                        <Card.Title>First to Cry (10 points)</Card.Title>
+                                        <Card.Subtitle>Tears, tear streaks, or running makeup must be visible on camera</Card.Subtitle>
+
+                                        <Droppable droppableId="first-tears">
+                                            {                                                    
+                                                (provided, snapshot) => (
+                                                    <ul className="list-group"  
+                                                        {...provided.droppableProps} 
+                                                        ref={provided.innerRef}
+                                                        isDraggingOver={snapshot.isDraggingOver} >
+                                                        {firstTearsDisplay}
+                                                    </ul>
+                                                )
+                                            }
+                                        </Droppable>
+
+                                    </Card.Body>
+                                </Card>
+
+                                <h3>Season Questions</h3>
+                                <h4>Answers due before week 4 at 5pm EST</h4>
+                                <Card>
+                                    <Card.Body>
+                                        <Card.Title>Final Four (20 points each correct answer)</Card.Title>
+                                        <Card.Subtitle>Drag 4 Selections (order doesn't matter)</Card.Subtitle>
                                         
+                                            <Droppable droppableId="final-four">
+                                                {                                                    
+                                                    (provided, snapshot) => (
+                                                        <ul className="list-group"  
+                                                            {...provided.droppableProps} 
+                                                            ref={provided.innerRef}
+                                                            isDraggingOver={snapshot.isDraggingOver} >
+                                                            {finalFourDisplay}
+                                                        </ul>
+                                                    )
+                                                }
+                                            </Droppable>
+                                    
                                         </Card.Body>                                
                                     </Card>
                                     <Card>
