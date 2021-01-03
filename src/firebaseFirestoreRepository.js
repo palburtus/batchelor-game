@@ -3,9 +3,9 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyDq3JbCk7yA3999aiDx-qlfZhG96NPCBIg', //process.env.REACT_APP_FIREBASE_API_KEY,
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: '',
-    projectId: 'aaks-batch', //process.env.REACT_APP_FIREBASE_PROJECT_ID
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID
 };
 
 firebase.initializeApp(firebaseConfig);
