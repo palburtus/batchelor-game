@@ -668,6 +668,8 @@ class BatchelorGame extends React.Component {
                     </Container>
                 </div>
             );
+        }else{
+            <div></div>
         }
     }
 }
