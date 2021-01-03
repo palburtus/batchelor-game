@@ -315,7 +315,7 @@ class BatchelorGame extends React.Component {
 
         if(this.state.isLoading){
             return(<div><p>Loading...</p></div>);
-        }else{
+        }else if(this.state.picks){
 
             let noSelectionsMadeDisplay = <span className="no-selection">No Selections Made</span>;
             let noSingleSelectionMadeDisplay = <span className="no-selection">No Selection Made</span>;
