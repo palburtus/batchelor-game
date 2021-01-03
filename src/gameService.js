@@ -43,9 +43,9 @@ export const getScore = (picks) => {
         }
     }
 
-    for(let i = 0; i < picks.finalEight.length; i++){
-        if(constants.perfectPicks.finalEight.indexOf(picks.finalEight[i]) >= 0){
-            score += constants.scoreMap['finalEight'];
+    for(let i = 0; i < picks.finalSix.length; i++){
+        if(constants.perfectPicks.finalSix.indexOf(picks.finalSix[i]) >= 0){
+            score += constants.scoreMap['finalSix'];
         }
     }
 

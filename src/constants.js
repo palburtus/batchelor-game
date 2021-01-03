@@ -4,7 +4,7 @@ export const NO_SELECTION = -1;
 export const NOT_SETTLED = 999;
 
 export const perfectPicks = {
-    finalEight: [NOT_SETTLED, (NOT_SETTLED + 1), (NOT_SETTLED + 2), (NOT_SETTLED + 3), (NOT_SETTLED + 4), (NOT_SETTLED + 5), (NOT_SETTLED + 6), (NOT_SETTLED + 7)],
+    finalSix: [NOT_SETTLED, (NOT_SETTLED + 1), (NOT_SETTLED + 2), (NOT_SETTLED + 3), (NOT_SETTLED + 4), (NOT_SETTLED + 5)],
     finalFour: [NOT_SETTLED, (NOT_SETTLED + 1), (NOT_SETTLED + 2), (NOT_SETTLED + 3)],
     finalTwo: [NOT_SETTLED, (NOT_SETTLED + 1)],
     finalOne: NOT_SETTLED,
@@ -24,7 +24,7 @@ export const scoreMap = {
     'finalOne' : 30,
     'finalTwo' : 25,
     'finalFour' : 20,
-    'finalEight' : 10,
+    'finalSix' : 10,
     'isTylerCameronApperance' : 5,
     'firstImpressionRose' : 10,
     'firstOutOfLimo' : 10,

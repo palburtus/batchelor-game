@@ -45,7 +45,7 @@ class BatchelorGame extends React.Component {
         }
 
         let picks = {
-            finalEight: [],
+            finalSix: [],
             finalFour: [],
             finalTwo: [],
             finalOne: -1,
@@ -163,8 +163,8 @@ class BatchelorGame extends React.Component {
 
         let picks = this.state.picks;
 
-        if(listId === 'final-eight'){
-            picks.finalEight = this.arrayRemoveByValue(picks.finalEight, id);
+        if(listId === 'final-six'){
+            picks.finalSix = this.arrayRemoveByValue(picks.finalSix, id);
         }
 
         if(listId === 'final-four'){
@@ -211,16 +211,16 @@ class BatchelorGame extends React.Component {
         
         let picks = this.state.picks;
 
-        if(destination && destination.droppableId === 'final-eight'){
+        if(destination && destination.droppableId === 'final-six'){
             
-            if(this.state.picks.finalEight.length >= 8){
-                toast("You must remove a contestant first! (8 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-            }else if(this.state.picks.finalEight.includes(result.draggableId)){
+            if(this.state.picks.finalSix.length >= 6){
+                toast("You must remove a contestant first! (6 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+            }else if(this.state.picks.finalSix.includes(result.draggableId)){
                 toast("You have already added this contestant", { type: toast.TYPE.WARNING, hideProgressBar: true, autoClose: 2500});
             }else {
-                picks.finalEight = this.state.picks.finalEight;
+                picks.finalSix = this.state.picks.finalSix;
                 
-                picks.finalEight.push(result.draggableId);
+                picks.finalSix.push(result.draggableId);
             }            
         }
 
@@ -320,12 +320,12 @@ class BatchelorGame extends React.Component {
             let noSelectionsMadeDisplay = <span className="no-selection">No Selections Made</span>;
             let noSingleSelectionMadeDisplay = <span className="no-selection">No Selection Made</span>;
 
-            let finalEightDisplay = noSingleSelectionMadeDisplay;
+            let finalSixDisplay = noSingleSelectionMadeDisplay;
 
-            if(this.state.picks.finalEight.length > 0){
-                finalEightDisplay = this.state.picks.finalEight.map((id) => 
+            if(this.state.picks.finalSix.length > 0){
+                finalSixDisplay = this.state.picks.finalSix.map((id) => 
                     <li className="list-group-item">
-                        <span className="remove-selection" onClick={() => this.removeSelection(id, 'final-eight')}>X</span>
+                        <span className="remove-selection" onClick={() => this.removeSelection(id, 'final-six')}>X</span>
                         <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
                         {constants.girls[id - 1].name}                        
                     </li>)
@@ -578,17 +578,17 @@ class BatchelorGame extends React.Component {
                                 <h4>Answers due by February 1st at 8pm EST</h4>
                                 <Card>
                                     <Card.Body>
-                                        <Card.Title>Final Eight (10 points each correct answer)</Card.Title>
-                                        <Card.Subtitle>8 Selections (order doesn't matter)</Card.Subtitle>
+                                        <Card.Title>Final Six (10 points each correct answer)</Card.Title>
+                                        <Card.Subtitle>6 Selections (order doesn't matter)</Card.Subtitle>
                                             
-                                            <Droppable droppableId="final-eight">
+                                            <Droppable droppableId="final-six">
                                                 {                                                    
                                                     (provided, snapshot) => (
                                                         <ul className="list-group"  
                                                             {...provided.droppableProps} 
                                                             ref={provided.innerRef}
                                                             isDraggingOver={snapshot.isDraggingOver} >
-                                                            {finalEightDisplay}
+                                                            {finalSixDisplay}
                                                         </ul>
                                                     )
                                                 }
@@ -669,7 +669,7 @@ class BatchelorGame extends React.Component {
                 </div>
             );
         }else{
-            <div></div>
+            return(<div></div>);
         }
     }
 }

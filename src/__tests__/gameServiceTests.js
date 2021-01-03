@@ -11,7 +11,7 @@ test('default picks to equal 0', () => {
 test('perfect score to equal 295', () => {
     
     let picks = {
-        finalEight: [999, 1000, 1001, 1002, 1003, 1004, 1005, 1006],
+        finalSix: [999, 1000, 1001, 1002, 1003, 1004],
         finalFour: [999, 1000, 1001, 1002],
         finalTwo: [999, 1000],
         finalOne: 999,
@@ -29,7 +29,7 @@ test('perfect score to equal 295', () => {
 
     let result = gameService.getScore(picks);
 
-    expect(result).toBe(295);
+    expect(result).toBe(275);
 });
 
 test('first tears correct to equal 10', () => {
@@ -232,98 +232,78 @@ test('final four all correct out of order to equal 80', () => {
     expect(result).toBe(80);
 });
 
-test('final eight none correct to equal 0', () => {
+test('final six none correct to equal 0', () => {
     
     let picks = getDefaultPicks();
-    picks.finalEight = [998, 997, 996, 995, 994, 993, 992, 991];
+    picks.finalSix = [998, 997, 996, 995, 994, 993];
 
     let result = gameService.getScore(picks);
 
     expect(result).toBe(0);
 });
 
-test('final eight first correct to equal 10', () => {
+test('final six first correct to equal 10', () => {
     
     let picks = getDefaultPicks();
-    picks.finalEight = [999, 998, 997, 996, 995, 994, 993, 992];
+    picks.finalSix = [999, 998, 997, 996, 995, 994];
 
     let result = gameService.getScore(picks);
 
     expect(result).toBe(10);
 });
 
-test('final eight two correct to equal 20', () => {
+test('final six two correct to equal 20', () => {
     
     let picks = getDefaultPicks();
-    picks.finalEight = [998, 1006, 999, 996, 995, 994, 993, 992];
+    picks.finalSix = [1002, 999, 995, 994, 993, 992];
 
     let result = gameService.getScore(picks);
 
     expect(result).toBe(20);
 });
 
-test('final eight three correct to equal 30', () => {
+test('final six three correct to equal 30', () => {
     
     let picks = getDefaultPicks();
-    picks.finalEight = [995, 998, 1006, 999, 996, 1000, 994, 993, 992];
+    picks.finalSix = [1002, 999, 996, 1000, 994, 992];
 
     let result = gameService.getScore(picks);
 
     expect(result).toBe(30);
 });
 
-test('final eight four correct to equal 40', () => {
+test('final six four correct to equal 40', () => {
     
     let picks = getDefaultPicks();
-    picks.finalEight = [1006, 1000, 996, 995, 994, 993, 1005, 999];
+    picks.finalSix = [1002, 1000, 994, 993, 1003, 999];
 
     let result = gameService.getScore(picks);
 
     expect(result).toBe(40);
 });
 
-test('final eight five correct to equal 50', () => {
+test('final six five correct to equal 50', () => {
     
     let picks = getDefaultPicks();
-    picks.finalEight = [1006, 996, 1000, 1001, 994, 993, 1005, 999];
+    picks.finalSix = [1002, 996, 1000, 1001, 1003, 999];
 
     let result = gameService.getScore(picks);
 
     expect(result).toBe(50);
 });
 
-test('final eight six correct to equal 60', () => {
-    
+test('final six all correct out of order to equal 80', () => {
     let picks = getDefaultPicks();
-    picks.finalEight = [998, 1002, 1000, 1001, 994, 1005, 999, 1003];
+    picks.finalSix = [1004, 1003, 1002, 1001, 1000, 999];
 
     let result = gameService.getScore(picks);
 
     expect(result).toBe(60);
-});
-
-test('final eight seven correct to equal 70', () => {
-    
-    let picks = getDefaultPicks();
-    picks.finalEight = [1006, 1002, 1000, 1001, 994, 1005, 999, 1003];
-
-    let result = gameService.getScore(picks);
-
-    expect(result).toBe(70);
-});
-
-test('final eight all correct out of order to equal 80', () => {
-    let picks = getDefaultPicks();
-    picks.finalEight = [1006, 1005, 1004, 1003, 1002, 1001, 1000, 999];
-
-    let result = gameService.getScore(picks);
-
-    expect(result).toBe(80);
 })
 
 function getDefaultPicks() {
     return {
-        finalEight: [],
+        finalSix: [],
         finalFour: [],
         finalTwo: [],
         finalOne: -1,
