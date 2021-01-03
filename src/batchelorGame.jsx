@@ -13,9 +13,25 @@ class BatchelorGame extends React.Component {
     constructor(props){
         super(props);
         
-        //TODO add automatic epoc lock outs
+        let picks = {
+            finalSix: [],
+            finalFour: [],
+            finalTwo: [],
+            finalOne: -1,
+            isTylerCameronApperance: constants.NO_SELECTION,
+            firstImpressionRose: -1,
+            firstOutOfLimo: -1,
+            firstKiss: -1,
+            firstTears: -1,
+            firstWearingCostume: -1,  
+            //TODO episode 2 potential questions
+            firstOneOnOneDate: -1,
+            //TODO (can be implemented after 1st episode)        
+            firstToLeaveOnOwn: -1                
+        }
 
         this.state = ({
+            picks: picks,
             infoMessage: '',
             warningMessage: '',
             errorMessage: '',
@@ -44,27 +60,12 @@ class BatchelorGame extends React.Component {
             token = cookies.get('aaks_token');
         }
 
-        let picks = {
-            finalSix: [],
-            finalFour: [],
-            finalTwo: [],
-            finalOne: -1,
-            isTylerCameronApperance: constants.NO_SELECTION,
-            firstImpressionRose: -1,
-            firstOutOfLimo: -1,
-            firstKiss: -1,
-            firstTears: -1,
-            firstWearingCostume: -1,  
-            //TODO episode 2 potential questions
-            firstOneOnOneDate: -1,
-            //TODO (can be implemented after 1st episode)        
-            firstToLeaveOnOwn: -1                
-        }
+        let picks = this.state.picks;
 
         picksRepository.getPicks(token)
             .then((response) => {
-                
-                if(response){
+               
+                if(response.picks){
                     picks = response.picks;
                 }
 
@@ -81,6 +82,7 @@ class BatchelorGame extends React.Component {
                     errorMessage: ''
                 });     
             }).catch((error) => {
+                debugger;
                 this.setState({ 
                     picks: picks,
                     isLoading: false,
@@ -321,7 +323,7 @@ class BatchelorGame extends React.Component {
             let noSingleSelectionMadeDisplay = <span className="no-selection">No Selection Made</span>;
 
             let finalSixDisplay = noSingleSelectionMadeDisplay;
-
+           
             if(this.state.picks.finalSix.length > 0){
                 finalSixDisplay = this.state.picks.finalSix.map((id) => 
                     <li className="list-group-item">
