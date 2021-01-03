@@ -17,7 +17,6 @@ class BatchelorGame extends React.Component {
         let name = this.getParameterByName('name'); //populate from db
         //TODO populate with cookies if null
         
-
         //TODO add automatic epoc lock outs
 
         this.state = ({
@@ -47,8 +46,7 @@ class BatchelorGame extends React.Component {
             firstOutOfLimo: -1,
             firstKiss: -1,
             firstTears: -1,
-            //TODO first episode specific                        
-            costumQuestion: -1, // info in text 
+            firstWearingCostume: -1,  
             //TODO episode 2 potential questions
             firstOneOnOneDate: -1,
             //TODO (can be implemented after 1st episode)        
@@ -142,6 +140,10 @@ class BatchelorGame extends React.Component {
             picks.finalOne = -1;
         }
 
+        if(listId === 'first-wearing-costume'){
+            picks.firstWearingCostume = -1;
+        }
+
         if(listId === 'first-impression'){
             picks.firstImpressionRose = -1;
         }
@@ -214,6 +216,16 @@ class BatchelorGame extends React.Component {
             }else {
                 picks.finalOne = this.state.picks.finalOne;                
                 picks.finalOne = result.draggableId;  
+            }
+        }
+        
+        if(destination && destination.droppableId === 'first-wearing-costume'){
+            
+            if(this.state.picks.firstWearingCostume >= 1){
+                toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+            }else {
+                picks.firstWearingCostume = this.state.picks.firstWearingCostume;
+                picks.firstWearingCostume = result.draggableId;
             }
         }
 
@@ -310,6 +322,16 @@ class BatchelorGame extends React.Component {
                                         <img src={constants.girls[this.state.picks.finalOne - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>                
                                         {constants.girls[this.state.picks.finalOne - 1].name}                                        
                                     </li>);
+            }
+
+            let firstWearingCostumeDisplay = noSingleSelectionMadeDisplay;
+            if(this.state.picks.firstWearingCostume > 0){
+                firstWearingCostumeDisplay = (
+                    <li className="list-group-item">
+                        <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstWearingCostume, 'first-wearing-costume')}>X</span>
+                        <img src={constants.girls[this.state.picks.firstWearingCostume - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
+                        {constants.girls[this.state.picks.firstWearingCostume - 1].name}                        
+                    </li>);
             }
 
             let firstImpressionRoseDisplay = noSingleSelectionMadeDisplay;
@@ -481,6 +503,30 @@ class BatchelorGame extends React.Component {
                                                         ref={provided.innerRef}
                                                         isDraggingOver={snapshot.isDraggingOver} >
                                                         {firstTearsDisplay}
+                                                    </ul>
+                                                )
+                                            }
+                                        </Droppable>
+
+                                    </Card.Body>
+                                </Card>
+                                
+                                <Card>
+                                    <Card.Body>
+                                        <Card.Title>First to Wear a Costume (10 points)</Card.Title>
+                                        <Card.Subtitle>
+                                            Includes any unusual attire that is not a formal dress.  
+                                            Must be wearing it when they exit the limo and/or are introduced to the Bachelor 
+                                        </Card.Subtitle>
+
+                                        <Droppable droppableId="first-wearing-costume">
+                                            {                                                    
+                                                (provided, snapshot) => (
+                                                    <ul className="list-group"  
+                                                        {...provided.droppableProps} 
+                                                        ref={provided.innerRef}
+                                                        isDraggingOver={snapshot.isDraggingOver} >
+                                                        {firstWearingCostumeDisplay}
                                                     </ul>
                                                 )
                                             }

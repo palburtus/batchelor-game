@@ -8,7 +8,7 @@ test('default picks to equal 0', () => {
     expect(result).toBe(0);
 });
 
-test('perfect score to equal 285', () => {
+test('perfect score to equal 295', () => {
     
     let picks = {
         finalEight: [999, 1000, 1001, 1002, 1003, 1004, 1005, 1006],
@@ -20,8 +20,7 @@ test('perfect score to equal 285', () => {
         firstOutOfLimo: 999,
         firstKiss: 999,
         firstTears: 999,
-        //TODO first episode specific        
-        costumQuestion: -1, // info in text 
+        firstWearingCostume: 999,
         //TODO episode 2 potential questions
         firstOneOnOneDate: -1,
         //TODO (can be implemented after 1st episode)        
@@ -30,7 +29,7 @@ test('perfect score to equal 285', () => {
 
     let result = gameService.getScore(picks);
 
-    expect(result).toBe(285);
+    expect(result).toBe(295);
 });
 
 test('first tears correct to equal 10', () => {
@@ -81,6 +80,26 @@ test('tyler cameron appearnce to equal 5', () => {
     let result = gameService.getScore(picks);
 
     expect(result).toBe(5);
+});
+
+test('first wearing costume correct to equal 10', () => {
+    
+    let picks = getDefaultPicks();
+    picks.firstWearingCostume = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+});
+
+test('first wearing costume incorrect to equal 0', () => {
+    
+    let picks = getDefaultPicks();
+    picks.firstWearingCostume = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
 });
 
 test('final rose to equal 30', () => {
@@ -304,22 +323,17 @@ test('final eight all correct out of order to equal 80', () => {
 
 function getDefaultPicks() {
     return {
+        finalEight: [],
         finalFour: [],
         finalTwo: [],
         finalOne: -1,
         isTylerCameronApperance: constants.NO_SELECTION,
         firstImpressionRose: -1,
         firstOutOfLimo: -1,
-        //TODO can happen any time but must be done before 1st episode
-        firstTears: -1,
-        //TODO first episode specific            
+        firstTears: -1,         
         firstKiss: -1,
-        costumQuestion: -1,
-
-        //TODO episode 2 potential questions
+        firstWearingCostume: -1,
         firstOneOnOneDate: -1,
-        //TODO (can be implemented after 1st episode)        
-        finalEight: [],
         firstToLeaveOnOwn: -1
     };
 }

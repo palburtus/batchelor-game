@@ -23,6 +23,10 @@ export const getScore = (picks) => {
         score += constants.scoreMap['firstTears'];
     }
 
+    if(picks.firstWearingCostume === constants.perfectPicks.firstWearingCostume){
+        score += constants.scoreMap['firstWearingCostume'];
+    }
+
     if(picks.finalOne === constants.perfectPicks.finalOne){
         score += constants.scoreMap['finalOne'];
     }

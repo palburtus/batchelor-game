@@ -13,8 +13,7 @@ export const perfectPicks = {
     firstOutOfLimo: NOT_SETTLED,
     firstKiss: NOT_SETTLED,
     firstTears: NOT_SETTLED,
-    //TODO first episode specific                
-    costumQuestion: NOT_SETTLED, // info in text 
+    firstWearingCostume: NOT_SETTLED,
     //TODO episode 2 potential questions
     firstOneOnOneDate: NOT_SETTLED,
     //TODO (can be implemented after 1st episode)   
@@ -30,7 +29,8 @@ export const scoreMap = {
     'firstImpressionRose' : 10,
     'firstOutOfLimo' : 10,
     'firstKiss': 10,
-    'firstTears' : 10
+    'firstTears' : 10,
+    'firstWearingCostume' : 10
 }
 
 export const girls = [
