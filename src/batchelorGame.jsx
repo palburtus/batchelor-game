@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, ListGroup, ListGroupItem, Col, Row, Card, Form } from 'react-bootstrap';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { ToastContainer, toast } from 'react-toastify';
+import Cookies from 'universal-cookie';
 import * as constants from './constants';
 import * as picksRepository from './firebaseFirestoreRepository';
 import * as gameService from './gameService';
@@ -11,11 +12,6 @@ class BatchelorGame extends React.Component {
     
     constructor(props){
         super(props);
-                
-        let token = this.getParameterByName('token');
-        let email = this.getParameterByName('email'); //populate from db
-        let name = this.getParameterByName('name'); //populate from db
-        //TODO populate with cookies if null
         
         //TODO add automatic epoc lock outs
 
@@ -23,12 +19,11 @@ class BatchelorGame extends React.Component {
             infoMessage: '',
             warningMessage: '',
             errorMessage: '',
-            email: email,
-            token: token,
-            name: name,
+            isError: false,
             isLoading: true
         });
 
+        this.applyLockouts = this.applyLockouts.bind(this);
         this.removeSelection = this.removeSelection.bind(this);
         this.onDragEnd = this.onDragEnd.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -36,6 +31,19 @@ class BatchelorGame extends React.Component {
 
     async componentDidMount(){
         
+        const cookies = new Cookies();
+
+        this.applyLockouts();
+
+        let token = this.getParameterByName('token');
+        
+        if(token){
+            let cookieDate = new Date(2199, 1, 1);
+            cookies.set('aaks_token', null, { path: '/', expires: cookieDate});
+        }else{
+            token = cookies.get('aaks_token');
+        }
+
         let picks = {
             finalEight: [],
             finalFour: [],
@@ -53,19 +61,23 @@ class BatchelorGame extends React.Component {
             firstToLeaveOnOwn: -1                
         }
 
-        picksRepository.getPicks(this.state.token)
+        picksRepository.getPicks(token)
             .then((response) => {
                 
                 if(response){
-                    picks = response;
+                    picks = response.picks;
                 }
 
                 let score = gameService.getScore(picks);
 
                 this.setState({ 
+                    token: token,
+                    name: response.name,
+                    email: response.email,
                     picks: picks,
                     score: score,
                     isLoading: false,
+                    isError: false,
                     errorMessage: ''
                 });     
             }).catch((error) => {
@@ -78,6 +90,7 @@ class BatchelorGame extends React.Component {
     }
 
     async savePicks(picks){
+        this.applyLockouts();
         picksRepository.upsertPicks(this.state.email, this.state.token, this.state.name, picks);
     }
 
@@ -97,6 +110,32 @@ class BatchelorGame extends React.Component {
         let index = array.indexOf(value);
         array.splice(index, 1);
         return array;
+    }
+
+    applyLockouts(){
+     
+        let utcEpoch = Date.now();
+        let weekOneEpoch = 1609808400000;
+        let seasonLockoutUtcDate = 1611622800000;
+
+        let isWeekOneLockedOut = false;
+       
+        if(utcEpoch > weekOneEpoch){
+            isWeekOneLockedOut = true;
+            console.log(`week 1 disabled`);
+        }
+
+        let isSeasonLockedOut = false;
+        
+        if(utcEpoch > seasonLockoutUtcDate){
+            isSeasonLockedOut = true;
+            console.log(`season long disabled`);
+        }
+        
+        this.setState({
+            isWeekOneLockedOut: isWeekOneLockedOut,
+            isSeasonLongLockedOut: isSeasonLockedOut,
+        });
     }
 
     handleChange(evt) {
@@ -416,7 +455,7 @@ class BatchelorGame extends React.Component {
                                 </Col>
                                 <Col>
                                 <h3>Week 1 Questions</h3>
-                                <h4>Answers due every Monday by 5pm EST</h4>
+                                <h4>Answers lock on January 4th at 8pm EST</h4>
                                 <Card>
                                     <Card.Body>
                                         <Card.Title>First Impression Rose (10 points)</Card.Title>
@@ -536,7 +575,7 @@ class BatchelorGame extends React.Component {
                                 </Card>
 
                                 <h3>Season Questions</h3>
-                                <h4>Answers due before week 4 at 5pm EST</h4>
+                                <h4>Answers due by January 26th at 8pm EST</h4>
                                 <Card>
                                     <Card.Body>
                                         <Card.Title>Final Eight (10 points each correct answer)</Card.Title>

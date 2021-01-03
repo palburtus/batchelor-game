@@ -3,9 +3,9 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyDq3JbCk7yA3999aiDx-qlfZhG96NPCBIg', //process.env.REACT_APP_FIREBASE_API_KEY,
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: '',
-    projectId: 'aaks-batch', //process.env.REACT_APP_FIREBASE_PROJECT_ID
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -17,8 +17,8 @@ export const getPicks = (token) => {
         db.collection('picks').doc(token).get().then((doc) => {
             var data = doc.data();
             
-            if(data.picks){
-                resolve(data.picks); 
+            if(data){
+                resolve(data); 
             }else{
                 reject('Your account was not found');
             }
@@ -28,10 +28,11 @@ export const getPicks = (token) => {
     });    
 }
 
-export const upsertPicks = (email, token, picks) => {
+export const upsertPicks = (email, token, name,  picks) => {
    
     return db.collection('picks').doc(token).set({
         email: email,
+        name: name,
         picks: picks
     });        
 }
