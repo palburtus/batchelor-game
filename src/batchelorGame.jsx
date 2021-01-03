@@ -32,6 +32,8 @@ class BatchelorGame extends React.Component {
 
         this.state = ({
             picks: picks,
+            isWeekOneLockedOut: false,
+            isSeasonLongLockedOut: false,
             infoMessage: '',
             warningMessage: '',
             errorMessage: '',
@@ -117,8 +119,8 @@ class BatchelorGame extends React.Component {
     applyLockouts(){
      
         let utcEpoch = Date.now();
-        let weekOneEpoch = 16098084000;
-        let seasonLockoutUtcDate = 1612209600;
+        let weekOneEpoch = 1609905600000;
+        let seasonLockoutUtcDate = 1612184400000;
 
         let isWeekOneLockedOut = false;
        
@@ -142,19 +144,23 @@ class BatchelorGame extends React.Component {
 
     handleChange(evt) {
         let picks = this.state.picks;
+        
+        if(!this.state.isWeekOneLockedOut){
 
-        if(evt.currentTarget.name === 'tylerCameronRadios'){
+            if(evt.currentTarget.name === 'tylerCameronRadios'){
             
-            if(evt.currentTarget.id === 'tylerCameronYes'){
-                if(evt.currentTarget.checked){
-                    picks.isTylerCameronApperance = constants.TRUE;
-                }
-            }else if(evt.currentTarget.id === 'tylerCameronNo'){
-                if(evt.currentTarget.checked){
-                    picks.isTylerCameronApperance = constants.FALSE;
+                if(evt.currentTarget.id === 'tylerCameronYes'){
+                    if(evt.currentTarget.checked){
+                        picks.isTylerCameronApperance = constants.TRUE;
+                    }
+                }else if(evt.currentTarget.id === 'tylerCameronNo'){
+                    if(evt.currentTarget.checked){
+                        picks.isTylerCameronApperance = constants.FALSE;
+                    }
                 }
             }
         }
+        
 
         this.setState({ picks: picks });
 
@@ -163,43 +169,51 @@ class BatchelorGame extends React.Component {
    
     removeSelection(id, listId){
 
+        this.applyLockouts();
+
         let picks = this.state.picks;
-
-        if(listId === 'final-six'){
-            picks.finalSix = this.arrayRemoveByValue(picks.finalSix, id);
+      
+        if(!this.state.isSeasonLongLockedOut){
+            if(listId === 'final-six'){
+                picks.finalSix = this.arrayRemoveByValue(picks.finalSix, id);
+            }
+    
+            if(listId === 'final-four'){
+                picks.finalFour = this.arrayRemoveByValue(picks.finalFour, id);
+            }
+    
+            if(listId === 'final-two'){
+                picks.finalTwo = this.arrayRemoveByValue(picks.finalTwo, id);
+            }
+    
+            if(listId === 'final-one'){
+                picks.finalOne = -1;
+            }
         }
 
-        if(listId === 'final-four'){
-            picks.finalFour = this.arrayRemoveByValue(picks.finalFour, id);
+        if(!this.state.isWeekOneLockedOut){
+            if(listId === 'first-wearing-costume'){
+                picks.firstWearingCostume = -1;
+            }
+    
+            if(listId === 'first-impression'){
+                picks.firstImpressionRose = -1;
+            }
+    
+            if(listId === 'first-out-of-limo'){
+                picks.firstOutOfLimo = -1;
+            }
+    
+            if(listId === 'first-kiss'){
+                picks.firstKiss = -1;
+            }
+    
+            if(listId === 'first-tears'){
+                picks.firstTears = -1;
+            }
         }
 
-        if(listId === 'final-two'){
-            picks.finalTwo = this.arrayRemoveByValue(picks.finalTwo, id);
-        }
-
-        if(listId === 'final-one'){
-            picks.finalOne = -1;
-        }
-
-        if(listId === 'first-wearing-costume'){
-            picks.firstWearingCostume = -1;
-        }
-
-        if(listId === 'first-impression'){
-            picks.firstImpressionRose = -1;
-        }
-
-        if(listId === 'first-out-of-limo'){
-            picks.firstOutOfLimo = -1;
-        }
-
-        if(listId === 'first-kiss'){
-            picks.firstKiss = -1;
-        }
-
-        if(listId === 'first-tears'){
-            picks.firstTears = -1;
-        }
+        
         
         this.setState({
             picks: picks
@@ -213,99 +227,103 @@ class BatchelorGame extends React.Component {
         
         let picks = this.state.picks;
 
-        if(destination && destination.droppableId === 'final-six'){
+        if(!this.state.isSeasonLongLockedOut){
+            if(destination && destination.droppableId === 'final-six'){
             
-            if(this.state.picks.finalSix.length >= 6){
-                toast("You must remove a contestant first! (6 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-            }else if(this.state.picks.finalSix.includes(result.draggableId)){
-                toast("You have already added this contestant", { type: toast.TYPE.WARNING, hideProgressBar: true, autoClose: 2500});
-            }else {
-                picks.finalSix = this.state.picks.finalSix;
-                
-                picks.finalSix.push(result.draggableId);
-            }            
-        }
-
-        if(destination && destination.droppableId === 'final-four'){
-        
-            if(this.state.picks.finalFour.length >= 4){
-                toast("You must remove a contestant first! (4 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-            }else if(this.state.picks.finalFour.includes(result.draggableId)){
-                toast("You have already added this contestant", { type: toast.TYPE.WARNING, hideProgressBar: true, autoClose: 2500});
-            }else {
-                picks.finalFour = this.state.picks.finalFour;
-                
-                picks.finalFour.push(result.draggableId);
+                if(this.state.picks.finalSix.length >= 6){
+                    toast("You must remove a contestant first! (6 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+                }else if(this.state.picks.finalSix.includes(result.draggableId)){
+                    toast("You have already added this contestant", { type: toast.TYPE.WARNING, hideProgressBar: true, autoClose: 2500});
+                }else {
+                    picks.finalSix = this.state.picks.finalSix;
+                    
+                    picks.finalSix.push(result.draggableId);
+                }            
             }
-        }
-
-        if(destination && destination.droppableId === 'final-two'){
-            if(this.state.picks.finalTwo.length >= 2){
-                toast("You must remove a contestant first! (2 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-            }else if(this.state.picks.finalTwo.includes(result.draggableId)){
-                toast("You have already added this contestant", { type: toast.TYPE.WARNING, hideProgressBar: true, autoClose: 2500});
-            }else {
-                picks.finalTwo = this.state.picks.finalTwo;
-                
-                picks.finalTwo.push(result.draggableId);                
-            }
-        }
-
-        if(destination && destination.droppableId === 'final-one'){
-            if(this.state.picks.finalOne >= 1){
-                toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-            }else {
-                picks.finalOne = this.state.picks.finalOne;                
-                picks.finalOne = result.draggableId;  
-            }
-        }
-        
-        if(destination && destination.droppableId === 'first-wearing-costume'){
+    
+            if(destination && destination.droppableId === 'final-four'){
             
-            if(this.state.picks.firstWearingCostume >= 1){
-                toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-            }else {
-                picks.firstWearingCostume = this.state.picks.firstWearingCostume;
-                picks.firstWearingCostume = result.draggableId;
+                if(this.state.picks.finalFour.length >= 4){
+                    toast("You must remove a contestant first! (4 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+                }else if(this.state.picks.finalFour.includes(result.draggableId)){
+                    toast("You have already added this contestant", { type: toast.TYPE.WARNING, hideProgressBar: true, autoClose: 2500});
+                }else {
+                    picks.finalFour = this.state.picks.finalFour;
+                    
+                    picks.finalFour.push(result.draggableId);
+                }
+            }
+    
+            if(destination && destination.droppableId === 'final-two'){
+                if(this.state.picks.finalTwo.length >= 2){
+                    toast("You must remove a contestant first! (2 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+                }else if(this.state.picks.finalTwo.includes(result.draggableId)){
+                    toast("You have already added this contestant", { type: toast.TYPE.WARNING, hideProgressBar: true, autoClose: 2500});
+                }else {
+                    picks.finalTwo = this.state.picks.finalTwo;
+                    
+                    picks.finalTwo.push(result.draggableId);                
+                }
+            }
+    
+            if(destination && destination.droppableId === 'final-one'){
+                if(this.state.picks.finalOne >= 1){
+                    toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+                }else {
+                    picks.finalOne = this.state.picks.finalOne;                
+                    picks.finalOne = result.draggableId;  
+                }
             }
         }
 
-        if(destination && destination.droppableId === 'first-impression'){
-            if(this.state.picks.firstImpressionRose >= 1){
-                toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-            }else {
-                picks.firstImpressionRose = this.state.picks.firstImpressionRose;
-                picks.firstImpressionRose = result.draggableId;
+        if(!this.state.isWeekOneLockedOut){
+            if(destination && destination.droppableId === 'first-wearing-costume'){
+            
+                if(this.state.picks.firstWearingCostume >= 1){
+                    toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+                }else {
+                    picks.firstWearingCostume = this.state.picks.firstWearingCostume;
+                    picks.firstWearingCostume = result.draggableId;
+                }
+            }
+    
+            if(destination && destination.droppableId === 'first-impression'){
+                if(this.state.picks.firstImpressionRose >= 1){
+                    toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+                }else {
+                    picks.firstImpressionRose = this.state.picks.firstImpressionRose;
+                    picks.firstImpressionRose = result.draggableId;
+                }
+            }
+    
+            if(destination && destination.droppableId === 'first-out-of-limo'){
+                if(this.state.picks.firstOutOfLimo >= 1){
+                    toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+                }else {
+                    picks.firstOutOfLimo = this.state.picks.firstOutOfLimo;
+                    picks.firstOutOfLimo = result.draggableId;
+                }
+            }
+    
+            if(destination && destination.droppableId === 'first-kiss'){
+                if(this.state.picks.firstKiss >= 1){
+                    toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+                }else{
+                    picks.firstKiss = this.state.picks.firstKiss;
+                    picks.firstKiss = result.draggableId;
+                }
+            }
+            
+            if(destination && destination.droppableId === 'first-tears'){
+                if(this.state.picks.firstTears >= 1){
+                    toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+                }else{
+                    picks.firstTears = this.state.picks.firstTears;
+                    picks.firstTears = result.draggableId;
+                }
             }
         }
-
-        if(destination && destination.droppableId === 'first-out-of-limo'){
-            if(this.state.picks.firstOutOfLimo >= 1){
-                toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-            }else {
-                picks.firstOutOfLimo = this.state.picks.firstOutOfLimo;
-                picks.firstOutOfLimo = result.draggableId;
-            }
-        }
-
-        if(destination && destination.droppableId === 'first-kiss'){
-            if(this.state.picks.firstKiss >= 1){
-                toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-            }else{
-                picks.firstKiss = this.state.picks.firstKiss;
-                picks.firstKiss = result.draggableId;
-            }
-        }
-        
-        if(destination && destination.droppableId === 'first-tears'){
-            if(this.state.picks.firstTears >= 1){
-                toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-            }else{
-                picks.firstTears = this.state.picks.firstTears;
-                picks.firstTears = result.draggableId;
-            }
-        }
-        
+                
         this.setState({
             picks: picks
         });
