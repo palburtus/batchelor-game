@@ -115,8 +115,8 @@ class BatchelorGame extends React.Component {
     applyLockouts(){
      
         let utcEpoch = Date.now();
-        let weekOneEpoch = 1609808400000;
-        let seasonLockoutUtcDate = 1611622800000;
+        let weekOneEpoch = 16098084000;
+        let seasonLockoutUtcDate = 1612209600;
 
         let isWeekOneLockedOut = false;
        
@@ -575,7 +575,7 @@ class BatchelorGame extends React.Component {
                                 </Card>
 
                                 <h3>Season Questions</h3>
-                                <h4>Answers due by January 26th at 8pm EST</h4>
+                                <h4>Answers due by February 1st at 8pm EST</h4>
                                 <Card>
                                     <Card.Body>
                                         <Card.Title>Final Eight (10 points each correct answer)</Card.Title>
