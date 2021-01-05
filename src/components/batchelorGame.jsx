@@ -3,10 +3,11 @@ import { Container, ListGroup, ListGroupItem, Col, Row, Card, Form } from 'react
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { ToastContainer, toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
-import * as constants from './constants';
-import * as picksRepository from './firebaseFirestoreRepository';
-import * as gameService from './gameService';
+import * as constants from '../constants';
+import * as picksRepository from '../firebaseFirestoreRepository';
+import * as gameService from '../gameService';
 import 'react-toastify/dist/ReactToastify.css';
+import SinglePickDrag from './singlePickDrag';
 
 class BatchelorGame extends React.Component {
     
@@ -84,13 +85,13 @@ class BatchelorGame extends React.Component {
                     errorMessage: ''
                 });     
             }).catch((error) => {
-                debugger;
+                
                 this.setState({ 
                     picks: picks,
                     isLoading: false,
                     errorMessage: error
                 });     
-            })               
+            });               
     }
 
     async savePicks(picks){
@@ -168,7 +169,7 @@ class BatchelorGame extends React.Component {
     }
    
     removeSelection(id, listId){
-
+        
         this.applyLockouts();
 
         let picks = this.state.picks;
@@ -223,6 +224,7 @@ class BatchelorGame extends React.Component {
     }
     
     onDragEnd(result) {
+        debugger;
         const { source, destination } = result;
         
         let picks = this.state.picks;
@@ -393,16 +395,6 @@ class BatchelorGame extends React.Component {
                     </li>);
             }
 
-            let firstImpressionRoseDisplay = noSingleSelectionMadeDisplay;
-            if(this.state.picks.firstImpressionRose > 0){
-                firstImpressionRoseDisplay = (
-                    <li className="list-group-item">
-                        <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstImpressionRose, 'first-impression')}>X</span>
-                        <img src={constants.girls[this.state.picks.firstImpressionRose - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
-                        {constants.girls[this.state.picks.firstImpressionRose - 1].name}                        
-                    </li>);
-            }
-
             let firstOutOfLimoDisplay = noSingleSelectionMadeDisplay;
             if(this.state.picks.firstOutOfLimo > 0){
                 firstOutOfLimoDisplay = (<li className="list-group-item">
@@ -476,26 +468,15 @@ class BatchelorGame extends React.Component {
                                 <Col>
                                 <h3>Week 1 Questions</h3>
                                 <h4>Answers lock on January 4th at 8pm EST</h4>
-                                <Card>
-                                    <Card.Body>
-                                        <Card.Title>First Impression Rose (10 points)</Card.Title>
-                                        <Card.Subtitle>Drag and Drop your pick here</Card.Subtitle>
-                                        
-                                        <Droppable droppableId="first-impression">
-                                            {                                                    
-                                                (provided, snapshot) => (
-                                                    <ul className="list-group"  
-                                                        {...provided.droppableProps} 
-                                                        ref={provided.innerRef}
-                                                        isDraggingOver={snapshot.isDraggingOver} >
-                                                        {firstImpressionRoseDisplay}
-                                                    </ul>
-                                                )
-                                            }
-                                        </Droppable>
-                                        
-                                    </Card.Body>
-                                </Card>
+                                
+                                <SinglePickDrag 
+                                    droppableId="first-impression" 
+                                    pick={this.state.picks.firstImpressionRose} 
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title="First Impression Rose (10 points)"
+                                    subtitle="Drag and Drop your pick here"/>
+
                                 <Card>
                                     <Card.Body>
                                         <Card.Title>First Out of Limo (10 points)</Card.Title>
