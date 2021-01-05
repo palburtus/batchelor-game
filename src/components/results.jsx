@@ -105,12 +105,7 @@ class Results extends React.Component {
                                     <li>Lingerie girl was not wearing a dress but brought dresses with her, close call but ultimately not in a costume.</li>
                                 </ul>
                             </div>
-                            <Card>
-                                
-                                <Card.Text>
-                                    
-                                </Card.Text>
-                            </Card>
+                            <Card></Card>
                         </Col>
 
                     </Row>
