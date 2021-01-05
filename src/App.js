@@ -1,6 +1,6 @@
 import React from "react";
 import BatchelorGame from './components/batchelorGame';
-import Standings from './components/standings';
+import Results from './components/results';
 import {Nav, Tabs, Tab} from 'react-bootstrap';
 import logo from './logo.svg';
 import './App.css';
@@ -21,9 +21,8 @@ function App() {
           <Tab eventKey="picks" title="Picks">
             <BatchelorGame/>
           </Tab>
-          <Tab eventKey="standings" title="Standings">
-            <h2>Current Standings</h2>
-            <Standings/>
+          <Tab eventKey="results" title="Results">
+            <Results/>
           </Tab>
         </Tabs>
       </div>

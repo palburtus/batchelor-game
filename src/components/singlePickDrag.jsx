@@ -1,16 +1,16 @@
 import React from 'react';
 import {Card} from 'react-bootstrap';
 import * as constants from '../constants';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import {Droppable} from 'react-beautiful-dnd';
 
 class SinglePickDrag extends React.Component {
 
     constructor(props){
         super(props);
+        this.onDragEnd = this.onDragEnd.bind(this);
     }
 
-    onDragEnd(result) {
-        this.onDragEnd = this.onDragEnd.bind(this);
+    onDragEnd(result) {        
         this.props.onDragEnd(result);
     }
 
@@ -19,13 +19,23 @@ class SinglePickDrag extends React.Component {
         let noSingleSelectionMadeDisplay = <span className="no-selection">No Selection Made</span>;
 
         let display = noSingleSelectionMadeDisplay;
+ 
         if(this.props.pick > 0){
-            display = (
-                <li className="list-group-item">
-                    <span className="remove-selection" onClick={() => this.props.removeSelection(this.props.pick, this.props.droppableId)}>X</span>
-                    <img src={constants.girls[this.props.pick - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
-                    {constants.girls[this.props.pick - 1].name}                        
-                </li>);
+            if(!this.props.isLocked){
+                display = (
+                    <li className="list-group-item">
+                        <span className="remove-selection" onClick={() => this.props.removeSelection(this.props.pick, this.props.droppableId)}>X</span>
+                        <img src={constants.girls[this.props.pick - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
+                        {constants.girls[this.props.pick - 1].name}                        
+                    </li>);
+            }else{
+                display = (
+                    <li className="list-group-item">
+                        <img src={constants.girls[this.props.pick - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
+                        {constants.girls[this.props.pick - 1].name}                        
+                    </li>);
+            }
+            
         }
 
         return(

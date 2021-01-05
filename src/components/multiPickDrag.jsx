@@ -7,10 +7,10 @@ class MultiPickDrag extends React.Component {
 
     constructor(props){
         super(props);
+        this.onDragEnd = this.onDragEnd.bind(this);
     }
 
-    onDragEnd(result) {
-        this.onDragEnd = this.onDragEnd.bind(this);
+    onDragEnd(result) {        
         this.props.onDragEnd(result);
     }
 
@@ -21,12 +21,19 @@ class MultiPickDrag extends React.Component {
         let display = noSelectionsMadeDisplay;
 
         if(this.props.picks.length > 0){
-            display = this.props.picks.map((id) => 
-                <li className="list-group-item">
+           
+            display = this.props.picks.map((id) => {
+                if(!this.props.isLocked)
+                    return (<li className="list-group-item">
                     <span className="remove-selection" onClick={() => this.props.removeSelection(id, this.props.droppableId)}>X</span>
                     <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
                     {constants.girls[id - 1].name}                        
-                </li>)
+                    </li>)
+                return (<li className="list-group-item">
+                            <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
+                            {constants.girls[id - 1].name}                        
+                        </li>)
+            });
         }
 
         return(

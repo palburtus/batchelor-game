@@ -1,8 +1,9 @@
 import React from 'react';
+import { Container, Col, Row, Card} from 'react-bootstrap';
 import * as picksRepository from '../firebaseFirestoreRepository';
 import * as gameService from '../gameService';
 
-class Standings extends React.Component {
+class Results extends React.Component {
 
     constructor(props){
         super(props);
@@ -63,7 +64,20 @@ class Standings extends React.Component {
 
             return(
                 <div id="standings">
-                    {displayStandings}
+                    <Row>
+                        <h2>Standings</h2>
+                        
+                        <Col>
+                            {displayStandings}
+                        </Col>
+
+                        <h2>Previous Questions</h2>
+                        <Col>
+                            
+                        </Col>
+
+                    </Row>
+                    
                 </div>
             );
         }
@@ -72,4 +86,4 @@ class Standings extends React.Component {
     }
 }
 
-export default Standings;
+export default Results;

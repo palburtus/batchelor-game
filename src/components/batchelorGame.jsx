@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, ListGroup, ListGroupItem, Col, Row, Card, Form } from 'react-bootstrap';
+import { Container, Col, Row, Card} from 'react-bootstrap';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { ToastContainer, toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
@@ -9,6 +9,7 @@ import * as gameService from '../gameService';
 import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
+import BooleanPick from './booleanPick';
 
 class BatchelorGame extends React.Component {
     
@@ -34,7 +35,7 @@ class BatchelorGame extends React.Component {
 
         this.state = ({
             picks: picks,
-            isWeekOneLockedOut: false,
+            isWeekOneLockedOut: true,
             isSeasonLongLockedOut: false,
             infoMessage: '',
             warningMessage: '',
@@ -47,6 +48,7 @@ class BatchelorGame extends React.Component {
         this.removeSelection = this.removeSelection.bind(this);
         this.onDragEnd = this.onDragEnd.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleMultiDragAdd = this.handleMultiDragAdd.bind(this);
     }
 
     async componentDidMount(){
@@ -97,6 +99,7 @@ class BatchelorGame extends React.Component {
 
     async savePicks(picks){
         this.applyLockouts();
+        
         picksRepository.upsertPicks(this.state.email, this.state.token, this.state.name, picks);
     }
 
@@ -121,16 +124,9 @@ class BatchelorGame extends React.Component {
     applyLockouts(){
      
         let utcEpoch = Date.now();
-        let weekOneEpoch = 1609905600000;
         let seasonLockoutUtcDate = 1612184400000;
 
-        let isWeekOneLockedOut = false;
        
-        if(utcEpoch > weekOneEpoch){
-            isWeekOneLockedOut = true;
-            console.log(`week 1 disabled`);
-        }
-
         let isSeasonLockedOut = false;
         
         if(utcEpoch > seasonLockoutUtcDate){
@@ -138,24 +134,24 @@ class BatchelorGame extends React.Component {
             console.log(`season long disabled`);
         }
         
-        this.setState({
-            isWeekOneLockedOut: isWeekOneLockedOut,
-            isSeasonLongLockedOut: isSeasonLockedOut,
-        });
+        /*this.setState({
+            isSeasonLongLockedOut: isSeasonLockedOut
+        });*/
     }
 
     handleChange(evt) {
+       
         let picks = this.state.picks;
         
         if(!this.state.isWeekOneLockedOut){
 
             if(evt.currentTarget.name === 'tylerCameronRadios'){
             
-                if(evt.currentTarget.id === 'tylerCameronYes'){
+                if(evt.currentTarget.id === 'yes'){
                     if(evt.currentTarget.checked){
                         picks.isTylerCameronApperance = constants.TRUE;
                     }
-                }else if(evt.currentTarget.id === 'tylerCameronNo'){
+                }else if(evt.currentTarget.id === 'no'){
                     if(evt.currentTarget.checked){
                         picks.isTylerCameronApperance = constants.FALSE;
                     }
@@ -213,9 +209,7 @@ class BatchelorGame extends React.Component {
             if(listId === 'first-tears'){
                 picks.firstTears = -1;
             }
-        }
-
-        
+        }        
         
         this.setState({
             picks: picks
@@ -223,60 +217,55 @@ class BatchelorGame extends React.Component {
 
         this.savePicks(picks);
     }
+
+    handleMultiDragAdd(picks, statePicks, droppableId, result, maxPicks){
+
+        const { destination } = result;
+
+        if(destination && destination.droppableId === droppableId){
+           
+            if(picks.length >= maxPicks){
+                toast(`You must remove a contestant first! (${maxPicks} Max)`, { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+            }else if(statePicks.includes(result.draggableId)){
+                toast("You have already added this contestant", { type: toast.TYPE.WARNING, hideProgressBar: true, autoClose: 2500});
+            }else {
+                picks = statePicks;                
+                picks.push(result.draggableId);
+            }            
+        }
+
+        return picks;
+    }
+    
+    handleSingleDragAdd(picks, statePicks, droppableId, result, maxPicks){
+
+        const { destination } = result;
+
+        if(destination && destination.droppableId === droppableId){
+            if(picks >= 1){
+                toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+            }else {
+                picks = statePicks;                
+                picks = result.draggableId;  
+            }
+        }
+
+        return picks;
+    }
     
     onDragEnd(result) {
         
-        const { source, destination } = result;
+        const { destination } = result;
         
         let picks = this.state.picks;
 
         if(!this.state.isSeasonLongLockedOut){
-            if(destination && destination.droppableId === 'final-six'){
-            
-                if(this.state.picks.finalSix.length >= 6){
-                    toast("You must remove a contestant first! (6 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-                }else if(this.state.picks.finalSix.includes(result.draggableId)){
-                    toast("You have already added this contestant", { type: toast.TYPE.WARNING, hideProgressBar: true, autoClose: 2500});
-                }else {
-                    picks.finalSix = this.state.picks.finalSix;
-                    
-                    picks.finalSix.push(result.draggableId);
-                }            
-            }
-    
-            if(destination && destination.droppableId === 'final-four'){
-            
-                if(this.state.picks.finalFour.length >= 4){
-                    toast("You must remove a contestant first! (4 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-                }else if(this.state.picks.finalFour.includes(result.draggableId)){
-                    toast("You have already added this contestant", { type: toast.TYPE.WARNING, hideProgressBar: true, autoClose: 2500});
-                }else {
-                    picks.finalFour = this.state.picks.finalFour;
-                    
-                    picks.finalFour.push(result.draggableId);
-                }
-            }
-    
-            if(destination && destination.droppableId === 'final-two'){
-                if(this.state.picks.finalTwo.length >= 2){
-                    toast("You must remove a contestant first! (2 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-                }else if(this.state.picks.finalTwo.includes(result.draggableId)){
-                    toast("You have already added this contestant", { type: toast.TYPE.WARNING, hideProgressBar: true, autoClose: 2500});
-                }else {
-                    picks.finalTwo = this.state.picks.finalTwo;
-                    
-                    picks.finalTwo.push(result.draggableId);                
-                }
-            }
-    
-            if(destination && destination.droppableId === 'final-one'){
-                if(this.state.picks.finalOne >= 1){
-                    toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-                }else {
-                    picks.finalOne = this.state.picks.finalOne;                
-                    picks.finalOne = result.draggableId;  
-                }
-            }
+          
+            picks.finalSix = this.handleMultiDragAdd(picks.finalSix, this.state.picks.finalSix, 'final-six', result, 6);
+            picks.finalFour = this.handleMultiDragAdd(picks.finalFour, this.state.picks.finalFour, 'final-four', result, 4);
+            picks.finalTwo = this.handleMultiDragAdd(picks.finalTwo, this.state.picks.finalTwo, 'final-two', result, 2);
+            picks.finalOne = this.handleSingleDragAdd(picks.finalOne, this.state.picks.finalOne, 'final-one', result)
+       
         }
 
         if(!this.state.isWeekOneLockedOut){
@@ -357,91 +346,45 @@ class BatchelorGame extends React.Component {
                                                 Drag Your Picks from this List 
                                             </Card.Subtitle>                                
                                             
-                                                <Droppable droppableId="girls-list" isDropDisabled={true}>
-                                                    {(provided) => (
-                                                        <ul className="list-group" {...provided.droppableProps} ref={provided.innerRef}>
-                                                            {constants.girls.map(({id, name, thumb}, index) => {
-                                                                return (
-                                                                    <Draggable key={id} draggableId={id} index={index}>
-                                                                    {(provided) => (
-                                                                        <li className="list-group-item" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                                                            <img src={thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>{ name }
-                                                                        </li>
-                                                                    )}
-                                                                    </Draggable>
-                                                                );
-                                                            })}
-                                                            {provided.placeholder}
-                                                        </ul>
-                                                    )}
-                                                </Droppable>
+                                            <Droppable droppableId="girls-list" isDropDisabled={true}>
+                                                {(provided) => (
+                                                    <ul className="list-group" {...provided.droppableProps} ref={provided.innerRef}>
+                                                        {constants.girls.map(({id, name, thumb}, index) => {
+                                                            return (
+                                                                <Draggable key={id} draggableId={id} index={index}>
+                                                                {(provided) => (
+                                                                    <li className="list-group-item" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                                                        <img src={thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>{ name }
+                                                                    </li>
+                                                                )}
+                                                                </Draggable>
+                                                            );
+                                                        })}
+                                                        {provided.placeholder}
+                                                    </ul>
+                                                )}
+                                            </Droppable>
                                             
                                         </Card.Body>
                                     </Card>
                                 </Col>
                                 <Col>
 
-                                <h3>Week 1 Questions</h3>
-                                <h4>Answers lock on January 4th at 8pm EST</h4>
-                                
-                                <SinglePickDrag 
-                                    droppableId="first-impression" 
-                                    pick={this.state.picks.firstImpressionRose} 
-                                    title="First Impression Rose (10 points)"
-                                    subtitle="Drag and Drop your pick here"
-                                    onDragEnd={this.onDragEnd}
-                                    removeSelection={this.removeSelection}/>
-
-                                <SinglePickDrag 
-                                    droppableId="first-out-of-limo" 
-                                    pick={this.state.picks.firstOutOfLimo} 
-                                    title="First Out of Limo (10 points)"
-                                    subtitle="Drag and Drop your pick here"
-                                    onDragEnd={this.onDragEnd}
-                                    removeSelection={this.removeSelection}/>
+                                <h3>Week 2 Questions</h3>
+                                <h4>Answers lock on January 11th at 8pm EST</h4>
                                 
                                 <Card>
                                     <Card.Body>
-                                        <Card.Title><p>Tyler Cameron Makes an Apperance? (5 points)</p></Card.Title>
-                                        <Card.Subtitle>Must be shown on broadcast (excluding previews)</Card.Subtitle>
-                                        
-                                        <Form.Group>
-                                            <Form.Check id="tylerCameronYes" checked={this.state.picks.isTylerCameronApperance === constants.TRUE} type="radio" name="tylerCameronRadios" label="Yes" onChange={this.handleChange}/>
-                                            <Form.Check id="tylerCameronNo" checked={this.state.picks.isTylerCameronApperance === constants.FALSE} type="radio" name="tylerCameronRadios" label="No" onChange={this.handleChange}/>
-                                        </Form.Group>
-
+                                        <Card.Title>Questions Available Thursday</Card.Title>
+                                        <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
                                     </Card.Body>
-                                </Card>   
-                               
-                                <SinglePickDrag 
-                                    droppableId="first-kiss" 
-                                    pick={this.state.picks.firstKiss} 
-                                    title="First Kiss (10 points)"
-                                    subtitle="Drag and Drop your pick here"
-                                    onDragEnd={this.onDragEnd}
-                                    removeSelection={this.removeSelection}/>
-
-                                <SinglePickDrag 
-                                    droppableId="first-tears" 
-                                    pick={this.state.picks.firstTears} 
-                                    title="First to Cry (10 points)"
-                                    subtitle="Tears, tear streaks, or running makeup must be visible on camera"
-                                    onDragEnd={this.onDragEnd}
-                                    removeSelection={this.removeSelection}/>
-
-                                <SinglePickDrag 
-                                    droppableId='first-wearing-costume' 
-                                    pick={this.state.picks.firstWearingCostume} 
-                                    title="First to Wear a Costume (10 points)"
-                                    subtitle="Includes any unusual attire that is not a formal dress.  
-                                        Must be wearing it when they exit the limo and/or are introduced to the Bachelor"
-                                    onDragEnd={this.onDragEnd}
-                                    removeSelection={this.removeSelection}/>   
+                                </Card>     
     
                                 <h3>Season Questions</h3>
                                 <h4>Answers due by February 1st at 8pm EST</h4>
 
                                 <MultiPickDrag
+                                    isLocked={this.state.isSeasonLongLockedOut}
                                     droppableId='final-six'
                                     picks={this.state.picks.finalSix}
                                     title='Final Six (10 points each correct answer)'
@@ -451,6 +394,7 @@ class BatchelorGame extends React.Component {
                                     />
                                 
                                 <MultiPickDrag
+                                    isLocked={this.state.isSeasonLongLockedOut}
                                     droppableId='final-four'
                                     picks={this.state.picks.finalFour}
                                     title='Final Four (20 points each correct answer)'
@@ -460,6 +404,7 @@ class BatchelorGame extends React.Component {
                                     />
 
                                 <MultiPickDrag
+                                    isLocked={this.state.isSeasonLongLockedOut}
                                     droppableId='final-two'
                                     picks={this.state.picks.finalTwo}
                                     title='Final Two (25 points each correct answer)'
@@ -468,13 +413,14 @@ class BatchelorGame extends React.Component {
                                     onDragEnd={this.onDragEnd}
                                     />
 
-                                    <SinglePickDrag 
-                                        droppableId="final-one" 
-                                        pick={this.state.picks.finalOne} 
-                                        onDragEnd={this.onDragEnd}
-                                        removeSelection={this.removeSelection}
-                                        title="Final Rose (30 points)"
-                                        subtitle="Drag 1 Selection or don't leave a name if you think no one gets the final rose"/>   
+                                <SinglePickDrag 
+                                    isLocked={this.state.isSeasonLongLockedOut}
+                                    droppableId="final-one" 
+                                    pick={this.state.picks.finalOne} 
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title="Final Rose (30 points)"
+                                    subtitle="Drag 1 Selection or don't leave a name if you think no one gets the final rose"/>   
 
                                    
                                     <Card>
@@ -485,8 +431,74 @@ class BatchelorGame extends React.Component {
                                     </Card>       
                                 </Col>
                             </Row>
+                        
+                            <Row>
+                                <h3>Previous Week's Questions</h3>
+                                <Col>
+                                    <h3>Week 1 Questions</h3>
+                                    <h4>Answers submitted January 4th at 8pm EST</h4>
+                                    
+                                    <SinglePickDrag 
+                                        isLocked={this.state.isWeekOneLockedOut}
+                                        droppableId="first-impression" 
+                                        pick={this.state.picks.firstImpressionRose} 
+                                        title="First Impression Rose (10 points)"
+                                        subtitle="Drag and Drop your pick here"
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}/>
+
+                                    <SinglePickDrag 
+                                        isLocked={this.state.isWeekOneLockedOut}
+                                        droppableId="first-out-of-limo" 
+                                        pick={this.state.picks.firstOutOfLimo} 
+                                        title="First Out of Limo (10 points)"
+                                        subtitle="Drag and Drop your pick here"
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}/>
+                                    
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekOneLockedOut}
+                                        pick={this.state.picks.isTylerCameronApperance}
+                                        title='Tyler Cameron Makes an Apperance? (5 points)'
+                                        subtitle='Must be shown on broadcast (excluding previews)'
+                                        yesId='tylerCameronYes'
+                                        noId='tylerCameronNo'
+                                        radiosId='tylerCameronRadios'
+                                        handleChange={this.handleChange}/>
+                                
+                                    <SinglePickDrag 
+                                        isLocked={this.state.isWeekOneLockedOut}
+                                        droppableId="first-kiss" 
+                                        pick={this.state.picks.firstKiss} 
+                                        title="First Kiss (10 points)"
+                                        subtitle="Drag and Drop your pick here"
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}/>
+
+                                    <SinglePickDrag 
+                                        isLocked={this.state.isWeekOneLockedOut}
+                                        droppableId="first-tears" 
+                                        pick={this.state.picks.firstTears} 
+                                        title="First to Cry (10 points)"
+                                        subtitle="Tears, tear streaks, or running makeup must be visible on camera"
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}/>
+
+                                    <SinglePickDrag 
+                                        isLocked={this.state.isWeekOneLockedOut}
+                                        droppableId='first-wearing-costume' 
+                                        pick={this.state.picks.firstWearingCostume} 
+                                        title="First to Wear a Costume (10 points)"
+                                        subtitle="Includes any unusual attire that is not a formal dress.  
+                                            Must be wearing it when they exit the limo and/or are introduced to the Bachelor"
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}/>   
+                                </Col>
+                            </Row>
+
                         </DragDropContext>
                     </Container>
+                    
                 </div>
             );
         }else{
