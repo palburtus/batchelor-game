@@ -17,7 +17,7 @@ function App() {
       </nav>
 
       <div className="container">
-        <Tabs>
+        <Tabs className="main-tab-nav">
           <Tab eventKey="picks" title="Picks">
             <BatchelorGame/>
           </Tab>

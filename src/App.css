@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   font-size: 18px;
-  background-color: #dde0e2;
+  background-color: #ffffff;
 }
 
 .App-logo {
@@ -67,24 +67,26 @@ h4 {
 
 .card {
   margin-bottom: 15px;
+  background-color: #6d0f14;
 }
 
 .card-title {
   font-size: .8em;
   text-align: left;
-  color: #6d0f14;
+  color: #ffffff;
 }
 
 .card-subtitle {
   font-size: .7em;
   text-align: left;
-  color: #60686b;
+  color: #dde0e2;
   margin-bottom: 15px;
 }
 
 .list-group-item {
   text-align: center;
   font-size: .8em;
+  background-color: #f7f7f7;
 }
 
 .no-selection{
@@ -100,4 +102,12 @@ h4 {
 
 #standings {
   text-align: left;
+}
+
+.main-tab-nav{
+  margin-bottom: 25px;
+}
+
+.table{
+  background-color: #ffffff;
 }

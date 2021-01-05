@@ -16,7 +16,7 @@ export const getPicks = (token) => {
         
         db.collection('picks').doc(token).get().then((doc) => {
             var data = doc.data();
-            
+          
             if(data){
                 resolve(data); 
             }else{
@@ -26,6 +26,28 @@ export const getPicks = (token) => {
             reject('Connection error please try again')
         });                    
     });    
+}
+
+export const getAllPicks = () => {
+  
+    return new Promise((resolve, reject) => {
+        
+        db.collection('picks').get().then((collection) => {
+           
+            let documents = [];
+            collection.forEach(doc => {
+                documents.push(doc.data());
+            });
+           
+            if(documents){
+                resolve(documents); 
+            }else{
+                reject('Error loading standings');
+            }
+        }).catch((error) => { 
+            reject('Connection error please try again')
+        });                    
+    });
 }
 
 export const upsertPicks = (email, token, name,  picks) => {

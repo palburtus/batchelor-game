@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Col, Row, Card} from 'react-bootstrap';
+import { Container, Col, Row, Card, Table} from 'react-bootstrap';
 import * as picksRepository from '../firebaseFirestoreRepository';
 import * as gameService from '../gameService';
 
@@ -56,24 +56,43 @@ class Results extends React.Component {
             return(<div><p>Loading...</p></div>);
         }else {
 
-            let displayStandings = this.state.standings.map((obj) => {
-             
+            let orderedDescStandings = this.state.standings;
+           
+            for(let i = 0; i < orderedDescStandings.length; i++){
+                orderedDescStandings[i].score = gameService.getScore(orderedDescStandings[i].picks);
+            }
+           
+            orderedDescStandings.sort((a,b) => (a.score < b.score) ? 1 : -1);
+           
+            let displayStandings = orderedDescStandings.map((obj) => {
                 let score = gameService.getScore(obj.picks);
-                return (<p>{obj.name} - {score}</p>);
+                return (<tr><td>{obj.name}</td> <td>{score}</td></tr>);
             });
 
             return(
                 <div id="standings">
                     <Row>
-                        <h2>Standings</h2>
+                        <Col>
+                            <h3>Standings</h3>  
+                                               
+                            <Card>
+                                <Card.Body>
+                                    <Table striped bordered hover>
+                                        <thead>
+                                            <th>Name</th>
+                                            <th>Score</th>
+                                        </thead>
+                                        <tbody>
+                                            {displayStandings}
+                                        </tbody>                                
+                                    </Table>                                    
+                                </Card.Body> 
+                            </Card>
+                        
+                        </Col>
                         
                         <Col>
-                            {displayStandings}
-                        </Col>
-
-                        <h2>Previous Questions</h2>
-                        <Col>
-                            
+                            <h3>Question Results</h3>    
                         </Col>
 
                     </Row>
