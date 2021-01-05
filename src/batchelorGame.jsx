@@ -32,7 +32,7 @@ class BatchelorGame extends React.Component {
 
         this.state = ({
             picks: picks,
-            isWeekOneLockedOut: false,
+            isWeekOneLockedOut: true,
             isSeasonLongLockedOut: false,
             infoMessage: '',
             warningMessage: '',
@@ -124,10 +124,10 @@ class BatchelorGame extends React.Component {
 
         let isWeekOneLockedOut = false;
        
-        if(utcEpoch > weekOneEpoch){
+        /*if(utcEpoch > weekOneEpoch){
             isWeekOneLockedOut = true;
             console.log(`week 1 disabled`);
-        }
+        }*/
 
         let isSeasonLockedOut = false;
         
