@@ -3,7 +3,7 @@ import {Card} from 'react-bootstrap';
 import * as constants from '../constants';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-class SinglePickDrag extends React.Component {
+class MultiPickDrag extends React.Component {
 
     constructor(props){
         super(props);
@@ -16,16 +16,17 @@ class SinglePickDrag extends React.Component {
 
     render(){
 
-        let noSingleSelectionMadeDisplay = <span className="no-selection">No Selection Made</span>;
+        let noSelectionsMadeDisplay = <span className="no-selection">No Selections Made</span>;
 
-        let display = noSingleSelectionMadeDisplay;
-        if(this.props.pick > 0){
-            display = (
+        let display = noSelectionsMadeDisplay;
+
+        if(this.props.picks.length > 0){
+            display = this.props.picks.map((id) => 
                 <li className="list-group-item">
-                    <span className="remove-selection" onClick={() => this.props.removeSelection(this.props.pick, this.props.droppableId)}>X</span>
-                    <img src={constants.girls[this.props.pick - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
-                    {constants.girls[this.props.pick - 1].name}                        
-                </li>);
+                    <span className="remove-selection" onClick={() => this.props.removeSelection(id, this.props.droppableId)}>X</span>
+                    <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
+                    {constants.girls[id - 1].name}                        
+                </li>)
         }
 
         return(
@@ -55,4 +56,4 @@ class SinglePickDrag extends React.Component {
     }
 }
 
-export default SinglePickDrag;
+export default MultiPickDrag;

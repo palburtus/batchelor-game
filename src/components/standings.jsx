@@ -56,7 +56,7 @@ class Standings extends React.Component {
         }else {
 
             let displayStandings = this.state.standings.map((obj) => {
-                debugger;
+             
                 let score = gameService.getScore(obj.picks);
                 return (<p>{obj.name} - {score}</p>);
             });

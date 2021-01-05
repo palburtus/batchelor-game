@@ -8,6 +8,7 @@ import * as picksRepository from '../firebaseFirestoreRepository';
 import * as gameService from '../gameService';
 import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
+import MultiPickDrag from './multiPickDrag';
 
 class BatchelorGame extends React.Component {
     
@@ -224,7 +225,7 @@ class BatchelorGame extends React.Component {
     }
     
     onDragEnd(result) {
-        debugger;
+        
         const { source, destination } = result;
         
         let picks = this.state.picks;
@@ -338,94 +339,7 @@ class BatchelorGame extends React.Component {
         if(this.state.isLoading){
             return(<div><p>Loading...</p></div>);
         }else if(this.state.picks){
-
-            let noSelectionsMadeDisplay = <span className="no-selection">No Selections Made</span>;
-            let noSingleSelectionMadeDisplay = <span className="no-selection">No Selection Made</span>;
-
-            let finalSixDisplay = noSingleSelectionMadeDisplay;
-           
-            if(this.state.picks.finalSix.length > 0){
-                finalSixDisplay = this.state.picks.finalSix.map((id) => 
-                    <li className="list-group-item">
-                        <span className="remove-selection" onClick={() => this.removeSelection(id, 'final-six')}>X</span>
-                        <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
-                        {constants.girls[id - 1].name}                        
-                    </li>)
-            }
-
-            let finalFourDisplay = noSelectionsMadeDisplay;
-            
-            if(this.state.picks.finalFour.length > 0){
-                finalFourDisplay = this.state.picks.finalFour.map((id) => 
-                    <li className="list-group-item">
-                        <span className="remove-selection" onClick={() => this.removeSelection(id, 'final-four')}>X</span>
-                        <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
-                        {constants.girls[id - 1].name}                        
-                    </li>)
-            }
-
-            let finalTwoDisplay = noSelectionsMadeDisplay;
-            
-            if(this.state.picks.finalTwo.length > 0){
-                finalTwoDisplay = this.state.picks.finalTwo.map((id) => 
-                    <li className="list-group-item">
-                        <span className="remove-selection" onClick={() => this.removeSelection(id, 'final-two')}>X</span>
-                        <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
-                        {constants.girls[id - 1].name}                        
-                    </li>)
-            }
-
-            let finalOneDisplay = <span className="no-selection">No One Gets Final Rose</span>;
-
-            if(this.state.picks.finalOne > 0){
-                finalOneDisplay = (<li className="list-group-item">
-                                        <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.finalOne, 'final-one')}>X</span>
-                                        <img src={constants.girls[this.state.picks.finalOne - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>                
-                                        {constants.girls[this.state.picks.finalOne - 1].name}                                        
-                                    </li>);
-            }
-
-            let firstWearingCostumeDisplay = noSingleSelectionMadeDisplay;
-            if(this.state.picks.firstWearingCostume > 0){
-                firstWearingCostumeDisplay = (
-                    <li className="list-group-item">
-                        <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstWearingCostume, 'first-wearing-costume')}>X</span>
-                        <img src={constants.girls[this.state.picks.firstWearingCostume - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
-                        {constants.girls[this.state.picks.firstWearingCostume - 1].name}                        
-                    </li>);
-            }
-
-            let firstOutOfLimoDisplay = noSingleSelectionMadeDisplay;
-            if(this.state.picks.firstOutOfLimo > 0){
-                firstOutOfLimoDisplay = (<li className="list-group-item">
-                                            <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstOutOfLimo, 'first-out-of-limo')}>X</span>
-                                            <img src={constants.girls[this.state.picks.firstOutOfLimo - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
-                                            {constants.girls[this.state.picks.firstOutOfLimo - 1].name}                                            
-                                         </li>);
-            }
-
-            let firstKissDisplay = noSelectionsMadeDisplay;
-            if(this.state.picks.firstKiss > 0){
-                firstKissDisplay = (
-                    <li className="list-group-item">
-                        <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstKiss, 'first-kiss')}>X</span>
-                        <img src={constants.girls[this.state.picks.firstKiss - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
-                        {constants.girls[this.state.picks.firstKiss - 1].name}                                            
-                    </li>
-                );
-            }
-            
-            let firstTearsDisplay = noSingleSelectionMadeDisplay;
-            if(this.state.picks.firstTears > 0){
-                firstTearsDisplay = (
-                    <li className="list-group-item">
-                        <span className="remove-selection" onClick={() => this.removeSelection(this.state.picks.firstTears, 'first-tears')}>X</span>
-                        <img src={constants.girls[this.state.picks.firstTears - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
-                        {constants.girls[this.state.picks.firstTears - 1].name}                                            
-                    </li>
-                );
-            }
-
+       
             return(
                 <div>
                     <Container>
@@ -466,37 +380,26 @@ class BatchelorGame extends React.Component {
                                     </Card>
                                 </Col>
                                 <Col>
+
                                 <h3>Week 1 Questions</h3>
                                 <h4>Answers lock on January 4th at 8pm EST</h4>
                                 
                                 <SinglePickDrag 
                                     droppableId="first-impression" 
                                     pick={this.state.picks.firstImpressionRose} 
-                                    onDragEnd={this.onDragEnd}
-                                    removeSelection={this.removeSelection}
                                     title="First Impression Rose (10 points)"
-                                    subtitle="Drag and Drop your pick here"/>
+                                    subtitle="Drag and Drop your pick here"
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}/>
 
-                                <Card>
-                                    <Card.Body>
-                                        <Card.Title>First Out of Limo (10 points)</Card.Title>
-                                        <Card.Subtitle>Drag and Drop your pick here</Card.Subtitle>
-                                        
-                                        <Droppable droppableId="first-out-of-limo">
-                                            {                                                    
-                                                (provided, snapshot) => (
-                                                    <ul className="list-group"  
-                                                        {...provided.droppableProps} 
-                                                        ref={provided.innerRef}
-                                                        isDraggingOver={snapshot.isDraggingOver} >
-                                                        {firstOutOfLimoDisplay}
-                                                    </ul>
-                                                )
-                                            }
-                                        </Droppable>
-                                        
-                                    </Card.Body>
-                                </Card>
+                                <SinglePickDrag 
+                                    droppableId="first-out-of-limo" 
+                                    pick={this.state.picks.firstOutOfLimo} 
+                                    title="First Out of Limo (10 points)"
+                                    subtitle="Drag and Drop your pick here"
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}/>
+                                
                                 <Card>
                                     <Card.Body>
                                         <Card.Title><p>Tyler Cameron Makes an Apperance? (5 points)</p></Card.Title>
@@ -509,154 +412,71 @@ class BatchelorGame extends React.Component {
 
                                     </Card.Body>
                                 </Card>   
-                                <Card>
-                                    <Card.Body>
-                                        <Card.Title>First Kiss (10 points)</Card.Title>
-                                        <Card.Subtitle>Drag and Drop your pick here</Card.Subtitle>
+                               
+                                <SinglePickDrag 
+                                    droppableId="first-kiss" 
+                                    pick={this.state.picks.firstKiss} 
+                                    title="First Kiss (10 points)"
+                                    subtitle="Drag and Drop your pick here"
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}/>
 
-                                        <Droppable droppableId="first-kiss">
-                                            {                                                    
-                                                (provided, snapshot) => (
-                                                    <ul className="list-group"  
-                                                        {...provided.droppableProps} 
-                                                        ref={provided.innerRef}
-                                                        isDraggingOver={snapshot.isDraggingOver} >
-                                                        {firstKissDisplay}
-                                                    </ul>
-                                                )
-                                            }
-                                        </Droppable>
+                                <SinglePickDrag 
+                                    droppableId="first-tears" 
+                                    pick={this.state.picks.firstTears} 
+                                    title="First to Cry (10 points)"
+                                    subtitle="Tears, tear streaks, or running makeup must be visible on camera"
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}/>
 
-                                    </Card.Body>
-                                </Card>
-                                
-                                <Card>
-                                    <Card.Body>
-                                        <Card.Title>First to Cry (10 points)</Card.Title>
-                                        <Card.Subtitle>Tears, tear streaks, or running makeup must be visible on camera</Card.Subtitle>
-
-                                        <Droppable droppableId="first-tears">
-                                            {                                                    
-                                                (provided, snapshot) => (
-                                                    <ul className="list-group"  
-                                                        {...provided.droppableProps} 
-                                                        ref={provided.innerRef}
-                                                        isDraggingOver={snapshot.isDraggingOver} >
-                                                        {firstTearsDisplay}
-                                                    </ul>
-                                                )
-                                            }
-                                        </Droppable>
-
-                                    </Card.Body>
-                                </Card>
-                                
-                                <Card>
-                                    <Card.Body>
-                                        <Card.Title>First to Wear a Costume (10 points)</Card.Title>
-                                        <Card.Subtitle>
-                                            Includes any unusual attire that is not a formal dress.  
-                                            Must be wearing it when they exit the limo and/or are introduced to the Bachelor 
-                                        </Card.Subtitle>
-
-                                        <Droppable droppableId="first-wearing-costume">
-                                            {                                                    
-                                                (provided, snapshot) => (
-                                                    <ul className="list-group"  
-                                                        {...provided.droppableProps} 
-                                                        ref={provided.innerRef}
-                                                        isDraggingOver={snapshot.isDraggingOver} >
-                                                        {firstWearingCostumeDisplay}
-                                                    </ul>
-                                                )
-                                            }
-                                        </Droppable>
-
-                                    </Card.Body>
-                                </Card>
-
+                                <SinglePickDrag 
+                                    droppableId='first-wearing-costume' 
+                                    pick={this.state.picks.firstWearingCostume} 
+                                    title="First to Wear a Costume (10 points)"
+                                    subtitle="Includes any unusual attire that is not a formal dress.  
+                                        Must be wearing it when they exit the limo and/or are introduced to the Bachelor"
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}/>   
+    
                                 <h3>Season Questions</h3>
                                 <h4>Answers due by February 1st at 8pm EST</h4>
-                                <Card>
-                                    <Card.Body>
-                                        <Card.Title>Final Six (10 points each correct answer)</Card.Title>
-                                        <Card.Subtitle>6 Selections (order doesn't matter)</Card.Subtitle>
-                                            
-                                            <Droppable droppableId="final-six">
-                                                {                                                    
-                                                    (provided, snapshot) => (
-                                                        <ul className="list-group"  
-                                                            {...provided.droppableProps} 
-                                                            ref={provided.innerRef}
-                                                            isDraggingOver={snapshot.isDraggingOver} >
-                                                            {finalSixDisplay}
-                                                        </ul>
-                                                    )
-                                                }
-                                            </Droppable>
 
-                                    </Card.Body>
-                                </Card>
-                                <Card>
-                                    <Card.Body>
-                                        <Card.Title>Final Four (20 points each correct answer)</Card.Title>
-                                        <Card.Subtitle>Drag 4 Selections (order doesn't matter)</Card.Subtitle>
-                                        
-                                            <Droppable droppableId="final-four">
-                                                {                                                    
-                                                    (provided, snapshot) => (
-                                                        <ul className="list-group"  
-                                                            {...provided.droppableProps} 
-                                                            ref={provided.innerRef}
-                                                            isDraggingOver={snapshot.isDraggingOver} >
-                                                            {finalFourDisplay}
-                                                        </ul>
-                                                    )
-                                                }
-                                            </Droppable>
-                                    
-                                        </Card.Body>                                
-                                    </Card>
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>Final Two (25 points each correct answer)</Card.Title>
-                                            <Card.Subtitle>Drag 2 Selections (order doesn't matter)</Card.Subtitle>
-                                            
-                                                <Droppable droppableId="final-two">
-                                                    {                                                    
-                                                        (provided, snapshot) => (
-                                                            <ul className="list-group"  
-                                                                {...provided.droppableProps} 
-                                                                ref={provided.innerRef}
-                                                                isDraggingOver={snapshot.isDraggingOver} >
-                                                                {finalTwoDisplay}
-                                                            </ul>
-                                                        )
-                                                    }
-                                                </Droppable>
-                                        
-                                        </Card.Body>                                
-                                    </Card>
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>Final Rose (30 points)</Card.Title>
-                                            <Card.Subtitle>Drag 1 Selection or don't leave a name if you think no one gets the final rose</Card.Subtitle>
-                                            
-                                                <Droppable droppableId="final-one">
-                                                    {                                                    
-                                                        (provided, snapshot) => (
-                                                            <ul className="list-group"  
-                                                                {...provided.droppableProps} 
-                                                                ref={provided.innerRef}
-                                                                isDraggingOver={snapshot.isDraggingOver} >
-                                                                {finalOneDisplay}
-                                                            </ul>
-                                                        )
-                                                    }
-                                                </Droppable>
-                                        
-                                        </Card.Body>                                
-                                    </Card>
+                                <MultiPickDrag
+                                    droppableId='final-six'
+                                    picks={this.state.picks.finalSix}
+                                    title='Final Six (10 points each correct answer)'
+                                    subtitle='6 Selections (order does not matter)'
+                                    removeSelection={this.removeSelection}
+                                    onDragEnd={this.onDragEnd}
+                                    />
+                                
+                                <MultiPickDrag
+                                    droppableId='final-four'
+                                    picks={this.state.picks.finalFour}
+                                    title='Final Four (20 points each correct answer)'
+                                    subtitle='4 Selections (order does not matter)'
+                                    removeSelection={this.removeSelection}
+                                    onDragEnd={this.onDragEnd}
+                                    />
+
+                                <MultiPickDrag
+                                    droppableId='final-two'
+                                    picks={this.state.picks.finalTwo}
+                                    title='Final Two (25 points each correct answer)'
+                                    subtitle='2 Selections (order does not matter)'
+                                    removeSelection={this.removeSelection}
+                                    onDragEnd={this.onDragEnd}
+                                    />
+
+                                    <SinglePickDrag 
+                                        droppableId="final-one" 
+                                        pick={this.state.picks.finalOne} 
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title="Final Rose (30 points)"
+                                        subtitle="Drag 1 Selection or don't leave a name if you think no one gets the final rose"/>   
+
+                                   
                                     <Card>
                                         <Card.Body>
                                             <Card.Title>More to come</Card.Title>
