@@ -72,7 +72,7 @@ class Results extends React.Component {
             return(
                 <div id="standings">
                     <Row>
-                        <Col>
+                        <Col md="auto">
                             <h3>Standings</h3>  
                                                
                             <Card>

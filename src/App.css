@@ -90,8 +90,13 @@ h4 {
 }
 
 .no-selection{
+  color: #f7f7f7;
   font-size: .9em;
   font-weight: 600;
+}
+
+.form-check-label{
+  color: #f7f7f7;
 }
 
 .remove-selection{  
@@ -110,4 +115,14 @@ h4 {
 
 .table{
   background-color: #ffffff;
+}
+
+.img-bw{
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+
+.thumb-label{
+  text-align: center;
+  margin: 0 0 0 0;
 }

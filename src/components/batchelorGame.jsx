@@ -349,12 +349,17 @@ class BatchelorGame extends React.Component {
                                             <Droppable droppableId="girls-list" isDropDisabled={true}>
                                                 {(provided) => (
                                                     <ul className="list-group" {...provided.droppableProps} ref={provided.innerRef}>
-                                                        {constants.girls.map(({id, name, thumb}, index) => {
+                                                        {constants.girls.map(({id, name, thumb, isActive}, index) => {
+                                                            let imageClass = 'thumbnail img-fluid';
+                                                            if(!isActive){
+                                                                imageClass = 'img-bw thumbnail img-fluid';
+                                                            }
                                                             return (
                                                                 <Draggable key={id} draggableId={id} index={index}>
                                                                 {(provided) => (
                                                                     <li className="list-group-item" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                                                        <img src={thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>{ name }
+                                                                        <img src={thumb} height="50px" width="50px" class={imageClass} alt="..."></img>
+                                                                        <p className="thumb-label">{name}</p>
                                                                     </li>
                                                                 )}
                                                                 </Draggable>
@@ -433,8 +438,9 @@ class BatchelorGame extends React.Component {
                             </Row>
                         
                             <Row>
-                                <h3>Previous Week's Questions</h3>
+                                
                                 <Col>
+                                    <h2>Previous Week's Questions</h2>
                                     <h3>Week 1 Questions</h3>
                                     <h4>Answers submitted January 4th at 8pm EST</h4>
                                     

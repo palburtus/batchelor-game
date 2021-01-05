@@ -15,12 +15,12 @@ test('perfect score to equal 295', () => {
         finalFour: [999, 1000, 1001, 1002],
         finalTwo: [999, 1000],
         finalOne: 999,
-        isTylerCameronApperance: 999,
-        firstImpressionRose: 999,
-        firstOutOfLimo: 999,
-        firstKiss: 999,
-        firstTears: 999,
-        firstWearingCostume: 999,
+        isTylerCameronApperance: 0,
+        firstImpressionRose: '1',
+        firstOutOfLimo: '6',
+        firstKiss: '2',
+        firstTears: '26',
+        firstWearingCostume: '8',
         //TODO episode 2 potential questions
         firstOneOnOneDate: -1,
         //TODO (can be implemented after 1st episode)        
@@ -35,7 +35,7 @@ test('perfect score to equal 295', () => {
 test('first tears correct to equal 10', () => {
     
     let picks = getDefaultPicks();
-    picks.firstTears = 999;
+    picks.firstTears = '26';
 
     let result = gameService.getScore(picks);
 
@@ -45,7 +45,7 @@ test('first tears correct to equal 10', () => {
 test('first kiss correct to equal 10', () => {
     
     let picks = getDefaultPicks();
-    picks.firstKiss = 999;
+    picks.firstKiss = '2';
 
     let result = gameService.getScore(picks);
 
@@ -55,7 +55,7 @@ test('first kiss correct to equal 10', () => {
 test('first out of limo correct to equal 10', () => {
     
     let picks = getDefaultPicks();
-    picks.firstOutOfLimo = 999;
+    picks.firstOutOfLimo = '6';
 
     let result = gameService.getScore(picks);
 
@@ -65,7 +65,7 @@ test('first out of limo correct to equal 10', () => {
 test('first impression rose to equal 10', () => {
     
     let picks = getDefaultPicks();
-    picks.firstImpressionRose = 999;
+    picks.firstImpressionRose = '1';
 
     let result = gameService.getScore(picks);
 
@@ -75,7 +75,7 @@ test('first impression rose to equal 10', () => {
 test('tyler cameron appearnce to equal 5', () => {
     
     let picks = getDefaultPicks();
-    picks.isTylerCameronApperance = 999;
+    picks.isTylerCameronApperance = 0;
 
     let result = gameService.getScore(picks);
 
@@ -85,7 +85,7 @@ test('tyler cameron appearnce to equal 5', () => {
 test('first wearing costume correct to equal 10', () => {
     
     let picks = getDefaultPicks();
-    picks.firstWearingCostume = 999;
+    picks.firstWearingCostume = '8';
 
     let result = gameService.getScore(picks);
 

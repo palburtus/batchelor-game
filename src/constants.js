@@ -10,10 +10,10 @@ export const perfectPicks = {
     finalOne: NOT_SETTLED,
     isTylerCameronApperance: FALSE,
     firstImpressionRose: '1',
-    firstOutOfLimo: '8',
+    firstOutOfLimo: '6',
     firstKiss: '2',
     firstTears: '26',
-    firstWearingCostume: '1',
+    firstWearingCostume: '8',
     //TODO episode 2 potential questions
     firstOneOnOneDate: NOT_SETTLED,
     //TODO (can be implemented after 1st episode)   
@@ -38,13 +38,145 @@ export const girls = [
         id: '1',
         name: 'Abigail',
         thumb: './thumbs/abigail.jpg',
-        isActive: false
+        isActive: true
     },
     {
         id: '2',
         name: 'Alana',
         thumb: './thumbs/alana.jpg',
-        isActive: false
+        isActive: true
+    },
+    {
+        id: '5',
+        name: 'Anna',
+        thumb: './thumbs/anna.jpg',
+        isActive: true
+    },
+    {
+        id: '6',
+        name: 'Bri',
+        thumb: './thumbs/bri.jpg',
+        isActive: true
+    },
+    {
+        id: '9',
+        name: 'Chelsea',
+        thumb: './thumbs/chelsea.jpg',
+        isActive: true
+    },
+    {
+        id: '12',
+        name: 'Illeana',
+        thumb: './thumbs/illeana.jpg',
+        isActive: true
+    },
+    {
+        id: '13',
+        name: 'Jessenia',
+        thumb: './thumbs/jessenia.jpg',
+        isActive: true
+    },
+    {
+        id: '14',
+        name: 'Kali',
+        thumb: './thumbs/kali.jpg',
+        isActive: true
+    },
+    {
+        id: '15',
+        name: 'Katie',
+        thumb: './thumbs/katie.jpg',
+        isActive: true
+    },
+    {
+        id: '16',
+        name: 'Khaylah',
+        thumb: './thumbs/khaylah.jpg',
+        isActive: true
+    },
+    {
+        id: '18',
+        name: 'Kit',
+        thumb: './thumbs/kit.jpg',
+        isActive: true
+    },
+    {
+        id: '19',
+        name: 'Kristin',
+        thumb: './thumbs/kristin.jpg',
+        isActive: true
+    },
+    {
+        id: '20',
+        name: 'Lauren',
+        thumb: './thumbs/lauren.jpg',
+        isActive: true
+    },
+    {
+        id: '21',
+        name: 'Magi',
+        thumb: './thumbs/magi.jpg',
+        isActive: true
+    },
+    {
+        id: '22',
+        name: 'Mari',
+        thumb: './thumbs/mari.jpg',
+        isActive: true
+    },
+    {
+        id: '23',
+        name: 'Marylynn',
+        thumb: './thumbs/marylynn.jpg',
+        isActive: true
+    },
+    {
+        id: '24',
+        name: 'MJ',
+        thumb: './thumbs/mj.jpg',
+        isActive: true
+    },
+    {
+        id: '25',
+        name: 'Pieper',
+        thumb: './thumbs/pieper.jpg',
+        isActive: true
+    },
+    {
+        id: '26',
+        name: 'Rachael',
+        thumb: './thumbs/rachael.jpg',
+        isActive: true
+    },
+    {
+        id: '28',
+        name: 'Sarah',
+        thumb: './thumbs/sarah.jpg',
+        isActive: true
+    },
+    {
+        id: '29',
+        name: 'Serena C',
+        thumb: './thumbs/serena_c.jpg',
+        isActive: true
+    },
+    {
+        id: '30',
+        name: 'Serena P',
+        thumb: "./thumbs/serena_p.jpg",
+        isActive: true
+    },
+    {
+        id: '31',
+        name: 'Sydney',
+        thumb: './thumbs/sydney.jpg',
+        isActive: true
+    },
+    {
+        id: '32',
+        name: 'Victoria',
+        thumb: './thumbs/victoria.jpg',
+        isActive: true
     },
     {
         id: '3',
@@ -56,18 +188,6 @@ export const girls = [
         id: '4',
         name: 'Amber',
         thumb: './thumbs/amber.jpg',
-        isActive: false
-    },
-    {
-        id: '5',
-        name: 'Anna',
-        thumb: './thumbs/anna.jpg',
-        isActive: false
-    },
-    {
-        id: '6',
-        name: 'Bri',
-        thumb: './thumbs/bri.jpg',
         isActive: false
     },
     {
@@ -83,12 +203,6 @@ export const girls = [
         isActive: false
     },
     {
-        id: '9',
-        name: 'Chelsea',
-        thumb: './thumbs/chelsea.jpg',
-        isActive: false
-    },
-    {
         id: '10',
         name: 'Corrinne',
         thumb: './thumbs/corrinne.jpg',
@@ -101,129 +215,15 @@ export const girls = [
         isActive: false
     },
     {
-        id: '12',
-        name: 'Illeana',
-        thumb: './thumbs/illeana.jpg',
-        isActive: false
-    },
-    {
-        id: '13',
-        name: 'Jessenia',
-        thumb: './thumbs/jessenia.jpg',
-        isActive: false
-    },
-    {
-        id: '14',
-        name: 'Kali',
-        thumb: './thumbs/kali.jpg',
-        isActive: false
-    },
-    {
-        id: '15',
-        name: 'Katie',
-        thumb: './thumbs/katie.jpg',
-        isActive: false
-    },
-    {
-        id: '16',
-        name: 'Khaylah',
-        thumb: './thumbs/khaylah.jpg',
-        isActive: false
-    },
-    {
         id: '17',
         name: 'Kimberly',
         thumb: './thumbs/kimberly.jpg',
         isActive: false
     },
     {
-        id: '18',
-        name: 'Kit',
-        thumb: './thumbs/kit.jpg',
-        isActive: false
-    },
-    {
-        id: '19',
-        name: 'Kristin',
-        thumb: './thumbs/kristin.jpg',
-        isActive: false
-    },
-    {
-        id: '20',
-        name: 'Lauren',
-        thumb: './thumbs/lauren.jpg',
-        isActive: false
-    },
-    {
-        id: '21',
-        name: 'Magi',
-        thumb: './thumbs/magi.jpg',
-        isActive: false
-    },
-    {
-        id: '22',
-        name: 'Mari',
-        thumb: './thumbs/mari.jpg',
-        isActive: false
-    },
-    {
-        id: '23',
-        name: 'Marylynn',
-        thumb: './thumbs/marylynn.jpg',
-        isActive: false
-    },
-    {
-        id: '24',
-        name: 'MJ',
-        thumb: './thumbs/mj.jpg',
-        isActive: false
-    },
-    {
-        id: '25',
-        name: 'Pieper',
-        thumb: './thumbs/pieper.jpg',
-        isActive: false
-    },
-    {
-        id: '26',
-        name: 'Rachael',
-        thumb: './thumbs/rachael.jpg',
-        isActive: false
-    },
-    {
         id: '27',
         name: 'Saneh',
         thumb: './thumbs/saneh.jpg',
-        isActive: false
-    },
-    {
-        id: '28',
-        name: 'Sarah',
-        thumb: './thumbs/sarah.jpg',
-        isActive: false
-    },
-    {
-        id: '29',
-        name: 'Serena C',
-        thumb: './thumbs/serena_c.jpg',
-        isActive: false
-    },
-    {
-        id: '30',
-        name: 'Serena P',
-        thumb: "./thumbs/serena_p.jpg",
-        isActive: false
-    },
-    {
-        id: '31',
-        name: 'Sydney',
-        thumb: './thumbs/sydney.jpg',
-        isActive: false
-    },
-    {
-        id: '32',
-        name: 'Victoria',
-        thumb: './thumbs/victoria.jpg',
         isActive: false
     }
   ];
