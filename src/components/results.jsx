@@ -92,7 +92,25 @@ class Results extends React.Component {
                         </Col>
                         
                         <Col>
-                            <h3>Question Results</h3>    
+                            <div className="answers">
+                                <h3>Question Results</h3>    
+                                <h4>Week 1 Answers</h4>
+                                <p><strong>First Impression Rose:</strong> Abigail</p>
+                                <p><strong>First Out of Limo:</strong> Bri</p>
+                                <p><strong>Tyler Cameron Appearance:</strong> No</p>
+                                <p><strong>First Kiss:</strong> Alana</p>
+                                <p><strong>First Costume:</strong> Casandra (more info below)</p>
+                                <ul>
+                                    <li>Weird animal slippers do not a costume make</li>
+                                    <li>Lingerie girl was not wearing a dress but brought dresses with her, close call but ultimately not in a costume.</li>
+                                </ul>
+                            </div>
+                            <Card>
+                                
+                                <Card.Text>
+                                    
+                                </Card.Text>
+                            </Card>
                         </Col>
 
                     </Row>

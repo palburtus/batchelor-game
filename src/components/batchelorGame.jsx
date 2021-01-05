@@ -465,7 +465,7 @@ class BatchelorGame extends React.Component {
                                     <BooleanPick
                                         isLocked={this.state.isWeekOneLockedOut}
                                         pick={this.state.picks.isTylerCameronApperance}
-                                        title='Tyler Cameron Makes an Apperance? (5 points)'
+                                        title='Tyler Cameron Makes an Appearance? (5 points)'
                                         subtitle='Must be shown on broadcast (excluding previews)'
                                         yesId='tylerCameronYes'
                                         noId='tylerCameronNo'
