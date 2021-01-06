@@ -19,20 +19,21 @@ class SinglePickDrag extends React.Component {
         let noSingleSelectionMadeDisplay = <span className="no-selection">No Selection Made</span>;
 
         let display = noSingleSelectionMadeDisplay;
+        let girl = constants.getGirlsById(this.props.pick);
  
         if(this.props.pick > 0){
             if(!this.props.isLocked){
                 display = (
                     <li className="list-group-item">
                         <span className="remove-selection" onClick={() => this.props.removeSelection(this.props.pick, this.props.droppableId)}>X</span>
-                        <img src={constants.girls[this.props.pick - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
-                        {constants.girls[this.props.pick - 1].name}                        
+                        <img src={girl.thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
+                        {girl.name}                        
                     </li>);
             }else{
                 display = (
                     <li className="list-group-item">
-                        <img src={constants.girls[this.props.pick - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
-                        {constants.girls[this.props.pick - 1].name}                        
+                        <img src={girl.thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
+                        {girl.name}                        
                     </li>);
             }
             

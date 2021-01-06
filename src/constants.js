@@ -33,6 +33,14 @@ export const scoreMap = {
     'firstWearingCostume' : 10
 }
 
+export function getGirlsById(id){
+    let girl = girls.filter(obj => {
+        return obj.id === id
+    });
+
+    return girl[0];
+}
+
 export const girls = [
     {
         id: '1',

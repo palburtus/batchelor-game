@@ -331,7 +331,7 @@ class BatchelorGame extends React.Component {
             
             let girls = constants.girls;
 
-            //girls.sort((a,b) => (b.isActive) ? 1 : -1);
+            girls.sort((a,b) => (b.isActive) ? 1 : -1);
 
             return(
                 <div>

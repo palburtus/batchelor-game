@@ -23,17 +23,20 @@ class MultiPickDrag extends React.Component {
         if(this.props.picks.length > 0){
            
             display = this.props.picks.map((id) => {
+                
+                let girl = constants.getGirlsById(id);
+               
                 if(!this.props.isLocked)
                     return (
                         <li className="list-group-item">
                             <span className="remove-selection" onClick={() => this.props.removeSelection(id, this.props.droppableId)}>X</span>
-                            <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
-                            <p className="thumb-label"></p>{constants.girls[id - 1].name}                        
+                            <img src={girl.thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
+                            <p className="thumb-label">{girl.name}</p>                        
                         </li>)
                 return (
                         <li className="list-group-item">
-                            <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
-                            <p className="thumb-label">{constants.girls[id - 1].name}</p>                        
+                            <img src={girl.thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
+                            <p className="thumb-label">{girl.name}</p>                        
                         </li>)
             });
         }
