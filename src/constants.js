@@ -47,6 +47,18 @@ export const girls = [
         isActive: true
     },
     {
+        id: '3',
+        name: 'Alicia',
+        thumb: './thumbs/alicia.jpg',
+        isActive: false
+    },
+    {
+        id: '4',
+        name: 'Amber',
+        thumb: './thumbs/amber.jpg',
+        isActive: false
+    },
+    {
         id: '5',
         name: 'Anna',
         thumb: './thumbs/anna.jpg',
@@ -59,10 +71,34 @@ export const girls = [
         isActive: true
     },
     {
+        id: '7',
+        name: 'Carolyn',
+        thumb: './thumbs/carolyn.jpg',
+        isActive: false
+    },
+    {
+        id: '8',
+        name: 'Casandra',
+        thumb: './thumbs/casandra.jpg',
+        isActive: false
+    },
+    {
         id: '9',
         name: 'Chelsea',
         thumb: './thumbs/chelsea.jpg',
         isActive: true
+    },
+    {
+        id: '10',
+        name: 'Corrinne',
+        thumb: './thumbs/corrinne.jpg',
+        isActive: false
+    },
+    {
+        id: '11',
+        name: 'Emani',
+        thumb: './thumbs/emani.jpg',
+        isActive: false
     },
     {
         id: '12',
@@ -93,6 +129,12 @@ export const girls = [
         name: 'Khaylah',
         thumb: './thumbs/khaylah.jpg',
         isActive: true
+    },
+    {
+        id: '17',
+        name: 'Kimberly',
+        thumb: './thumbs/kimberly.jpg',
+        isActive: false
     },
     {
         id: '18',
@@ -149,6 +191,12 @@ export const girls = [
         isActive: true
     },
     {
+        id: '27',
+        name: 'Saneh',
+        thumb: './thumbs/saneh.jpg',
+        isActive: false
+    },
+    {
         id: '28',
         name: 'Sarah',
         thumb: './thumbs/sarah.jpg',
@@ -177,53 +225,5 @@ export const girls = [
         name: 'Victoria',
         thumb: './thumbs/victoria.jpg',
         isActive: true
-    },
-    {
-        id: '3',
-        name: 'Alicia',
-        thumb: './thumbs/alicia.jpg',
-        isActive: false
-    },
-    {
-        id: '4',
-        name: 'Amber',
-        thumb: './thumbs/amber.jpg',
-        isActive: false
-    },
-    {
-        id: '7',
-        name: 'Carolyn',
-        thumb: './thumbs/carolyn.jpg',
-        isActive: false
-    },
-    {
-        id: '8',
-        name: 'Casandra',
-        thumb: './thumbs/casandra.jpg',
-        isActive: false
-    },
-    {
-        id: '10',
-        name: 'Corrinne',
-        thumb: './thumbs/corrinne.jpg',
-        isActive: false
-    },
-    {
-        id: '11',
-        name: 'Emani',
-        thumb: './thumbs/emani.jpg',
-        isActive: false
-    },
-    {
-        id: '17',
-        name: 'Kimberly',
-        thumb: './thumbs/kimberly.jpg',
-        isActive: false
-    },
-    {
-        id: '27',
-        name: 'Saneh',
-        thumb: './thumbs/saneh.jpg',
-        isActive: false
     }
   ];

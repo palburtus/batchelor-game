@@ -28,7 +28,7 @@ class MultiPickDrag extends React.Component {
                         <li className="list-group-item">
                             <span className="remove-selection" onClick={() => this.props.removeSelection(id, this.props.droppableId)}>X</span>
                             <img src={constants.girls[id - 1].thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
-                            <p className="thumb-label">{constants.girls[id - 1].name}</p>                        
+                            <p className="thumb-label"></p>{constants.girls[id - 1].name}                        
                         </li>)
                 return (
                         <li className="list-group-item">

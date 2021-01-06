@@ -328,7 +328,11 @@ class BatchelorGame extends React.Component {
         if(this.state.isLoading){
             return(<div><p>Loading...</p></div>);
         }else if(this.state.picks){
-       
+            
+            let girls = constants.girls;
+
+            //girls.sort((a,b) => (b.isActive) ? 1 : -1);
+
             return(
                 <div>
                     <Container>
@@ -349,7 +353,7 @@ class BatchelorGame extends React.Component {
                                             <Droppable droppableId="girls-list" isDropDisabled={true}>
                                                 {(provided) => (
                                                     <ul className="list-group" {...provided.droppableProps} ref={provided.innerRef}>
-                                                        {constants.girls.map(({id, name, thumb, isActive}, index) => {
+                                                        {girls.map(({id, name, thumb, isActive}, index) => {
                                                             let imageClass = 'thumbnail img-fluid';
                                                             if(!isActive){
                                                                 imageClass = 'img-bw thumbnail img-fluid';
