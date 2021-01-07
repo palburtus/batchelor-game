@@ -140,6 +140,10 @@ class BatchelorGame extends React.Component {
     
     handleSingleDragAdd(picks, statePicks, droppableId, result){
 
+        if(!picks){
+            picks = constants.NO_SELECTION;
+        }
+
         const { destination } = result;
 
         if(destination && destination.droppableId === droppableId){

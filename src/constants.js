@@ -20,10 +20,10 @@ export function defaultPicks() {
         isHotTubWeekTwo: NO_SELECTION,
         isTylerCameronApperanceWeek2: NO_SELECTION,
         isLiveMusicPlayedWeekTwo: NO_SELECTION,
-        requiresMedicalAttentionWeekTwo: -1,
-        firstGroupDateRoseWeekTwo: -1,
+        requiresMedicalAttentionWeekTwo: NO_SELECTION,
+        firstGroupDateRoseWeekTwo: NO_SELECTION,
         isNewContestantIntroducedWeekTwo: NO_SELECTION,
-        firstInterruptionWeekTwo: -1,
+        firstInterruptionWeekTwo: NO_SELECTION,
         //TODO (can be implemented after 1st episode)        
         firstToLeaveOnOwn: -1         
     }       
