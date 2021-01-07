@@ -10,15 +10,20 @@ export function defaultPicks() {
         finalTwo: [],
         finalOne: -1,
         isTylerCameronApperance: NO_SELECTION,
-        isTylerCameronApperanceWeek2: NO_SELECTION,
         firstImpressionRose: -1,
         firstOutOfLimo: -1,
         firstKiss: -1,
         firstTears: -1,
         firstWearingCostume: -1,
         //WEEK 2  
-        firstOneOnOneDate: -1,
-        isHotTubWeekTwo: -1,
+        firstOneOnOneDate: NO_SELECTION,
+        isHotTubWeekTwo: NO_SELECTION,
+        isTylerCameronApperanceWeek2: NO_SELECTION,
+        isLiveMusicPlayedWeekTwo: NO_SELECTION,
+        requiresMedicalAttentionWeekTwo: -1,
+        firstGroupDateRoseWeekTwo: -1,
+        isNewContestantIntroducedWeekTwo: NO_SELECTION,
+        firstInterruptionWeekTwo: -1,
         //TODO (can be implemented after 1st episode)        
         firstToLeaveOnOwn: -1         
     }       
@@ -39,6 +44,11 @@ export const perfectPicks = {
     firstOneOnOneDate: NOT_SETTLED,
     isHotTubWeekTwo: NOT_SETTLED,
     isTylerCameronApperanceWeek2: NOT_SETTLED,
+    isLiveMusicPlayedWeekTwo: NOT_SETTLED,
+    requiresMedicalAttentionWeekTwo: NOT_SETTLED,
+    firstGroupDateRoseWeekTwo: NOT_SETTLED,
+    isNewContestantIntroducedWeekTwo: NOT_SETTLED,
+    firstInterruptionWeekTwo: NOT_SETTLED,
     //TODO (can be implemented after 1st episode)   
     firstToLeaveOnOwn: NOT_SETTLED                
 }
@@ -57,7 +67,12 @@ export const scoreMap = {
     //WEEK 2
     'isTylerCameronApperanceWeek2' : 5,
     'firstOneOnOneDate' : 10,
-    'isHotTubWeekTwo' : 5
+    'isHotTubWeekTwo' : 5,
+    'isLiveMusicPlayedWeekTwo' : 5,
+    'requiresMedicalAttentionWeekTwo' : 10,
+    'firstGroupDateRoseWeekTwo' : 10,
+    'isNewContestantIntroducedWeekTwo' : 5,
+    'firstInterruptionWeekTwo' : 10
 }
 
 export function getGirlsById(id){

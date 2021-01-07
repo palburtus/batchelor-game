@@ -106,15 +106,14 @@ class BatchelorGame extends React.Component {
        
         let picks = this.state.picks;
         
-        if(!this.state.isWeekTwoLockedOut){
-                        
+        if(!this.state.isWeekTwoLockedOut){                        
             picks.isHotTubWeekTwo = this.handleBooleanEventChange(evt, 'isHotTubWeekTwoRadios', picks.isHotTubWeekTwo);                
             picks.isTylerCameronApperanceWeek2 = this.handleBooleanEventChange(evt, 'isTylerCameronApperanceWeek2Radios', picks.isTylerCameronApperanceWeek2);
-            
+            picks.isLiveMusicPlayedWeekTwo = this.handleBooleanEventChange(evt, 'isLiveMusicPlayedWeekTwo', picks.isLiveMusicPlayedWeekTwo);
+            picks.isNewContestantIntroducedWeekTwo = this.handleBooleanEventChange(evt, 'isNewContestantIntroducedWeekTwo', picks.isNewContestantIntroducedWeekTwo);
         }
 
-        if(!this.state.isWeekOneLockedOut){
-                        
+        if(!this.state.isWeekOneLockedOut){                        
             picks.isTylerCameronApperance = this.handleBooleanEventChange(evt, 'tylerCameronRadios', picks.isTylerCameronApperance);
         }
         
@@ -144,11 +143,23 @@ class BatchelorGame extends React.Component {
     removeSelection(id, listId){
       
         let picks = this.state.picks;
-      
+     
         //WEEK 2
         if(!this.state.isWeekTwoLockedOut){
             if(listId === 'first-one-on-one-date'){
                 picks.firstOneOnOneDate = -1;
+            }
+
+            if(listId === 'requires-medical-attention-week-two'){
+                picks.requiresMedicalAttentionWeekTwo = -1;
+            }
+
+            if(listId === 'first-group-date-rose-week-two'){
+                picks.firstGroupDateRoseWeekTwo = -1;
+            }
+
+            if(listId === 'first-interruption-week-two'){
+                picks.firstInterruptionWeekTwo = -1;
             }
         }
 
@@ -175,8 +186,7 @@ class BatchelorGame extends React.Component {
             }
         }        
 
-        //SEASON
-                
+        //SEASON                
         if(!this.state.isSeasonLongLockedOut){
             if(listId === 'final-six'){
                 picks.finalSix = this.arrayRemoveByValue(picks.finalSix, id);
@@ -221,7 +231,7 @@ class BatchelorGame extends React.Component {
         return picks;
     }
     
-    handleSingleDragAdd(picks, statePicks, droppableId, result, maxPicks){
+    handleSingleDragAdd(picks, statePicks, droppableId, result){
 
         const { destination } = result;
 
@@ -255,7 +265,10 @@ class BatchelorGame extends React.Component {
 
         //WEEK 2
         if(!this.state.isWeekTwoLockedOut){
-            picks.firstOneOnOneDate = this.handleSingleDragAdd(picks.firstOneOnOneDate, this.state.picks.firstOneOnOneDate, 'first-one-on-one-date', result);
+            picks.firstOneOnOneDate = this.handleSingleDragAdd(picks.firstOneOnOneDate, this.state.picks.firstOneOnOneDate, 'first-one-on-one-date', result);        
+            picks.requiresMedicalAttentionWeekTwo = this.handleSingleDragAdd(picks.requiresMedicalAttentionWeekTwo, this.state.picks.requiresMedicalAttentionWeekTwo, 'requires-medical-attention-week-two', result);
+            picks.firstGroupDateRoseWeekTwo = this.handleSingleDragAdd(picks.firstGroupDateRoseWeekTwo, this.state.picks.firstGroupDateRoseWeekTwo, 'first-group-date-rose-week-two', result);
+            picks.firstInterruptionWeekTwo = this.handleSingleDragAdd(picks.firstInterruptionWeekTwo, this.state.picks.firstInterruptionWeekTwo, 'first-interruption-week-two', result);
         }
 
         //WEEK 1
@@ -333,7 +346,50 @@ class BatchelorGame extends React.Component {
 
                                 <h3>Week 2 Questions</h3>
                                 <h4>Answers lock on January 11th at 8pm EST</h4>
-                                
+
+                                <SinglePickDrag 
+                                    isLocked={this.state.isWeekTwoLockedOut}
+                                    droppableId='first-interruption-week-two'
+                                    pick={this.state.picks.firstInterruptionWeekTwo} 
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='First to Interrupt Bachelor and Another Contestant (10 points)'
+                                    subtitle='First contestant to interrupt a one-on-one conversation with the Bachelor and another contestant'/>  
+
+                                <BooleanPick
+                                    isLocked={this.state.isWeekTwoLockedOut}
+                                    pick={this.state.picks.isNewContestantIntroducedWeekTwo} 
+                                    title='Will a New Contestant be Added'
+                                    subtitle='Must be a contestant that was not previously eliminated and must be eligable for elimination if they do not receive a rose'
+                                    radiosIds='isNewContestantIntroducedWeekTwo'
+                                    handleChange={this.handleChange}/> 
+
+                                <SinglePickDrag 
+                                    isLocked={this.state.isWeekTwoLockedOut}
+                                    droppableId='first-group-date-rose-week-two'
+                                    pick={this.state.picks.firstGroupDateRoseWeekTwo} 
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='First Group Date Rose (10 points)'
+                                    subtitle='Who receieves the rose on the first group date'/>   
+
+                                <SinglePickDrag 
+                                    isLocked={this.state.isWeekTwoLockedOut}
+                                    droppableId='requires-medical-attention-week-two'
+                                    pick={this.state.picks.requiresMedicalAttentionWeekTwo} 
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='First to Require Medical Attention on Group Date (10 points)'
+                                    subtitle='Must cause contestant to stop current activity and cause intervention from first-aid or producers. (Includes emotional)'/>   
+
+                                <BooleanPick 
+                                    isLocked={this.state.isWeekTwoLockedOut}
+                                    pick={this.state.picks.isLiveMusicPlayedWeekTwo} 
+                                    title='Will Live Music be Played on a Date (10 points)'
+                                    subtitle='Must be played while on any type of date'
+                                    radiosIds='isLiveMusicPlayedWeekTwo'
+                                    handleChange={this.handleChange}/>   
+
                                 <SinglePickDrag 
                                     isLocked={this.state.isWeekTwoLockedOut}
                                     droppableId='first-one-on-one-date'

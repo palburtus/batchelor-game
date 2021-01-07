@@ -9,7 +9,7 @@ test('default picks to equal 0', () => {
 });
 
 
-test('perfect score to equal 290', () => {
+test('perfect score to equal 335', () => {
     
     let picks = {
         finalSix: [999, 1000, 1001, 1002, 1003, 1004],
@@ -26,16 +26,121 @@ test('perfect score to equal 290', () => {
         firstOneOnOneDate: 999,
         isHotTubWeekTwo: 999,
         isTylerCameronApperanceWeek2: 999,
+        isLiveMusicPlayedWeekTwo: 999,
+        requiresMedicalAttentionWeekTwo: 999,
+        firstGroupDateRoseWeekTwo: 999,
+        isNewContestantIntroducedWeekTwo: 999,
+        firstInterruptionWeekTwo: 999,
         //TODO (can be implemented after 1st episode)        
         firstToLeaveOnOwn: -1                
     }
 
     let result = gameService.getScore(picks);
 
-    expect(result).toBe(295);
+    expect(result).toBe(335);
 });
 
-test('is hot tub week to correct to equal 5', () => {
+test('first interruption week 2 correct to equal 10', () => {
+
+    let picks = constants.defaultPicks();
+    picks.firstInterruptionWeekTwo = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('first interruption week 2 incorrect to equal 0', () => {
+
+    let picks = constants.defaultPicks();
+    picks.firstInterruptionWeekTwo = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('will new contestant be added week 2 correct to equal 5', () => {
+
+    let picks = constants.defaultPicks();
+    picks.isNewContestantIntroducedWeekTwo = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('will new contestant be added week 2 incorrect to equal 0', () => {
+
+    let picks = constants.defaultPicks();
+    picks.isNewContestantIntroducedWeekTwo = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('first group date rose week 2 correct to equal 10', () => {
+
+    let picks = constants.defaultPicks();
+    picks.firstGroupDateRoseWeekTwo = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('first group date rose week 2 incorrect to equal 0', () => {
+
+    let picks = constants.defaultPicks();
+    picks.firstGroupDateRoseWeekTwo = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('requires medical attention correct to equal 10', () => {
+    
+    let picks = constants.defaultPicks();
+    picks.requiresMedicalAttentionWeekTwo = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('requires medical attention incorrect to equal 0', () => {
+    
+    let picks = constants.defaultPicks();
+    picks.requiresMedicalAttentionWeekTwo = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is live music week two correct to equal 5', () => {
+
+    let picks = constants.defaultPicks();
+    picks.isLiveMusicPlayedWeekTwo = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('is live music week two incorrect to equal 0', () => {
+
+    let picks = constants.defaultPicks();
+    picks.isLiveMusicPlayedWeekTwo = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is hot tub week two correct to equal 5', () => {
     
     let picks = constants.defaultPicks();
     picks.isHotTubWeekTwo = 999
@@ -45,7 +150,7 @@ test('is hot tub week to correct to equal 5', () => {
     expect(result).toBe(5);
 })
 
-test('is hot tub week to incorrect to equal 0', () => {
+test('is hot tub week two incorrect to equal 0', () => {
     
     let picks = constants.defaultPicks();
     picks.isHotTubWeekTwo = 998
@@ -85,7 +190,7 @@ test('tyler cameron week 2 apperance correct to equal 5', () => {
     expect(result).toBe(5);
 })
 
-test('tyler cameron week 2 apperance incorrect to equal 5', () => {
+test('tyler cameron week 2 apperance incorrect to equal 0', () => {
 
     let picks = constants.defaultPicks();
     picks.isTylerCameronApperanceWeek2 = 998;

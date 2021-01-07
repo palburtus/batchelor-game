@@ -17,6 +17,26 @@ export const getScore = (picks) => {
             score += constants.scoreMap['isHotTubWeekTwo'];
         }
 
+        if(picks.isLiveMusicPlayedWeekTwo === constants.perfectPicks.isLiveMusicPlayedWeekTwo){
+            score += constants.scoreMap['isLiveMusicPlayedWeekTwo'];
+        }
+
+        if(picks.requiresMedicalAttentionWeekTwo === constants.perfectPicks.requiresMedicalAttentionWeekTwo){
+            score += constants.scoreMap['requiresMedicalAttentionWeekTwo'];
+        }
+
+        if(picks.firstGroupDateRoseWeekTwo === constants.perfectPicks.firstGroupDateRoseWeekTwo){
+            score += constants.scoreMap['firstGroupDateRoseWeekTwo'];
+        }
+
+        if(picks.isNewContestantIntroducedWeekTwo === constants.perfectPicks.isNewContestantIntroducedWeekTwo){
+            score += constants.scoreMap['isNewContestantIntroducedWeekTwo'];
+        }
+
+        if(picks.firstInterruptionWeekTwo === constants.perfectPicks.firstInterruptionWeekTwo){
+            score += constants.scoreMap['firstInterruptionWeekTwo'];
+        }        
+
         //WEEK 1
         if(picks.firstOutOfLimo === constants.perfectPicks.firstOutOfLimo){
             score += constants.scoreMap['firstOutOfLimo'];
@@ -46,7 +66,7 @@ export const getScore = (picks) => {
         if(picks.finalOne === constants.perfectPicks.finalOne){
             score += constants.scoreMap['finalOne'];
         }
-    
+        
         for(let i = 0; i < picks.finalTwo.length; i++){
             if(constants.perfectPicks.finalTwo.indexOf(picks.finalTwo[i]) >= 0){
                 score += constants.scoreMap['finalTwo'];
