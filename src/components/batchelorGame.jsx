@@ -104,6 +104,10 @@ class BatchelorGame extends React.Component {
     
     handleBooleanEventChange(evt, evtName, choice){
         
+        if(!choice){
+            choice = constants.NO_SELECTION;
+        }
+
         if(evt.currentTarget.name === evtName){
             if(evt.currentTarget.id === 'yes'){
                 if(evt.currentTarget.checked){
@@ -120,6 +124,10 @@ class BatchelorGame extends React.Component {
     }
        
     handleMultiDragAdd(picks, statePicks, droppableId, result, maxPicks){
+
+        if(!picks){
+            picks = [constants.NO_SELECTION];
+        }
 
         const { destination } = result;
 
