@@ -26,13 +26,13 @@ class SinglePickDrag extends React.Component {
                 display = (
                     <li className="list-group-item">
                         <span className="remove-selection" onClick={() => this.props.removeSelection(this.props.pick, this.props.droppableId)}>X</span>
-                        <img src={girl.thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
+                        <img src={girl.thumb} height="50px" width="50px" className="thumbnail img-fluid" alt="..."></img>
                         {girl.name}                        
                     </li>);
             }else{
                 display = (
                     <li className="list-group-item">
-                        <img src={girl.thumb} height="50px" width="50px" class="thumbnail img-fluid" alt="..."></img>
+                        <img src={girl.thumb} height="50px" width="50px" className="thumbnail img-fluid" alt="..."></img>
                         {girl.name}                        
                     </li>);
             }

@@ -66,7 +66,7 @@ class Results extends React.Component {
            
             let displayStandings = orderedDescStandings.map((obj) => {
                 let score = gameService.getScore(obj.picks);
-                return (<tr><td>{obj.name}</td> <td>{score}</td></tr>);
+                return (<tr key={obj.name}><td>{obj.name}</td><td>{score}</td></tr>);
             });
 
             return(
@@ -79,8 +79,10 @@ class Results extends React.Component {
                                 <Card.Body>
                                     <Table striped bordered hover>
                                         <thead>
-                                            <th>Name</th>
-                                            <th>Score</th>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Score</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                             {displayStandings}

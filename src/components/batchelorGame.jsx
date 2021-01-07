@@ -4,6 +4,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { ToastContainer, toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
 import * as constants from '../constants';
+import * as utils from '../utils';
 import * as picksRepository from '../firebaseFirestoreRepository';
 import * as gameService from '../gameService';
 import 'react-toastify/dist/ReactToastify.css';
@@ -40,7 +41,7 @@ class BatchelorGame extends React.Component {
         
         const cookies = new Cookies();
 
-        let token = this.getParameterByName('token');
+        let token = utils.getParameterByName('token');
         
         if(token){
             let cookieDate = new Date(2199, 1, 1);
@@ -82,25 +83,7 @@ class BatchelorGame extends React.Component {
 
     async savePicks(picks){
         picksRepository.upsertPicks(this.state.email, this.state.token, this.state.name, picks);
-    }
-
-    getParameterByName(name, url) {
-        if (!url) {
-            url = window.location.href;
-        }
-        name = name.replace(/[\[\]]/g, "\\$&");
-        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
-
-    arrayRemoveByValue(array, value){
-        let index = array.indexOf(value);
-        array.splice(index, 1);
-        return array;
-    }
+    }    
     
     handleBooleanEventChange(evt, evtName, choice){
         
@@ -216,15 +199,15 @@ class BatchelorGame extends React.Component {
         //SEASON                
         if(!this.state.isSeasonLongLockedOut){
             if(listId === 'final-six'){
-                picks.finalSix = this.arrayRemoveByValue(picks.finalSix, id);
+                picks.finalSix = utils.arrayRemoveByValue(picks.finalSix, id);
             }
     
             if(listId === 'final-four'){
-                picks.finalFour = this.arrayRemoveByValue(picks.finalFour, id);
+                picks.finalFour = utils.arrayRemoveByValue(picks.finalFour, id);
             }
     
             if(listId === 'final-two'){
-                picks.finalTwo = this.arrayRemoveByValue(picks.finalTwo, id);
+                picks.finalTwo = utils.arrayRemoveByValue(picks.finalTwo, id);
             }
     
             if(listId === 'final-one'){
@@ -339,8 +322,8 @@ class BatchelorGame extends React.Component {
                                                             return (
                                                                 <Draggable key={id} draggableId={id} index={index}>
                                                                 {(provided) => (
-                                                                    <li className="list-group-item" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                                                        <img src={thumb} height="50px" width="50px" class={imageClass} alt="..."></img>
+                                                                    <li key={id} className="list-group-item" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                                                        <img src={thumb} height="50px" width="50px" className={imageClass} alt="..."></img>
                                                                         <p className="thumb-label">{name}</p>
                                                                     </li>
                                                                 )}
