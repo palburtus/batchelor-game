@@ -101,28 +101,7 @@ class BatchelorGame extends React.Component {
         array.splice(index, 1);
         return array;
     }
-
-    handleChange(evt) {
-       
-        let picks = this.state.picks;
-        
-        if(!this.state.isWeekTwoLockedOut){                        
-            picks.isHotTubWeekTwo = this.handleBooleanEventChange(evt, 'isHotTubWeekTwoRadios', picks.isHotTubWeekTwo);                
-            picks.isTylerCameronApperanceWeek2 = this.handleBooleanEventChange(evt, 'isTylerCameronApperanceWeek2Radios', picks.isTylerCameronApperanceWeek2);
-            picks.isLiveMusicPlayedWeekTwo = this.handleBooleanEventChange(evt, 'isLiveMusicPlayedWeekTwo', picks.isLiveMusicPlayedWeekTwo);
-            picks.isNewContestantIntroducedWeekTwo = this.handleBooleanEventChange(evt, 'isNewContestantIntroducedWeekTwo', picks.isNewContestantIntroducedWeekTwo);
-        }
-
-        if(!this.state.isWeekOneLockedOut){                        
-            picks.isTylerCameronApperance = this.handleBooleanEventChange(evt, 'tylerCameronRadios', picks.isTylerCameronApperance);
-        }
-        
-
-        this.setState({ picks: picks });
-
-        this.savePicks(picks);
-    }
-
+    
     handleBooleanEventChange(evt, evtName, choice){
         
         if(evt.currentTarget.name === evtName){
@@ -139,7 +118,43 @@ class BatchelorGame extends React.Component {
 
         return choice;
     }
-   
+       
+    handleMultiDragAdd(picks, statePicks, droppableId, result, maxPicks){
+
+        const { destination } = result;
+
+        if(destination && destination.droppableId === droppableId){
+           
+            if(picks.length >= maxPicks){
+                toast(`You must remove a contestant first! (${maxPicks} Max)`, { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+            }else if(statePicks.includes(result.draggableId)){
+                toast("You have already added this contestant", { type: toast.TYPE.WARNING, hideProgressBar: true, autoClose: 2500});
+            }else {
+                picks = statePicks;                
+                picks.push(result.draggableId);
+            }            
+        }
+
+        return picks;
+    }
+    
+    handleSingleDragAdd(picks, statePicks, droppableId, result){
+
+        const { destination } = result;
+
+        if(destination && destination.droppableId === droppableId){
+            if(picks >= 1){
+                toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
+            }else {
+                picks = statePicks;                
+                picks = result.draggableId;  
+            }
+        }
+
+        return picks;
+    }
+    
+    //TODO move business logic into multiPickDrag and singlePickDrag
     removeSelection(id, listId){
       
         let picks = this.state.picks;
@@ -212,41 +227,6 @@ class BatchelorGame extends React.Component {
         this.savePicks(picks);
     }
 
-    handleMultiDragAdd(picks, statePicks, droppableId, result, maxPicks){
-
-        const { destination } = result;
-
-        if(destination && destination.droppableId === droppableId){
-           
-            if(picks.length >= maxPicks){
-                toast(`You must remove a contestant first! (${maxPicks} Max)`, { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-            }else if(statePicks.includes(result.draggableId)){
-                toast("You have already added this contestant", { type: toast.TYPE.WARNING, hideProgressBar: true, autoClose: 2500});
-            }else {
-                picks = statePicks;                
-                picks.push(result.draggableId);
-            }            
-        }
-
-        return picks;
-    }
-    
-    handleSingleDragAdd(picks, statePicks, droppableId, result){
-
-        const { destination } = result;
-
-        if(destination && destination.droppableId === droppableId){
-            if(picks >= 1){
-                toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-            }else {
-                picks = statePicks;                
-                picks = result.draggableId;  
-            }
-        }
-
-        return picks;
-    }
-    
     onDragEnd(result) {
         
         const { destination } = result;
@@ -284,6 +264,27 @@ class BatchelorGame extends React.Component {
         this.setState({
             picks: picks
         });
+
+        this.savePicks(picks);
+    }
+    
+    handleChange(evt) {
+       
+        let picks = this.state.picks;
+        
+        if(!this.state.isWeekTwoLockedOut){                        
+            picks.isHotTubWeekTwo = this.handleBooleanEventChange(evt, 'isHotTubWeekTwoRadios', picks.isHotTubWeekTwo);                
+            picks.isTylerCameronApperanceWeek2 = this.handleBooleanEventChange(evt, 'isTylerCameronApperanceWeek2Radios', picks.isTylerCameronApperanceWeek2);
+            picks.isLiveMusicPlayedWeekTwo = this.handleBooleanEventChange(evt, 'isLiveMusicPlayedWeekTwo', picks.isLiveMusicPlayedWeekTwo);
+            picks.isNewContestantIntroducedWeekTwo = this.handleBooleanEventChange(evt, 'isNewContestantIntroducedWeekTwo', picks.isNewContestantIntroducedWeekTwo);
+        }
+
+        if(!this.state.isWeekOneLockedOut){                        
+            picks.isTylerCameronApperance = this.handleBooleanEventChange(evt, 'tylerCameronRadios', picks.isTylerCameronApperance);
+        }
+        
+
+        this.setState({ picks: picks });
 
         this.savePicks(picks);
     }
@@ -360,7 +361,7 @@ class BatchelorGame extends React.Component {
                                     isLocked={this.state.isWeekTwoLockedOut}
                                     pick={this.state.picks.isNewContestantIntroducedWeekTwo} 
                                     title='Will a New Contestant be Added'
-                                    subtitle='Must be a contestant that was not previously eliminated and must be eligable for elimination if they do not receive a rose'
+                                    subtitle='Must be a contestant that was not previously eliminated and must be eligible for elimination if they do not receive a rose'
                                     radiosIds='isNewContestantIntroducedWeekTwo'
                                     handleChange={this.handleChange}/> 
 
@@ -380,7 +381,7 @@ class BatchelorGame extends React.Component {
                                     onDragEnd={this.onDragEnd}
                                     removeSelection={this.removeSelection}
                                     title='First to Require Medical Attention on Group Date (10 points)'
-                                    subtitle='Must cause contestant to stop current activity and cause intervention from first-aid or producers. (Includes emotional)'/>   
+                                    subtitle='Must cause contestant to stop current activity and cause intervention from first-aid or producers.  If this does not happen no points will be awarded'/>   
 
                                 <BooleanPick 
                                     isLocked={this.state.isWeekTwoLockedOut}
