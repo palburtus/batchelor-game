@@ -3,6 +3,27 @@ export const FALSE = 0;
 export const NO_SELECTION = -1;
 export const NOT_SETTLED = 999;
 
+export function defaultPicks() {
+    return {
+        finalSix: [],
+        finalFour: [],
+        finalTwo: [],
+        finalOne: -1,
+        isTylerCameronApperance: NO_SELECTION,
+        isTylerCameronApperanceWeek2: NO_SELECTION,
+        firstImpressionRose: -1,
+        firstOutOfLimo: -1,
+        firstKiss: -1,
+        firstTears: -1,
+        firstWearingCostume: -1,
+        //WEEK 2  
+        firstOneOnOneDate: -1,
+        isHotTubWeekTwo: -1,
+        //TODO (can be implemented after 1st episode)        
+        firstToLeaveOnOwn: -1         
+    }       
+}
+
 export const perfectPicks = {
     finalSix: [NOT_SETTLED, (NOT_SETTLED + 1), (NOT_SETTLED + 2), (NOT_SETTLED + 3), (NOT_SETTLED + 4), (NOT_SETTLED + 5)],
     finalFour: [NOT_SETTLED, (NOT_SETTLED + 1), (NOT_SETTLED + 2), (NOT_SETTLED + 3)],
@@ -14,8 +35,10 @@ export const perfectPicks = {
     firstKiss: '2',
     firstTears: '26',
     firstWearingCostume: '8',
-    //TODO episode 2 potential questions
+    //WEEK 2
     firstOneOnOneDate: NOT_SETTLED,
+    isHotTubWeekTwo: NOT_SETTLED,
+    isTylerCameronApperanceWeek2: NOT_SETTLED,
     //TODO (can be implemented after 1st episode)   
     firstToLeaveOnOwn: NOT_SETTLED                
 }
@@ -30,7 +53,11 @@ export const scoreMap = {
     'firstOutOfLimo' : 10,
     'firstKiss': 10,
     'firstTears' : 10,
-    'firstWearingCostume' : 10
+    'firstWearingCostume' : 10,
+    //WEEK 2
+    'isTylerCameronApperanceWeek2' : 5,
+    'firstOneOnOneDate' : 10,
+    'isHotTubWeekTwo' : 5
 }
 
 export function getGirlsById(id){

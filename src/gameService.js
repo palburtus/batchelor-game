@@ -3,6 +3,21 @@ import * as constants from './constants';
 export const getScore = (picks) => {
     let score = 0;
     if(picks){
+
+        //WEEK 2
+        if(picks.firstOneOnOneDate === constants.perfectPicks.firstOneOnOneDate){
+            score += constants.scoreMap['firstOneOnOneDate'];
+        }
+
+        if(picks.isTylerCameronApperanceWeek2 === constants.perfectPicks.isTylerCameronApperanceWeek2){
+            score += constants.scoreMap['isTylerCameronApperanceWeek2'];
+        }
+
+        if(picks.isHotTubWeekTwo === constants.perfectPicks.isHotTubWeekTwo){
+            score += constants.scoreMap['isHotTubWeekTwo'];
+        }
+
+        //WEEK 1
         if(picks.firstOutOfLimo === constants.perfectPicks.firstOutOfLimo){
             score += constants.scoreMap['firstOutOfLimo'];
         }
@@ -27,6 +42,7 @@ export const getScore = (picks) => {
             score += constants.scoreMap['firstWearingCostume'];
         }
     
+        //SEASON
         if(picks.finalOne === constants.perfectPicks.finalOne){
             score += constants.scoreMap['finalOne'];
         }

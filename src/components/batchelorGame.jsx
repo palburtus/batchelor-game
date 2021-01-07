@@ -16,26 +16,12 @@ class BatchelorGame extends React.Component {
     constructor(props){
         super(props);
         
-        let picks = {
-            finalSix: [],
-            finalFour: [],
-            finalTwo: [],
-            finalOne: -1,
-            isTylerCameronApperance: constants.NO_SELECTION,
-            firstImpressionRose: -1,
-            firstOutOfLimo: -1,
-            firstKiss: -1,
-            firstTears: -1,
-            firstWearingCostume: -1,  
-            //TODO episode 2 potential questions
-            firstOneOnOneDate: -1,
-            //TODO (can be implemented after 1st episode)        
-            firstToLeaveOnOwn: -1                
-        }
+        let picks = constants.defaultPicks();
 
         this.state = ({
             picks: picks,
             isWeekOneLockedOut: true,
+            isWeekTwoLockedOut: false,
             isSeasonLongLockedOut: false,
             infoMessage: '',
             warningMessage: '',
@@ -44,7 +30,6 @@ class BatchelorGame extends React.Component {
             isLoading: true
         });
 
-        this.applyLockouts = this.applyLockouts.bind(this);
         this.removeSelection = this.removeSelection.bind(this);
         this.onDragEnd = this.onDragEnd.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -54,8 +39,6 @@ class BatchelorGame extends React.Component {
     async componentDidMount(){
         
         const cookies = new Cookies();
-
-        this.applyLockouts();
 
         let token = this.getParameterByName('token');
         
@@ -98,8 +81,6 @@ class BatchelorGame extends React.Component {
     }
 
     async savePicks(picks){
-        this.applyLockouts();
-        
         picksRepository.upsertPicks(this.state.email, this.state.token, this.state.name, picks);
     }
 
@@ -121,42 +102,20 @@ class BatchelorGame extends React.Component {
         return array;
     }
 
-    applyLockouts(){
-     
-        let utcEpoch = Date.now();
-        let seasonLockoutUtcDate = 1612184400000;
-
-       
-        let isSeasonLockedOut = false;
-        
-        if(utcEpoch > seasonLockoutUtcDate){
-            isSeasonLockedOut = true;
-            console.log(`season long disabled`);
-        }
-        
-        /*this.setState({
-            isSeasonLongLockedOut: isSeasonLockedOut
-        });*/
-    }
-
     handleChange(evt) {
        
         let picks = this.state.picks;
         
-        if(!this.state.isWeekOneLockedOut){
-
-            if(evt.currentTarget.name === 'tylerCameronRadios'){
+        if(!this.state.isWeekTwoLockedOut){
+                        
+            picks.isHotTubWeekTwo = this.handleBooleanEventChange(evt, 'isHotTubWeekTwoRadios', picks.isHotTubWeekTwo);                
+            picks.isTylerCameronApperanceWeek2 = this.handleBooleanEventChange(evt, 'isTylerCameronApperanceWeek2Radios', picks.isTylerCameronApperanceWeek2);
             
-                if(evt.currentTarget.id === 'yes'){
-                    if(evt.currentTarget.checked){
-                        picks.isTylerCameronApperance = constants.TRUE;
-                    }
-                }else if(evt.currentTarget.id === 'no'){
-                    if(evt.currentTarget.checked){
-                        picks.isTylerCameronApperance = constants.FALSE;
-                    }
-                }
-            }
+        }
+
+        if(!this.state.isWeekOneLockedOut){
+                        
+            picks.isTylerCameronApperance = this.handleBooleanEventChange(evt, 'tylerCameronRadios', picks.isTylerCameronApperance);
         }
         
 
@@ -164,31 +123,36 @@ class BatchelorGame extends React.Component {
 
         this.savePicks(picks);
     }
+
+    handleBooleanEventChange(evt, evtName, choice){
+        
+        if(evt.currentTarget.name === evtName){
+            if(evt.currentTarget.id === 'yes'){
+                if(evt.currentTarget.checked){
+                    choice = constants.TRUE;
+                }
+            }else if(evt.currentTarget.id === 'no'){
+                if(evt.currentTarget.checked){
+                    choice = constants.FALSE;
+                }
+            }
+        }                
+
+        return choice;
+    }
    
     removeSelection(id, listId){
-        
-        this.applyLockouts();
-
+      
         let picks = this.state.picks;
       
-        if(!this.state.isSeasonLongLockedOut){
-            if(listId === 'final-six'){
-                picks.finalSix = this.arrayRemoveByValue(picks.finalSix, id);
-            }
-    
-            if(listId === 'final-four'){
-                picks.finalFour = this.arrayRemoveByValue(picks.finalFour, id);
-            }
-    
-            if(listId === 'final-two'){
-                picks.finalTwo = this.arrayRemoveByValue(picks.finalTwo, id);
-            }
-    
-            if(listId === 'final-one'){
-                picks.finalOne = -1;
+        //WEEK 2
+        if(!this.state.isWeekTwoLockedOut){
+            if(listId === 'first-one-on-one-date'){
+                picks.firstOneOnOneDate = -1;
             }
         }
 
+        //WEEK 1
         if(!this.state.isWeekOneLockedOut){
             if(listId === 'first-wearing-costume'){
                 picks.firstWearingCostume = -1;
@@ -210,6 +174,26 @@ class BatchelorGame extends React.Component {
                 picks.firstTears = -1;
             }
         }        
+
+        //SEASON
+                
+        if(!this.state.isSeasonLongLockedOut){
+            if(listId === 'final-six'){
+                picks.finalSix = this.arrayRemoveByValue(picks.finalSix, id);
+            }
+    
+            if(listId === 'final-four'){
+                picks.finalFour = this.arrayRemoveByValue(picks.finalFour, id);
+            }
+    
+            if(listId === 'final-two'){
+                picks.finalTwo = this.arrayRemoveByValue(picks.finalTwo, id);
+            }
+    
+            if(listId === 'final-one'){
+                picks.finalOne = -1;
+            }
+        }
         
         this.setState({
             picks: picks
@@ -259,6 +243,7 @@ class BatchelorGame extends React.Component {
         
         let picks = this.state.picks;
 
+        //SEASON
         if(!this.state.isSeasonLongLockedOut){
           
             picks.finalSix = this.handleMultiDragAdd(picks.finalSix, this.state.picks.finalSix, 'final-six', result, 6);
@@ -268,52 +253,19 @@ class BatchelorGame extends React.Component {
        
         }
 
+        //WEEK 2
+        if(!this.state.isWeekTwoLockedOut){
+            picks.firstOneOnOneDate = this.handleSingleDragAdd(picks.firstOneOnOneDate, this.state.picks.firstOneOnOneDate, 'first-one-on-one-date', result);
+        }
+
+        //WEEK 1
         if(!this.state.isWeekOneLockedOut){
-            if(destination && destination.droppableId === 'first-wearing-costume'){
             
-                if(this.state.picks.firstWearingCostume >= 1){
-                    toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-                }else {
-                    picks.firstWearingCostume = this.state.picks.firstWearingCostume;
-                    picks.firstWearingCostume = result.draggableId;
-                }
-            }
-    
-            if(destination && destination.droppableId === 'first-impression'){
-                if(this.state.picks.firstImpressionRose >= 1){
-                    toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-                }else {
-                    picks.firstImpressionRose = this.state.picks.firstImpressionRose;
-                    picks.firstImpressionRose = result.draggableId;
-                }
-            }
-    
-            if(destination && destination.droppableId === 'first-out-of-limo'){
-                if(this.state.picks.firstOutOfLimo >= 1){
-                    toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-                }else {
-                    picks.firstOutOfLimo = this.state.picks.firstOutOfLimo;
-                    picks.firstOutOfLimo = result.draggableId;
-                }
-            }
-    
-            if(destination && destination.droppableId === 'first-kiss'){
-                if(this.state.picks.firstKiss >= 1){
-                    toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-                }else{
-                    picks.firstKiss = this.state.picks.firstKiss;
-                    picks.firstKiss = result.draggableId;
-                }
-            }
-            
-            if(destination && destination.droppableId === 'first-tears'){
-                if(this.state.picks.firstTears >= 1){
-                    toast("You must remove a contestant first! (1 Max)", { type: toast.TYPE.ERROR, hideProgressBar: true, autoClose: 2500});
-                }else{
-                    picks.firstTears = this.state.picks.firstTears;
-                    picks.firstTears = result.draggableId;
-                }
-            }
+            picks.firstWearingCostume = this.handleSingleDragAdd(picks.firstWearingCostume, this.state.picks.firstWearingCostume, 'first-wearing-costume', result);
+            picks.firstImpressionRose = this.handleSingleDragAdd(picks.firstImpressionRose, this.state.picks.firstImpressionRose, 'first-impression-rose', result)
+            picks.firstOutOfLimo = this.handleSingleDragAdd(picks.firstOutOfLimo, this.state.firstOutOfLimo, 'first-out-of-limo', result);
+            picks.firstKiss = this.handleSingleDragAdd(picks.firstKiss, this.state.picks.firstKiss, 'first-kiss', result);
+            picks.firstTears = this.handleSingleDragAdd(picks.firstTears, this.state.picks.firstTears, 'first-tears', result);
         }
                 
         this.setState({
@@ -382,12 +334,30 @@ class BatchelorGame extends React.Component {
                                 <h3>Week 2 Questions</h3>
                                 <h4>Answers lock on January 11th at 8pm EST</h4>
                                 
-                                <Card>
-                                    <Card.Body>
-                                        <Card.Title>Questions Available Thursday</Card.Title>
-                                        <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
-                                    </Card.Body>
-                                </Card>     
+                                <SinglePickDrag 
+                                    isLocked={this.state.isWeekTwoLockedOut}
+                                    droppableId='first-one-on-one-date'
+                                    pick={this.state.picks.firstOneOnOneDate} 
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='First One on One Date (10 points)'
+                                    subtitle='Recipient of the 1st One on One date card'/>   
+
+                                <BooleanPick
+                                        isLocked={this.state.isWeekTwoLockedOut}
+                                        pick={this.state.picks.isHotTubWeekTwo}
+                                        title='Will someone get in a Hot Tub with the Bachelor'
+                                        subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, do not count'
+                                        radiosIds='isHotTubWeekTwoRadios'
+                                        handleChange={this.handleChange}/>    
+
+                                <BooleanPick
+                                        isLocked={this.state.isWeekTwoLockedOut}
+                                        pick={this.state.picks.isTylerCameronApperanceWeek2}
+                                        title='Tyler Cameron Makes an Appearance? (5 points)'
+                                        subtitle='Must be shown on broadcast (excluding previews)'
+                                        radiosIds='isTylerCameronApperanceWeek2Radios'
+                                        handleChange={this.handleChange}/>    
     
                                 <h3>Season Questions</h3>
                                 <h4>Answers due by February 1st at 8pm EST</h4>
@@ -471,9 +441,7 @@ class BatchelorGame extends React.Component {
                                         pick={this.state.picks.isTylerCameronApperance}
                                         title='Tyler Cameron Makes an Appearance? (5 points)'
                                         subtitle='Must be shown on broadcast (excluding previews)'
-                                        yesId='tylerCameronYes'
-                                        noId='tylerCameronNo'
-                                        radiosId='tylerCameronRadios'
+                                        radiosIds='tylerCameronRadios'
                                         handleChange={this.handleChange}/>
                                 
                                     <SinglePickDrag 

@@ -10,7 +10,6 @@ class BooleanPick extends React.Component{
     }
 
     handleChange(evt){
-        
         this.props.handleChange(evt);
     }
 
@@ -24,8 +23,8 @@ class BooleanPick extends React.Component{
                         <Card.Subtitle>{this.props.subtitle}</Card.Subtitle>
                         
                         <Form.Group>
-                            <Form.Check id={this.props.yesId} checked={this.props.pick === constants.TRUE} type="radio" name={this.props.radiosIds} label="Yes" onChange={this.handleChange}/>
-                            <Form.Check id={this.props.noId} checked={this.props.pick === constants.FALSE} type="radio" name={this.props.radiosIds} label="No" onChange={this.handleChange}/>
+                            <Form.Check id="yes" checked={this.props.pick === constants.TRUE} type="radio" name={this.props.radiosIds} label="Yes" onChange={this.handleChange}/>
+                            <Form.Check id="no" checked={this.props.pick === constants.FALSE} type="radio" name={this.props.radiosIds} label="No" onChange={this.handleChange}/>
                         </Form.Group>
 
                     </Card.Body>
