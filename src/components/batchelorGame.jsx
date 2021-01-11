@@ -86,12 +86,13 @@ class BatchelorGame extends React.Component {
     }    
     
     handleBooleanEventChange(evt, evtName, choice){
-        
-        if(!choice){
-            choice = constants.NO_SELECTION;
-        }
-
+                
         if(evt.currentTarget.name === evtName){
+
+            if(!choice){
+                choice = constants.NO_SELECTION;
+            }
+
             if(evt.currentTarget.id === 'yes'){
                 if(evt.currentTarget.checked){
                     choice = constants.TRUE;

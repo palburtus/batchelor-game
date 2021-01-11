@@ -9,6 +9,7 @@ export function defaultPicks() {
         finalFour: [],
         finalTwo: [],
         finalOne: -1,
+        //WEEK 1
         isTylerCameronApperance: NO_SELECTION,
         firstImpressionRose: -1,
         firstOutOfLimo: -1,
@@ -24,7 +25,8 @@ export function defaultPicks() {
         firstGroupDateRoseWeekTwo: NO_SELECTION,
         isNewContestantIntroducedWeekTwo: NO_SELECTION,
         firstInterruptionWeekTwo: NO_SELECTION,
-        //TODO (can be implemented after 1st episode)        
+        //TODO (can be implemented after 1st episode)
+        firstTwoOneOne: [],        
         firstToLeaveOnOwn: -1         
     }       
 }
