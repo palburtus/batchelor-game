@@ -1,7 +1,8 @@
-export const TRUE = 1;
-export const FALSE = 0;
-export const NO_SELECTION = -1;
-export const NOT_SETTLED = 999;
+export const TRUE           = 1;
+export const FALSE          = 0;
+export const NO_SELECTION   = -1;
+export const NOT_SETTLED    = 999;
+export const NO_ACTION      = 777;
 
 export function defaultPicks() {
     return {
@@ -43,14 +44,14 @@ export const perfectPicks = {
     firstTears: '26',
     firstWearingCostume: '8',
     //WEEK 2
-    firstOneOnOneDate: NOT_SETTLED,
-    isHotTubWeekTwo: NOT_SETTLED,
-    isTylerCameronApperanceWeek2: NOT_SETTLED,
-    isLiveMusicPlayedWeekTwo: NOT_SETTLED,
-    requiresMedicalAttentionWeekTwo: NOT_SETTLED,
-    firstGroupDateRoseWeekTwo: NOT_SETTLED,
-    isNewContestantIntroducedWeekTwo: NOT_SETTLED,
-    firstInterruptionWeekTwo: NOT_SETTLED,
+    firstOneOnOneDate: '6',
+    isHotTubWeekTwo: TRUE,
+    isTylerCameronApperanceWeek2: FALSE,
+    isLiveMusicPlayedWeekTwo: FALSE,
+    requiresMedicalAttentionWeekTwo: '28',
+    firstGroupDateRoseWeekTwo: '20',
+    isNewContestantIntroducedWeekTwo: FALSE,
+    firstInterruptionWeekTwo: NO_ACTION,
     //TODO (can be implemented after 1st episode)   
     firstToLeaveOnOwn: NOT_SETTLED                
 }
