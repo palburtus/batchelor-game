@@ -160,6 +160,18 @@ class BatchelorGame extends React.Component {
       
         let picks = this.state.picks;
      
+        //WEEK 3
+        if(!this.state.isWeekThreeLockedOut){
+
+            if(listId === 'first-one-on-one-date-week-three'){
+                picks.firstOneOnOneDateWeekThree = -1;
+            }
+
+            if(listId === 'first-group-date-rose-week-three'){
+                picks.firstGroupDateRoseWeekThree = -1
+            }
+        }
+
         //WEEK 2
         if(!this.state.isWeekTwoLockedOut){
             if(listId === 'first-one-on-one-date'){
@@ -244,6 +256,13 @@ class BatchelorGame extends React.Component {
        
         }
 
+        //WEEK 3
+        if(!this.state.isWeekThreeLockedOut){
+            
+            picks.firstOneOnOneDateWeekThree = this.handleSingleDragAdd(picks.firstOneOnOneDateWeekThree, this.state.picks.firstOneOnOneDateWeekThree, 'first-one-on-one-date-week-three', result);
+            picks.firstGroupDateRoseWeekThree = this.handleSingleDragAdd(picks.firstGroupDateRoseWeekThree, this.state.picks.firstGroupDateRoseWeekThree, 'first-group-date-rose-week-three', result);
+        }
+
         //WEEK 2
         if(!this.state.isWeekTwoLockedOut){
             picks.firstOneOnOneDate = this.handleSingleDragAdd(picks.firstOneOnOneDate, this.state.picks.firstOneOnOneDate, 'first-one-on-one-date', result);        
@@ -273,6 +292,15 @@ class BatchelorGame extends React.Component {
        
         let picks = this.state.picks;
         
+        //WEEK 3
+        if(!this.state.isWeekThreeLockedOut){
+            picks.isTylerCameronApperanceWeekThree = this.handleBooleanEventChange(evt, 'isTylerCameronApperanceWeekThree', picks.isTylerCameronApperanceWeekThree);
+            picks.isNewContestantIntroducedWeekThree = this.handleBooleanEventChange(evt, 'isNewContestantIntroducedWeekThree', picks.isNewContestantIntroducedWeekThree);
+            picks.isHotTubWeekThree = this.handleBooleanEventChange(evt, 'isHotTubWeekThree', picks.isHotTubWeekThree);
+            picks.isVictoriaMarylynSurviveWeekThree = this.handleBooleanEventChange(evt, 'isVictoriaMarylynSurviveWeekThree', picks.isVictoriaMarylynSurviveWeekThree);
+        }
+
+        //WEEK 2
         if(!this.state.isWeekTwoLockedOut){                        
             picks.isHotTubWeekTwo = this.handleBooleanEventChange(evt, 'isHotTubWeekTwoRadios', picks.isHotTubWeekTwo);                
             picks.isTylerCameronApperanceWeek2 = this.handleBooleanEventChange(evt, 'isTylerCameronApperanceWeek2Radios', picks.isTylerCameronApperanceWeek2);
@@ -392,8 +420,57 @@ class BatchelorGame extends React.Component {
                                         <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
                                     </Card.Body>
                                 </Card>   
+                                                                
+                                <BooleanPick
+                                    isLocked={this.state.isWeekThreeLockedOut}
+                                    pick={this.state.picks.isTylerCameronApperanceWeekThree}
+                                    title='Tyler Cameron Makes an Appearance? (5 points)'
+                                    subtitle='Must be shown on broadcast (excluding previews)'
+                                    radiosIds='isTylerCameronApperanceWeekThree'
+                                    handleChange={this.handleChange}/>    
 
-                                    
+                                <SinglePickDrag
+                                    isLocked={this.state.isWeekThreeLockedOut}
+                                    droppableId='first-one-on-one-date-week-three'
+                                    pick={this.state.picks.firstOneOnOneDateWeekThree}
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='First One on One Date (10 points)'
+                                    subtitle='Recipient of the 1st One on One date card'/>      
+
+                                <SinglePickDrag
+                                    isLocked={this.state.isWeekThreeLockedOut}
+                                    droppableId='first-group-date-rose-week-three'
+                                    pick={this.state.picks.firstGroupDateRoseWeekThree}
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='First Group Date Rose (10 points)'
+                                    subtitle='Who receieves the rose on the first group date'/>     
+
+                                <BooleanPick
+                                    isLocked={this.state.isWeekThreeLockedOut}
+                                    pick={this.state.picks.isNewContestantIntroducedWeekThree} 
+                                    title='Will a New Contestant be Added (5 points)'
+                                    subtitle='Must be a contestant that was not previously eliminated and must be eligible for elimination if they do not receive a rose'
+                                    radiosIds='isNewContestantIntroducedWeekThree'
+                                    handleChange={this.handleChange}/>   
+
+                                <BooleanPick
+                                        isLocked={this.state.isWeekThreeLockedOut}
+                                        pick={this.state.picks.isHotTubWeekThree}
+                                        title='Will someone get in a Hot Tub with the Bachelor (5 points)'
+                                        subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, do not count'
+                                        radiosIds='isHotTubWeekThree'
+                                        handleChange={this.handleChange}/>  
+
+                                <BooleanPick
+                                        isLocked={this.state.isWeekThreeLockedOut}
+                                        pick={this.state.picks.isVictoriaMarylynSurviveWeekThree}
+                                        title='Will both Victoria and Marylyn recieve a rose in the next two rose ceremonies (5 points)'
+                                        subtitle='This includes the rose ceremony was still in progress at the end of episode 2 as well as the next rose ceremony after that'
+                                        radiosIds='isVictoriaMarylynSurviveWeekThree'
+                                        handleChange={this.handleChange}/>
+
                                 <h3>Season Questions</h3>
                                 <h4>Answers due by February 1st at 8pm EST</h4>
 
@@ -466,7 +543,7 @@ class BatchelorGame extends React.Component {
                                     <BooleanPick
                                         isLocked={this.state.isWeekTwoLockedOut}
                                         pick={this.state.picks.isNewContestantIntroducedWeekTwo} 
-                                        title='Will a New Contestant be Added'
+                                        title='Will a New Contestant be Added (5 points)'
                                         subtitle='Must be a contestant that was not previously eliminated and must be eligible for elimination if they do not receive a rose'
                                         radiosIds='isNewContestantIntroducedWeekTwo'
                                         handleChange={this.handleChange}/> 
@@ -509,7 +586,7 @@ class BatchelorGame extends React.Component {
                                     <BooleanPick
                                             isLocked={this.state.isWeekTwoLockedOut}
                                             pick={this.state.picks.isHotTubWeekTwo}
-                                            title='Will someone get in a Hot Tub with the Bachelor'
+                                            title='Will someone get in a Hot Tub with the Bachelor (5 points)'
                                             subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, do not count'
                                             radiosIds='isHotTubWeekTwoRadios'
                                             handleChange={this.handleChange}/>    

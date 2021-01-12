@@ -9,7 +9,7 @@ test('default picks to equal 0', () => {
 });
 
 
-test('perfect score to equal 335', () => {
+test('perfect score to equal 375', () => {
     
     let picks = {
         finalSix: [999, 1000, 1001, 1002, 1003, 1004],
@@ -31,14 +31,141 @@ test('perfect score to equal 335', () => {
         firstGroupDateRoseWeekTwo: '20',
         isNewContestantIntroducedWeekTwo: 0,
         firstInterruptionWeekTwo: 777,
+        //WEEK 3
+        firstOneOnOneDateWeekThree: 999,
+        firstGroupDateRoseWeekThree: 999,
+        isTylerCameronApperanceWeekThree: 999,
+        isNewContestantIntroducedWeekThree: 999,
+        isHotTubWeekThree: 999,
+        isVictoriaMarylynSurviveWeekThree: 999,
         //TODO (can be implemented after 1st episode)        
         firstToLeaveOnOwn: -1                
     }
 
     let result = gameService.getScore(picks);
 
-    expect(result).toBe(335);
+    expect(result).toBe(375);
 });
+
+test('will victoria and maryland survive rose ceremonies week correct 3 to equal 5', () => {
+
+    let picks = constants.defaultPicks();
+    picks.isVictoriaMarylynSurviveWeekThree = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('will victoria and maryland survive rose ceremonies week incorrect 3 to equal 5', () => {
+
+    let picks = constants.defaultPicks();
+    picks.isVictoriaMarylynSurviveWeekThree = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('will hot tub week three correct to equal 5', () => {
+
+    let picks = constants.defaultPicks();
+    picks.isHotTubWeekThree = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('will hot tub week three incorrect to equal 0', () => {
+
+    let picks = constants.defaultPicks();
+    picks.isHotTubWeekThree = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is new contestant introduced week three correct to equal 5', () => {
+
+    let picks = constants.defaultPicks();
+    picks.isNewContestantIntroducedWeekThree = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('is new contestant introduced week three incorrect to equal 0', () => {
+
+    let picks = constants.defaultPicks();
+    picks.isNewContestantIntroducedWeekThree = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('first one on one week three correct to equal 10', () => {
+
+    let picks = constants.defaultPicks();
+    picks.firstOneOnOneDateWeekThree = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('first one on one week three incorrect to equal 0', () => {
+
+    let picks = constants.defaultPicks();
+    picks.firstOneOnOneDateWeekThree = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('first group date rose week three correct to equal 10', () => {
+
+    let picks = constants.defaultPicks();
+    picks.firstGroupDateRoseWeekThree = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('first group date rose week three incorrect to equal 10', () => {
+
+    let picks = constants.defaultPicks();
+    picks.firstGroupDateRoseWeekThree = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('tyler cameron apperance week three correct to equal 5', () =>{
+
+    let picks = constants.defaultPicks();
+    picks.isTylerCameronApperanceWeekThree = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('tyler cameron apperance week three incorrect to equal 0', () =>{
+
+    let picks = constants.defaultPicks();
+    picks.isTylerCameronApperanceWeekThree = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
 
 test('first interruption week 2 correct to equal 10', () => {
 
