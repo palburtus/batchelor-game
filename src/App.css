@@ -133,4 +133,8 @@ h4 {
 
 .answers p, li{
   font-size: 0.7em;
+  text-align: left;
 } 
+.answers-gif{
+  margin-bottom: 25px;
+}

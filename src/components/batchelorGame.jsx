@@ -11,6 +11,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
+//TODO remove after week 2 is not current
+import interrupt from '../assets/interrupt.gif';
+import cheerocracy from '../assets/cheerocracy.gif';
 
 class BatchelorGame extends React.Component {
     
@@ -22,7 +25,8 @@ class BatchelorGame extends React.Component {
         this.state = ({
             picks: picks,
             isWeekOneLockedOut: true,
-            isWeekTwoLockedOut: false,
+            isWeekTwoLockedOut: true,
+            isWeekThreeLockedOut: false,
             isSeasonLongLockedOut: false,
             infoMessage: '',
             warningMessage: '',
@@ -299,6 +303,37 @@ class BatchelorGame extends React.Component {
                 <div>
                     <Container>
                         <ToastContainer />
+                        <Row>
+                            <Col>
+                            <div className="answers">
+                                <h3>Question Results</h3>    
+
+                                <h4>Week 2 Answers</h4>
+                                <p><strong>First to Interrupt:</strong> No One (more info below)</p>
+                                <ul>
+                                    <li>While Victoria did briefly cause an interruption during the wedding dress contest it did not meet the criteria for this question, the spirit of which involves a contestant interrupting the bachelor and someone else's conversation during a date, cocktail hour, etc</li>
+                                    <li>For the sake of transparency I feel it is worth mentioning that I had Victoria for this answer</li>
+                                </ul>
+                                
+                                <img src={interrupt} className="answers-gif" width="300" alt="interrupt"/>
+
+                                <p><strong>Will a new contestant be added:</strong> No</p>
+                                <p><strong>First Group Date Rose: </strong> Lauren</p>
+                                <p><strong>First to Require Medical Attention <del>on a group date</del>: </strong> Sarah (more info below)</p>
+                                <ul>
+                                    <li>While the question clearly stated that medical attention had to be required on a group date that did not happen so I decided to expand the scope of the question to the entire episode</li>
+                                    <li>Lesson Learned... Since we will have questions that by their very nature might not have a correct answer I will try to broaden questions like these in the future</li>
+                                    <li>Most Importantly, I believe this is a fair change especially since your's truely did not benefit from this outcome</li>
+                                    <li>Even more importantly I reserve the right to make these type of changes in the future when the I believe the spirit of the question is more important than following the letter of the law</li>
+                                </ul>
+                                
+                                <img src={cheerocracy} className="answers-gif" width="300" height="200" alt="cheerocracy"/>
+                                <p>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab</p>
+                                <Card></Card>
+                                
+                            </div>
+                            </Col>
+                        </Row>
                         <DragDropContext onDragEnd={this.onDragEnd}>
                             <Row>
                                 <Col>
@@ -340,78 +375,12 @@ class BatchelorGame extends React.Component {
                                     </Card>
                                 </Col>
                                 <Col>
+                                                
+                                <h3>Week 3 Questions</h3>
+                                <h4>Answers lock on January 18th at 8pm EST</h4>
 
-                                <h3>Week 2 Questions</h3>
-                                <h4>Answers lock on January 11th at 8pm EST</h4>
 
-                                <SinglePickDrag 
-                                    isLocked={this.state.isWeekTwoLockedOut}
-                                    droppableId='first-interruption-week-two'
-                                    pick={this.state.picks.firstInterruptionWeekTwo} 
-                                    onDragEnd={this.onDragEnd}
-                                    removeSelection={this.removeSelection}
-                                    title='First to Interrupt Bachelor and Another Contestant (10 points)'
-                                    subtitle='First contestant to interrupt a one-on-one conversation with the Bachelor and another contestant'/>  
-
-                                <BooleanPick
-                                    isLocked={this.state.isWeekTwoLockedOut}
-                                    pick={this.state.picks.isNewContestantIntroducedWeekTwo} 
-                                    title='Will a New Contestant be Added'
-                                    subtitle='Must be a contestant that was not previously eliminated and must be eligible for elimination if they do not receive a rose'
-                                    radiosIds='isNewContestantIntroducedWeekTwo'
-                                    handleChange={this.handleChange}/> 
-
-                                <SinglePickDrag 
-                                    isLocked={this.state.isWeekTwoLockedOut}
-                                    droppableId='first-group-date-rose-week-two'
-                                    pick={this.state.picks.firstGroupDateRoseWeekTwo} 
-                                    onDragEnd={this.onDragEnd}
-                                    removeSelection={this.removeSelection}
-                                    title='First Group Date Rose (10 points)'
-                                    subtitle='Who receieves the rose on the first group date'/>   
-
-                                <SinglePickDrag 
-                                    isLocked={this.state.isWeekTwoLockedOut}
-                                    droppableId='requires-medical-attention-week-two'
-                                    pick={this.state.picks.requiresMedicalAttentionWeekTwo} 
-                                    onDragEnd={this.onDragEnd}
-                                    removeSelection={this.removeSelection}
-                                    title='First to Require Medical Attention on Group Date (10 points)'
-                                    subtitle='Must cause contestant to stop current activity and cause intervention from first-aid or producers.  If this does not happen no points will be awarded'/>   
-
-                                <BooleanPick 
-                                    isLocked={this.state.isWeekTwoLockedOut}
-                                    pick={this.state.picks.isLiveMusicPlayedWeekTwo} 
-                                    title='Will Live Music be Played on a Date (10 points)'
-                                    subtitle='Must be played while on any type of date'
-                                    radiosIds='isLiveMusicPlayedWeekTwo'
-                                    handleChange={this.handleChange}/>   
-
-                                <SinglePickDrag 
-                                    isLocked={this.state.isWeekTwoLockedOut}
-                                    droppableId='first-one-on-one-date'
-                                    pick={this.state.picks.firstOneOnOneDate} 
-                                    onDragEnd={this.onDragEnd}
-                                    removeSelection={this.removeSelection}
-                                    title='First One on One Date (10 points)'
-                                    subtitle='Recipient of the 1st One on One date card'/>   
-
-                                <BooleanPick
-                                        isLocked={this.state.isWeekTwoLockedOut}
-                                        pick={this.state.picks.isHotTubWeekTwo}
-                                        title='Will someone get in a Hot Tub with the Bachelor'
-                                        subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, do not count'
-                                        radiosIds='isHotTubWeekTwoRadios'
-                                        handleChange={this.handleChange}/>    
-
-                                <BooleanPick
-                                        isLocked={this.state.isWeekTwoLockedOut}
-                                        pick={this.state.picks.isTylerCameronApperanceWeek2}
-                                        title='Tyler Cameron Makes an Appearance? (5 points)'
-                                        subtitle='Must be shown on broadcast (excluding previews)'
-                                        radiosIds='isTylerCameronApperanceWeek2Radios'
-                                        handleChange={this.handleChange}/>    
-    
+                                    
                                 <h3>Season Questions</h3>
                                 <h4>Answers due by February 1st at 8pm EST</h4>
 
@@ -468,6 +437,79 @@ class BatchelorGame extends React.Component {
                                 
                                 <Col>
                                     <h2>Previous Week's Questions</h2>
+
+                                    <h3>Week 2 Questions</h3>
+                                    <h4>Answers submitted January 11th at 8pm EST</h4>
+
+                                    <SinglePickDrag 
+                                        isLocked={this.state.isWeekTwoLockedOut}
+                                        droppableId='first-interruption-week-two'
+                                        pick={this.state.picks.firstInterruptionWeekTwo} 
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='First to Interrupt Bachelor and Another Contestant (10 points)'
+                                        subtitle='First contestant to interrupt a one-on-one conversation with the Bachelor and another contestant'/>  
+
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekTwoLockedOut}
+                                        pick={this.state.picks.isNewContestantIntroducedWeekTwo} 
+                                        title='Will a New Contestant be Added'
+                                        subtitle='Must be a contestant that was not previously eliminated and must be eligible for elimination if they do not receive a rose'
+                                        radiosIds='isNewContestantIntroducedWeekTwo'
+                                        handleChange={this.handleChange}/> 
+
+                                    <SinglePickDrag 
+                                        isLocked={this.state.isWeekTwoLockedOut}
+                                        droppableId='first-group-date-rose-week-two'
+                                        pick={this.state.picks.firstGroupDateRoseWeekTwo} 
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='First Group Date Rose (10 points)'
+                                        subtitle='Who receieves the rose on the first group date'/>   
+
+                                    <SinglePickDrag 
+                                        isLocked={this.state.isWeekTwoLockedOut}
+                                        droppableId='requires-medical-attention-week-two'
+                                        pick={this.state.picks.requiresMedicalAttentionWeekTwo} 
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='First to Require Medical Attention on Group Date (10 points)'
+                                        subtitle='Must cause contestant to stop current activity and cause intervention from first-aid or producers.  If this does not happen no points will be awarded'/>   
+
+                                    <BooleanPick 
+                                        isLocked={this.state.isWeekTwoLockedOut}
+                                        pick={this.state.picks.isLiveMusicPlayedWeekTwo} 
+                                        title='Will Live Music be Played on a Date (10 points)'
+                                        subtitle='Must be played while on any type of date'
+                                        radiosIds='isLiveMusicPlayedWeekTwo'
+                                        handleChange={this.handleChange}/>   
+
+                                    <SinglePickDrag 
+                                        isLocked={this.state.isWeekTwoLockedOut}
+                                        droppableId='first-one-on-one-date'
+                                        pick={this.state.picks.firstOneOnOneDate} 
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='First One on One Date (10 points)'
+                                        subtitle='Recipient of the 1st One on One date card'/>   
+
+                                    <BooleanPick
+                                            isLocked={this.state.isWeekTwoLockedOut}
+                                            pick={this.state.picks.isHotTubWeekTwo}
+                                            title='Will someone get in a Hot Tub with the Bachelor'
+                                            subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, do not count'
+                                            radiosIds='isHotTubWeekTwoRadios'
+                                            handleChange={this.handleChange}/>    
+
+                                    <BooleanPick
+                                            isLocked={this.state.isWeekTwoLockedOut}
+                                            pick={this.state.picks.isTylerCameronApperanceWeek2}
+                                            title='Tyler Cameron Makes an Appearance? (5 points)'
+                                            subtitle='Must be shown on broadcast (excluding previews)'
+                                            radiosIds='isTylerCameronApperanceWeek2Radios'
+                                            handleChange={this.handleChange}/>    
+
+
                                     <h3>Week 1 Questions</h3>
                                     <h4>Answers submitted January 4th at 8pm EST</h4>
                                     

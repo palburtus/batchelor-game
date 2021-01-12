@@ -2,6 +2,8 @@ import React from 'react';
 import { Container, Col, Row, Card, Table} from 'react-bootstrap';
 import * as picksRepository from '../firebaseFirestoreRepository';
 import * as gameService from '../gameService';
+import interrupt from '../assets/interrupt.gif';
+import cheerocracy from '../assets/cheerocracy.gif';
 
 class Results extends React.Component {
 
@@ -94,8 +96,12 @@ class Results extends React.Component {
                         </Col>
                         
                         <Col>
+                        
                             <div className="answers">
                                 <h3>Question Results</h3>    
+
+                                
+                                
                                 <h4>Week 1 Answers</h4>
                                 <p><strong>First Impression Rose:</strong> Abigail</p>
                                 <p><strong>First Out of Limo:</strong> Bri</p>
