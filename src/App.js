@@ -2,7 +2,6 @@ import React from "react";
 import BatchelorGame from './components/batchelorGame';
 import Results from './components/results';
 import {Nav, Tabs, Tab} from 'react-bootstrap';
-import logo from './logo.svg';
 import './App.css';
 
 
