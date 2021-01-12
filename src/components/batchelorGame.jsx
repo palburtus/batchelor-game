@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Col, Row, Card} from 'react-bootstrap';
+import { Container, Col, Row, Card, Alert} from 'react-bootstrap';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { ToastContainer, toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
@@ -14,6 +14,7 @@ import BooleanPick from './booleanPick';
 //TODO remove after week 2 is not current
 import interrupt from '../assets/interrupt.gif';
 import cheerocracy from '../assets/cheerocracy.gif';
+
 
 class BatchelorGame extends React.Component {
     
@@ -318,6 +319,9 @@ class BatchelorGame extends React.Component {
                                 <img src={interrupt} className="answers-gif" width="300" alt="interrupt"/>
 
                                 <p><strong>Will a new contestant be added:</strong> No</p>
+                                <p><strong>Will live music be played:</strong> No</p>
+                                <p><strong>Hotub with the batchelor: </strong> Yes</p>
+                                <p><strong>Will Tyler Cameron make an appearance:</strong> No</p>
                                 <p><strong>First Group Date Rose: </strong> Lauren</p>
                                 <p><strong>First to Require Medical Attention <del>on a group date</del>: </strong> Sarah (more info below)</p>
                                 <ul>
@@ -328,7 +332,11 @@ class BatchelorGame extends React.Component {
                                 </ul>
                                 
                                 <img src={cheerocracy} className="answers-gif" width="300" height="200" alt="cheerocracy"/>
-                                <p>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab</p>
+                                
+                                <Alert key='previous-results' variant='info'>
+                                <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
+                                </Alert>
+                                
                                 <Card></Card>
                                 
                             </div>
@@ -378,7 +386,12 @@ class BatchelorGame extends React.Component {
                                                 
                                 <h3>Week 3 Questions</h3>
                                 <h4>Answers lock on January 18th at 8pm EST</h4>
-
+                                <Card>
+                                    <Card.Body>
+                                        <Card.Title>Questions Available Thursday</Card.Title>
+                                        <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
+                                    </Card.Body>
+                                </Card>   
 
                                     
                                 <h3>Season Questions</h3>

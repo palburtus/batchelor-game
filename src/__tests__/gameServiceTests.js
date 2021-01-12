@@ -23,14 +23,14 @@ test('perfect score to equal 335', () => {
         firstTears: '26',
         firstWearingCostume: '8',
         //WEEK 2
-        firstOneOnOneDate: 999,
-        isHotTubWeekTwo: 999,
-        isTylerCameronApperanceWeek2: 999,
-        isLiveMusicPlayedWeekTwo: 999,
-        requiresMedicalAttentionWeekTwo: 999,
-        firstGroupDateRoseWeekTwo: 999,
-        isNewContestantIntroducedWeekTwo: 999,
-        firstInterruptionWeekTwo: 999,
+        firstOneOnOneDate: '6',
+        isHotTubWeekTwo: 1,
+        isTylerCameronApperanceWeek2: 0,
+        isLiveMusicPlayedWeekTwo: 0,
+        requiresMedicalAttentionWeekTwo: '28',
+        firstGroupDateRoseWeekTwo: '20',
+        isNewContestantIntroducedWeekTwo: 0,
+        firstInterruptionWeekTwo: 777,
         //TODO (can be implemented after 1st episode)        
         firstToLeaveOnOwn: -1                
     }
@@ -43,7 +43,7 @@ test('perfect score to equal 335', () => {
 test('first interruption week 2 correct to equal 10', () => {
 
     let picks = constants.defaultPicks();
-    picks.firstInterruptionWeekTwo = 999;
+    picks.firstInterruptionWeekTwo = 777;
 
     let result = gameService.getScore(picks);
 
@@ -53,7 +53,7 @@ test('first interruption week 2 correct to equal 10', () => {
 test('first interruption week 2 incorrect to equal 0', () => {
 
     let picks = constants.defaultPicks();
-    picks.firstInterruptionWeekTwo = 998;
+    picks.firstInterruptionWeekTwo = 776;
 
     let result = gameService.getScore(picks);
 
@@ -63,7 +63,7 @@ test('first interruption week 2 incorrect to equal 0', () => {
 test('will new contestant be added week 2 correct to equal 5', () => {
 
     let picks = constants.defaultPicks();
-    picks.isNewContestantIntroducedWeekTwo = 999;
+    picks.isNewContestantIntroducedWeekTwo = 0;
 
     let result = gameService.getScore(picks);
 
@@ -73,7 +73,7 @@ test('will new contestant be added week 2 correct to equal 5', () => {
 test('will new contestant be added week 2 incorrect to equal 0', () => {
 
     let picks = constants.defaultPicks();
-    picks.isNewContestantIntroducedWeekTwo = 998;
+    picks.isNewContestantIntroducedWeekTwo = 1;
 
     let result = gameService.getScore(picks);
 
@@ -83,7 +83,7 @@ test('will new contestant be added week 2 incorrect to equal 0', () => {
 test('first group date rose week 2 correct to equal 10', () => {
 
     let picks = constants.defaultPicks();
-    picks.firstGroupDateRoseWeekTwo = 999;
+    picks.firstGroupDateRoseWeekTwo = '20';
 
     let result = gameService.getScore(picks);
 
@@ -103,7 +103,7 @@ test('first group date rose week 2 incorrect to equal 0', () => {
 test('requires medical attention correct to equal 10', () => {
     
     let picks = constants.defaultPicks();
-    picks.requiresMedicalAttentionWeekTwo = 999;
+    picks.requiresMedicalAttentionWeekTwo = '28';
 
     let result = gameService.getScore(picks);
 
@@ -113,7 +113,7 @@ test('requires medical attention correct to equal 10', () => {
 test('requires medical attention incorrect to equal 0', () => {
     
     let picks = constants.defaultPicks();
-    picks.requiresMedicalAttentionWeekTwo = 998;
+    picks.requiresMedicalAttentionWeekTwo = '998';
 
     let result = gameService.getScore(picks);
 
@@ -123,7 +123,7 @@ test('requires medical attention incorrect to equal 0', () => {
 test('is live music week two correct to equal 5', () => {
 
     let picks = constants.defaultPicks();
-    picks.isLiveMusicPlayedWeekTwo = 999;
+    picks.isLiveMusicPlayedWeekTwo = 0;
 
     let result = gameService.getScore(picks);
 
@@ -133,7 +133,7 @@ test('is live music week two correct to equal 5', () => {
 test('is live music week two incorrect to equal 0', () => {
 
     let picks = constants.defaultPicks();
-    picks.isLiveMusicPlayedWeekTwo = 998;
+    picks.isLiveMusicPlayedWeekTwo = 1;
 
     let result = gameService.getScore(picks);
 
@@ -143,7 +143,7 @@ test('is live music week two incorrect to equal 0', () => {
 test('is hot tub week two correct to equal 5', () => {
     
     let picks = constants.defaultPicks();
-    picks.isHotTubWeekTwo = 999
+    picks.isHotTubWeekTwo = 1
 
     let result = gameService.getScore(picks);
 
@@ -153,7 +153,7 @@ test('is hot tub week two correct to equal 5', () => {
 test('is hot tub week two incorrect to equal 0', () => {
     
     let picks = constants.defaultPicks();
-    picks.isHotTubWeekTwo = 998
+    picks.isHotTubWeekTwo = 0
 
     let result = gameService.getScore(picks);
 
@@ -163,7 +163,7 @@ test('is hot tub week two incorrect to equal 0', () => {
 test('first one on one date correct to equal 10', () => {
 
     let picks = constants.defaultPicks();
-    picks.firstOneOnOneDate = 999
+    picks.firstOneOnOneDate = '6';
 
     let result = gameService.getScore(picks);
 
@@ -183,7 +183,7 @@ test('first one on one date incorrect to equal 0', () => {
 test('tyler cameron week 2 apperance correct to equal 5', () => {
 
     let picks = constants.defaultPicks();
-    picks.isTylerCameronApperanceWeek2 = 999;
+    picks.isTylerCameronApperanceWeek2 = 0;
 
     let result = gameService.getScore(picks);
 
@@ -193,7 +193,7 @@ test('tyler cameron week 2 apperance correct to equal 5', () => {
 test('tyler cameron week 2 apperance incorrect to equal 0', () => {
 
     let picks = constants.defaultPicks();
-    picks.isTylerCameronApperanceWeek2 = 998;
+    picks.isTylerCameronApperanceWeek2 = 1;
 
     let result = gameService.getScore(picks);
 
