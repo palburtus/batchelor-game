@@ -11,9 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
-//TODO remove after week 2 is not current
-import interrupt from '../assets/interrupt.gif';
-import cheerocracy from '../assets/cheerocracy.gif';
+
 
 
 class BatchelorGame extends React.Component {
@@ -170,6 +168,10 @@ class BatchelorGame extends React.Component {
             if(listId === 'first-group-date-rose-week-three'){
                 picks.firstGroupDateRoseWeekThree = -1
             }
+
+            if(listId === 'is-not-on-any-date-week-three'){
+                picks.isNotOnAnyDateWeekThree = -1;
+            }
         }
 
         //WEEK 2
@@ -261,6 +263,7 @@ class BatchelorGame extends React.Component {
             
             picks.firstOneOnOneDateWeekThree = this.handleSingleDragAdd(picks.firstOneOnOneDateWeekThree, this.state.picks.firstOneOnOneDateWeekThree, 'first-one-on-one-date-week-three', result);
             picks.firstGroupDateRoseWeekThree = this.handleSingleDragAdd(picks.firstGroupDateRoseWeekThree, this.state.picks.firstGroupDateRoseWeekThree, 'first-group-date-rose-week-three', result);
+            picks.isNotOnAnyDateWeekThree = this.handleSingleDragAdd(picks.isNotOnAnyDateWeekThree, this.state.picks.isNotOnAnyDateWeekThree, 'is-not-on-any-date-week-three', result);
         }
 
         //WEEK 2
@@ -332,44 +335,14 @@ class BatchelorGame extends React.Component {
                 <div>
                     <Container>
                         <ToastContainer />
-                        <Row>
+                        {/*<Row>
                             <Col>
                                 <div className="answers">
                                     <h3>Question Results</h3>    
 
-                                    <h4>Week 2 Answers</h4>
-                                    <p><strong>First to Interrupt:</strong> No One (more info below)</p>
-                                    <ul>
-                                        <li>While Victoria did briefly cause an interruption during the wedding dress contest it did not meet the criteria for this question, the spirit of which involves a contestant interrupting the bachelor and someone else's conversation during a date, cocktail hour, etc</li>
-                                        <li>For the sake of transparency I feel it is worth mentioning that I had Victoria for this answer</li>
-                                    </ul>
-                                    
-                                    <img src={interrupt} className="answers-gif" width="300" alt="interrupt"/>
-
-                                    <p><strong>Will a new contestant be added:</strong> No</p>
-                                    <p><strong>Will live music be played:</strong> No</p>
-                                    <p><strong>Hotub with the batchelor: </strong> Yes</p>
-                                    <p><strong>Will Tyler Cameron make an appearance:</strong> No</p>
-                                    <p><strong>First Group Date Rose: </strong> Lauren</p>
-                                    <p><strong>First to Require Medical Attention <del>on a group date</del>: </strong> Sarah (more info below)</p>
-                                    <ul>
-                                        <li>While the question clearly stated that medical attention had to be required on a group date that did not happen so I decided to expand the scope of the question to the entire episode</li>
-                                        <li>Lesson Learned... Since we will have questions that by their very nature might not have a correct answer I will try to broaden questions like these in the future</li>
-                                        <li>Most Importantly, I believe this is a fair change especially since your's truely did not benefit from this outcome</li>
-                                        <li>Even more importantly I reserve the right to make these types of changes in the future when the I believe the spirit of the question is more important than following the letter of the law</li>
-                                    </ul>
-                                    
-                                    <img src={cheerocracy} className="answers-gif" width="300" height="200" alt="cheerocracy"/>
-                                    
-                                    <Alert key='previous-results' variant='info'>
-                                    <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
-                                    </Alert>
-                                    
-                                    <Card></Card>
-                                    
                                 </div>
                             </Col>
-                        </Row>
+                        </Row>*/}
                         <DragDropContext onDragEnd={this.onDragEnd}>
                             <Row>
                                 <Col>
@@ -414,13 +387,23 @@ class BatchelorGame extends React.Component {
                                                 
                                 <h3>Week 3 Questions</h3>
                                 <h4>Answers lock on January 18th at 8pm EST</h4>
-                                <Card>
+                                {/*<Card>
                                     <Card.Body>
                                         <Card.Title>Questions Available Thursday</Card.Title>
                                         <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
                                     </Card.Body>
-                                </Card>   
-                                                                
+                                </Card>*/}   
+
+                                <SinglePickDrag
+                                    isLocked={this.state.isWeekThreeLockedOut}
+                                    droppableId='is-not-on-any-date-week-three'
+                                    pick={this.state.picks.isNotOnAnyDateWeekThree}
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='Who does not get a date this week? (10 points)'
+                                    subtitle='This may have multiple correct answers, but only choose one contestant.  If your choice is eliminated during the rose ceremony that started at the end of Week Two, you will NOT get any points'/>      
+
+
                                 <BooleanPick
                                     isLocked={this.state.isWeekThreeLockedOut}
                                     pick={this.state.picks.isTylerCameronApperanceWeekThree}
@@ -435,8 +418,8 @@ class BatchelorGame extends React.Component {
                                     pick={this.state.picks.firstOneOnOneDateWeekThree}
                                     onDragEnd={this.onDragEnd}
                                     removeSelection={this.removeSelection}
-                                    title='First One on One Date (10 points)'
-                                    subtitle='Recipient of the 1st One on One date card'/>      
+                                    title='Who gets a one on one date this week? (10 points)'
+                                    subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>      
 
                                 <SinglePickDrag
                                     isLocked={this.state.isWeekThreeLockedOut}
@@ -444,8 +427,8 @@ class BatchelorGame extends React.Component {
                                     pick={this.state.picks.firstGroupDateRoseWeekThree}
                                     onDragEnd={this.onDragEnd}
                                     removeSelection={this.removeSelection}
-                                    title='First Group Date Rose (10 points)'
-                                    subtitle='Who receieves the rose on the first group date'/>     
+                                    title='Who gets a Group Date Rose (10 points)'
+                                    subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>     
 
                                 <BooleanPick
                                     isLocked={this.state.isWeekThreeLockedOut}
@@ -459,15 +442,15 @@ class BatchelorGame extends React.Component {
                                         isLocked={this.state.isWeekThreeLockedOut}
                                         pick={this.state.picks.isHotTubWeekThree}
                                         title='Will someone get in a Hot Tub with the Bachelor (5 points)'
-                                        subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, do not count'
+                                        subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, etc. do not count'
                                         radiosIds='isHotTubWeekThree'
                                         handleChange={this.handleChange}/>  
 
                                 <BooleanPick
                                         isLocked={this.state.isWeekThreeLockedOut}
                                         pick={this.state.picks.isVictoriaMarylynSurviveWeekThree}
-                                        title='Will both Victoria and Marylyn recieve a rose in the next two rose ceremonies (5 points)'
-                                        subtitle='This includes the rose ceremony was still in progress at the end of episode 2 as well as the next rose ceremony after that'
+                                        title='Will both Victoria and Marylyn recieve rosees that keeps them on the show through week 3 (5 points)'
+                                        subtitle='They must survive the rose ceremony that was still in progress at the end of episode 2 and if there is a 2nd rose ceremony in week 3 they must survive that as well'
                                         radiosIds='isVictoriaMarylynSurviveWeekThree'
                                         handleChange={this.handleChange}/>
 

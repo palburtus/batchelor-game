@@ -27,7 +27,13 @@ export function defaultPicks() {
         isNewContestantIntroducedWeekTwo: NO_SELECTION,
         firstInterruptionWeekTwo: NO_SELECTION,
         //WEEK 3
+        firstOneOnOneDateWeekThree: NO_SELECTION,
+        firstGroupDateRoseWeekThree: NO_SELECTION,
         isTylerCameronApperanceWeekThree: NO_SELECTION,
+        isNewContestantIntroducedWeekThree: NO_SELECTION,
+        isHotTubWeekThree: NO_SELECTION,
+        isVictoriaMarylynSurviveWeekThree: NO_SELECTION,
+        isNotOnAnyDateWeekThree: NO_SELECTION,
         //TODO (can be implemented after 1st episode)
         firstTwoOneOne: [],        
         firstToLeaveOnOwn: -1         
@@ -61,6 +67,7 @@ export const perfectPicks = {
     isNewContestantIntroducedWeekThree: NOT_SETTLED,
     isHotTubWeekThree: NOT_SETTLED,
     isVictoriaMarylynSurviveWeekThree: NOT_SETTLED,
+    isNotOnAnyDateWeekThree: NOT_SETTLED,
     //TODO (can be implemented after 1st episode)   
     firstToLeaveOnOwn: NOT_SETTLED                
 }
@@ -91,7 +98,8 @@ export const scoreMap = {
     'isTylerCameronApperanceWeekThree' : 5,
     'isNewContestantIntroducedWeekThree' : 5,
     'isHotTubWeekThree' : 5,
-    'isVictoriaMarylynSurviveWeekThree' : 5
+    'isVictoriaMarylynSurviveWeekThree' : 5,
+    'isNotOnAnyDateWeekThree' : 10
 }
 
 export function getGirlsById(id){

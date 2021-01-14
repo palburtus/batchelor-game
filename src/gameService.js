@@ -5,6 +5,10 @@ export const getScore = (picks) => {
     if(picks){
 
         //WEEK 3
+        if(picks.isNotOnAnyDateWeekThree === constants.perfectPicks.isNotOnAnyDateWeekThree){
+            score += constants.scoreMap['isNotOnAnyDateWeekThree'];
+        }
+
         if(picks.firstOneOnOneDateWeekThree === constants.perfectPicks.firstOneOnOneDateWeekThree){
             score += constants.scoreMap['firstOneOnOneDateWeekThree'];
         }
