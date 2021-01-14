@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Col, Row, Card, Table} from 'react-bootstrap';
+import { Container, Col, Row, Card, Table, Alert} from 'react-bootstrap';
 import * as picksRepository from '../firebaseFirestoreRepository';
 import * as gameService from '../gameService';
 import interrupt from '../assets/interrupt.gif';
@@ -100,7 +100,35 @@ class Results extends React.Component {
                             <div className="answers">
                                 <h3>Question Results</h3>    
 
-                                
+                                <h4>Week 2 Answers</h4>
+                                    <p><strong>First to Interrupt:</strong> No One (more info below)</p>
+                                    <ul>
+                                        <li>While Victoria did briefly cause an interruption during the wedding dress contest it did not meet the criteria for this question, the spirit of which involves a contestant interrupting the bachelor and someone else's conversation during a date, cocktail hour, etc</li>
+                                        <li>For the sake of transparency I feel it is worth mentioning that I had Victoria for this answer</li>
+                                    </ul>
+                                    
+                                    <img src={interrupt} className="answers-gif" width="300" alt="interrupt"/>
+
+                                    <p><strong>Will a new contestant be added:</strong> No</p>
+                                    <p><strong>Will live music be played:</strong> No</p>
+                                    <p><strong>Hotub with the batchelor: </strong> Yes</p>
+                                    <p><strong>Will Tyler Cameron make an appearance:</strong> No</p>
+                                    <p><strong>First Group Date Rose: </strong> Lauren</p>
+                                    <p><strong>First to Require Medical Attention <del>on a group date</del>: </strong> Sarah (more info below)</p>
+                                    <ul>
+                                        <li>While the question clearly stated that medical attention had to be required on a group date that did not happen so I decided to expand the scope of the question to the entire episode</li>
+                                        <li>Lesson Learned... Since we will have questions that by their very nature might not have a correct answer I will try to broaden questions like these in the future</li>
+                                        <li>Most Importantly, I believe this is a fair change especially since your's truely did not benefit from this outcome</li>
+                                        <li>Even more importantly I reserve the right to make these types of changes in the future when the I believe the spirit of the question is more important than following the letter of the law</li>
+                                    </ul>
+                                    
+                                    <img src={cheerocracy} className="answers-gif" width="300" height="200" alt="cheerocracy"/>
+                                    
+                                    <Alert key='previous-results' variant='info'>
+                                    <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
+                                    </Alert>
+                                    
+                                    <Card></Card>
                                 
                                 <h4>Week 1 Answers</h4>
                                 <p><strong>First Impression Rose:</strong> Abigail</p>

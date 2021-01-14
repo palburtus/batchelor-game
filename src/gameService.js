@@ -4,6 +4,35 @@ export const getScore = (picks) => {
     let score = 0;
     if(picks){
 
+        //WEEK 3
+        if(picks.isNotOnAnyDateWeekThree === constants.perfectPicks.isNotOnAnyDateWeekThree){
+            score += constants.scoreMap['isNotOnAnyDateWeekThree'];
+        }
+
+        if(picks.firstOneOnOneDateWeekThree === constants.perfectPicks.firstOneOnOneDateWeekThree){
+            score += constants.scoreMap['firstOneOnOneDateWeekThree'];
+        }
+
+        if(picks.firstGroupDateRoseWeekThree === constants.perfectPicks.firstGroupDateRoseWeekThree){
+            score += constants.scoreMap['firstGroupDateRoseWeekThree'];
+        }
+
+        if(picks.isTylerCameronApperanceWeekThree === constants.perfectPicks.isTylerCameronApperanceWeekThree){
+            score += constants.scoreMap['isTylerCameronApperanceWeekThree'];
+        }
+
+        if(picks.isNewContestantIntroducedWeekThree === constants.perfectPicks.isNewContestantIntroducedWeekThree){
+            score += constants.scoreMap['isNewContestantIntroducedWeekThree'];
+        }
+
+        if(picks.isHotTubWeekThree === constants.perfectPicks.isHotTubWeekThree){
+            score += constants.scoreMap['isHotTubWeekThree'];
+        }
+
+        if(picks.isVictoriaMarylynSurviveWeekThree === constants.perfectPicks.isVictoriaMarylynSurviveWeekThree){
+            score += constants.scoreMap['isVictoriaMarylynSurviveWeekThree'];
+        }
+
         //WEEK 2
         if(picks.firstOneOnOneDate === constants.perfectPicks.firstOneOnOneDate){
             score += constants.scoreMap['firstOneOnOneDate'];

@@ -11,9 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
-//TODO remove after week 2 is not current
-import interrupt from '../assets/interrupt.gif';
-import cheerocracy from '../assets/cheerocracy.gif';
+
 
 
 class BatchelorGame extends React.Component {
@@ -160,6 +158,22 @@ class BatchelorGame extends React.Component {
       
         let picks = this.state.picks;
      
+        //WEEK 3
+        if(!this.state.isWeekThreeLockedOut){
+
+            if(listId === 'first-one-on-one-date-week-three'){
+                picks.firstOneOnOneDateWeekThree = -1;
+            }
+
+            if(listId === 'first-group-date-rose-week-three'){
+                picks.firstGroupDateRoseWeekThree = -1
+            }
+
+            if(listId === 'is-not-on-any-date-week-three'){
+                picks.isNotOnAnyDateWeekThree = -1;
+            }
+        }
+
         //WEEK 2
         if(!this.state.isWeekTwoLockedOut){
             if(listId === 'first-one-on-one-date'){
@@ -244,6 +258,14 @@ class BatchelorGame extends React.Component {
        
         }
 
+        //WEEK 3
+        if(!this.state.isWeekThreeLockedOut){
+            
+            picks.firstOneOnOneDateWeekThree = this.handleSingleDragAdd(picks.firstOneOnOneDateWeekThree, this.state.picks.firstOneOnOneDateWeekThree, 'first-one-on-one-date-week-three', result);
+            picks.firstGroupDateRoseWeekThree = this.handleSingleDragAdd(picks.firstGroupDateRoseWeekThree, this.state.picks.firstGroupDateRoseWeekThree, 'first-group-date-rose-week-three', result);
+            picks.isNotOnAnyDateWeekThree = this.handleSingleDragAdd(picks.isNotOnAnyDateWeekThree, this.state.picks.isNotOnAnyDateWeekThree, 'is-not-on-any-date-week-three', result);
+        }
+
         //WEEK 2
         if(!this.state.isWeekTwoLockedOut){
             picks.firstOneOnOneDate = this.handleSingleDragAdd(picks.firstOneOnOneDate, this.state.picks.firstOneOnOneDate, 'first-one-on-one-date', result);        
@@ -273,6 +295,15 @@ class BatchelorGame extends React.Component {
        
         let picks = this.state.picks;
         
+        //WEEK 3
+        if(!this.state.isWeekThreeLockedOut){
+            picks.isTylerCameronApperanceWeekThree = this.handleBooleanEventChange(evt, 'isTylerCameronApperanceWeekThree', picks.isTylerCameronApperanceWeekThree);
+            picks.isNewContestantIntroducedWeekThree = this.handleBooleanEventChange(evt, 'isNewContestantIntroducedWeekThree', picks.isNewContestantIntroducedWeekThree);
+            picks.isHotTubWeekThree = this.handleBooleanEventChange(evt, 'isHotTubWeekThree', picks.isHotTubWeekThree);
+            picks.isVictoriaMarylynSurviveWeekThree = this.handleBooleanEventChange(evt, 'isVictoriaMarylynSurviveWeekThree', picks.isVictoriaMarylynSurviveWeekThree);
+        }
+
+        //WEEK 2
         if(!this.state.isWeekTwoLockedOut){                        
             picks.isHotTubWeekTwo = this.handleBooleanEventChange(evt, 'isHotTubWeekTwoRadios', picks.isHotTubWeekTwo);                
             picks.isTylerCameronApperanceWeek2 = this.handleBooleanEventChange(evt, 'isTylerCameronApperanceWeek2Radios', picks.isTylerCameronApperanceWeek2);
@@ -304,44 +335,14 @@ class BatchelorGame extends React.Component {
                 <div>
                     <Container>
                         <ToastContainer />
-                        <Row>
+                        {/*<Row>
                             <Col>
                                 <div className="answers">
                                     <h3>Question Results</h3>    
 
-                                    <h4>Week 2 Answers</h4>
-                                    <p><strong>First to Interrupt:</strong> No One (more info below)</p>
-                                    <ul>
-                                        <li>While Victoria did briefly cause an interruption during the wedding dress contest it did not meet the criteria for this question, the spirit of which involves a contestant interrupting the bachelor and someone else's conversation during a date, cocktail hour, etc</li>
-                                        <li>For the sake of transparency I feel it is worth mentioning that I had Victoria for this answer</li>
-                                    </ul>
-                                    
-                                    <img src={interrupt} className="answers-gif" width="300" alt="interrupt"/>
-
-                                    <p><strong>Will a new contestant be added:</strong> No</p>
-                                    <p><strong>Will live music be played:</strong> No</p>
-                                    <p><strong>Hotub with the batchelor: </strong> Yes</p>
-                                    <p><strong>Will Tyler Cameron make an appearance:</strong> No</p>
-                                    <p><strong>First Group Date Rose: </strong> Lauren</p>
-                                    <p><strong>First to Require Medical Attention <del>on a group date</del>: </strong> Sarah (more info below)</p>
-                                    <ul>
-                                        <li>While the question clearly stated that medical attention had to be required on a group date that did not happen so I decided to expand the scope of the question to the entire episode</li>
-                                        <li>Lesson Learned... Since we will have questions that by their very nature might not have a correct answer I will try to broaden questions like these in the future</li>
-                                        <li>Most Importantly, I believe this is a fair change especially since your's truely did not benefit from this outcome</li>
-                                        <li>Even more importantly I reserve the right to make these types of changes in the future when the I believe the spirit of the question is more important than following the letter of the law</li>
-                                    </ul>
-                                    
-                                    <img src={cheerocracy} className="answers-gif" width="300" height="200" alt="cheerocracy"/>
-                                    
-                                    <Alert key='previous-results' variant='info'>
-                                    <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
-                                    </Alert>
-                                    
-                                    <Card></Card>
-                                    
                                 </div>
                             </Col>
-                        </Row>
+                        </Row>*/}
                         <DragDropContext onDragEnd={this.onDragEnd}>
                             <Row>
                                 <Col>
@@ -386,14 +387,73 @@ class BatchelorGame extends React.Component {
                                                 
                                 <h3>Week 3 Questions</h3>
                                 <h4>Answers lock on January 18th at 8pm EST</h4>
-                                <Card>
+                                {/*<Card>
                                     <Card.Body>
                                         <Card.Title>Questions Available Thursday</Card.Title>
                                         <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
                                     </Card.Body>
-                                </Card>   
+                                </Card>*/}   
 
-                                    
+                                <SinglePickDrag
+                                    isLocked={this.state.isWeekThreeLockedOut}
+                                    droppableId='is-not-on-any-date-week-three'
+                                    pick={this.state.picks.isNotOnAnyDateWeekThree}
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='Who does not get a date this week? (10 points)'
+                                    subtitle='This may have multiple correct answers, but only choose one contestant.  If your choice is eliminated during the rose ceremony that started at the end of Week Two, you will NOT get any points'/>      
+
+
+                                <BooleanPick
+                                    isLocked={this.state.isWeekThreeLockedOut}
+                                    pick={this.state.picks.isTylerCameronApperanceWeekThree}
+                                    title='Tyler Cameron Makes an Appearance? (5 points)'
+                                    subtitle='Must be shown on broadcast (excluding previews)'
+                                    radiosIds='isTylerCameronApperanceWeekThree'
+                                    handleChange={this.handleChange}/>    
+
+                                <SinglePickDrag
+                                    isLocked={this.state.isWeekThreeLockedOut}
+                                    droppableId='first-one-on-one-date-week-three'
+                                    pick={this.state.picks.firstOneOnOneDateWeekThree}
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='Who gets a one on one date this week? (10 points)'
+                                    subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>      
+
+                                <SinglePickDrag
+                                    isLocked={this.state.isWeekThreeLockedOut}
+                                    droppableId='first-group-date-rose-week-three'
+                                    pick={this.state.picks.firstGroupDateRoseWeekThree}
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='Who gets a Group Date Rose (10 points)'
+                                    subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>     
+
+                                <BooleanPick
+                                    isLocked={this.state.isWeekThreeLockedOut}
+                                    pick={this.state.picks.isNewContestantIntroducedWeekThree} 
+                                    title='Will a New Contestant be Added (5 points)'
+                                    subtitle='Must be a contestant that was not previously eliminated and must be eligible for elimination if they do not receive a rose'
+                                    radiosIds='isNewContestantIntroducedWeekThree'
+                                    handleChange={this.handleChange}/>   
+
+                                <BooleanPick
+                                        isLocked={this.state.isWeekThreeLockedOut}
+                                        pick={this.state.picks.isHotTubWeekThree}
+                                        title='Will someone get in a Hot Tub with the Bachelor (5 points)'
+                                        subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, etc. do not count'
+                                        radiosIds='isHotTubWeekThree'
+                                        handleChange={this.handleChange}/>  
+
+                                <BooleanPick
+                                        isLocked={this.state.isWeekThreeLockedOut}
+                                        pick={this.state.picks.isVictoriaMarylynSurviveWeekThree}
+                                        title='Will both Victoria and Marylyn recieve rosees that keeps them on the show through week 3 (5 points)'
+                                        subtitle='They must survive the rose ceremony that was still in progress at the end of episode 2 and if there is a 2nd rose ceremony in week 3 they must survive that as well'
+                                        radiosIds='isVictoriaMarylynSurviveWeekThree'
+                                        handleChange={this.handleChange}/>
+
                                 <h3>Season Questions</h3>
                                 <h4>Answers due by February 1st at 8pm EST</h4>
 
@@ -466,7 +526,7 @@ class BatchelorGame extends React.Component {
                                     <BooleanPick
                                         isLocked={this.state.isWeekTwoLockedOut}
                                         pick={this.state.picks.isNewContestantIntroducedWeekTwo} 
-                                        title='Will a New Contestant be Added'
+                                        title='Will a New Contestant be Added (5 points)'
                                         subtitle='Must be a contestant that was not previously eliminated and must be eligible for elimination if they do not receive a rose'
                                         radiosIds='isNewContestantIntroducedWeekTwo'
                                         handleChange={this.handleChange}/> 
@@ -509,7 +569,7 @@ class BatchelorGame extends React.Component {
                                     <BooleanPick
                                             isLocked={this.state.isWeekTwoLockedOut}
                                             pick={this.state.picks.isHotTubWeekTwo}
-                                            title='Will someone get in a Hot Tub with the Bachelor'
+                                            title='Will someone get in a Hot Tub with the Bachelor (5 points)'
                                             subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, do not count'
                                             radiosIds='isHotTubWeekTwoRadios'
                                             handleChange={this.handleChange}/>    

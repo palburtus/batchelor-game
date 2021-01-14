@@ -26,6 +26,14 @@ export function defaultPicks() {
         firstGroupDateRoseWeekTwo: NO_SELECTION,
         isNewContestantIntroducedWeekTwo: NO_SELECTION,
         firstInterruptionWeekTwo: NO_SELECTION,
+        //WEEK 3
+        firstOneOnOneDateWeekThree: NO_SELECTION,
+        firstGroupDateRoseWeekThree: NO_SELECTION,
+        isTylerCameronApperanceWeekThree: NO_SELECTION,
+        isNewContestantIntroducedWeekThree: NO_SELECTION,
+        isHotTubWeekThree: NO_SELECTION,
+        isVictoriaMarylynSurviveWeekThree: NO_SELECTION,
+        isNotOnAnyDateWeekThree: NO_SELECTION,
         //TODO (can be implemented after 1st episode)
         firstTwoOneOne: [],        
         firstToLeaveOnOwn: -1         
@@ -52,6 +60,14 @@ export const perfectPicks = {
     firstGroupDateRoseWeekTwo: '20',
     isNewContestantIntroducedWeekTwo: FALSE,
     firstInterruptionWeekTwo: NO_ACTION,
+    //WEEK 3
+    firstOneOnOneDateWeekThree: NOT_SETTLED,
+    firstGroupDateRoseWeekThree: NOT_SETTLED,
+    isTylerCameronApperanceWeekThree: NOT_SETTLED,
+    isNewContestantIntroducedWeekThree: NOT_SETTLED,
+    isHotTubWeekThree: NOT_SETTLED,
+    isVictoriaMarylynSurviveWeekThree: NOT_SETTLED,
+    isNotOnAnyDateWeekThree: NOT_SETTLED,
     //TODO (can be implemented after 1st episode)   
     firstToLeaveOnOwn: NOT_SETTLED                
 }
@@ -75,7 +91,15 @@ export const scoreMap = {
     'requiresMedicalAttentionWeekTwo' : 10,
     'firstGroupDateRoseWeekTwo' : 10,
     'isNewContestantIntroducedWeekTwo' : 5,
-    'firstInterruptionWeekTwo' : 10
+    'firstInterruptionWeekTwo' : 10,
+    //WEEK 3
+    'firstOneOnOneDateWeekThree' : 10,
+    'firstGroupDateRoseWeekThree' : 10,
+    'isTylerCameronApperanceWeekThree' : 5,
+    'isNewContestantIntroducedWeekThree' : 5,
+    'isHotTubWeekThree' : 5,
+    'isVictoriaMarylynSurviveWeekThree' : 5,
+    'isNotOnAnyDateWeekThree' : 10
 }
 
 export function getGirlsById(id){
