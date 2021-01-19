@@ -67,7 +67,7 @@ export const perfectPicks = {
     isNewContestantIntroducedWeekThree: FALSE,
     isHotTubWeekThree: TRUE,
     isVictoriaMarylynSurviveWeekThree: FALSE,
-    isNotOnAnyDateWeekThree: NO_ACTION,
+    isNotOnAnyDateWeekThree: [NO_ACTION],
     //TODO (can be implemented after 1st episode)   
     firstToLeaveOnOwn: NOT_SETTLED                
 }

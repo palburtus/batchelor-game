@@ -32,13 +32,13 @@ test('perfect score to equal 385', () => {
         isNewContestantIntroducedWeekTwo: 0,
         firstInterruptionWeekTwo: 777,
         //WEEK 3
-        firstOneOnOneDateWeekThree: 999,
-        firstGroupDateRoseWeekThree: 999,
-        isTylerCameronApperanceWeekThree: 999,
-        isNewContestantIntroducedWeekThree: 999,
-        isHotTubWeekThree: 999,
-        isVictoriaMarylynSurviveWeekThree: 999,
-        isNotOnAnyDateWeekThree: 999,
+        firstOneOnOneDateWeekThree: [30],
+        firstGroupDateRoseWeekThree: [26],
+        isTylerCameronApperanceWeekThree: 0,
+        isNewContestantIntroducedWeekThree: 0,
+        isHotTubWeekThree: 1,
+        isVictoriaMarylynSurviveWeekThree: 0,
+        isNotOnAnyDateWeekThree: [777],
         //TODO (can be implemented after 1st episode)        
         firstToLeaveOnOwn: -1                
     }
@@ -51,7 +51,7 @@ test('perfect score to equal 385', () => {
 test('not on any date week three correct correct to equal 10', () => {
 
     let picks = constants.defaultPicks();
-    picks.isNotOnAnyDateWeekThree = 999;
+    picks.isNotOnAnyDateWeekThree = [777];
 
     let result = gameService.getScore(picks);
 
@@ -61,7 +61,7 @@ test('not on any date week three correct correct to equal 10', () => {
 test('alternate not on any date week three correct correct to equal 10', () => {
 
     let picks = constants.defaultPicks();
-    picks.isNotOnAnyDateWeekThree = 1000;
+    picks.isNotOnAnyDateWeekThree = [777];
 
     let result = gameService.getScore(picks);
 
@@ -71,7 +71,7 @@ test('alternate not on any date week three correct correct to equal 10', () => {
 test('not on any date week three correct incorrect to equal 0', () => {
 
     let picks = constants.defaultPicks();
-    picks.isNotOnAnyDateWeekThree = 998;
+    picks.isNotOnAnyDateWeekThree = [998];
 
     let result = gameService.getScore(picks);
 
@@ -81,7 +81,7 @@ test('not on any date week three correct incorrect to equal 0', () => {
 test('will victoria and maryland survive rose ceremonies week 3 correct to equal 5', () => {
 
     let picks = constants.defaultPicks();
-    picks.isVictoriaMarylynSurviveWeekThree = 999;
+    picks.isVictoriaMarylynSurviveWeekThree = 0;
 
     let result = gameService.getScore(picks);
 
@@ -91,7 +91,7 @@ test('will victoria and maryland survive rose ceremonies week 3 correct to equal
 test('will victoria and maryland survive rose ceremonies week 3 incorrect to equal 5', () => {
 
     let picks = constants.defaultPicks();
-    picks.isVictoriaMarylynSurviveWeekThree = 998;
+    picks.isVictoriaMarylynSurviveWeekThree = 1;
 
     let result = gameService.getScore(picks);
 
@@ -101,7 +101,7 @@ test('will victoria and maryland survive rose ceremonies week 3 incorrect to equ
 test('will hot tub week three correct to equal 5', () => {
 
     let picks = constants.defaultPicks();
-    picks.isHotTubWeekThree = 999;
+    picks.isHotTubWeekThree = 1;
 
     let result = gameService.getScore(picks);
 
@@ -111,7 +111,7 @@ test('will hot tub week three correct to equal 5', () => {
 test('will hot tub week three incorrect to equal 0', () => {
 
     let picks = constants.defaultPicks();
-    picks.isHotTubWeekThree = 998;
+    picks.isHotTubWeekThree = 0;
 
     let result = gameService.getScore(picks);
 
@@ -121,7 +121,7 @@ test('will hot tub week three incorrect to equal 0', () => {
 test('is new contestant introduced week three correct to equal 5', () => {
 
     let picks = constants.defaultPicks();
-    picks.isNewContestantIntroducedWeekThree = 999;
+    picks.isNewContestantIntroducedWeekThree = 0;
 
     let result = gameService.getScore(picks);
 
@@ -131,7 +131,7 @@ test('is new contestant introduced week three correct to equal 5', () => {
 test('is new contestant introduced week three incorrect to equal 0', () => {
 
     let picks = constants.defaultPicks();
-    picks.isNewContestantIntroducedWeekThree = 998;
+    picks.isNewContestantIntroducedWeekThree = 1;
 
     let result = gameService.getScore(picks);
 
@@ -141,27 +141,17 @@ test('is new contestant introduced week three incorrect to equal 0', () => {
 test('gets a one on one week three correct to equal 10', () => {
 
     let picks = constants.defaultPicks();
-    picks.firstOneOnOneDateWeekThree = 999;
+    picks.firstOneOnOneDateWeekThree = [30];
 
     let result = gameService.getScore(picks);
 
     expect(result).toBe(10);
 })
 
-test('gets a subsequent one on one week three correct to equal 10', () => {
+test('one on one week three incorrect to equal 0', () => {
 
     let picks = constants.defaultPicks();
-    picks.firstOneOnOneDateWeekThree = 1000;
-
-    let result = gameService.getScore(picks);
-
-    expect(result).toBe(10);
-})
-
-test('first one on one week three incorrect to equal 0', () => {
-
-    let picks = constants.defaultPicks();
-    picks.firstOneOnOneDateWeekThree = 998;
+    picks.firstOneOnOneDateWeekThree = [998];
 
     let result = gameService.getScore(picks);
 
@@ -171,28 +161,17 @@ test('first one on one week three incorrect to equal 0', () => {
 test('group date rose week three correct to equal 10', () => {
 
     let picks = constants.defaultPicks();
-    picks.firstGroupDateRoseWeekThree = 999;
+    picks.firstGroupDateRoseWeekThree = [26];
 
     let result = gameService.getScore(picks);
 
     expect(result).toBe(10);
 })
 
-test('gets a subsequent group date rose week three correct to equal 10', () => {
+test('group date rose week three incorrect to equal 10', () => {
 
     let picks = constants.defaultPicks();
-    picks.firstGroupDateRoseWeekThree = 1000;
-
-    let result = gameService.getScore(picks);
-
-    expect(result).toBe(10);
-})
-
-
-test('first group date rose week three incorrect to equal 10', () => {
-
-    let picks = constants.defaultPicks();
-    picks.firstGroupDateRoseWeekThree = 998;
+    picks.firstGroupDateRoseWeekThree = [998];
 
     let result = gameService.getScore(picks);
 
@@ -202,7 +181,7 @@ test('first group date rose week three incorrect to equal 10', () => {
 test('tyler cameron apperance week three correct to equal 5', () =>{
 
     let picks = constants.defaultPicks();
-    picks.isTylerCameronApperanceWeekThree = 999;
+    picks.isTylerCameronApperanceWeekThree = 0;
 
     let result = gameService.getScore(picks);
 
@@ -212,7 +191,7 @@ test('tyler cameron apperance week three correct to equal 5', () =>{
 test('tyler cameron apperance week three incorrect to equal 0', () =>{
 
     let picks = constants.defaultPicks();
-    picks.isTylerCameronApperanceWeekThree = 998;
+    picks.isTylerCameronApperanceWeekThree = 1;
 
     let result = gameService.getScore(picks);
 

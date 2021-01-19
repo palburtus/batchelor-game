@@ -5,17 +5,24 @@ export const getScore = (picks) => {
     if(picks){
 
         //WEEK 3
-        if(picks.isNotOnAnyDateWeekThree === constants.perfectPicks.isNotOnAnyDateWeekThree){
-            score += constants.scoreMap['isNotOnAnyDateWeekThree'];
+        
+        for(let i = 0; i < picks.isNotOnAnyDateWeekThree.length; i++){
+            if(constants.perfectPicks.isNotOnAnyDateWeekThree.indexOf(picks.isNotOnAnyDateWeekThree[i]) >= 0){
+                score += constants.scoreMap['isNotOnAnyDateWeekThree'];
+            }
         }
 
-        if(picks.firstOneOnOneDateWeekThree === constants.perfectPicks.firstOneOnOneDateWeekThree){
-            score += constants.scoreMap['firstOneOnOneDateWeekThree'];
+        for(let i = 0; i < picks.firstOneOnOneDateWeekThree.length; i++){
+            if(constants.perfectPicks.firstOneOnOneDateWeekThree.indexOf(picks.firstOneOnOneDateWeekThree[i]) >= 0){
+                score += constants.scoreMap['firstOneOnOneDateWeekThree'];
+            }
         }
-
-        if(picks.firstGroupDateRoseWeekThree === constants.perfectPicks.firstGroupDateRoseWeekThree){
-            score += constants.scoreMap['firstGroupDateRoseWeekThree'];
-        }
+        
+        for(let i = 0; i < picks.firstGroupDateRoseWeekThree.length; i++){
+            if(constants.perfectPicks.firstGroupDateRoseWeekThree.indexOf(picks.firstGroupDateRoseWeekThree[i]) >= 0){
+                score += constants.scoreMap['firstGroupDateRoseWeekThree'];
+            }
+        }        
 
         if(picks.isTylerCameronApperanceWeekThree === constants.perfectPicks.isTylerCameronApperanceWeekThree){
             score += constants.scoreMap['isTylerCameronApperanceWeekThree'];
