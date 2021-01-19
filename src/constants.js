@@ -28,7 +28,7 @@ export function defaultPicks() {
         firstInterruptionWeekTwo: NO_SELECTION,
         //WEEK 3
         firstOneOnOneDateWeekThree: NO_SELECTION,
-        firstGroupDateRoseWeekThree: NO_SELECTION,
+        firstGroupDateRoseWeekThree: [],
         isTylerCameronApperanceWeekThree: NO_SELECTION,
         isNewContestantIntroducedWeekThree: NO_SELECTION,
         isHotTubWeekThree: NO_SELECTION,
@@ -61,13 +61,13 @@ export const perfectPicks = {
     isNewContestantIntroducedWeekTwo: FALSE,
     firstInterruptionWeekTwo: NO_ACTION,
     //WEEK 3
-    firstOneOnOneDateWeekThree: NOT_SETTLED,
-    firstGroupDateRoseWeekThree: NOT_SETTLED,
-    isTylerCameronApperanceWeekThree: NOT_SETTLED,
-    isNewContestantIntroducedWeekThree: NOT_SETTLED,
-    isHotTubWeekThree: NOT_SETTLED,
-    isVictoriaMarylynSurviveWeekThree: NOT_SETTLED,
-    isNotOnAnyDateWeekThree: NOT_SETTLED,
+    firstOneOnOneDateWeekThree: [30],
+    firstGroupDateRoseWeekThree: [26],
+    isTylerCameronApperanceWeekThree: FALSE,
+    isNewContestantIntroducedWeekThree: FALSE,
+    isHotTubWeekThree: TRUE,
+    isVictoriaMarylynSurviveWeekThree: FALSE,
+    isNotOnAnyDateWeekThree: NO_ACTION,
     //TODO (can be implemented after 1st episode)   
     firstToLeaveOnOwn: NOT_SETTLED                
 }
