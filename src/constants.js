@@ -61,13 +61,13 @@ export const perfectPicks = {
     isNewContestantIntroducedWeekTwo: FALSE,
     firstInterruptionWeekTwo: NO_ACTION,
     //WEEK 3
-    firstOneOnOneDateWeekThree: [30],
-    firstGroupDateRoseWeekThree: [26],
-    isTylerCameronApperanceWeekThree: FALSE,
-    isNewContestantIntroducedWeekThree: FALSE,
-    isHotTubWeekThree: TRUE,
-    isVictoriaMarylynSurviveWeekThree: FALSE,
-    isNotOnAnyDateWeekThree: [NO_ACTION],
+    firstOneOnOneDateWeekThree: '30',
+    firstGroupDateRoseWeekThree: '26',
+    isTylerCameronApperanceWeekThree: 0,
+    isNewContestantIntroducedWeekThree: 0,
+    isHotTubWeekThree: 1,
+    isVictoriaMarylynSurviveWeekThree: 0,
+    isNotOnAnyDateWeekThree: NO_ACTION,
     //TODO (can be implemented after 1st episode)   
     firstToLeaveOnOwn: NOT_SETTLED                
 }
