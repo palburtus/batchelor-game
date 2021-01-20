@@ -68,6 +68,7 @@ export const perfectPicks = {
     isHotTubWeekThree: 1,
     isVictoriaMarylynSurviveWeekThree: 0,
     isNotOnAnyDateWeekThree: NO_ACTION,
+    //WEEK 4
     //TODO (can be implemented after 1st episode)   
     firstToLeaveOnOwn: NOT_SETTLED                
 }
@@ -100,6 +101,7 @@ export const scoreMap = {
     'isHotTubWeekThree' : 5,
     'isVictoriaMarylynSurviveWeekThree' : 5,
     'isNotOnAnyDateWeekThree' : 10
+    //WEEK 4
 }
 
 export function getGirlsById(id){

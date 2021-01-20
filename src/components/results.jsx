@@ -4,6 +4,7 @@ import * as picksRepository from '../firebaseFirestoreRepository';
 import * as gameService from '../gameService';
 import interrupt from '../assets/interrupt.gif';
 import cheerocracy from '../assets/cheerocracy.gif';
+import hottubscarface from '../assets/hottubscarface.gif';
 
 class Results extends React.Component {
 
@@ -123,11 +124,7 @@ class Results extends React.Component {
                                     </ul>
                                     
                                     <img src={cheerocracy} className="answers-gif" width="300" height="200" alt="cheerocracy"/>
-                                    
-                                    <Alert key='previous-results' variant='info'>
-                                    <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
-                                    </Alert>
-                                    
+                                                                                                            
                                     <Card></Card>
                                 
                                 <h4>Week 1 Answers</h4>

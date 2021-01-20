@@ -4,8 +4,9 @@ export const getScore = (picks) => {
     let score = 0;
     if(picks){
 
-        //WEEK 3
-        debugger;
+        //WEEK 4
+
+        //WEEK 3       
         for(let i = 0; i < constants.perfectPicks.isNotOnAnyDateWeekThree.length; i++){
             if(constants.perfectPicks.isNotOnAnyDateWeekThree.indexOf(picks.isNotOnAnyDateWeekThree[i]) >= 0){
                 score += constants.scoreMap['isNotOnAnyDateWeekThree'];
@@ -14,7 +15,6 @@ export const getScore = (picks) => {
         }
         
         for(let i = 0; i < constants.perfectPicks.firstOneOnOneDateWeekThree.length; i++){
-            debugger;
             if(constants.perfectPicks.firstOneOnOneDateWeekThree.indexOf(picks.firstOneOnOneDateWeekThree[i]) >= 0){                
                 score += constants.scoreMap['firstOneOnOneDateWeekThree'];
                 break;

@@ -38,7 +38,7 @@ test('perfect score to equal 385', () => {
         isNewContestantIntroducedWeekThree: 0,
         isHotTubWeekThree: 1,
         isVictoriaMarylynSurviveWeekThree: 0,
-        isNotOnAnyDateWeekThree: [777],
+        isNotOnAnyDateWeekThree: 777,
         //TODO (can be implemented after 1st episode)        
         firstToLeaveOnOwn: -1                
     }
@@ -51,7 +51,7 @@ test('perfect score to equal 385', () => {
 test('not on any date week three correct correct to equal 10', () => {
 
     let picks = constants.defaultPicks();
-    picks.isNotOnAnyDateWeekThree = [777];
+    picks.isNotOnAnyDateWeekThree = 777;
 
     let result = gameService.getScore(picks);
 
