@@ -148,7 +148,7 @@ export const girls = [
         id: '2',
         name: 'Alana',
         thumb: './thumbs/alana.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '3',
@@ -208,7 +208,7 @@ export const girls = [
         id: '12',
         name: 'Illeana',
         thumb: './thumbs/illeana.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '13',
@@ -250,7 +250,7 @@ export const girls = [
         id: '19',
         name: 'Kristin',
         thumb: './thumbs/kristin.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '20',
@@ -274,7 +274,7 @@ export const girls = [
         id: '23',
         name: 'Marylynn',
         thumb: './thumbs/marylynn.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '24',
@@ -304,7 +304,7 @@ export const girls = [
         id: '28',
         name: 'Sarah',
         thumb: './thumbs/sarah.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '29',
@@ -322,7 +322,7 @@ export const girls = [
         id: '31',
         name: 'Sydney',
         thumb: './thumbs/sydney.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '32',
