@@ -161,11 +161,11 @@ class BatchelorGame extends React.Component {
         if(!this.state.isWeekFourLockedOut){
             
             if(listId === 'one-on-one-date-week-four'){
-                picks.firstOneOnOneDateWeekFour = -1;
+                picks.oneOnOneDateWeekFour = -1;
             }
 
             if(listId === 'group-date-rose-week-four'){
-                picks.firstGroupDateRoseWeekFour = -1
+                picks.groupDateRoseWeekFour = -1
             }
 
             if(listId === 'eliminated-week-four'){
