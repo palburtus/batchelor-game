@@ -28,12 +28,21 @@ export function defaultPicks() {
         firstInterruptionWeekTwo: NO_SELECTION,
         //WEEK 3
         firstOneOnOneDateWeekThree: NO_SELECTION,
-        firstGroupDateRoseWeekThree: [],
+        firstGroupDateRoseWeekThree: NO_SELECTION,
         isTylerCameronApperanceWeekThree: NO_SELECTION,
         isNewContestantIntroducedWeekThree: NO_SELECTION,
         isHotTubWeekThree: NO_SELECTION,
         isVictoriaMarylynSurviveWeekThree: NO_SELECTION,
         isNotOnAnyDateWeekThree: NO_SELECTION,
+        //WEEK 4
+        isTylerCameronApperanceWeekFour: NO_SELECTION,
+        oneOnOneDateWeekFour: NO_SELECTION,
+        groupDateRoseWeekFour: NO_SELECTION,
+        isHotTubWeekFour: NO_SELECTION,
+        isNewContestantsBeforeRoseCeremony: NO_SELECTION,
+        eliminatedWeekFour: NO_SELECTION,
+        isMattToldAboutEscort: NO_SELECTION,
+        isSarahReturnWeekFour: NO_SELECTION,
         //TODO (can be implemented after 1st episode)
         firstTwoOneOne: [],        
         firstToLeaveOnOwn: -1         
@@ -61,14 +70,22 @@ export const perfectPicks = {
     isNewContestantIntroducedWeekTwo: FALSE,
     firstInterruptionWeekTwo: NO_ACTION,
     //WEEK 3
-    firstOneOnOneDateWeekThree: '30',
-    firstGroupDateRoseWeekThree: '26',
+    firstOneOnOneDateWeekThree: ['30'],
+    firstGroupDateRoseWeekThree: ['26'],
     isTylerCameronApperanceWeekThree: 0,
     isNewContestantIntroducedWeekThree: 0,
     isHotTubWeekThree: 1,
     isVictoriaMarylynSurviveWeekThree: 0,
-    isNotOnAnyDateWeekThree: NO_ACTION,
+    isNotOnAnyDateWeekThree: [NO_ACTION],
     //WEEK 4
+    isTylerCameronApperanceWeekFour: NOT_SETTLED,
+    oneOnOneDateWeekFour: [NOT_SETTLED],
+    groupDateRoseWeekFour: [NOT_SETTLED],
+    isHotTubWeekFour: NOT_SETTLED,
+    isNewContestantsBeforeRoseCeremony: NOT_SETTLED,
+    eliminatedWeekFour: [NOT_SETTLED],
+    isMattToldAboutEscort: NOT_SETTLED,
+    isSarahReturnWeekFour: NOT_SETTLED,
     //TODO (can be implemented after 1st episode)   
     firstToLeaveOnOwn: NOT_SETTLED                
 }
@@ -100,8 +117,16 @@ export const scoreMap = {
     'isNewContestantIntroducedWeekThree' : 5,
     'isHotTubWeekThree' : 5,
     'isVictoriaMarylynSurviveWeekThree' : 5,
-    'isNotOnAnyDateWeekThree' : 10
+    'isNotOnAnyDateWeekThree' : 10,
     //WEEK 4
+    'isTylerCameronApperanceWeekFour' : 5,
+    'oneOnOneDateWeekFour' : 10,
+    'groupDateRoseWeekFour' : 10,
+    'isHotTubWeekFour' : 5,
+    'isNewContestantsBeforeRoseCeremony': 5,
+    'eliminatedWeekFour' : 10,
+    'isMattToldAboutEscort': 5,
+    'isSarahReturnWeekFour': 5
 }
 
 export function getGirlsById(id){

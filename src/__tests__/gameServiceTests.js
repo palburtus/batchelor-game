@@ -9,7 +9,7 @@ test('default picks to equal 0', () => {
 });
 
 
-test('perfect score to equal 385', () => {
+test('perfect score to equal 440', () => {
     
     let picks = {
         finalSix: [999, 1000, 1001, 1002, 1003, 1004],
@@ -32,21 +32,176 @@ test('perfect score to equal 385', () => {
         isNewContestantIntroducedWeekTwo: 0,
         firstInterruptionWeekTwo: 777,
         //WEEK 3
-        firstOneOnOneDateWeekThree: [30],
-        firstGroupDateRoseWeekThree: [26],
+        firstOneOnOneDateWeekThree: '30',
+        firstGroupDateRoseWeekThree: '26',
         isTylerCameronApperanceWeekThree: 0,
         isNewContestantIntroducedWeekThree: 0,
         isHotTubWeekThree: 1,
         isVictoriaMarylynSurviveWeekThree: 0,
         isNotOnAnyDateWeekThree: 777,
+        //WEEK 4
+        isTylerCameronApperanceWeekFour: 999,
+        oneOnOneDateWeekFour: 999,
+        groupDateRoseWeekFour: 999,
+        isHotTubWeekFour: 999,
+        isNewContestantsBeforeRoseCeremony: 999,
+        eliminatedWeekFour: 999,
+        isMattToldAboutEscort: 999,
+        isSarahReturnWeekFour: 999,
         //TODO (can be implemented after 1st episode)        
         firstToLeaveOnOwn: -1                
     }
 
     let result = gameService.getScore(picks);
 
-    expect(result).toBe(385);
+    expect(result).toBe(440);
 });
+
+test('is Sarah return week four correct to equel 5', () => {
+    let picks = constants.defaultPicks();
+    picks.isSarahReturnWeekFour = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('is Sarah return week four incorrect to equel 0', () => {
+    let picks = constants.defaultPicks();
+    picks.isSarahReturnWeekFour = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is Matt told about escort correct to equal 5', () => {
+    let picks = constants.defaultPicks();
+    picks.isMattToldAboutEscort = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('is Matt told about escort incorrect to equal 0', () => {
+    let picks = constants.defaultPicks();
+    picks.isMattToldAboutEscort = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('eliminated week for correct to equal 10', () => {
+    let picks = constants.defaultPicks();
+    picks.eliminatedWeekFour = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('eliminated week for incorrect to equal 0', () => {
+    let picks = constants.defaultPicks();
+    picks.eliminatedWeekFour = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is will new arrivals before rose ceremony week 4 correct to equal 5', () => {
+    let picks = constants.defaultPicks();
+    picks.isNewContestantsBeforeRoseCeremony = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('is new arrivals before rose ceremony incorrect to equal 0', () => {
+    let picks = constants.defaultPicks();
+    picks.isNewContestantsBeforeRoseCeremony = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is hot tub week 4 correct to equal 5', () => {
+    let picks = constants.defaultPicks();
+    picks.isHotTubWeekFour = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('is hot tub week 4 incorrect to equal 5', () => {
+    let picks = constants.defaultPicks();
+    picks.isHotTubWeekFour = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is one on one date week four correct to equal 10', () => {
+    let picks = constants.defaultPicks();
+    picks.oneOnOneDateWeekFour = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('is one on one date week four incorrect to equal 0', () => {
+    let picks = constants.defaultPicks();
+
+    let result = gameService.getScore(picks);
+    picks.oneOnOneDateWeekFour = 998;
+
+    expect(result).toBe(0);
+})
+
+test('is group date week four correct to equal 10', () => {
+    let picks = constants.defaultPicks();
+    picks.groupDateRoseWeekFour = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('is group date week four incorrect to equal 10', () => {
+    let picks = constants.defaultPicks();
+    picks.groupDateRoseWeekFour = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is tyler cameron appearance week four correct to equal 5', () => {
+
+    let picks = constants.defaultPicks();
+    picks.isTylerCameronApperanceWeekFour = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('is tyler cameron appearance week four incorrect to equal 0', () => {
+
+    let picks = constants.defaultPicks();
+    picks.isTylerCameronApperanceWeekFour = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
 
 test('not on any date week three correct correct to equal 10', () => {
 
@@ -61,7 +216,7 @@ test('not on any date week three correct correct to equal 10', () => {
 test('alternate not on any date week three correct correct to equal 10', () => {
 
     let picks = constants.defaultPicks();
-    picks.isNotOnAnyDateWeekThree = [777];
+    picks.isNotOnAnyDateWeekThree = 777;
 
     let result = gameService.getScore(picks);
 
@@ -71,7 +226,7 @@ test('alternate not on any date week three correct correct to equal 10', () => {
 test('not on any date week three correct incorrect to equal 0', () => {
 
     let picks = constants.defaultPicks();
-    picks.isNotOnAnyDateWeekThree = [998];
+    picks.isNotOnAnyDateWeekThree = 998;
 
     let result = gameService.getScore(picks);
 
@@ -141,7 +296,7 @@ test('is new contestant introduced week three incorrect to equal 0', () => {
 test('gets a one on one week three correct to equal 10', () => {
 
     let picks = constants.defaultPicks();
-    picks.firstOneOnOneDateWeekThree = [30];
+    picks.firstOneOnOneDateWeekThree = '30';
 
     let result = gameService.getScore(picks);
 
@@ -151,7 +306,7 @@ test('gets a one on one week three correct to equal 10', () => {
 test('one on one week three incorrect to equal 0', () => {
 
     let picks = constants.defaultPicks();
-    picks.firstOneOnOneDateWeekThree = [998];
+    picks.firstOneOnOneDateWeekThree = '998';
 
     let result = gameService.getScore(picks);
 
@@ -161,7 +316,7 @@ test('one on one week three incorrect to equal 0', () => {
 test('group date rose week three correct to equal 10', () => {
 
     let picks = constants.defaultPicks();
-    picks.firstGroupDateRoseWeekThree = [26];
+    picks.firstGroupDateRoseWeekThree = '26';
 
     let result = gameService.getScore(picks);
 
@@ -171,7 +326,7 @@ test('group date rose week three correct to equal 10', () => {
 test('group date rose week three incorrect to equal 10', () => {
 
     let picks = constants.defaultPicks();
-    picks.firstGroupDateRoseWeekThree = [998];
+    picks.firstGroupDateRoseWeekThree = '998';
 
     let result = gameService.getScore(picks);
 

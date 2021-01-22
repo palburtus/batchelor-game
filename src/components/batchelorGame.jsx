@@ -11,13 +11,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
-import hottubscarface from '../assets/hottubscarface.gif';
-import corruption from '../assets/corruption.gif';
-import bachelorretteparty from '../assets/bachelorretteparty.gif';
-import tylercameronlose from '../assets/tylercameronlose.gif';
-import spoileralert from '../assets/spoileralert.gif'
-
-
 
 class BatchelorGame extends React.Component {
     
@@ -164,6 +157,22 @@ class BatchelorGame extends React.Component {
       
         let picks = this.state.picks;
      
+        //WEEk 4 
+        if(!this.state.isWeekFourLockedOut){
+            
+            if(listId === 'one-on-one-date-week-four'){
+                picks.firstOneOnOneDateWeekFour = -1;
+            }
+
+            if(listId === 'group-date-rose-week-four'){
+                picks.firstGroupDateRoseWeekFour = -1
+            }
+
+            if(listId === 'eliminated-week-four'){
+                picks.eliminatedWeekFour = -1;
+            }
+        }
+
         //WEEK 3
         if(!this.state.isWeekThreeLockedOut){
 
@@ -263,10 +272,12 @@ class BatchelorGame extends React.Component {
             picks.finalOne = this.handleSingleDragAdd(picks.finalOne, this.state.picks.finalOne, 'final-one', result)
        
         }
-
+        
         //WEEK 4
         if(!this.state.isWeekFourLockedOut){
-
+            picks.oneOnOneDateWeekFour = this.handleSingleDragAdd(picks.oneOnOneDateWeekFour, this.state.picks.oneOnOneDateWeekFour, 'one-on-one-date-week-four', result);
+            picks.groupDateRoseWeekFour = this.handleSingleDragAdd(picks.groupDateRoseWeekFour, this.state.picks.groupDateRoseWeekFour, 'group-date-rose-week-four', result);
+            picks.eliminatedWeekFour = this.handleSingleDragAdd(picks.eliminatedWeekFour, this.state.picks.eliminatedWeekFour, 'eliminated-week-four', result);
         }
 
         //WEEK 3
@@ -308,7 +319,11 @@ class BatchelorGame extends React.Component {
         
         //WEEK 4
         if(!this.state.isWeekFourLockedOut){
-                    
+            picks.isTylerCameronApperanceWeekFour = this.handleBooleanEventChange(evt, 'isTylerCameronApperanceWeekFour', picks.isTylerCameronApperanceWeekFour);
+            picks.isHotTubWeekFour = this.handleBooleanEventChange(evt, 'isHotTubWeekFour', picks.isHotTubWeekFour);
+            picks.isNewContestantsBeforeRoseCeremony = this.handleBooleanEventChange(evt, 'isNewContestantsBeforeRoseCeremony', picks.isNewContestantsBeforeRoseCeremony);
+            picks.isMattToldAboutEscort = this.handleBooleanEventChange(evt, 'isMattToldAboutEscort', picks.isMattToldAboutEscort);
+            picks.isSarahReturnWeekFour = this.handleBooleanEventChange(evt, 'isSarahReturnWeekFour', picks.isSarahReturnWeekFour);
         }
 
         //WEEK 3
@@ -353,65 +368,17 @@ class BatchelorGame extends React.Component {
                         <ToastContainer />
                         <Row>
                             <Col>
-                                <div className="answers">
+                                {/*<div className="answers">
                                     <h3>Question Results</h3>    
    
-                                    <h4>Week 3 Answers</h4>
-                                    
-                                    <div className="alert alert-warning">
-                                        <p>As of right now we are still planning to lock out the season long questions (final rose, top 2, top 4, etc) on <strong>February 1st at 8pm EST</strong>.</p>
-                                        <p><strong>However</strong> due to the upcoming influx of new girls and lack of rose ceremonies thus far <strong>we may delay that cut-off by at least a week</strong> based on how many girls are left after week 4.</p>
-                                    </div>                                    
-
-                                    <img src={spoileralert} className="answers-gif" width="300" height="200" alt="spoileralert"/>                                    
-
-                                    <div className="alert alert-info">
-                                        <p><strong>Quick Recap: </strong>Another strong week for Lauren in the points who has started to open up a nice lead as we approach season question lock outs, nice job!  
-                                        Just a friendly (totally unrelated) reminder, any use of spoilers will result 
-                                        in the permanent lifetime ban of any offending player, not that Lauren would ever do such a thing and I'm not just saying this because I'm bitter I'm in 2nd now.</p>                                        
-                                    </div>
-
-                                    <img src={tylercameronlose} className="answers-gif" width="300" height="200" alt="corruption"/>
-                                    <p><strong>Will Tyler Cameron make an appearance:</strong> No</p>
-                                    <p><strong>One on One Date Rose(s)</strong>: Serena P</p>
-                                    <p><strong>Group Date Rose(s):</strong> Rachael</p>
-                                    <p><strong>Who does not get a date this week?:</strong> No One (more info below)</p>
-                                    <ul>
-                                        <li>
-                                            Although the list of names on the 2nd date card were never read, it was mentioned twice during the episode that everyone 
-                                            would be getting a date this week.
-                                        </li>
-                                        <li>
-                                            The spirit of this question was to pick someone who would be completly passed up for a date.
-                                        </li>
-                                        <li>
-                                            Full disclosure: if we counted the girls who's group date never happened on the episode I would have gotten the question wrong.  
-                                            However, I have ruled against points for myself in the past and will continue to try to rule as farily as possible in the future.
-                                        </li>
-                                    </ul>
-                                    <img src={corruption} className="answers-gif" width="300" height="200" alt="corruption"/>
-
-                                    <p><strong>Will a new contestant be added:</strong> No</p>
-                                    <ul>
-                                        <li>This question will be removed since the previews made it very clear the new contestants will be joining us next week.</li>
-                                    </ul>
-                                    <img src={bachelorretteparty} className="answers-gif" width="300" height="200" alt="bachelorretteparty"/>
-
-                                    <p><strong>Will both Victoria and Marylyn receive roses that keeps them on the show through week 3:</strong> No</p>
-                                    <ul>
-                                        <li>Marylyn did not receive a rose during the rose ceremony that was already in progress at the begining of the episode</li>
-                                    </ul>
-                                    <p><strong>Hotub with the bachelor: </strong> Yes</p>
-                                    <ul>
-                                        <li>2nd week in a row!  This has been a strong season for the jacuzzi industry.</li>
-                                    </ul>
-                                    <img src={hottubscarface} className="answers-gif" width="300" height="200" alt="hottubscarface"/>
+                                    <h4>Week 4 Answers</h4>
+                                                                        
                                     
                                 </div>
                                 
                                 <Alert key='previous-results' variant='info'>
                                     <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
-                                </Alert>
+                                </Alert>                                
 
                                 <Card>
                                     <Card.Body>
@@ -419,7 +386,12 @@ class BatchelorGame extends React.Component {
                                         <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
                                     </Card.Body>
                                 </Card>
-                                
+                                */}
+
+                                <div className="alert alert-warning">
+                                    <p>As of right now we are still planning to lock out the season long questions (final rose, top 2, top 4, etc) on <strong>February 1st at 8pm EST</strong>.</p>
+                                    <p><strong>However</strong> due to the upcoming influx of new girls and lack of rose ceremonies thus far <strong>we may delay that cut-off by at least a week</strong> based on how many girls are left after week 4.</p>
+                                </div>   
                             </Col>
                         </Row>
                         
@@ -464,8 +436,79 @@ class BatchelorGame extends React.Component {
                                     </Card>
                                 </Col>
                                 <Col>
-                                                                        
+
+                                <h3>Week 4 Questions</h3>
+                                <h4>Answers due by January 26st at 8pm EST</h4>
                                 
+                                <BooleanPick
+                                    isLocked={this.state.isWeekFourLockedOut}
+                                    pick={this.state.picks.isTylerCameronApperanceWeekFour}
+                                    title='Tyler Cameron Makes an Appearance? (5 points)'
+                                    subtitle='Must be shown on broadcast (excluding previews)'
+                                    radiosIds='isTylerCameronApperanceWeekFour'
+                                    handleChange={this.handleChange}/>    
+
+                                <SinglePickDrag
+                                    isLocked={this.state.isWeekFourLockedOut}
+                                    droppableId='one-on-one-date-week-four'
+                                    pick={this.state.picks.oneOnOneDateWeekFour}
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='Who gets a one on one date this week? (10 points)'
+                                    subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>      
+
+                                <SinglePickDrag
+                                    isLocked={this.state.isWeekFourLockedOut}
+                                    droppableId='group-date-rose-week-four'
+                                    pick={this.state.picks.groupDateRoseWeekFour}
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='Who gets a Group Date Rose? (10 points)'
+                                    subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>     
+
+                                <BooleanPick
+                                        isLocked={this.state.isWeekFourLockedOut}
+                                        pick={this.state.picks.isHotTubWeekFour}
+                                        title='Will someone get in a Hot Tub with the Bachelor? (5 points)'
+                                        subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, etc. do not count'
+                                        radiosIds='isHotTubWeekFour'
+                                        handleChange={this.handleChange}/>                               
+                                
+                                <BooleanPick
+                                    isLocked={this.state.isWeekFourLockedOut}
+                                    pick={this.state.picks.isNewContestantsBeforeRoseCeremony}
+                                    title='Does at least one new contestant arrive before the next rose ceremony? (5 points)'
+                                    subtitle='Contestant(s) must arrive and be eligible to be part of the first rose ceremony that airs this week'
+                                    radiosIds='isNewContestantsBeforeRoseCeremony'
+                                    handleChange={this.handleChange}/>    
+
+                                <SinglePickDrag
+                                    isLocked={this.state.isWeekFourLockedOut}
+                                    droppableId='eliminated-week-four'
+                                    pick={this.state.picks.eliminatedWeekFour}
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='Who gets sent home at the next Rose Ceremony (10 points)'
+                                    subtitle='Contestant must be at the rose ceremony and not receive a rose.  Only the first rose ceremony that airs counts'/>     
+
+                                                        
+                                <BooleanPick
+                                    isLocked={this.state.isWeekFourLockedOut}
+                                    pick={this.state.picks.isMattToldAboutEscort}
+                                    title='Does a contestant tell Mat that she has heard a contestant is/was an escort? (5 points)'
+                                    subtitle='Mat must receive this information from a Contestant directly, if the alleged escort tells him herself that also counts'
+                                    radiosIds='isMattToldAboutEscort'
+                                    handleChange={this.handleChange}/>
+
+                                <BooleanPick
+                                    isLocked={this.state.isWeekFourLockedOut}
+                                    pick={this.state.picks.isSarahReturnWeekFour}
+                                    title='Will Sarah come back this week? (5 points)'
+                                    subtitle='Sarah must be shown on the broadcast (excluding flashbacks, previews, etc.)'
+                                    radiosIds='isSarahReturnWeekFour'
+                                    handleChange={this.handleChange}/>
+
+
                                 <h3>Season Questions</h3>
                                 <h4>Answers due by February 1st at 8pm EST</h4>
 

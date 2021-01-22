@@ -5,6 +5,10 @@ import * as gameService from '../gameService';
 import interrupt from '../assets/interrupt.gif';
 import cheerocracy from '../assets/cheerocracy.gif';
 import hottubscarface from '../assets/hottubscarface.gif';
+import corruption from '../assets/corruption.gif';
+import bachelorretteparty from '../assets/bachelorretteparty.gif';
+import tylercameronlose from '../assets/tylercameronlose.gif';
+import spoileralert from '../assets/spoileralert.gif'
 
 class Results extends React.Component {
 
@@ -99,7 +103,51 @@ class Results extends React.Component {
                         <Col>
                         
                             <div className="answers">
-                                <h3>Question Results</h3>    
+                                <h3>Week 3 Answers</h3>    
+                                
+                                <img src={spoileralert} className="answers-gif" width="300" height="200" alt="spoileralert"/>                                    
+
+                                <div className="alert alert-info">
+                                    <p><strong>Quick Recap: </strong>Another strong week for Lauren in the points who has started to open up a nice lead as we approach season question lock outs, nice job!  
+                                    Just a friendly (totally unrelated) reminder, any use of spoilers will result 
+                                    in the permanent lifetime ban of any offending player, not that Lauren would ever do such a thing and I'm not just saying this because I'm bitter I'm in 2nd now.</p>                                        
+                                </div>
+
+                                <img src={tylercameronlose} className="answers-gif" width="300" height="200" alt="corruption"/>
+                                <p><strong>Will Tyler Cameron make an appearance:</strong> No</p>
+                                <p><strong>One on One Date Rose(s)</strong>: Serena P</p>
+                                <p><strong>Group Date Rose(s):</strong> Rachael</p>
+                                <p><strong>Who does not get a date this week?:</strong> No One (more info below)</p>
+                                <ul>
+                                    <li>
+                                        Although the list of names on the 2nd date card were never read, it was mentioned twice during the episode that everyone 
+                                        would be getting a date this week.
+                                    </li>
+                                    <li>
+                                        The spirit of this question was to pick someone who would be completly passed up for a date.
+                                    </li>
+                                    <li>
+                                        Full disclosure: if we counted the girls who's group date never happened on the episode I would have gotten the question wrong.  
+                                        However, I have ruled against points for myself in the past and will continue to try to rule as farily as possible in the future.
+                                    </li>
+                                </ul>
+                                <img src={corruption} className="answers-gif" width="300" height="200" alt="corruption"/>
+
+                                <p><strong>Will a new contestant be added:</strong> No</p>
+                                <ul>
+                                    <li>This question will be removed since the previews made it very clear the new contestants will be joining us next week.</li>
+                                </ul>
+                                <img src={bachelorretteparty} className="answers-gif" width="300" height="200" alt="bachelorretteparty"/>
+
+                                <p><strong>Will both Victoria and Marylyn receive roses that keeps them on the show through week 3:</strong> No</p>
+                                <ul>
+                                    <li>Marylyn did not receive a rose during the rose ceremony that was already in progress at the begining of the episode</li>
+                                </ul>
+                                <p><strong>Hotub with the bachelor: </strong> Yes</p>
+                                <ul>
+                                    <li>2nd week in a row!  This has been a strong season for the jacuzzi industry.</li>
+                                </ul>
+                                <img src={hottubscarface} className="answers-gif" width="300" height="200" alt="hottubscarface"/>
 
                                 <h4>Week 2 Answers</h4>
                                     <p><strong>First to Interrupt:</strong> No One (more info below)</p>
