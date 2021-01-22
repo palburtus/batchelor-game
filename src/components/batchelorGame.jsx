@@ -495,8 +495,8 @@ class BatchelorGame extends React.Component {
                                 <BooleanPick
                                     isLocked={this.state.isWeekFourLockedOut}
                                     pick={this.state.picks.isMattToldAboutEscort}
-                                    title='Does a contestant tell Mat that she has heard a contestant is/was an escort? (5 points)'
-                                    subtitle='Mat must receive this information from a Contestant directly, if the alleged escort tells him herself that also counts'
+                                    title='Does a contestant tell Matt that she has heard a contestant is/was an escort? (5 points)'
+                                    subtitle='Matt must receive this information from a Contestant directly, if the alleged escort tells him herself that also counts'
                                     radiosIds='isMattToldAboutEscort'
                                     handleChange={this.handleChange}/>
 
