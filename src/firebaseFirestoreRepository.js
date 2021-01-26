@@ -14,39 +14,59 @@ const db = firebase.firestore();
 export const getPicks = (token) => {
     return new Promise((resolve, reject) => {
         
-        db.collection('picks').doc(token).get().then((doc) => {
-            var data = doc.data();
-          
-            if(data){
-                resolve(data); 
-            }else{
-                reject('Your account was not found');
-            }
-        }).catch((error) => { 
-            reject('Connection error please try again')
-        });                    
+        firebase.auth().signInAnonymously()
+            .then(() => {
+                // Signed in
+                debugger;
+                db.collection('picks').doc(token).get().then((doc) => {
+                    var data = doc.data();
+                  
+                    if(data){
+                        resolve(data); 
+                    }else{
+                        reject('Your account was not found');
+                    }
+                }).catch((error) => { 
+                    reject('Connection error please try again')
+                });   
+            })
+            .catch((error) => {
+                debugger;
+                reject(error);
+            });
+
+                         
     });    
 }
 
-export const getAllPicks = () => {
-  
+export const getAllPicks = (token) => {
+    
     return new Promise((resolve, reject) => {
         
-        db.collection('picks').get().then((collection) => {
-           
-            let documents = [];
-            collection.forEach(doc => {
-                documents.push(doc.data());
-            });
-           
-            if(documents){
-                resolve(documents); 
-            }else{
-                reject('Error loading standings');
-            }
-        }).catch((error) => { 
-            reject('Connection error please try again')
-        });                    
+        firebase.auth().signInAnonymously()
+            .then(() => {
+                // Signed in
+                debugger;
+
+                db.collection('picks').get().then((collection) => {
+                
+                    let documents = [];
+                    collection.forEach(doc => {
+                        documents.push(doc.data());
+                    });
+                
+                    if(documents){
+                        resolve(documents); 
+                    }else{
+                        reject('Error loading standings');
+                    }
+                }).catch((error) => { 
+                    reject('Connection error please try again')
+                });             
+            }).catch((error) => {
+                debugger;
+                reject(error);
+            })       
     });
 }
 
