@@ -132,9 +132,17 @@ h4 {
 }
 
 .answers p, li{
-  font-size: 0.7em;
+  font-size: 0.8em;
   text-align: left;
 } 
 .answers-gif{
   margin-bottom: 25px;
+}
+
+.alert-heading{
+  text-align: left;
+}
+
+.white{
+  color: #ffffff;
 }

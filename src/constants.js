@@ -122,7 +122,7 @@ export const perfectPicks = {
     groupDateRoseWeekFour: ['9', '6'],
     isHotTubWeekFour: FALSE,
     isNewContestantsBeforeRoseCeremony: TRUE,
-    eliminatedWeekFour: [NOT_SETTLED],
+    eliminatedWeekFour: ['14', '16', '36'],
     isMattToldAboutEscort: FALSE,
     isSarahReturnWeekFour: FALSE,
     //TODO (can be implemented after 1st episode)   
@@ -221,7 +221,7 @@ export const girls = [
         id: '14',
         name: 'Kali',
         thumb: './thumbs/kali.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '15',
@@ -233,7 +233,7 @@ export const girls = [
         id: '16',
         name: 'Khaylah',
         thumb: './thumbs/khaylah.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '17',
@@ -334,31 +334,31 @@ export const girls = [
     {
         id: '33',
         name: 'Britanny',
-        thumb: './thumbs/unknown.jpg',
+        thumb: './thumbs/britanny.jpg',
         isActive: true
     },
     {
         id: '34',
         name: 'Michelle',
-        thumb: './thumbs/unknown.jpg',
+        thumb: './thumbs/michelle.jpg',
         isActive: true
     },
     {
         id: '35',
         name: 'Ryan',
-        thumb: './thumbs/unknown.jpg',
+        thumb: './thumbs/ryan.jpg',
         isActive: true
     },
     {
         id: '36',
-        name: 'Kimberly',
-        thumb: './thumbs/unknown.jpg',
+        name: 'Kim',
+        thumb: './thumbs/kim.jpg',
         isActive: false
     },
     {
         id: '37',
         name: 'Catalina',
-        thumb: './thumbs/unknown.jpg',
+        thumb: './thumbs/catalina.jpg',
         isActive: true
     }
   ];

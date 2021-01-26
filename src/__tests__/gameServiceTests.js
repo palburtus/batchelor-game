@@ -45,7 +45,7 @@ test('perfect score to equal 440', () => {
         groupDateRoseWeekFour: '9',
         isHotTubWeekFour: 0,
         isNewContestantsBeforeRoseCeremony: 1,
-        eliminatedWeekFour: 999,
+        eliminatedWeekFour: '14', 
         isMattToldAboutEscort: 0,
         isSarahReturnWeekFour: 0,
         //TODO (can be implemented after 1st episode)        
@@ -93,9 +93,18 @@ test('is Matt told about escort incorrect to equal 0', () => {
     expect(result).toBe(0);
 })
 
-test('eliminated week for correct to equal 10', () => {
+test('eliminated week forr correct to equal 10', () => {
     let picks = constants.defaultPicks();
-    picks.eliminatedWeekFour = 999;
+    picks.eliminatedWeekFour = '16'; //'14', '16', '36'
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('eliminated week four alternate correct to equal 10', () => {
+    let picks = constants.defaultPicks();
+    picks.eliminatedWeekFour = '36'; 
 
     let result = gameService.getScore(picks);
 
