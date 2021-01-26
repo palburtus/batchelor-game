@@ -16,8 +16,7 @@ export const getPicks = (token) => {
         
         firebase.auth().signInAnonymously()
             .then(() => {
-                // Signed in
-                debugger;
+               
                 db.collection('picks').doc(token).get().then((doc) => {
                     var data = doc.data();
                   
@@ -31,7 +30,7 @@ export const getPicks = (token) => {
                 });   
             })
             .catch((error) => {
-                debugger;
+               
                 reject(error);
             });
 
@@ -45,9 +44,7 @@ export const getAllPicks = (token) => {
         
         firebase.auth().signInAnonymously()
             .then(() => {
-                // Signed in
-                debugger;
-
+                
                 db.collection('picks').get().then((collection) => {
                 
                     let documents = [];
@@ -64,7 +61,7 @@ export const getAllPicks = (token) => {
                     reject('Connection error please try again')
                 });             
             }).catch((error) => {
-                debugger;
+               
                 reject(error);
             })       
     });
