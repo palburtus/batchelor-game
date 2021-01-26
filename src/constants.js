@@ -4,6 +4,45 @@ export const NO_SELECTION   = -1;
 export const NOT_SETTLED    = 999;
 export const NO_ACTION      = 777;
 
+export const scoreMap = {
+    'finalOne' : 30,
+    'finalTwo' : 25,
+    'finalFour' : 20,
+    'finalSix' : 10,
+    'isTylerCameronApperance' : 5,
+    'firstImpressionRose' : 10,
+    'firstOutOfLimo' : 10,
+    'firstKiss': 10,
+    'firstTears' : 10,
+    'firstWearingCostume' : 10,
+    //WEEK 2
+    'isTylerCameronApperanceWeek2' : 5,
+    'firstOneOnOneDate' : 10,
+    'isHotTubWeekTwo' : 5,
+    'isLiveMusicPlayedWeekTwo' : 5,
+    'requiresMedicalAttentionWeekTwo' : 10,
+    'firstGroupDateRoseWeekTwo' : 10,
+    'isNewContestantIntroducedWeekTwo' : 5,
+    'firstInterruptionWeekTwo' : 10,
+    //WEEK 3
+    'firstOneOnOneDateWeekThree' : 10,
+    'firstGroupDateRoseWeekThree' : 10,
+    'isTylerCameronApperanceWeekThree' : 5,
+    'isNewContestantIntroducedWeekThree' : 5,
+    'isHotTubWeekThree' : 5,
+    'isVictoriaMarylynSurviveWeekThree' : 5,
+    'isNotOnAnyDateWeekThree' : 10,
+    //WEEK 4
+    'isTylerCameronApperanceWeekFour' : 5,
+    'oneOnOneDateWeekFour' : 10,
+    'groupDateRoseWeekFour' : 10,
+    'isHotTubWeekFour' : 5,
+    'isNewContestantsBeforeRoseCeremony': 5,
+    'eliminatedWeekFour' : 10,
+    'isMattToldAboutEscort': 5,
+    'isSarahReturnWeekFour': 5
+}
+
 export function defaultPicks() {
     return {
         finalSix: [],
@@ -78,56 +117,18 @@ export const perfectPicks = {
     isVictoriaMarylynSurviveWeekThree: 0,
     isNotOnAnyDateWeekThree: [NO_ACTION],
     //WEEK 4
-    isTylerCameronApperanceWeekFour: NOT_SETTLED,
-    oneOnOneDateWeekFour: [NOT_SETTLED],
-    groupDateRoseWeekFour: [NOT_SETTLED],
-    isHotTubWeekFour: NOT_SETTLED,
-    isNewContestantsBeforeRoseCeremony: NOT_SETTLED,
+    isTylerCameronApperanceWeekFour: FALSE,
+    oneOnOneDateWeekFour: ['34'],
+    groupDateRoseWeekFour: ['9', '6'],
+    isHotTubWeekFour: FALSE,
+    isNewContestantsBeforeRoseCeremony: TRUE,
     eliminatedWeekFour: [NOT_SETTLED],
-    isMattToldAboutEscort: NOT_SETTLED,
-    isSarahReturnWeekFour: NOT_SETTLED,
+    isMattToldAboutEscort: FALSE,
+    isSarahReturnWeekFour: FALSE,
     //TODO (can be implemented after 1st episode)   
     firstToLeaveOnOwn: NOT_SETTLED                
 }
 
-export const scoreMap = {
-    'finalOne' : 30,
-    'finalTwo' : 25,
-    'finalFour' : 20,
-    'finalSix' : 10,
-    'isTylerCameronApperance' : 5,
-    'firstImpressionRose' : 10,
-    'firstOutOfLimo' : 10,
-    'firstKiss': 10,
-    'firstTears' : 10,
-    'firstWearingCostume' : 10,
-    //WEEK 2
-    'isTylerCameronApperanceWeek2' : 5,
-    'firstOneOnOneDate' : 10,
-    'isHotTubWeekTwo' : 5,
-    'isLiveMusicPlayedWeekTwo' : 5,
-    'requiresMedicalAttentionWeekTwo' : 10,
-    'firstGroupDateRoseWeekTwo' : 10,
-    'isNewContestantIntroducedWeekTwo' : 5,
-    'firstInterruptionWeekTwo' : 10,
-    //WEEK 3
-    'firstOneOnOneDateWeekThree' : 10,
-    'firstGroupDateRoseWeekThree' : 10,
-    'isTylerCameronApperanceWeekThree' : 5,
-    'isNewContestantIntroducedWeekThree' : 5,
-    'isHotTubWeekThree' : 5,
-    'isVictoriaMarylynSurviveWeekThree' : 5,
-    'isNotOnAnyDateWeekThree' : 10,
-    //WEEK 4
-    'isTylerCameronApperanceWeekFour' : 5,
-    'oneOnOneDateWeekFour' : 10,
-    'groupDateRoseWeekFour' : 10,
-    'isHotTubWeekFour' : 5,
-    'isNewContestantsBeforeRoseCeremony': 5,
-    'eliminatedWeekFour' : 10,
-    'isMattToldAboutEscort': 5,
-    'isSarahReturnWeekFour': 5
-}
 
 export function getGirlsById(id){
     let girl = girls.filter(obj => {
@@ -328,6 +329,36 @@ export const girls = [
         id: '32',
         name: 'Victoria',
         thumb: './thumbs/victoria.jpg',
+        isActive: true
+    },
+    {
+        id: '33',
+        name: 'Britanny',
+        thumb: './thumbs/unknown.jpg',
+        isActive: true
+    },
+    {
+        id: '34',
+        name: 'Michelle',
+        thumb: './thumbs/unknown.jpg',
+        isActive: true
+    },
+    {
+        id: '35',
+        name: 'Ryan',
+        thumb: './thumbs/unknown.jpg',
+        isActive: true
+    },
+    {
+        id: '36',
+        name: 'Kimberly',
+        thumb: './thumbs/unknown.jpg',
+        isActive: false
+    },
+    {
+        id: '37',
+        name: 'Catalina',
+        thumb: './thumbs/unknown.jpg',
         isActive: true
     }
   ];
