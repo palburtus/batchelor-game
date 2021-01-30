@@ -4,6 +4,15 @@ export const getScore = (picks) => {
     let score = 0;
     if(picks){
 
+        //WEEK 5 
+        score += calculateBoolScore(picks.isTylerCameronApperanceWeekFive, constants.perfectPicks.isTylerCameronApperanceWeekFive, 'isTylerCameronApperanceWeekFive');
+        score += calculateMultipleCorrectAnswersScore(picks.oneOnOneDateWeekFive, constants.perfectPicks.oneOnOneDateWeekFive, 'oneOnOneDateWeekFive');
+        score += calculateMultipleCorrectAnswersScore(picks.groupDateRoseWeekFive, constants.perfectPicks.groupDateRoseWeekFive, 'groupDateRoseWeekFive');
+        score += calculateBoolScore(picks.isHotTubWeekFive, constants.perfectPicks.isHotTubWeekFive, 'isHotTubWeekFive');
+        score += calculateBoolScore(picks.isRoseGivenOutFirstGroupDateWeekFive, constants.perfectPicks.isRoseGivenOutFirstGroupDateWeekFive, 'isRoseGivenOutFirstGroupDateWeekFive');
+        score += calculateMultipleCorrectAnswersScore(picks.sentHomeEarlyWeekFive, constants.perfectPicks.sentHomeEarlyWeekFive, 'sentHomeEarlyWeekFive');
+        score += calculateBoolScore(picks.leavesOnOwnWeekFive, constants.perfectPicks.leavesOnOwnWeekFive, 'leavesOnOwnWeekFive');
+
         //WEEK 4
         score += calculateBoolScore(picks.isTylerCameronApperanceWeekFour, constants.perfectPicks.isTylerCameronApperanceWeekFour, 'isTylerCameronApperanceWeekFour');
         score += calculateMultipleCorrectAnswersScore(picks.oneOnOneDateWeekFour, constants.perfectPicks.oneOnOneDateWeekFour, 'oneOnOneDateWeekFour');
