@@ -478,7 +478,7 @@ class BatchelorGame extends React.Component {
                                 <Col>
 
                                 <h3>Week 5 Questions</h3>
-                                <h4>Answers due by February 2nd at 8pm EST</h4>
+                                <h4>Answers due by February 1nd at 8pm EST</h4>
                                 
                                 <BooleanPick
                                         isLocked={this.state.isWeekFiveLockedOut}
