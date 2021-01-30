@@ -10,6 +10,10 @@ import corruption from '../assets/corruption.gif';
 import bachelorretteparty from '../assets/bachelorretteparty.gif';
 import tylercameronlose from '../assets/tylercameronlose.gif';
 import spoileralert from '../assets/spoileralert.gif'
+import fallingOffHourse from '../assets/fallingoffhorse.gif';
+import distractedBoyfriend from '../assets/distractedboyfriend.jpg';
+import falloutofpool from '../assets/falloutofpool.gif';
+import bottleservice from '../assets/bottleservice.gif';
 
 class Results extends React.Component {
 
@@ -105,6 +109,90 @@ class Results extends React.Component {
                         <Col>
                         
                             <div className="answers">
+                                <h4>Week 4 Answers</h4>
+                                <div className="alert alert-info">
+                                        <p>
+                                            <strong>Quick Recap: </strong>Lauren continues to stretch her lead and the K sisters, Kristen K and Kim K, are mounting a charge while Pat continues to flounder with his undefeated 
+                                            streak in the "men's division" being threatened.   
+                                        </p>
+                                        <p>
+                                            That being said <strong>everyone is still alive</strong> as the season long questions are going to be worth a total of <strong>at least 160</strong> with more 
+                                            questions and points to come each week!
+                                        </p>   
+                                        <p>
+                                            <strong>Scoring Note:</strong> if you checeked the standings after last night's episode you might now notice that the <strong>scores have changed since last night</strong>.
+                                            The reason for this is that the points for the "Who was sent home" where not applied until this morning. 
+                                        </p>      
+                                        <p>
+                                            Below is a video of my race to first place during last night's broadcast.
+                                        </p>                               
+
+                                        <img src={fallingOffHourse} className="answers-gif" width="250" height="200" alt="falling off horse"/>
+                                        
+                                </div>   
+
+                                <p><strong>Will Tyler Cameron make an appearance:</strong> No</p>
+                                <p>Who will get a group date rose this week?</p>
+                                <ul>
+                                    <li>Chelse</li>
+                                    <li>Bri</li>
+                                </ul>
+
+                                <p><strong>Who gets a one on one date this week? Michelle</strong></p>
+                                <ul>
+                                    <li>No one got this question right as Matt got all hot and bothered by a new girl.</li>
+                                    <li>
+                                        All of the existing contestents have broken down their barriers to be vulnerable for Matt
+                                        just to have this "new guard" contestant to sweep him off his feet.  <span className="badge bg-info white">#SAD</span>
+                                    </li>
+                                </ul>
+
+                                <img src={distractedBoyfriend} className="answers-gif" width="300" height="200" alt="distracted boyfriend"/>
+
+                                <p><strong>Hotub with the bachelor: </strong> No</p>
+                                <ul>
+                                    <li>As someone who has been fading this question all season it was nice to see everyone stick to reasonable water temperatures 
+                                        &amp; keep their clothes on this week.</li>
+                                </ul>
+                                <img src={falloutofpool} className="answers-gif" width="300" height="200" alt="falloutofpool"/>
+                                
+                                <p><strong>New contestant(s) arrive before the next rose ceremony?</strong> Yes</p>
+
+                                <p><strong>Who gets eliminated a rose ceremony this week:</strong></p>
+                                <ol>
+                                    <li>Khaylah</li>
+                                    <li>Kaili</li>
+                                    <li>Kimberly (the new one who was gone so quickly they didn't bother displaying her name with the last initial
+                                        despite their already being a Kimberly on this season)</li>
+                                </ol>
+
+                                <hr/>
+
+                                <ul>
+                                    <li>
+                                        It looked like he was gonna send Anna home, the producers really 
+                                        hammed that one up nicely.  I could have really used those points.  
+                                    </li>
+                                    <li>
+                                        I wondering if keeping Anna around 
+                                        is going to have huge negative consequences that effect the 
+                                        rest of the season...
+                                    </li>
+                                </ul>
+
+                                <p><strong>Is Matt informed about a escort?</strong> No</p>
+                                <ul>
+                                    <li>
+                                        While the girls talked about the alleged escort early and often in this episode
+                                        none of them mentioned it to Matt.
+                                    </li>
+                                    <li>Apparently according to Anna hanging out in the VIP area of a club makes you an escort...</li>
+                                    <li>Remeber when Matt could have sent her home resulting in 10 points for me and happiness for everyone else?</li>
+                                </ul>
+                                <img src={bottleservice} className="answers-gif" width="300" height="200" alt="bottleservice"/>
+                                
+                                <p><strong>Will Sarah come back this week?</strong> No</p>
+
                                 <h3>Week 3 Answers</h3>    
                                 
                                 <img src={spoileralert} className="answers-gif" width="300" height="200" alt="spoileralert"/>                                    

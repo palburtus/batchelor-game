@@ -39,8 +39,16 @@ export const scoreMap = {
     'isHotTubWeekFour' : 5,
     'isNewContestantsBeforeRoseCeremony': 5,
     'eliminatedWeekFour' : 10,
-    'isMattToldAboutEscort': 5,
-    'isSarahReturnWeekFour': 5
+    'isMattToldAboutEscort' : 5,
+    'isSarahReturnWeekFour' : 5,
+    //WEEK 5
+    'isTylerCameronApperanceWeekFive' : 5,
+    'oneOnOneDateWeekFive' : 10,
+    'groupDateRoseWeekFive' : 10,
+    'isHotTubWeekFive' : 5,
+    'isRoseGivenOutFirstGroupDateWeekFive' : 5,
+    'sentHomeEarlyWeekFive' : 10,
+    'leavesOnOwnWeekFive' : 5
 }
 
 export function defaultPicks() {
@@ -82,6 +90,14 @@ export function defaultPicks() {
         eliminatedWeekFour: NO_SELECTION,
         isMattToldAboutEscort: NO_SELECTION,
         isSarahReturnWeekFour: NO_SELECTION,
+        //WEEK 5
+        isTylerCameronApperanceWeekFive: NO_SELECTION,
+        oneOnOneDateWeekFive: NO_SELECTION,
+        groupDateRoseWeekFive: NO_SELECTION,
+        isHotTubWeekFive: NO_SELECTION,
+        isRoseGivenOutFirstGroupDateWeekFive: NO_SELECTION,
+        sentHomeEarlyWeekFive: NO_SELECTION,
+        leavesOnOwnWeekFive: NO_SELECTION,
         //TODO (can be implemented after 1st episode)
         firstTwoOneOne: [],        
         firstToLeaveOnOwn: -1         
@@ -125,6 +141,14 @@ export const perfectPicks = {
     eliminatedWeekFour: ['14', '16', '36'],
     isMattToldAboutEscort: FALSE,
     isSarahReturnWeekFour: FALSE,
+    //WEEK 5
+    isTylerCameronApperanceWeekFive: NOT_SETTLED,
+    oneOnOneDateWeekFive: [NOT_SETTLED],
+    groupDateRoseWeekFive: [NOT_SETTLED],
+    isHotTubWeekFive: NOT_SETTLED,
+    isRoseGivenOutFirstGroupDateWeekFive: NOT_SETTLED,
+    sentHomeEarlyWeekFive: [NOT_SETTLED],
+    leavesOnOwnWeekFive: NOT_SETTLED,
     //TODO (can be implemented after 1st episode)   
     firstToLeaveOnOwn: NOT_SETTLED                
 }

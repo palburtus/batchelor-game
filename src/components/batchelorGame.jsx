@@ -11,11 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
-import fallingOffHourse from '../assets/fallingoffhorse.gif';
 import alertImage from '../assets/alert.gif';
-import distractedBoyfriend from '../assets/distractedboyfriend.jpg';
-import falloutofpool from '../assets/falloutofpool.gif';
-import bottleservice from '../assets/bottleservice.gif';
 
 class BatchelorGame extends React.Component {
     
@@ -165,7 +161,18 @@ class BatchelorGame extends React.Component {
         
         //WEEK 5
         if(!this.state.isWeekFiveLockedOut){
+            
+            if(listId === 'one-on-one-date-week-five'){
+                picks.oneOnOneDateWeekFive = -1;
+            }
 
+            if(listId === 'group-date-rose-week-five'){
+                picks.groupDateRoseWeekFive = -1;
+            }
+
+            if(listId === 'sent-home-early-week-five'){
+                picks.sentHomeEarlyWeekFive = -1
+            }
         }
 
         //WEEk 4 
@@ -281,12 +288,13 @@ class BatchelorGame extends React.Component {
             picks.finalFour = this.handleMultiDragAdd(picks.finalFour, this.state.picks.finalFour, 'final-four', result, 4);
             picks.finalTwo = this.handleMultiDragAdd(picks.finalTwo, this.state.picks.finalTwo, 'final-two', result, 2);
             picks.finalOne = this.handleSingleDragAdd(picks.finalOne, this.state.picks.finalOne, 'final-one', result)
-       
         }
         
         //WEEK 5
         if(!this.state.isWeekFiveLockedOut){
-                    
+            picks.oneOnOneDateWeekFive = this.handleSingleDragAdd(picks.oneOnOneDateWeekFive, this.state.picks.oneOnOneDateWeekFive, 'one-on-one-date-week-five', result);
+            picks.groupDateRoseWeekFive = this.handleSingleDragAdd(picks.groupDateRoseWeekFive,this.state.picks.groupDateRoseWeekFive, 'group-date-rose-week-five', result);
+            picks.sentHomeEarlyWeekFive = this.handleSingleDragAdd(picks.sentHomeEarlyWeekFive, this.state.sentHomeEarlyWeekFive, 'sent-home-early-week-five', result);
         }
 
         //WEEK 4
@@ -335,7 +343,10 @@ class BatchelorGame extends React.Component {
         
         //WEEK 5
         if(!this.state.isWeekFiveLockedOut){
-            
+            picks.isTylerCameronApperanceWeekFive = this.handleBooleanEventChange(evt, 'isTylerCameronApperanceWeekFive', picks.isTylerCameronApperanceWeekFive);
+            picks.isHotTubWeekFive = this.handleBooleanEventChange(evt, 'isHotTubWeekFive', picks.isHotTubWeekFive);
+            picks.isRoseGivenOutFirstGroupDateWeekFive = this.handleBooleanEventChange(evt, 'isRoseGivenOutFirstGroupDateWeekFive', picks.isRoseGivenOutFirstGroupDateWeekFive);
+            picks.leavesOnOwnWeekFive = this.handleBooleanEventChange(evt, 'leavesOnOwnWeekFive', picks.leavesOnOwnWeekFive);
         }
 
         //WEEK 4
@@ -390,7 +401,7 @@ class BatchelorGame extends React.Component {
                         <Row>
                             <Col>
                                 <div className="answers">
-                                    <h3>Question Results</h3>       
+                                    {/*<h3>Question Results</h3>*/}       
                                     
 
                                     <div className="alert alert-primary">
@@ -406,86 +417,10 @@ class BatchelorGame extends React.Component {
                                         </p>
                                     </div>
 
-                                    <div className="alert alert-info">
-                                        <p>
-                                            <strong>Quick Recap: </strong>Lauren continues to stretch her lead and the K sisters, Kristen K and Kim K, are mounting a charge while Pat continues to flounder with his undefeated 
-                                            streak in the "men's division" being threatened.   
-                                        </p>
-                                        <p>
-                                            That being said <strong>everyone is still alive</strong> as the season long questions are going to be worth a total of <strong>at least 160</strong> with more 
-                                            questions and points to come each week!
-                                        </p>   
-                                        <p>
-                                            <strong>Scoring Note:</strong> if you checeked the standings after last night's episode you might now notice that the <strong>scores have changed since last night</strong>.
-                                            The reason for this is that the points for the "Who was sent home" where not applied until this morning. 
-                                        </p>      
-                                        <p>
-                                            Below is a video of my race to first place during last night's broadcast.
-                                        </p>                               
-
-                                        <img src={fallingOffHourse} className="answers-gif" width="250" height="200" alt="falling off horse"/>
-                                        
-                                    </div>   
-
-                                    <h4>Week 4 Answers</h4>
-                                    <p><strong>Will Tyler Cameron make an appearance:</strong> No</p>
-                                    <p><strong>Who gets a one on one date this week? Michelle</strong></p>
-                                    <ul>
-                                        <li>No one got this question right as Matt got all hot and bothered by a new girl.</li>
-                                        <li>
-                                            All of the existing contestents have broken down their barriers to be vulnerable for Matt
-                                            just to have this "new guard" contestant to sweep him off his feet.  <span className="badge bg-info white">#SAD</span>
-                                        </li>
-                                    </ul>
-
-                                    <img src={distractedBoyfriend} className="answers-gif" width="300" height="200" alt="distracted boyfriend"/>
-
-                                    <p><strong>Hotub with the bachelor: </strong> No</p>
-                                    <ul>
-                                        <li>As someone who has been fading this question all season it was nice to see everyone stick to reasonable water temperatures 
-                                            &amp; keep their clothes on this week.</li>
-                                    </ul>
-                                    <img src={falloutofpool} className="answers-gif" width="300" height="200" alt="falloutofpool"/>
-                                   
-                                    <p><strong>New contestant(s) arrive before the next rose ceremony?</strong> Yes</p>
-
-                                    <p><strong>Who gets eliminated a rose ceremony this week:</strong></p>
-                                    <ol>
-                                        <li>Khaylah</li>
-                                        <li>Kaili</li>
-                                        <li>Kimberly (the new one who was gone so quickly they didn't bother displaying her name with the last initial
-                                            despite their already being a Kimberly on this season)</li>
-                                    </ol>
-
-                                    <hr/>
-
-                                    <ul>
-                                        <li>
-                                            It looked like he was gonna send Anna home, the producers really 
-                                            hammed that one up nicely.  I could have really used those points.  
-                                        </li>
-                                        <li>
-                                            I wondering if keeping Anna around 
-                                            is going to have huge negative consequences that effect the 
-                                            rest of the season...
-                                        </li>
-                                    </ul>
-
-                                    <p><strong>Is Matt informed about a escort?</strong> No</p>
-                                    <ul>
-                                        <li>
-                                            While the girls talked about the alleged escort early and often in this episode
-                                            none of them mentioned it to Matt.
-                                        </li>
-                                        <li>Apparently according to Anna hanging out in the VIP area of a club makes you an escort...</li>
-                                        <li>Remeber when Matt could have sent her home resulting in 10 points for me and happiness for everyone else?</li>
-                                    </ul>
-                                    <img src={bottleservice} className="answers-gif" width="300" height="200" alt="bottleservice"/>
                                     
-                                    <p><strong>Will Sarah come back this week?</strong> No</p>
                                 </div>
                                 
-                                <Alert key='previous-results' variant='info'>
+                                {/*<Alert key='previous-results' variant='info'>
                                     <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
                                 </Alert>                                
 
@@ -494,7 +429,7 @@ class BatchelorGame extends React.Component {
                                         <Card.Title>New Questions Available Thursday</Card.Title>
                                         <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
                                     </Card.Body>
-                                </Card>
+                                </Card>*/}
                                 
                                 
                             </Col>
@@ -542,9 +477,70 @@ class BatchelorGame extends React.Component {
                                 </Col>
                                 <Col>
 
-                                {/*<h3>Week 5 Questions</h3>
-                                <h4>Answers due by February 2nd at 8pm EST</h4>*/}
-                                                                
+                                <h3>Week 5 Questions</h3>
+                                <h4>Answers due by February 2nd at 8pm EST</h4>
+                                
+                                <BooleanPick
+                                        isLocked={this.state.isWeekFiveLockedOut}
+                                        pick={this.state.picks.isRoseGivenOutFirstGroupDateWeekFive}
+                                        title='Is a Rose Given Out on the Group Date Thats in Progress (5 points)'
+                                        subtitle='This is the group date that was still occuring when the last episdoe ended'
+                                        radiosIds='isRoseGivenOutFirstGroupDateWeekFive'
+                                        handleChange={this.handleChange}/>
+
+                                <BooleanPick
+                                        isLocked={this.state.isWeekFiveLockedOut}
+                                        pick={this.state.picks.leavesOnOwnWeekFive}
+                                        title='Does Somebody Leave on Their Own?'
+                                        subtitle='Includes anyone who leaves the show voluntarily'
+                                        radiosIds='leavesOnOwnWeekFive'
+                                        handleChange={this.handleChange}/>  
+
+
+                                <BooleanPick
+                                        isLocked={this.state.isWeekFiveLockedOut}
+                                        pick={this.state.picks.isTylerCameronApperanceWeekFive}
+                                        title='Tyler Cameron Makes an Appearance? (5 points)'
+                                        subtitle='Must be shown on broadcast (excluding previews)'
+                                        radiosIds='isTylerCameronApperanceWeekFive'
+                                        handleChange={this.handleChange}/>  
+
+                                <SinglePickDrag
+                                        isLocked={this.state.isWeekFiveLockedOut}
+                                        droppableId='sent-home-early-week-five'
+                                        pick={this.state.picks.sentHomeEarlyWeekFive}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who does Matt Send Home Early? (10 points)'
+                                        subtitle='Must be sent home anytime outside of a rose ceremony. If this does not happen no points will be awarded'/>     
+
+
+                                <SinglePickDrag
+                                        isLocked={this.state.isWeekFiveLockedOut}
+                                        droppableId='one-on-one-date-week-five'
+                                        pick={this.state.picks.oneOnOneDateWeekFive}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who gets a one on one date this week? (10 points)'
+                                        subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>      
+
+                                <SinglePickDrag
+                                        isLocked={this.state.isWeekFiveLockedOut}
+                                        droppableId='group-date-rose-week-five'
+                                        pick={this.state.picks.groupDateRoseWeekFive}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who gets a Group Date Rose? (10 points)'
+                                        subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>     
+
+                                <BooleanPick
+                                        isLocked={this.state.isWeekFiveLockedOut}
+                                        pick={this.state.picks.isHotTubWeekFive}
+                                        title='Will someone get in a Hot Tub with the Bachelor? (5 points)'
+                                        subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, etc. do not count'
+                                        radiosIds='isHotTubWeekFive'
+                                        handleChange={this.handleChange}/>   
+
                                 <h3>Season Questions</h3>
                                 <h4>Answers due by February 8th at 8pm EST</h4>
 
@@ -620,6 +616,16 @@ class BatchelorGame extends React.Component {
                                         removeSelection={this.removeSelection}
                                         title='Who gets a one on one date this week? (10 points)'
                                         subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>      
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekFourLockedOut}
+                                        droppableId='one-on-one-date-week-four'
+                                        pick={this.state.picks.oneOnOneDateWeekFour}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who gets a one on one date this week? (10 points)'
+                                        subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>      
+
 
                                     <SinglePickDrag
                                         isLocked={this.state.isWeekFourLockedOut}
