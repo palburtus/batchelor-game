@@ -4,6 +4,14 @@ export const NO_SELECTION   = -1;
 export const NOT_SETTLED    = 999;
 export const NO_ACTION      = 777;
 
+export function getGirlsById(id){
+    let girl = girls.filter(obj => {
+        return obj.id === id
+    });
+
+    return girl[0];
+}
+
 export const scoreMap = {
     'finalOne' : 30,
     'finalTwo' : 25,
@@ -49,6 +57,7 @@ export const scoreMap = {
     'isRoseGivenOutFirstGroupDateWeekFive' : 5,
     'sentHomeEarlyWeekFive' : 10,
     'leavesOnOwnWeekFive' : 5
+    //WEEK 6
 }
 
 export function defaultPicks() {
@@ -142,24 +151,14 @@ export const perfectPicks = {
     isMattToldAboutEscort: FALSE,
     isSarahReturnWeekFour: FALSE,
     //WEEK 5
-    isTylerCameronApperanceWeekFive: NOT_SETTLED,
-    oneOnOneDateWeekFive: [NOT_SETTLED],
-    groupDateRoseWeekFive: [NOT_SETTLED],
-    isHotTubWeekFive: NOT_SETTLED,
-    isRoseGivenOutFirstGroupDateWeekFive: NOT_SETTLED,
-    sentHomeEarlyWeekFive: [NOT_SETTLED],
-    leavesOnOwnWeekFive: NOT_SETTLED,
-    //TODO (can be implemented after 1st episode)   
-    firstToLeaveOnOwn: NOT_SETTLED                
-}
-
-
-export function getGirlsById(id){
-    let girl = girls.filter(obj => {
-        return obj.id === id
-    });
-
-    return girl[0];
+    isTylerCameronApperanceWeekFive: FALSE,
+    oneOnOneDateWeekFive: ['26', '18'],
+    groupDateRoseWeekFive: ['1'],
+    isHotTubWeekFive: 0,
+    isRoseGivenOutFirstGroupDateWeekFive: TRUE,
+    sentHomeEarlyWeekFive: ['5'],
+    leavesOnOwnWeekFive: FALSE,
+    //WEEK 6              
 }
 
 export const girls = [
@@ -191,7 +190,7 @@ export const girls = [
         id: '5',
         name: 'Anna',
         thumb: './thumbs/anna.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '6',
@@ -281,7 +280,7 @@ export const girls = [
         id: '20',
         name: 'Lauren',
         thumb: './thumbs/lauren.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '21',
@@ -293,7 +292,7 @@ export const girls = [
         id: '22',
         name: 'Mari',
         thumb: './thumbs/mari.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '23',
@@ -353,7 +352,7 @@ export const girls = [
         id: '32',
         name: 'Victoria',
         thumb: './thumbs/victoria.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '33',
@@ -383,6 +382,6 @@ export const girls = [
         id: '37',
         name: 'Catalina',
         thumb: './thumbs/catalina.jpg',
-        isActive: true
+        isActive: false
     }
   ];

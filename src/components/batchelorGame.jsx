@@ -26,7 +26,8 @@ class BatchelorGame extends React.Component {
             isWeekTwoLockedOut: true,
             isWeekThreeLockedOut: true,
             isWeekFourLockedOut: true,
-            isWeekFiveLockedOut: false,
+            isWeekFiveLockedOut: true,
+            isWeekSixLockedOut: false,
             isSeasonLongLockedOut: false,
             infoMessage: '',
             warningMessage: '',
@@ -159,6 +160,11 @@ class BatchelorGame extends React.Component {
       
         let picks = this.state.picks;
         
+        //WEEK 6
+        if(!this.state.isWeekSixLockedOut){
+
+        }
+
         //WEEK 5
         if(!this.state.isWeekFiveLockedOut){
             
@@ -290,6 +296,11 @@ class BatchelorGame extends React.Component {
             picks.finalOne = this.handleSingleDragAdd(picks.finalOne, this.state.picks.finalOne, 'final-one', result)
         }
         
+        //WEEK 6
+        if(!this.state.isWeekSixLockedOut){
+                    
+        }
+
         //WEEK 5
         if(!this.state.isWeekFiveLockedOut){
             picks.oneOnOneDateWeekFive = this.handleSingleDragAdd(picks.oneOnOneDateWeekFive, this.state.picks.oneOnOneDateWeekFive, 'one-on-one-date-week-five', result);
@@ -341,6 +352,11 @@ class BatchelorGame extends React.Component {
        
         let picks = this.state.picks;
         
+        //WEEK 6
+        if(!this.state.isWeekSixLockedOut){
+                    
+        }
+
         //WEEK 5
         if(!this.state.isWeekFiveLockedOut){
             picks.isTylerCameronApperanceWeekFive = this.handleBooleanEventChange(evt, 'isTylerCameronApperanceWeekFive', picks.isTylerCameronApperanceWeekFive);
@@ -401,26 +417,47 @@ class BatchelorGame extends React.Component {
                         <Row>
                             <Col>
                                 <div className="answers">
-                                    {/*<h3>Question Results</h3>*/}       
+                                    <h3>Question Results</h3>  
                                     
 
                                     <div className="alert alert-primary">
-                                        <h5 className="alert-heading">Important Update for Season Questions Lockout!!!</h5>
+                                        <h5 className="alert-heading">Season Questions Lock Out on Monday!</h5>
                                         <hr/>
                                         <img src={alertImage} className="answers-gif" width="250" height="200" alt="alert"/>
                                         <p>
-                                            Since we gained more girls then we lost this week we have decided to push the lockout 
-                                            for the season long questions (top six, top four, final rose, etc...).
+                                        
                                         </p>
-                                        <p>
-                                            As of right now those season long question will not be locked out until <strong>February 8th</strong>!
-                                        </p>
+                                       
                                     </div>
 
+                                    <p><strong>Is a Rose Given Out on the Group Date Thats in Progress:</strong> Yes (wait what!?)</p>
+
+                                    <p><strong>Does someone leave on their own?:</strong> No</p>
+
+                                    <p><strong>Will Tyler Cameron make an appearance:</strong> No</p>
+
+                                    <p><strong>Who gets sent home Early:</strong></p>
+                                    <ul>
+                                        <li>Anna</li>
+                                    </ul>
+
+                                    <p><strong>Who will get a one on one date?:</strong></p>
+                                    <ul>
+                                        <li>Rachael</li>
+                                        <li>Kit</li>
+                                    </ul>
+
+                                    
+                                    <p><strong>Who will get a group date rose this week?:</strong></p>
+                                    <ul>
+                                        <li>Abigail</li>
+                                    </ul>
+
+                                    <p><strong>Hotub with the bachelor: </strong> No</p>
                                     
                                 </div>
                                 
-                                {/*<Alert key='previous-results' variant='info'>
+                                <Alert key='previous-results' variant='info'>
                                     <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
                                 </Alert>                                
 
@@ -429,7 +466,7 @@ class BatchelorGame extends React.Component {
                                         <Card.Title>New Questions Available Thursday</Card.Title>
                                         <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
                                     </Card.Body>
-                                </Card>*/}
+                                </Card>
                                 
                                 
                             </Col>
@@ -477,70 +514,13 @@ class BatchelorGame extends React.Component {
                                 </Col>
                                 <Col>
 
-                                <h3>Week 5 Questions</h3>
-                                <h4>Answers due by February 1nd at 8pm EST</h4>
+                                {/*
                                 
-                                <BooleanPick
-                                        isLocked={this.state.isWeekFiveLockedOut}
-                                        pick={this.state.picks.isRoseGivenOutFirstGroupDateWeekFive}
-                                        title='Is a Rose Given Out on the Group Date Thats in Progress (5 points)'
-                                        subtitle='This is the group date that was still occuring when the last episdoe ended'
-                                        radiosIds='isRoseGivenOutFirstGroupDateWeekFive'
-                                        handleChange={this.handleChange}/>
+                                <h3>Week 6 Questions</h3>
+                                <h4>Answers due by February 8th at 8pm EST</h4>
+                                */}
 
-                                <BooleanPick
-                                        isLocked={this.state.isWeekFiveLockedOut}
-                                        pick={this.state.picks.leavesOnOwnWeekFive}
-                                        title='Does Somebody Leave on Their Own?'
-                                        subtitle='Includes anyone who leaves the show voluntarily'
-                                        radiosIds='leavesOnOwnWeekFive'
-                                        handleChange={this.handleChange}/>  
-
-
-                                <BooleanPick
-                                        isLocked={this.state.isWeekFiveLockedOut}
-                                        pick={this.state.picks.isTylerCameronApperanceWeekFive}
-                                        title='Tyler Cameron Makes an Appearance? (5 points)'
-                                        subtitle='Must be shown on broadcast (excluding previews)'
-                                        radiosIds='isTylerCameronApperanceWeekFive'
-                                        handleChange={this.handleChange}/>  
-
-                                <SinglePickDrag
-                                        isLocked={this.state.isWeekFiveLockedOut}
-                                        droppableId='sent-home-early-week-five'
-                                        pick={this.state.picks.sentHomeEarlyWeekFive}
-                                        onDragEnd={this.onDragEnd}
-                                        removeSelection={this.removeSelection}
-                                        title='Who does Matt Send Home Early? (10 points)'
-                                        subtitle='Must be sent home anytime outside of a rose ceremony. If this does not happen no points will be awarded'/>     
-
-
-                                <SinglePickDrag
-                                        isLocked={this.state.isWeekFiveLockedOut}
-                                        droppableId='one-on-one-date-week-five'
-                                        pick={this.state.picks.oneOnOneDateWeekFive}
-                                        onDragEnd={this.onDragEnd}
-                                        removeSelection={this.removeSelection}
-                                        title='Who gets a one on one date this week? (10 points)'
-                                        subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>      
-
-                                <SinglePickDrag
-                                        isLocked={this.state.isWeekFiveLockedOut}
-                                        droppableId='group-date-rose-week-five'
-                                        pick={this.state.picks.groupDateRoseWeekFive}
-                                        onDragEnd={this.onDragEnd}
-                                        removeSelection={this.removeSelection}
-                                        title='Who gets a Group Date Rose? (10 points)'
-                                        subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>     
-
-                                <BooleanPick
-                                        isLocked={this.state.isWeekFiveLockedOut}
-                                        pick={this.state.picks.isHotTubWeekFive}
-                                        title='Will someone get in a Hot Tub with the Bachelor? (5 points)'
-                                        subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, etc. do not count'
-                                        radiosIds='isHotTubWeekFive'
-                                        handleChange={this.handleChange}/>   
-
+                                
                                 <h3>Season Questions</h3>
                                 <h4>Answers due by February 8th at 8pm EST</h4>
 
@@ -597,6 +577,71 @@ class BatchelorGame extends React.Component {
                                 
                                 <Col>
                                     <h2>Previous Week's Questions</h2>
+
+                                    <h3>Week 5 Questions</h3>
+                                    <h4>Ansers submitted on February 1st at 8pm EST</h4>
+                                    
+                                    <BooleanPick
+                                            isLocked={this.state.isWeekFiveLockedOut}
+                                            pick={this.state.picks.isRoseGivenOutFirstGroupDateWeekFive}
+                                            title='Is a Rose Given Out on the Group Date Thats in Progress (5 points)'
+                                            subtitle='This is the group date that was still occuring when the last episdoe ended'
+                                            radiosIds='isRoseGivenOutFirstGroupDateWeekFive'
+                                            handleChange={this.handleChange}/>
+
+                                    <BooleanPick
+                                            isLocked={this.state.isWeekFiveLockedOut}
+                                            pick={this.state.picks.leavesOnOwnWeekFive}
+                                            title='Does Somebody Leave on Their Own?'
+                                            subtitle='Includes anyone who leaves the show voluntarily'
+                                            radiosIds='leavesOnOwnWeekFive'
+                                            handleChange={this.handleChange}/>  
+
+
+                                    <BooleanPick
+                                            isLocked={this.state.isWeekFiveLockedOut}
+                                            pick={this.state.picks.isTylerCameronApperanceWeekFive}
+                                            title='Tyler Cameron Makes an Appearance? (5 points)'
+                                            subtitle='Must be shown on broadcast (excluding previews)'
+                                            radiosIds='isTylerCameronApperanceWeekFive'
+                                            handleChange={this.handleChange}/>  
+
+                                    <SinglePickDrag
+                                            isLocked={this.state.isWeekFiveLockedOut}
+                                            droppableId='sent-home-early-week-five'
+                                            pick={this.state.picks.sentHomeEarlyWeekFive}
+                                            onDragEnd={this.onDragEnd}
+                                            removeSelection={this.removeSelection}
+                                            title='Who does Matt Send Home Early? (10 points)'
+                                            subtitle='Must be sent home anytime outside of a rose ceremony. If this does not happen no points will be awarded'/>     
+
+
+                                    <SinglePickDrag
+                                            isLocked={this.state.isWeekFiveLockedOut}
+                                            droppableId='one-on-one-date-week-five'
+                                            pick={this.state.picks.oneOnOneDateWeekFive}
+                                            onDragEnd={this.onDragEnd}
+                                            removeSelection={this.removeSelection}
+                                            title='Who gets a one on one date this week? (10 points)'
+                                            subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>      
+
+                                    <SinglePickDrag
+                                            isLocked={this.state.isWeekFiveLockedOut}
+                                            droppableId='group-date-rose-week-five'
+                                            pick={this.state.picks.groupDateRoseWeekFive}
+                                            onDragEnd={this.onDragEnd}
+                                            removeSelection={this.removeSelection}
+                                            title='Who gets a Group Date Rose? (10 points)'
+                                            subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>     
+
+                                    <BooleanPick
+                                            isLocked={this.state.isWeekFiveLockedOut}
+                                            pick={this.state.picks.isHotTubWeekFive}
+                                            title='Will someone get in a Hot Tub with the Bachelor? (5 points)'
+                                            subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, etc. do not count'
+                                            radiosIds='isHotTubWeekFive'
+                                            handleChange={this.handleChange}/>   
+
 
                                     <h3>Week 4 Questions</h3>
                                     <h4>Ansers submitted on January 25th at 8pm EST</h4>
