@@ -12,6 +12,9 @@ import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
 import alertImage from '../assets/alert.gif';
+import thinking from '../assets/thinking.gif';
+import threeroses from '../assets/threeroses.jpg';
+import conspiracy from '../assets/conspiracy.gif';
 
 class BatchelorGame extends React.Component {
     
@@ -420,21 +423,49 @@ class BatchelorGame extends React.Component {
                                     <h3>Question Results</h3>  
                                     
 
-                                    <div className="alert alert-primary">
+                                    <div className="alert alert-danger">
                                         <h5 className="alert-heading">Season Questions Lock Out on Monday!</h5>
                                         <hr/>
                                         <img src={alertImage} className="answers-gif" width="250" height="200" alt="alert"/>
                                         <p>
-                                        
+                                            <strong>All season long questsions (final six, final two, final rose, etc.) will be locked on:</strong>
+                                            <h5>MONDAY February 9th at 8PM EST.  Make sure you get all your answers in well in advance.</h5>
                                         </p>
                                        
                                     </div>
 
+                                    <h4>Week 5 Answers</h4>
+                                    
                                     <p><strong>Is a Rose Given Out on the Group Date Thats in Progress:</strong> Yes (wait what!?)</p>
+                                    <ul>
+                                        <li>They didn't show the end of the group date how can this be!???</li>
+                                        <li>Well Bri received a group date rose</li>
+                                        <li>Michelle receieved a one on one date rose</li>
+                                    </ul>
+
+                                    <img src={thinking} className="answers-gif" width="250" height="200" alt="thinking"/>
+                                    <ul>
+                                        <li>Was ready to mark this question as a "No" until Kim did her best Abraham Zapruder impression with this picture</li>
+                                    </ul>
+                                    
+                                    <img src={threeroses} className="answers-gif" width="250" height="200" alt="threeroses"/>
+                                    <ul>
+                                        <li>That's Michelle on the left</li>
+                                        <li>Bri on the right</li>
+                                        <li>Where did Pieper get that rose from?</li>
+                                        <li>She could only have gotten it on the group date and even though the footage was not shown, it counts.</li>
+                                    </ul>
+
+                                    <img src={conspiracy} className="answers-gif" width="250" height="200" alt="conspiracy"/>
+                         
 
                                     <p><strong>Does someone leave on their own?:</strong> No</p>
 
                                     <p><strong>Will Tyler Cameron make an appearance:</strong> No</p>
+
+                                    <ul>
+                                        <li>Yet again ABC ruins a weekly question by showing Tyler appearing on next week's episode.</li>
+                                    </ul>
 
                                     <p><strong>Who gets sent home Early:</strong></p>
                                     <ul>
@@ -445,7 +476,10 @@ class BatchelorGame extends React.Component {
                                     <ul>
                                         <li>Rachael</li>
                                         <li>Kit</li>
+                                        
                                     </ul>
+
+
 
                                     
                                     <p><strong>Who will get a group date rose this week?:</strong></p>
