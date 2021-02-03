@@ -15,6 +15,7 @@ import alertImage from '../assets/alert.gif';
 import thinking from '../assets/thinking.gif';
 import threeroses from '../assets/threeroses.jpg';
 import conspiracy from '../assets/conspiracy.gif';
+import annaImage from '../assets/anna.gif';
 
 class BatchelorGame extends React.Component {
     
@@ -429,7 +430,7 @@ class BatchelorGame extends React.Component {
                                         <img src={alertImage} className="answers-gif" width="250" height="200" alt="alert"/>
                                         <p>
                                             <strong>All season long questsions (final six, final two, final rose, etc.) will be locked on:</strong>
-                                            <h5>MONDAY February 9th at 8PM EST.  Make sure you get all your answers in well in advance.</h5>
+                                            <h5>MONDAY February 8th at 8PM EST.  Make sure you get all your answers in well in advance.</h5>
                                         </p>
                                        
                                     </div>
@@ -439,8 +440,8 @@ class BatchelorGame extends React.Component {
                                     <p><strong>Is a Rose Given Out on the Group Date Thats in Progress:</strong> Yes (wait what!?)</p>
                                     <ul>
                                         <li>They didn't show the end of the group date how can this be!???</li>
-                                        <li>Well Bri received a group date rose</li>
-                                        <li>Michelle receieved a one on one date rose</li>
+                                        <li>Well Bri received an eairlier group date rose</li>
+                                        <li>Michelle receieved a one-on-one rose</li>
                                     </ul>
 
                                     <img src={thinking} className="answers-gif" width="250" height="200" alt="thinking"/>
@@ -452,7 +453,7 @@ class BatchelorGame extends React.Component {
                                     <ul>
                                         <li>That's Michelle on the left</li>
                                         <li>Bri on the right</li>
-                                        <li>Where did Pieper get that rose from?</li>
+                                        <li>Where did Pieper get that rose from!?</li>
                                         <li>She could only have gotten it on the group date and even though the footage was not shown, it counts.</li>
                                     </ul>
 
@@ -470,7 +471,10 @@ class BatchelorGame extends React.Component {
                                     <p><strong>Who gets sent home Early:</strong></p>
                                     <ul>
                                         <li>Anna</li>
+                                        <li>I've never been more happy to be wrong in assuming that one person would send the rest of the season into a tailspin.  See you in paradise or not who cares.</li>
                                     </ul>
+                                    <img src={annaImage} className="answers-gif" width="250" height="200" alt="anna"/>
+                                    
 
                                     <p><strong>Who will get a one on one date?:</strong></p>
                                     <ul>
