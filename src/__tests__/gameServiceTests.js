@@ -49,15 +49,14 @@ test('perfect score to equal 490', () => {
         isMattToldAboutEscort: 0,
         isSarahReturnWeekFour: 0,
         //WEEK 5
-        isTylerCameronApperanceWeekFive: 999,
-        oneOnOneDateWeekFive: 999,
-        groupDateRoseWeekFive: 999,
-        isHotTubWeekFive: 999,
-        isRoseGivenOutFirstGroupDateWeekFive: 999,
-        sentHomeEarlyWeekFive: 999,
-        leavesOnOwnWeekFive: 999,
-        //TODO (can be implemented after 1st episode)        
-        firstToLeaveOnOwn: -1                
+        isTylerCameronApperanceWeekFive: 0,
+        oneOnOneDateWeekFive: '26',
+        groupDateRoseWeekFive: '1',
+        isHotTubWeekFive: 0,
+        isRoseGivenOutFirstGroupDateWeekFive: 1,
+        sentHomeEarlyWeekFive: '5',
+        leavesOnOwnWeekFive: 0
+        //WEEK 6          
     }
 
     let result = gameService.getScore(picks);
@@ -67,16 +66,16 @@ test('perfect score to equal 490', () => {
 
 test('leaves on own week five correct to equal 5', () =>{
     let picks = constants.defaultPicks();
-    picks.leavesOnOwnWeekFive = 999;
+    picks.leavesOnOwnWeekFive = 0;
 
     let result = gameService.getScore(picks);
 
     expect(result).toBe(5);
 })
 
-test('leaves on own week five correct to equal 0', () =>{
+test('leaves on own week five icorrect to equal 0', () =>{
     let picks = constants.defaultPicks();
-    picks.leavesOnOwnWeekFive = 998;
+    picks.leavesOnOwnWeekFive = 1;
 
     let result = gameService.getScore(picks);
 
@@ -85,7 +84,7 @@ test('leaves on own week five correct to equal 0', () =>{
 
 test('sent home early week five correct to equal 10', () =>{
     let picks = constants.defaultPicks();
-    picks.sentHomeEarlyWeekFive = 999;
+    picks.sentHomeEarlyWeekFive = '5';
 
     let result = gameService.getScore(picks);
 
@@ -103,7 +102,7 @@ test('sent home early week five correct to equal 0', () =>{
 
 test('is rose given out on first group date week five correct to equal 5', () =>{
     let picks = constants.defaultPicks();
-    picks.isRoseGivenOutFirstGroupDateWeekFive = 999;
+    picks.isRoseGivenOutFirstGroupDateWeekFive = 1;
 
     let result = gameService.getScore(picks);
 
@@ -112,25 +111,25 @@ test('is rose given out on first group date week five correct to equal 5', () =>
 
 test('is rose given out on first group date week five icorrect to equal 0', () =>{
     let picks = constants.defaultPicks();
-    picks.isRoseGivenOutFirstGroupDateWeekFive = 998;
+    picks.isRoseGivenOutFirstGroupDateWeekFive = 0;
 
     let result = gameService.getScore(picks);
 
     expect(result).toBe(0);
 })
 
-test('is group date week five correct to equal 5', () =>{
+test('is hot tub week five correct to equal 5', () =>{
     let picks = constants.defaultPicks();
-    picks.isHotTubWeekFive = 999;
+    picks.isHotTubWeekFive = 0;
 
     let result = gameService.getScore(picks);
 
     expect(result).toBe(5);
 })
 
-test('is group date week five incorrect to equal 0', () =>{
+test('is hot tub week five incorrect to equal 0', () =>{
     let picks = constants.defaultPicks();
-    picks.isHotTubWeekFive = 998;
+    picks.isHotTubWeekFive = 1;
 
     let result = gameService.getScore(picks);
 
@@ -139,7 +138,7 @@ test('is group date week five incorrect to equal 0', () =>{
 
 test('is group date week five correct to equal 10', () =>{
     let picks = constants.defaultPicks();
-    picks.groupDateRoseWeekFive = 999;
+    picks.groupDateRoseWeekFive = '1';
 
     let result = gameService.getScore(picks);
 
@@ -157,7 +156,16 @@ test('is group date week five correct to equal 0', () =>{
 
 test('is one on one week five correct to equal 10', () =>{
     let picks = constants.defaultPicks();
-    picks.oneOnOneDateWeekFive = 999;
+    picks.oneOnOneDateWeekFive = '26';
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('is alternate one on one week five correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.oneOnOneDateWeekFive = '18';
 
     let result = gameService.getScore(picks);
 
@@ -175,7 +183,7 @@ test('is one on one five incorrect to equal 0', () =>{
 
 test('is Tlyer Cameron week five correct to equal 5', () =>{
     let picks = constants.defaultPicks();
-    picks.isTylerCameronApperanceWeekFive = 999;
+    picks.isTylerCameronApperanceWeekFive = 0;
 
     let result = gameService.getScore(picks);
 
@@ -184,7 +192,7 @@ test('is Tlyer Cameron week five correct to equal 5', () =>{
 
 test('is Tlyer Cameron week five incorrect to equal 0', () =>{
     let picks = constants.defaultPicks();
-    picks.isTylerCameronApperanceWeekFive = 998;
+    picks.isTylerCameronApperanceWeekFive = 1;
 
     let result = gameService.getScore(picks);
 
