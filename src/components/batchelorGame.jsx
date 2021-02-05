@@ -451,9 +451,12 @@ class BatchelorGame extends React.Component {
                                         <hr/>
                                         <img src={alertImage} className="answers-gif" width="250" height="200" alt="alert"/>
                                         <p>
-                                            <strong>All season long questsions (final six, final two, final rose, etc.) will be locked on:</strong>
-                                            <h5>MONDAY February 8th at 8PM EST.  Make sure you get all your answers in well in advance.</h5>
+                                            <strong>All season long questsions (final six, final two, final rose, etc.) will be locked on:</strong>                                            
                                         </p>
+
+                                        <h5>MONDAY February 8th at 8PM EST.  Make sure you get all your answers in well in advance.</h5>
+
+                                        
                                        
                                     </div>
                                     
@@ -575,7 +578,7 @@ class BatchelorGame extends React.Component {
                                         pick={this.state.picks.isHotTubWeekSix}
                                         title='Will someone get in a Hot Tub with the Bachelor? (5 points)'
                                         subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, etc. do not count'
-                                        radiosIds='isHotTubWeekFive'
+                                        radiosIds='isHotTubWeekSix'
                                         handleChange={this.handleChange}/>    
 
                                 
