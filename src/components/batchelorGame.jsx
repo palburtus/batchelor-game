@@ -12,10 +12,6 @@ import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
 import alertImage from '../assets/alert.gif';
-import thinking from '../assets/thinking.gif';
-import threeroses from '../assets/threeroses.jpg';
-import conspiracy from '../assets/conspiracy.gif';
-import annaImage from '../assets/anna.gif';
 
 class BatchelorGame extends React.Component {
     
@@ -166,7 +162,14 @@ class BatchelorGame extends React.Component {
         
         //WEEK 6
         if(!this.state.isWeekSixLockedOut){
+            
+            if(listId === 'group-date-rose-week-six'){
+                picks.groupDateRoseWeekSix = -1;
+            }
 
+            if(listId === 'one-on-one-date-week-six'){
+                picks.oneOnOneDateWeekSix = -1;
+            }
         }
 
         //WEEK 5
@@ -276,6 +279,10 @@ class BatchelorGame extends React.Component {
             if(listId === 'final-one'){
                 picks.finalOne = -1;
             }
+
+            if(listId === 'bachelorette'){
+                picks.bachelorette = -1;
+            }
         }
         
         this.setState({
@@ -297,12 +304,14 @@ class BatchelorGame extends React.Component {
             picks.finalSix = this.handleMultiDragAdd(picks.finalSix, this.state.picks.finalSix, 'final-six', result, 6);
             picks.finalFour = this.handleMultiDragAdd(picks.finalFour, this.state.picks.finalFour, 'final-four', result, 4);
             picks.finalTwo = this.handleMultiDragAdd(picks.finalTwo, this.state.picks.finalTwo, 'final-two', result, 2);
-            picks.finalOne = this.handleSingleDragAdd(picks.finalOne, this.state.picks.finalOne, 'final-one', result)
+            picks.finalOne = this.handleSingleDragAdd(picks.finalOne, this.state.picks.finalOne, 'final-one', result);
+            picks.bachelorette = this.handleSingleDragAdd(picks.bachelorette, this.state.picks.bachelorette, 'bachelorette', result);
         }
         
         //WEEK 6
         if(!this.state.isWeekSixLockedOut){
-                    
+            picks.groupDateRoseWeekSix = this.handleSingleDragAdd(picks.groupDateRoseWeekSix, this.state.picks.groupDateRoseWeekSix, 'group-date-rose-week-six', result);
+            picks.oneOnOneDateWeekSix = this.handleSingleDragAdd(picks.oneOnOneDateWeekSix, this.state.picks.oneOnOneDateWeekSix, 'one-on-one-date-week-six', result);
         }
 
         //WEEK 5
@@ -355,10 +364,14 @@ class BatchelorGame extends React.Component {
     handleChange(evt) {
        
         let picks = this.state.picks;
-        
+
         //WEEK 6
         if(!this.state.isWeekSixLockedOut){
-                    
+            picks.isHotTubWeekSix = this.handleBooleanEventChange(evt, 'isHotTubWeekSix', picks.isHotTubWeekSix);
+            picks.isJesseniaSentHomeWeekSix = this.handleBooleanEventChange(evt, 'isJesseniaSentHomeWeekSix', picks.isJesseniaSentHomeWeekSix);
+            picks.isMJSentHomeWeekSix = this.handleBooleanEventChange(evt, 'isMJSentHomeWeekSix', picks.isMJSentHomeWeekSix);
+            picks.isHeathMartinMadeContestant = this.handleBooleanEventChange(evt, 'isHeathMartinMadeContestant', picks.isHeathMartinMadeContestant);
+            picks.isTylerCameronOnDateWeekSix = this.handleBooleanEventChange(evt, 'isTylerCameronOnDateWeekSix', picks.isTylerCameronOnDateWeekSix);
         }
 
         //WEEK 5
@@ -394,8 +407,17 @@ class BatchelorGame extends React.Component {
             picks.isNewContestantIntroducedWeekTwo = this.handleBooleanEventChange(evt, 'isNewContestantIntroducedWeekTwo', picks.isNewContestantIntroducedWeekTwo);
         }
 
+        //WEEK 1
         if(!this.state.isWeekOneLockedOut){                        
             picks.isTylerCameronApperance = this.handleBooleanEventChange(evt, 'tylerCameronRadios', picks.isTylerCameronApperance);
+        }
+
+        //SEASON
+        if(!this.state.isSeasonLongLockedOut){
+            picks.isMattAndFinalRoseACouple = this.handleBooleanEventChange(evt, 'isMattAndFinalRoseACouple', picks.isMattAndFinalRoseACouple);
+            picks.isSentHomeOnAOneOnOneDate = this.handleBooleanEventChange(evt, 'isSentHomeOnAOneOnOneDate', picks.isSentHomeOnAOneOnOneDate);
+            picks.isLeaveOnOwn = this.handleBooleanEventChange(evt, 'isLeaveOnOwn', picks.isLeaveOnOwn);
+            picks.isMultipleInLove = this.handleBooleanEventChange(evt, 'isMultipleInLove', picks.isMultipleInLove);
         }
         
 
@@ -434,64 +456,6 @@ class BatchelorGame extends React.Component {
                                         </p>
                                        
                                     </div>
-
-                                    <h4>Week 5 Answers</h4>
-                                    
-                                    <p><strong>Is a Rose Given Out on the Group Date Thats in Progress:</strong> Yes (wait what!?)</p>
-                                    <ul>
-                                        <li>They didn't show the end of the group date how can this be!???</li>
-                                        <li>Well Bri received an eairlier group date rose</li>
-                                        <li>Michelle receieved a one-on-one rose</li>
-                                    </ul>
-
-                                    <img src={thinking} className="answers-gif" width="250" height="200" alt="thinking"/>
-                                    <ul>
-                                        <li>Was ready to mark this question as a "No" until Kim did her best Abraham Zapruder impression with this picture</li>
-                                    </ul>
-                                    
-                                    <img src={threeroses} className="answers-gif" width="250" height="200" alt="threeroses"/>
-                                    <ul>
-                                        <li>That's Michelle on the left</li>
-                                        <li>Bri on the right</li>
-                                        <li>Where did Pieper get that rose from!?</li>
-                                        <li>She could only have gotten it on the group date and even though the footage was not shown, it counts.</li>
-                                    </ul>
-
-                                    <img src={conspiracy} className="answers-gif" width="250" height="200" alt="conspiracy"/>
-                         
-
-                                    <p><strong>Does someone leave on their own?:</strong> No</p>
-
-                                    <p><strong>Will Tyler Cameron make an appearance:</strong> No</p>
-
-                                    <ul>
-                                        <li>Yet again ABC ruins a weekly question by showing Tyler appearing on next week's episode.</li>
-                                    </ul>
-
-                                    <p><strong>Who gets sent home Early:</strong></p>
-                                    <ul>
-                                        <li>Anna</li>
-                                        <li>I've never been more happy to be wrong in assuming that one person would send the rest of the season into a tailspin.  See you in paradise or not who cares.</li>
-                                    </ul>
-                                    <img src={annaImage} className="answers-gif" width="250" height="200" alt="anna"/>
-                                    
-
-                                    <p><strong>Who will get a one on one date?:</strong></p>
-                                    <ul>
-                                        <li>Rachael</li>
-                                        <li>Kit</li>
-                                        
-                                    </ul>
-
-
-
-                                    
-                                    <p><strong>Who will get a group date rose this week?:</strong></p>
-                                    <ul>
-                                        <li>Abigail</li>
-                                    </ul>
-
-                                    <p><strong>Hotub with the bachelor: </strong> No</p>
                                     
                                 </div>
                                 
@@ -551,16 +515,108 @@ class BatchelorGame extends React.Component {
                                     </Card>
                                 </Col>
                                 <Col>
-
-                                {/*
                                 
                                 <h3>Week 6 Questions</h3>
                                 <h4>Answers due by February 8th at 8pm EST</h4>
-                                */}
+                                
+                                <BooleanPick
+                                        isLocked={this.state.isWeekSixLockedOut}
+                                        pick={this.state.picks.isTylerCameronOnDateWeekSix}
+                                        title='Does Tyler Cameron Appear on a Date? (5 points)'
+                                        subtitle='Must interact with or be seen by at least one contestant on a date'
+                                        radiosIds='isTylerCameronOnDateWeekSix'
+                                        handleChange={this.handleChange}/> 
+
+                                <BooleanPick
+                                        isLocked={this.state.isWeekSixLockedOut}
+                                        pick={this.state.picks.isHeathMartinMadeContestant}
+                                        title='Does Heather Martin become a contestant? (5 points)'
+                                        subtitle='Must become eligible for a date and/or participate in a rose ceremony during this episode'
+                                        radiosIds='isHeathMartinMadeContestant'
+                                        handleChange={this.handleChange}/> 
+
+                                <BooleanPick
+                                        isLocked={this.state.isWeekSixLockedOut}
+                                        pick={this.state.picks.isMJSentHomeWeekSix}
+                                        title='Does MJ get sent home before or during the 1st Rose Ceremoney? (5 points)'
+                                        subtitle='Can either be sent home by Matt prior to, or elimiated during the 1st Rose Ceremony'
+                                        radiosIds='isMJSentHomeWeekSix'
+                                        handleChange={this.handleChange}/>    
+
+                                <BooleanPick
+                                        isLocked={this.state.isWeekSixLockedOut}
+                                        pick={this.state.picks.isJesseniaSentHomeWeekSix}
+                                        title='Does Jessenia get sent home before or during the 1st Rose Ceremoney? (5 points)'
+                                        subtitle='Can either be sent home by Matt prior to, or elimiated during the 1st Rose Ceremony'
+                                        radiosIds='isJesseniaSentHomeWeekSix'
+                                        handleChange={this.handleChange}/>    
+
+
+                                <SinglePickDrag
+                                            isLocked={this.state.isWeekSixLockedOut}
+                                            droppableId='one-on-one-date-week-six'
+                                            pick={this.state.picks.oneOnOneDateWeekSix}
+                                            onDragEnd={this.onDragEnd}
+                                            removeSelection={this.removeSelection}
+                                            title='Who gets a one on one date this week? (10 points)'
+                                            subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>      
+
+                                <SinglePickDrag
+                                        isLocked={this.state.isWeekSixLockedOut}
+                                        droppableId='group-date-rose-week-six'
+                                        pick={this.state.picks.groupDateRoseWeekSix}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who gets a Group Date Rose? (10 points)'
+                                        subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>     
+
+                                <BooleanPick
+                                        isLocked={this.state.isWeekSixLockedOut}
+                                        pick={this.state.picks.isHotTubWeekSix}
+                                        title='Will someone get in a Hot Tub with the Bachelor? (5 points)'
+                                        subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, etc. do not count'
+                                        radiosIds='isHotTubWeekFive'
+                                        handleChange={this.handleChange}/>    
 
                                 
                                 <h3>Season Questions</h3>
                                 <h4>Answers due by February 8th at 8pm EST</h4>
+                                
+                                <p className="foot-note"><strong>*</strong>Any questions that mention "After the Final Rose" will still apply to any substitue recap they air in the case that
+                                there is no "After the Final Rose" this season for COVID related reasons.</p>
+                                                                
+                                <BooleanPick
+                                    isLocked={this.state.isSeasonLongLockedOut}
+                                    pick={this.state.picks.isLeaveOnOwn}
+                                    title='Does Anyone Else Leave on their Own? (10 points)'
+                                    subtitle='Includes anyone who leaves the show voluntarily'
+                                    radiosIds='isLeaveOnOwn'
+                                    handleChange={this.handleChange}/>
+
+                                <BooleanPick
+                                    isLocked={this.state.isSeasonLongLockedOut}
+                                    pick={this.state.picks.isSentHomeOnAOneOnOneDate}
+                                    title='Is anyone sent home during a one on one date? (10 points)'
+                                    subtitle='Must occur during a one on one date'
+                                    radiosIds='isSentHomeOnAOneOnOneDate'
+                                    handleChange={this.handleChange}/>
+
+                                <BooleanPick
+                                    isLocked={this.state.isSeasonLongLockedOut}
+                                    pick={this.state.picks.isMattAndFinalRoseACouple}
+                                    title='Are Matt and The Recipient of the Final Rose still a couple at the end of the season? (10 points)'
+                                    subtitle='Must be together at "After the Final Rose*"'
+                                    radiosIds='isMattAndFinalRoseACouple'
+                                    handleChange={this.handleChange}/>
+
+                                <SinglePickDrag
+                                        isLocked={this.state.isSeasonLongLockedOut}
+                                        droppableId='bachelorette'
+                                        pick={this.state.picks.bachelorette}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who gets Picked to be the Bachelorette? (20 points)'
+                                        subtitle='No points for not answering.  Must be anounced on the broadcast any time before the season ends including at After The Final Rose*'/>     
 
                                 <MultiPickDrag
                                     isLocked={this.state.isSeasonLongLockedOut}
@@ -601,13 +657,7 @@ class BatchelorGame extends React.Component {
                                     title="Final Rose (30 points)"
                                     subtitle="Drag 1 Selection or don't leave a name if you think no one gets the final rose"/>   
 
-                                   
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>More to come</Card.Title>
-                                            <Card.Subtitle>Will add more season long question to come that will be locked in before week 3</Card.Subtitle>
-                                        </Card.Body>
-                                    </Card>       
+                                         
                                 </Col>
                             </Row>
                         
@@ -619,6 +669,15 @@ class BatchelorGame extends React.Component {
                                     <h3>Week 5 Questions</h3>
                                     <h4>Ansers submitted on February 1st at 8pm EST</h4>
                                     
+                                    
+                                    <BooleanPick
+                                            isLocked={this.state.isWeekFiveLockedOut}
+                                            pick={this.state.picks.isMultipleInLove}
+                                            title='Does Matt tell more than one girl he is "In Love" with them (10 points)'
+                                            subtitle='Must clearly tell more than contestant he is "In love" with them, "falling in love" and other similar phrases do not count'
+                                            radiosIds='isMultipleInLove'
+                                            handleChange={this.handleChange}/>
+
                                     <BooleanPick
                                             isLocked={this.state.isWeekFiveLockedOut}
                                             pick={this.state.picks.isRoseGivenOutFirstGroupDateWeekFive}

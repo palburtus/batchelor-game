@@ -4,6 +4,15 @@ export const getScore = (picks) => {
     let score = 0;
     if(picks){
 
+        //WEEK 6
+        score += calculateMultipleCorrectAnswersScore(picks.oneOnOneDateWeekSix, constants.perfectPicks.oneOnOneDateWeekSix, 'oneOnOneDateWeekSix');
+        score += calculateMultipleCorrectAnswersScore(picks.groupDateRoseWeekSix, constants.perfectPicks.groupDateRoseWeekSix, 'groupDateRoseWeekSix');
+        score += calculateBoolScore(picks.isHotTubWeekSix, constants.perfectPicks.isHotTubWeekSix, 'isHotTubWeekSix');
+        score += calculateBoolScore(picks.isJesseniaSentHomeWeekSix, constants.perfectPicks.isJesseniaSentHomeWeekSix, 'isJesseniaSentHomeWeekSix');
+        score += calculateBoolScore(picks.isMJSentHomeWeekSix, constants.perfectPicks.isMJSentHomeWeekSix, 'isMJSentHomeWeekSix');
+        score += calculateBoolScore(picks.isHeathMartinMadeContestant, constants.perfectPicks.isHeathMartinMadeContestant, 'isHeathMartinMadeContestant');
+        score += calculateBoolScore(picks.isTylerCameronOnDateWeekSix, constants.perfectPicks.isTylerCameronOnDateWeekSix, 'isTylerCameronOnDateWeekSix');
+
         //WEEK 5 
         score += calculateBoolScore(picks.isTylerCameronApperanceWeekFive, constants.perfectPicks.isTylerCameronApperanceWeekFive, 'isTylerCameronApperanceWeekFive');
         score += calculateMultipleCorrectAnswersScore(picks.oneOnOneDateWeekFive, constants.perfectPicks.oneOnOneDateWeekFive, 'oneOnOneDateWeekFive');
@@ -51,6 +60,12 @@ export const getScore = (picks) => {
         score += calculateSingleAnswerScore(picks.firstWearingCostume, constants.perfectPicks.firstWearingCostume, 'firstWearingCostume');  
     
         //SEASON
+        score += calculateBoolScore(picks.isMattAndFinalRoseACouple, constants.perfectPicks.isMattAndFinalRoseACouple, 'isMattAndFinalRoseACouple');
+        score += calculateSingleAnswerScore(picks.bachelorette, constants.perfectPicks.bachelorette, 'bachelorette');
+        score += calculateBoolScore(picks.isSentHomeOnAOneOnOneDate, constants.perfectPicks.isSentHomeOnAOneOnOneDate, 'isSentHomeOnAOneOnOneDate');
+        score += calculateBoolScore(picks.isLeaveOnOwn, constants.perfectPicks.isLeaveOnOwn, 'isLeaveOnOwn');
+        score += calculateBoolScore(picks.isMultipleInLove, constants.perfectPicks.isMultipleInLove, 'isMultipleInLove');
+       
         if(picks.finalOne === constants.perfectPicks.finalOne){
             score += constants.scoreMap['finalOne'];
         }

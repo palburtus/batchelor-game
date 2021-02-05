@@ -56,8 +56,21 @@ export const scoreMap = {
     'isHotTubWeekFive' : 5,
     'isRoseGivenOutFirstGroupDateWeekFive' : 5,
     'sentHomeEarlyWeekFive' : 10,
-    'leavesOnOwnWeekFive' : 5
+    'leavesOnOwnWeekFive' : 5,
     //WEEK 6
+    'oneOnOneDateWeekSix' : 10,
+    'groupDateRoseWeekSix' : 10,
+    'isHotTubWeekSix' : 5,
+    'isJesseniaSentHomeWeekSix' : 5,
+    'isMJSentHomeWeekSix' : 5,
+    'isHeathMartinMadeContestant' : 5,
+    'isTylerCameronOnDateWeekSix' : 5,
+    //SEASON
+    'isMattAndFinalRoseACouple' : 10,
+    'bachelorette' : 20,
+    'isSentHomeOnAOneOnOneDate' : 10,
+    'isLeaveOnOwn' : 10,
+    'isMultipleInLove' : 10
 }
 
 export function defaultPicks() {
@@ -107,9 +120,20 @@ export function defaultPicks() {
         isRoseGivenOutFirstGroupDateWeekFive: NO_SELECTION,
         sentHomeEarlyWeekFive: NO_SELECTION,
         leavesOnOwnWeekFive: NO_SELECTION,
-        //TODO (can be implemented after 1st episode)
-        firstTwoOneOne: [],        
-        firstToLeaveOnOwn: -1         
+        //WEEK 6
+        oneOnOneDateWeekSix: NO_SELECTION,
+        groupDateRoseWeekSix: NO_SELECTION,
+        isHotTubWeekSix: NO_SELECTION,
+        isJesseniaSentHomeWeekSix: NO_SELECTION,
+        isMJSentHomeWeekSix: NO_SELECTION,
+        isHeathMartinMadeContestant: NO_SELECTION,
+        isTylerCameronOnDateWeekSix: NO_SELECTION,
+        //SEASON
+        isMattAndFinalRoseACouple: NO_SELECTION,
+        bachelorette: NO_SELECTION,
+        isSentHomeOnAOneOnOneDate: NO_SELECTION,
+        isLeaveOnOwn: NO_SELECTION,
+        isMultipleInLove: NO_SELECTION
     }       
 }
 
@@ -159,6 +183,19 @@ export const perfectPicks = {
     sentHomeEarlyWeekFive: ['5'],
     leavesOnOwnWeekFive: FALSE,
     //WEEK 6              
+    oneOnOneDateWeekSix: [NOT_SETTLED],
+    groupDateRoseWeekSix: [NOT_SETTLED],
+    isHotTubWeekSix: NOT_SETTLED,
+    isJesseniaSentHomeWeekSix: NOT_SETTLED,
+    isMJSentHomeWeekSix: NOT_SETTLED,
+    isHeathMartinMadeContestant: NOT_SETTLED,
+    isTylerCameronOnDateWeekSix: NOT_SETTLED,
+    //SEASON
+    isMattAndFinalRoseACouple: NOT_SETTLED,
+    bachelorette: NOT_SETTLED,
+    isSentHomeOnAOneOnOneDate: NOT_SETTLED,
+    isLeaveOnOwn: NOT_SETTLED,
+    isMultipleInLove: NOT_SETTLED
 }
 
 export const girls = [

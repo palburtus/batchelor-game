@@ -9,7 +9,7 @@ test('default picks to equal 0', () => {
 });
 
 
-test('perfect score to equal 490', () => {
+test('perfect score to equal 590', () => {
     
     let picks = {
         finalSix: [999, 1000, 1001, 1002, 1003, 1004],
@@ -55,14 +55,244 @@ test('perfect score to equal 490', () => {
         isHotTubWeekFive: 0,
         isRoseGivenOutFirstGroupDateWeekFive: 1,
         sentHomeEarlyWeekFive: '5',
-        leavesOnOwnWeekFive: 0
-        //WEEK 6          
+        leavesOnOwnWeekFive: 0,
+        //WEEK 6      
+        oneOnOneDateWeekSix: 999,
+        groupDateRoseWeekSix: 999,
+        isHotTubWeekSix: 999,
+        isJesseniaSentHomeWeekSix: 999,
+        isHeathMartinMadeContestant: 999,
+        isTylerCameronOnDateWeekSix: 999,
+        //SEASON
+        isMattAndFinalRoseACouple: 999,
+        bachelorette: 999,
+        isSentHomeOnAOneOnOneDate: 999,
+        isLeaveOnOwn: 999,
+        isMultipleInLove: 999
     }
 
     let result = gameService.getScore(picks);
 
-    expect(result).toBe(490);
+    expect(result).toBe(590);
 });
+
+test('is multiple in love correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.isMultipleInLove = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('is multiple in love incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isMultipleInLove = 998;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is leave on own correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.isLeaveOnOwn = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('is leave on own incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isLeaveOnOwn = 998;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is sent home on a one on one correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.isSentHomeOnAOneOnOneDate = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('is sent home on a one on one incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isSentHomeOnAOneOnOneDate = 998;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('bachelorette correct to equal 20', () =>{
+    let picks = constants.defaultPicks();
+    picks.bachelorette = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(20);
+})
+
+test('bachelorette incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.bachelorette = 998;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is Matt and Final Rose a couple correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.isMattAndFinalRoseACouple = 999;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('is Matt and Final Rose a couple incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isMattAndFinalRoseACouple = 998;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is tyler cameron on date week six correct to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.isTylerCameronOnDateWeekSix = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('is tyler cameron on date week six incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isTylerCameronOnDateWeekSix = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is heather martin made contestant week six correct to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.isHeathMartinMadeContestant = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('is Heather Martin Made cotenstant week six incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isHeathMartinMadeContestant = 998;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('MJ sent home week six correct to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.isMJSentHomeWeekSix = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('MJ sent homeweek six incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isMJSentHomeWeekSix = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+
+test('jessenia sent home week six correct to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.isJesseniaSentHomeWeekSix = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('jessenia sent home week six incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isJesseniaSentHomeWeekSix = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('hot tub week six correct to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.isHotTubWeekSix = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('hot tub week six incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isHotTubWeekSix = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+
+test('one on one date week six correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.oneOnOneDateWeekSix = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('one on one date week six incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.oneOnOneDateWeekSix = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('group date week six correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.groupDateRoseWeekSix = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('group date week six incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.groupDateRoseWeekSix = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})                                
 
 test('leaves on own week five correct to equal 5', () =>{
     let picks = constants.defaultPicks();

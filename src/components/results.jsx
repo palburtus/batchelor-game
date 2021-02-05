@@ -14,6 +14,11 @@ import fallingOffHourse from '../assets/fallingoffhorse.gif';
 import distractedBoyfriend from '../assets/distractedboyfriend.jpg';
 import falloutofpool from '../assets/falloutofpool.gif';
 import bottleservice from '../assets/bottleservice.gif';
+import thinking from '../assets/thinking.gif';
+import threeroses from '../assets/threeroses.jpg';
+import conspiracy from '../assets/conspiracy.gif';
+import annaImage from '../assets/anna.gif';
+
 
 class Results extends React.Component {
 
@@ -109,6 +114,66 @@ class Results extends React.Component {
                         <Col>
                         
                             <div className="answers">
+                                <h4>Week 5 Answers</h4>
+                                    
+                                <p><strong>Is a Rose Given Out on the Group Date Thats in Progress:</strong> Yes (wait what!?)</p>
+                                <ul>
+                                    <li>They didn't show the end of the group date how can this be!???</li>
+                                    <li>Well Bri received an eairlier group date rose</li>
+                                    <li>Michelle receieved a one-on-one rose</li>
+                                </ul>
+
+                                <img src={thinking} className="answers-gif" width="250" height="200" alt="thinking"/>
+                                <ul>
+                                    <li>Was ready to mark this question as a "No" until Kim did her best Abraham Zapruder impression with this picture</li>
+                                </ul>
+                                
+                                <img src={threeroses} className="answers-gif" width="250" height="200" alt="threeroses"/>
+                                <ul>
+                                    <li>That's Michelle on the left</li>
+                                    <li>Bri on the right</li>
+                                    <li>Where did Pieper get that rose from!?</li>
+                                    <li>She could only have gotten it on the group date and even though the footage was not shown, it counts.</li>
+                                </ul>
+
+                                <img src={conspiracy} className="answers-gif" width="250" height="200" alt="conspiracy"/>
+                        
+
+                                <p><strong>Does someone leave on their own?:</strong> No</p>
+
+                                <p><strong>Will Tyler Cameron make an appearance:</strong> No</p>
+
+                                <ul>
+                                    <li>Yet again ABC ruins a weekly question by showing Tyler appearing on next week's episode.</li>
+                                </ul>
+
+                                <p><strong>Who gets sent home Early:</strong></p>
+                                <ul>
+                                    <li>Anna</li>
+                                    <li>I've never been more happy to be wrong in assuming that one person would send the rest of the season into a tailspin.  See you in paradise or not who cares.</li>
+                                </ul>
+                                <img src={annaImage} className="answers-gif" width="250" height="200" alt="anna"/>
+                                
+
+                                <p><strong>Who will get a one on one date?:</strong></p>
+                                <ul>
+                                    <li>Rachael</li>
+                                    <li>Kit</li>
+                                    
+                                </ul>
+
+
+
+                                
+                                <p><strong>Who will get a group date rose this week?:</strong></p>
+                                <ul>
+                                    <li>Abigail</li>
+                                </ul>
+
+                                <p><strong>Hotub with the bachelor: </strong> No</p>
+                                
+                            
+
                                 <h4>Week 4 Answers</h4>
                                 <div className="alert alert-info">
                                         <p>
