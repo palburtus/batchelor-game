@@ -525,7 +525,7 @@ class BatchelorGame extends React.Component {
                                 <BooleanPick
                                         isLocked={this.state.isWeekSixLockedOut}
                                         pick={this.state.picks.isTylerCameronOnDateWeekSix}
-                                        title='Does Tyler Cameron Appear on a Date? (5 points)'
+                                        title='Does Tyler Cameron appear on a date? (5 points)'
                                         subtitle='Must interact with or be seen by at least one contestant on a date'
                                         radiosIds='isTylerCameronOnDateWeekSix'
                                         handleChange={this.handleChange}/> 
@@ -541,16 +541,16 @@ class BatchelorGame extends React.Component {
                                 <BooleanPick
                                         isLocked={this.state.isWeekSixLockedOut}
                                         pick={this.state.picks.isMJSentHomeWeekSix}
-                                        title='Does MJ get sent home before or during the 1st Rose Ceremoney? (5 points)'
-                                        subtitle='Can either be sent home by Matt prior to, or elimiated during the 1st Rose Ceremony'
+                                        title='Does MJ get sent home before or during the 1st Rose Ceremony? (5 points)'
+                                        subtitle='Can either be sent home by Matt prior to, or eliminated during the 1st Rose Ceremony'
                                         radiosIds='isMJSentHomeWeekSix'
                                         handleChange={this.handleChange}/>    
 
                                 <BooleanPick
                                         isLocked={this.state.isWeekSixLockedOut}
                                         pick={this.state.picks.isJesseniaSentHomeWeekSix}
-                                        title='Does Jessenia get sent home before or during the 1st Rose Ceremoney? (5 points)'
-                                        subtitle='Can either be sent home by Matt prior to, or elimiated during the 1st Rose Ceremony'
+                                        title='Does Jessenia get sent home before or during the 1st Rose Ceremony? (5 points)'
+                                        subtitle='Can either be sent home by Matt prior to, or eliminated during the 1st Rose Ceremony'
                                         radiosIds='isJesseniaSentHomeWeekSix'
                                         handleChange={this.handleChange}/>    
 
@@ -612,14 +612,23 @@ class BatchelorGame extends React.Component {
                                     radiosIds='isMattAndFinalRoseACouple'
                                     handleChange={this.handleChange}/>
 
+                                <BooleanPick
+                                    isLocked={this.state.isWeekSixLockedOut}
+                                    pick={this.state.picks.isMultipleInLove}
+                                    title='Does Matt tell more than one girl he is "In Love" with them (10 points)'
+                                    subtitle='Must clearly tell more than contestant he is "In love" with them, "falling in love" and other similar phrases do not count'
+                                    radiosIds='isMultipleInLove'
+                                    handleChange={this.handleChange}/>
+
+
                                 <SinglePickDrag
-                                        isLocked={this.state.isSeasonLongLockedOut}
-                                        droppableId='bachelorette'
-                                        pick={this.state.picks.bachelorette}
-                                        onDragEnd={this.onDragEnd}
-                                        removeSelection={this.removeSelection}
-                                        title='Who gets Picked to be the Bachelorette? (20 points)'
-                                        subtitle='No points for not answering.  Must be anounced on the broadcast any time before the season ends including at After The Final Rose*'/>     
+                                    isLocked={this.state.isSeasonLongLockedOut}
+                                    droppableId='bachelorette'
+                                    pick={this.state.picks.bachelorette}
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='Who gets Picked to be the Bachelorette? (20 points)'
+                                    subtitle='No points for not answering.  Must be anounced on the broadcast any time before the season ends including at After The Final Rose*'/>     
 
                                 <MultiPickDrag
                                     isLocked={this.state.isSeasonLongLockedOut}
@@ -672,15 +681,6 @@ class BatchelorGame extends React.Component {
                                     <h3>Week 5 Questions</h3>
                                     <h4>Ansers submitted on February 1st at 8pm EST</h4>
                                     
-                                    
-                                    <BooleanPick
-                                            isLocked={this.state.isWeekFiveLockedOut}
-                                            pick={this.state.picks.isMultipleInLove}
-                                            title='Does Matt tell more than one girl he is "In Love" with them (10 points)'
-                                            subtitle='Must clearly tell more than contestant he is "In love" with them, "falling in love" and other similar phrases do not count'
-                                            radiosIds='isMultipleInLove'
-                                            handleChange={this.handleChange}/>
-
                                     <BooleanPick
                                             isLocked={this.state.isWeekFiveLockedOut}
                                             pick={this.state.picks.isRoseGivenOutFirstGroupDateWeekFive}
