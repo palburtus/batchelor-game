@@ -11,7 +11,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
-import alertImage from '../assets/alert.gif';
+import paradise from '../assets/paradise.gif';
+import tylercameron from '../assets/tylercameron.gif';
 
 class BatchelorGame extends React.Component {
     
@@ -444,22 +445,62 @@ class BatchelorGame extends React.Component {
                             <Col>
                                 <div className="answers">
                                     <h3>Question Results</h3>  
+
+                                    <h4>Season Long Answers</h4>
+                                    <p>
+                                        In an exciting development we had a season long question answered in the first week!  
+                                        We will keep updating this list as the results come int
+                                    </p>
+                                    <p><strong>Will someone be sent home on a one-on-one date:</strong> Yes</p>
                                     
+                                    <h4>Week 6 Answers</h4>
 
-                                    <div className="alert alert-danger">
-                                        <h5 className="alert-heading">Season Questions Lock Out on Monday!</h5>
-                                        <hr/>
-                                        <img src={alertImage} className="answers-gif" width="250" height="200" alt="alert"/>
-                                        <p>
-                                            <strong>All season long questsions (final six, final two, final rose, etc.) will be locked on:</strong>                                            
-                                        </p>
+                                    <p><strong>Does Heather Martin become a contestant: </strong> No</p>
+                                    <ul>
+                                        <li>A photo-finish result, but no decision was made therefore it is a "No"</li>
+                                    </ul>
 
-                                        <h5>MONDAY February 8th at 8PM EST.  Make sure you get all your answers in well in advance.</h5>
+                                    <p><strong>Does Tyler Cameron appear on a date:</strong> Yes</p>
+                                    <ul>
+                                        <li>Finally we get to lay our eyes on this fine specimen</li>
+                                        <li>Remeber when they chose Pilot Pete to be the bacherlor instead of this guy.</li>
+                                    </ul>
+                                    <img src={tylercameron} className="answers-gif" width="200" height="250" alt="tylercameron"/>
 
-                                        
-                                       
-                                    </div>
-                                    
+                                    <p><strong>Does MJ get sent home before or during the 1st Rose Ceremony:</strong> Yes</p>
+                                    <ul>
+                                        <li>Oh MJ what a disapointment you turned out to be</li>
+                                        <li>You gave off down to earth sorta punk-rockey vibes in the begining</li>
+                                        <li>But in the end you turned out to be BASIC as hell</li>
+                                        <li>Looking forward to your redemption angle...</li>
+                                    </ul>
+                                    <img src={paradise} className="answers-gif" width="250" height="200" alt="paradise"/>
+
+                                    <p><strong>Does Jessenia get sent home before or during the 1st Rose Ceremony:</strong> No</p>
+                                    <ul>
+                                        <li>Jessenia seems to not have come out of this exchange a whole lot better than MJ</li>
+                                        <li>My guess is she bought herself another week</li>
+                                    </ul>
+
+                                    <p><strong>Hot tub:</strong> No</p>
+
+                                    <p><strong>Group Date Rose:</strong></p>
+                                    <ul>
+                                        <li>Michelle</li>
+                                    </ul>
+
+                                    <p><strong>One-on-One Date Rose:</strong></p>
+                                    <ul>
+                                        <li>Pieper</li>
+                                        <li>Katie</li>
+                                    </ul>
+
+                                    <p>
+                                        A seemingly long overdue one-on-one date for Kaite, only to be sent packing, do not enter the friend zone, do not collect $200, 
+                                        I would say brutal, but given the minimal tears in the car after being sent home I can't help but think the feeling was a little bit mutual. 
+                                    </p>
+                                
+                                
                                 </div>
                                 
                                 <Alert key='previous-results' variant='info'>
