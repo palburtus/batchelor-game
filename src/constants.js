@@ -183,17 +183,17 @@ export const perfectPicks = {
     sentHomeEarlyWeekFive: ['5'],
     leavesOnOwnWeekFive: FALSE,
     //WEEK 6              
-    oneOnOneDateWeekSix: [NOT_SETTLED],
-    groupDateRoseWeekSix: [NOT_SETTLED],
-    isHotTubWeekSix: NOT_SETTLED,
-    isJesseniaSentHomeWeekSix: NOT_SETTLED,
-    isMJSentHomeWeekSix: NOT_SETTLED,
-    isHeathMartinMadeContestant: NOT_SETTLED,
-    isTylerCameronOnDateWeekSix: NOT_SETTLED,
+    oneOnOneDateWeekSix: ['25', '15'],
+    groupDateRoseWeekSix: ['34'],
+    isHotTubWeekSix: FALSE,
+    isJesseniaSentHomeWeekSix: FALSE,
+    isMJSentHomeWeekSix: TRUE,
+    isHeathMartinMadeContestant: FALSE,
+    isTylerCameronOnDateWeekSix: TRUE,
     //SEASON
     isMattAndFinalRoseACouple: NOT_SETTLED,
     bachelorette: NOT_SETTLED,
-    isSentHomeOnAOneOnOneDate: NOT_SETTLED,
+    isSentHomeOnAOneOnOneDate: TRUE,
     isLeaveOnOwn: NOT_SETTLED,
     isMultipleInLove: NOT_SETTLED
 }
@@ -287,7 +287,7 @@ export const girls = [
         id: '15',
         name: 'Katie',
         thumb: './thumbs/katie.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '16',
@@ -323,7 +323,7 @@ export const girls = [
         id: '21',
         name: 'Magi',
         thumb: './thumbs/magi.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '22',
@@ -341,7 +341,7 @@ export const girls = [
         id: '24',
         name: 'MJ',
         thumb: './thumbs/mj.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '25',
@@ -395,7 +395,7 @@ export const girls = [
         id: '33',
         name: 'Britanny',
         thumb: './thumbs/britanny.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '34',
@@ -407,7 +407,7 @@ export const girls = [
         id: '35',
         name: 'Ryan',
         thumb: './thumbs/ryan.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '36',
@@ -420,5 +420,11 @@ export const girls = [
         name: 'Catalina',
         thumb: './thumbs/catalina.jpg',
         isActive: false
+    },
+    {
+        id: '38',
+        name: 'Heather',
+        thumb: './thumbs/heather.jpg',
+        isActive: true
     }
   ];
