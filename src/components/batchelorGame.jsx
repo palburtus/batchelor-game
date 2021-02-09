@@ -28,8 +28,9 @@ class BatchelorGame extends React.Component {
             isWeekThreeLockedOut: true,
             isWeekFourLockedOut: true,
             isWeekFiveLockedOut: true,
-            isWeekSixLockedOut: false,
-            isSeasonLongLockedOut: false,
+            isWeekSixLockedOut: true,
+            isWeekSevenLockedOut: false,
+            isSeasonLongLockedOut: true,
             infoMessage: '',
             warningMessage: '',
             errorMessage: '',
@@ -161,6 +162,11 @@ class BatchelorGame extends React.Component {
       
         let picks = this.state.picks;
         
+        //WEEK 7
+        if(!this.state.isWeekSevenLockedOut){
+
+        }
+
         //WEEK 6
         if(!this.state.isWeekSixLockedOut){
             
@@ -308,6 +314,11 @@ class BatchelorGame extends React.Component {
             picks.finalOne = this.handleSingleDragAdd(picks.finalOne, this.state.picks.finalOne, 'final-one', result);
             picks.bachelorette = this.handleSingleDragAdd(picks.bachelorette, this.state.picks.bachelorette, 'bachelorette', result);
         }
+
+        //WEEK 7
+        if(!this.state.isWeekSevenLockedOut){
+            
+        }
         
         //WEEK 6
         if(!this.state.isWeekSixLockedOut){
@@ -365,6 +376,11 @@ class BatchelorGame extends React.Component {
     handleChange(evt) {
        
         let picks = this.state.picks;
+
+        //WEEK 7
+        if(!this.state.isWeekSevenLockedOut){
+                    
+        }
 
         //WEEK 6
         if(!this.state.isWeekSixLockedOut){
@@ -443,6 +459,20 @@ class BatchelorGame extends React.Component {
                         <ToastContainer />
                         <Row>
                             <Col>
+
+                                <div className="alert alert-warning">
+                                    <p>
+                                        Due to the possibility of being added to the show <strong>Heather Martin</strong> has been added 
+                                        to the list of contestants.  This will allow you to choose her for questions next week such as group date, one-one-one, etc.
+                                    </p>
+
+                                    <p>
+                                        If she actually joins the show as a contestant and survives Week 7 we have a contingency in place 
+                                        to include her in the locked-out season long questions.  We will however, cross that bridge if/when we come to it.
+                                    </p>
+
+                                </div>
+
                                 <div className="answers">
                                     <h3>Question Results</h3>  
 

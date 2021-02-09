@@ -420,5 +420,11 @@ export const girls = [
         name: 'Catalina',
         thumb: './thumbs/catalina.jpg',
         isActive: false
+    },
+    {
+        id: '38',
+        name: 'Heather',
+        thumb: './thumbs/heather.jpg',
+        isActive: true
     }
   ];
