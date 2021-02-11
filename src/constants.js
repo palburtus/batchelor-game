@@ -65,6 +65,8 @@ export const scoreMap = {
     'isMJSentHomeWeekSix' : 5,
     'isHeathMartinMadeContestant' : 5,
     'isTylerCameronOnDateWeekSix' : 5,
+    //WEEK 7
+    'oneOnOneDateWeekSeven' : 10,
     //SEASON
     'isMattAndFinalRoseACouple' : 10,
     'bachelorette' : 20,
@@ -128,6 +130,8 @@ export function defaultPicks() {
         isMJSentHomeWeekSix: NO_SELECTION,
         isHeathMartinMadeContestant: NO_SELECTION,
         isTylerCameronOnDateWeekSix: NO_SELECTION,
+        //WEEK 7
+        oneOnOneDateWeekSeven: NO_SELECTION,
         //SEASON
         isMattAndFinalRoseACouple: NO_SELECTION,
         bachelorette: NO_SELECTION,
@@ -190,6 +194,7 @@ export const perfectPicks = {
     isMJSentHomeWeekSix: TRUE,
     isHeathMartinMadeContestant: FALSE,
     isTylerCameronOnDateWeekSix: TRUE,
+    oneOnOneDateWeekSeven: NOT_SETTLED,
     //SEASON
     isMattAndFinalRoseACouple: NOT_SETTLED,
     bachelorette: NOT_SETTLED,

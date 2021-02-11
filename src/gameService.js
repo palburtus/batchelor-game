@@ -4,6 +4,10 @@ export const getScore = (picks) => {
     let score = 0;
     if(picks){
 
+
+        //WEEk 7 
+        score += calculateSingleAnswerScore(picks.oneOnOneDateWeekSeven, constants.perfectPicks.oneOnOneDateWeekSeven, 'oneOnOneDateWeekSeven');
+
         //WEEK 6
         score += calculateMultipleCorrectAnswersScore(picks.oneOnOneDateWeekSix, constants.perfectPicks.oneOnOneDateWeekSix, 'oneOnOneDateWeekSix');
         score += calculateMultipleCorrectAnswersScore(picks.groupDateRoseWeekSix, constants.perfectPicks.groupDateRoseWeekSix, 'groupDateRoseWeekSix');

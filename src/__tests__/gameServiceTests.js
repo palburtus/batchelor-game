@@ -9,7 +9,7 @@ test('default picks to equal 0', () => {
 });
 
 
-test('perfect score to equal 595', () => {
+test('perfect score to equal 605', () => {
     
     let picks = {
         finalSix: [999, 1000, 1001, 1002, 1003, 1004],
@@ -64,6 +64,8 @@ test('perfect score to equal 595', () => {
         isHeathMartinMadeContestant: 0,
         isTylerCameronOnDateWeekSix: 1,
         isMJSentHomeWeekSix: 1,
+        //WEEK 7 
+        oneOnOneDateWeekSeven: 999,
         //SEASON
         isMattAndFinalRoseACouple: 999,
         bachelorette: 999,
@@ -74,8 +76,44 @@ test('perfect score to equal 595', () => {
 
     let result = gameService.getScore(picks);
 
-    expect(result).toBe(595);
+    expect(result).toBe(605);
 });
+
+test(' correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.isMultipleInLove = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test(' incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isMultipleInLove = 999;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('one on one week seven correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.oneOnOneDateWeekSeven = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('one on one week seven incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.oneOnOneDateWeekSeven = 998;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
 
 test('is multiple in love correct to equal 10', () =>{
     let picks = constants.defaultPicks();
