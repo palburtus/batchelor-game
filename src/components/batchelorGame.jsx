@@ -11,8 +11,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
-import paradise from '../assets/paradise.gif';
-import tylercameron from '../assets/tylercameron.gif';
 
 class BatchelorGame extends React.Component {
     
@@ -167,6 +165,14 @@ class BatchelorGame extends React.Component {
             if(listId === 'one-on-one-date-week-seven'){
                 picks.oneOnOneDateWeekSeven = -1;
             }
+
+            if(listId === 'group-date-rose-week-seven'){
+                picks.groupDateRoseWeekSeven = -1;
+            }
+
+            if(listId === 'eliminated-week-seven'){
+                picks.eliminatedWeekSeven = -1;
+            }
         }
 
         //WEEK 6
@@ -320,6 +326,8 @@ class BatchelorGame extends React.Component {
         //WEEK 7
         if(!this.state.isWeekSevenLockedOut){
             picks.oneOnOneDateWeekSeven = this.handleSingleDragAdd(picks.oneOnOneDateWeekSeven, this.state.picks.oneOnOneDateWeekSeven, 'one-on-one-date-week-seven', result);
+            picks.groupDateRoseWeekSeven = this.handleSingleDragAdd(picks.groupDateRoseWeekSeven, this.state.picks.groupDateRoseWeekSeven, 'group-date-rose-week-seven', result);
+            picks.eliminatedWeekSeven = this.handleSingleDragAdd(picks.eliminatedWeekSeven, this.state.picks.eliminatedWeekSeven, 'eliminated-week-seven', result);
         }
         
         //WEEK 6
@@ -381,7 +389,7 @@ class BatchelorGame extends React.Component {
 
         //WEEK 7
         if(!this.state.isWeekSevenLockedOut){
-                    
+            picks.isHotTubWeekSeven = this.handleBooleanEventChange(evt, 'isHotTubWeekSeven', picks.isHotTubWeekSeven);    
         }
 
         //WEEK 6
@@ -474,68 +482,8 @@ class BatchelorGame extends React.Component {
                                     </p>
 
                                 </div>
-
-                                <div className="answers">
-                                    <h3>Question Results</h3>  
-
-                                    <h4>Season Long Answers</h4>
-                                    <p>
-                                        In an exciting development we had a season long question answered in the first week!  
-                                        We will keep updating this list as the results come int
-                                    </p>
-                                    <p><strong>Will someone be sent home on a one-on-one date:</strong> Yes</p>
-                                    
-                                    <h4>Week 6 Answers</h4>
-
-                                    <p><strong>Does Heather Martin become a contestant: </strong> No</p>
-                                    <ul>
-                                        <li>A photo-finish result, but no decision was made therefore it is a "No"</li>
-                                    </ul>
-
-                                    <p><strong>Does Tyler Cameron appear on a date:</strong> Yes</p>
-                                    <ul>
-                                        <li>Finally we get to lay our eyes on this fine specimen</li>
-                                        <li>Remeber when they chose Pilot Pete to be the bacherlor instead of this guy.</li>
-                                    </ul>
-                                    <img src={tylercameron} className="answers-gif" width="200" height="250" alt="tylercameron"/>
-
-                                    <p><strong>Does MJ get sent home before or during the 1st Rose Ceremony:</strong> Yes</p>
-                                    <ul>
-                                        <li>Oh MJ what a disapointment you turned out to be</li>
-                                        <li>You gave off down to earth sorta punk-rockey vibes in the begining</li>
-                                        <li>But in the end you turned out to be BASIC as hell</li>
-                                        <li>Looking forward to your redemption angle...</li>
-                                    </ul>
-                                    <img src={paradise} className="answers-gif" width="250" height="200" alt="paradise"/>
-
-                                    <p><strong>Does Jessenia get sent home before or during the 1st Rose Ceremony:</strong> No</p>
-                                    <ul>
-                                        <li>Jessenia seems to not have come out of this exchange a whole lot better than MJ</li>
-                                        <li>My guess is she bought herself another week</li>
-                                    </ul>
-
-                                    <p><strong>Hot tub:</strong> No</p>
-
-                                    <p><strong>Group Date Rose:</strong></p>
-                                    <ul>
-                                        <li>Michelle</li>
-                                    </ul>
-
-                                    <p><strong>One-on-One Date Rose:</strong></p>
-                                    <ul>
-                                        <li>Pieper</li>
-                                        <li>Katie</li>
-                                    </ul>
-
-                                    <p>
-                                        A seemingly long overdue one-on-one date for Kaite, only to be sent packing, do not enter the friend zone, do not collect $200, 
-                                        I would say brutal, but given the minimal tears in the car after being sent home I can't help but think the feeling was a little bit mutual. 
-                                    </p>
-                                
-                                
-                                </div>
-                                
-                                <Alert key='previous-results' variant='info'>
+                                                                
+{/*                                <Alert key='previous-results' variant='info'>
                                     <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
                                 </Alert>                                
 
@@ -546,7 +494,7 @@ class BatchelorGame extends React.Component {
                                     </Card.Body>
                                 </Card>
                                 
-                                
+            */}
                             </Col>
                         </Row>
                         
@@ -605,8 +553,34 @@ class BatchelorGame extends React.Component {
                                             subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>      
 
 
-                                
-                                
+                                <SinglePickDrag
+                                    isLocked={this.state.isWeekSevenLockedOut}
+                                    droppableId='group-date-rose-week-seven'
+                                    pick={this.state.picks.groupDateRoseWeekSeven}
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='Who gets a Group Date Rose? (10 points)'
+                                    subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>     
+
+
+                                <BooleanPick
+                                        isLocked={this.state.isWeekSevenLockedOut}
+                                        pick={this.state.picks.isHotTubWeekSeven}
+                                        title='Will someone get in a Hot Tub with the Bachelor? (5 points)'
+                                        subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, etc. do not count'
+                                        radiosIds='isHotTubWeekSeven'
+                                        handleChange={this.handleChange}/>    
+
+                                <SinglePickDrag
+                                        isLocked={this.state.isWeekSevenLockedOut}
+                                        droppableId='eliminated-week-seven'
+                                        pick={this.state.picks.eliminatedWeekSeven}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who gets sent during a Rose Ceremony (10 points)'
+                                        subtitle='Contestant must be at the rose ceremony and not receive a rose.  Being sent home or leaving in any other way does not count'/>     
+
+
                                 <h3>Season Questions</h3>
                                 <h4>Answers due by February 8th at 8pm EST</h4>
                                 
@@ -859,7 +833,6 @@ class BatchelorGame extends React.Component {
                                         title='Who gets a one on one date this week? (10 points)'
                                         subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>      
 
-
                                     <SinglePickDrag
                                         isLocked={this.state.isWeekFourLockedOut}
                                         droppableId='group-date-rose-week-four'
@@ -913,7 +886,6 @@ class BatchelorGame extends React.Component {
                                         removeSelection={this.removeSelection}
                                         title='Who does not get a date this week? (10 points)'
                                         subtitle='This may have multiple correct answers, but only choose one contestant.  If your choice is eliminated during the rose ceremony that started at the end of Week Two, you will NOT get any points'/>      
-
 
                                     <BooleanPick
                                         isLocked={this.state.isWeekThreeLockedOut}
