@@ -9,7 +9,7 @@ test('default picks to equal 0', () => {
 });
 
 
-test('perfect score to equal 595', () => {
+test('perfect score to equal 650', () => {
     
     let picks = {
         finalSix: [999, 1000, 1001, 1002, 1003, 1004],
@@ -64,6 +64,14 @@ test('perfect score to equal 595', () => {
         isHeathMartinMadeContestant: 0,
         isTylerCameronOnDateWeekSix: 1,
         isMJSentHomeWeekSix: 1,
+        //WEEK 7 
+        oneOnOneDateWeekSeven: 999,
+        groupDateRoseWeekSeven: 999,
+        isHotTubWeekSeven: 999,
+        eliminatedWeekSeven: 999,
+        isTwoOrLessWeekSeven: 999,
+        sentHomeEarlyWeekSeven: 999,
+        isHeatherMadeContestantWeekSeven: 999,
         //SEASON
         isMattAndFinalRoseACouple: 999,
         bachelorette: 999,
@@ -74,8 +82,138 @@ test('perfect score to equal 595', () => {
 
     let result = gameService.getScore(picks);
 
-    expect(result).toBe(595);
+    expect(result).toBe(650);
 });
+
+test('is heather receive rose during first rose ceremony week 7 correct to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.isHeatherMadeContestantWeekSeven = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('is heather receive rose during first rose ceremony week 7 incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isHeatherMadeContestantWeekSeven = 998;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+//sentHomeEarlyWeekSeven
+
+test('sent home early week 7 correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.sentHomeEarlyWeekSeven = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test(' incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.sentHomeEarlyWeekSeven = 998;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is two or less eliminated week 7 correct to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.isTwoOrLessWeekSeven = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('is two or less eliminated week 7 incorrect to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.isTwoOrLessWeekSeven = 998;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+//isTwoOrLessWeekSeven
+
+test('eliminated week seven correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.eliminatedWeekSeven = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('eliminated week seven incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.eliminatedWeekSeven = 998;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is hot tub week seven correct to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.isHotTubWeekSeven = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('is hot tub week 7 incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isHotTubWeekSeven = 998;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('week seven group date correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.groupDateRoseWeekSeven = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('week seven group date incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.groupDateRoseWeekSeven = 998;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('one on one week seven correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.oneOnOneDateWeekSeven = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('one on one week seven incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.oneOnOneDateWeekSeven = 998;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
 
 test('is multiple in love correct to equal 10', () =>{
     let picks = constants.defaultPicks();

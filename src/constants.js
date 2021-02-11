@@ -65,6 +65,14 @@ export const scoreMap = {
     'isMJSentHomeWeekSix' : 5,
     'isHeathMartinMadeContestant' : 5,
     'isTylerCameronOnDateWeekSix' : 5,
+    //WEEK 7
+    'oneOnOneDateWeekSeven' : 10,
+    'groupDateRoseWeekSeven' : 10,
+    'isHotTubWeekSeven' : 5,
+    'eliminatedWeekSeven' : 10,
+    'isTwoOrLessWeekSeven' : 5,
+    'sentHomeEarlyWeekSeven' : 10,
+    'isHeatherMadeContestantWeekSeven' : 5,
     //SEASON
     'isMattAndFinalRoseACouple' : 10,
     'bachelorette' : 20,
@@ -128,6 +136,14 @@ export function defaultPicks() {
         isMJSentHomeWeekSix: NO_SELECTION,
         isHeathMartinMadeContestant: NO_SELECTION,
         isTylerCameronOnDateWeekSix: NO_SELECTION,
+        //WEEK 7
+        oneOnOneDateWeekSeven: NO_SELECTION,
+        groupDateRoseWeekSeven: NO_SELECTION,
+        isHotTubWeekSeven: NO_SELECTION,
+        eliminatedWeekSeven: NO_SELECTION,
+        isTwoOrLessWeekSeven: NO_SELECTION,
+        sentHomeEarlyWeekSeven: NO_SELECTION,
+        isHeatherMadeContestantWeekSeven: NO_SELECTION,
         //SEASON
         isMattAndFinalRoseACouple: NO_SELECTION,
         bachelorette: NO_SELECTION,
@@ -190,6 +206,14 @@ export const perfectPicks = {
     isMJSentHomeWeekSix: TRUE,
     isHeathMartinMadeContestant: FALSE,
     isTylerCameronOnDateWeekSix: TRUE,
+    //WEEK 7
+    oneOnOneDateWeekSeven: NOT_SETTLED,
+    groupDateRoseWeekSeven: NOT_SETTLED,
+    isHotTubWeekSeven: NOT_SETTLED,
+    eliminatedWeekSeven: NOT_SETTLED,
+    isTwoOrLessWeekSeven: NOT_SETTLED,
+    sentHomeEarlyWeekSeven: NOT_SETTLED,
+    isHeatherMadeContestantWeekSeven: NOT_SETTLED,
     //SEASON
     isMattAndFinalRoseACouple: NOT_SETTLED,
     bachelorette: NOT_SETTLED,
