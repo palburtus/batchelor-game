@@ -70,6 +70,9 @@ export const scoreMap = {
     'groupDateRoseWeekSeven' : 10,
     'isHotTubWeekSeven' : 5,
     'eliminatedWeekSeven' : 10,
+    'isTwoOrLessWeekSeven' : 5,
+    'sentHomeEarlyWeekSeven' : 10,
+    'isHeatherMadeContestantWeekSeven' : 5,
     //SEASON
     'isMattAndFinalRoseACouple' : 10,
     'bachelorette' : 20,
@@ -138,6 +141,9 @@ export function defaultPicks() {
         groupDateRoseWeekSeven: NO_SELECTION,
         isHotTubWeekSeven: NO_SELECTION,
         eliminatedWeekSeven: NO_SELECTION,
+        isTwoOrLessWeekSeven: NO_SELECTION,
+        sentHomeEarlyWeekSeven: NO_SELECTION,
+        isHeatherMadeContestantWeekSeven: NO_SELECTION,
         //SEASON
         isMattAndFinalRoseACouple: NO_SELECTION,
         bachelorette: NO_SELECTION,
@@ -205,6 +211,9 @@ export const perfectPicks = {
     groupDateRoseWeekSeven: NOT_SETTLED,
     isHotTubWeekSeven: NOT_SETTLED,
     eliminatedWeekSeven: NOT_SETTLED,
+    isTwoOrLessWeekSeven: NOT_SETTLED,
+    sentHomeEarlyWeekSeven: NOT_SETTLED,
+    isHeatherMadeContestantWeekSeven: NOT_SETTLED,
     //SEASON
     isMattAndFinalRoseACouple: NOT_SETTLED,
     bachelorette: NOT_SETTLED,

@@ -173,6 +173,10 @@ class BatchelorGame extends React.Component {
             if(listId === 'eliminated-week-seven'){
                 picks.eliminatedWeekSeven = -1;
             }
+
+            if(listId === 'sent-home-early-week-seven'){
+                picks.sentHomeEarlyWeekSeven = -1;
+            }
         }
 
         //WEEK 6
@@ -328,6 +332,7 @@ class BatchelorGame extends React.Component {
             picks.oneOnOneDateWeekSeven = this.handleSingleDragAdd(picks.oneOnOneDateWeekSeven, this.state.picks.oneOnOneDateWeekSeven, 'one-on-one-date-week-seven', result);
             picks.groupDateRoseWeekSeven = this.handleSingleDragAdd(picks.groupDateRoseWeekSeven, this.state.picks.groupDateRoseWeekSeven, 'group-date-rose-week-seven', result);
             picks.eliminatedWeekSeven = this.handleSingleDragAdd(picks.eliminatedWeekSeven, this.state.picks.eliminatedWeekSeven, 'eliminated-week-seven', result);
+            picks.sentHomeEarlyWeekSeven = this.handleSingleDragAdd(picks.sentHomeEarlyWeekSeven, this.state.picks.sentHomeEarlyWeekSeven, 'sent-home-early-week-seven', result);
         }
         
         //WEEK 6
@@ -390,6 +395,8 @@ class BatchelorGame extends React.Component {
         //WEEK 7
         if(!this.state.isWeekSevenLockedOut){
             picks.isHotTubWeekSeven = this.handleBooleanEventChange(evt, 'isHotTubWeekSeven', picks.isHotTubWeekSeven);    
+            picks.isTwoOrLessWeekSeven = this.handleBooleanEventChange(evt, 'isTwoOrLessWeekSeven', picks.isTwoOrLessWeekSeven);
+            picks.isHeatherMadeContestantWeekSeven = this.handleBooleanEventChange(evt, 'isHeatherMadeContestantWeekSeven', picks.isHeatherMadeContestantWeekSeven);
         }
 
         //WEEK 6
@@ -543,6 +550,34 @@ class BatchelorGame extends React.Component {
                                 <h3>Week 7 Questions</h3>
                                 <h4>Answers due by February 15th at 8pm EST</h4>
                                 
+                                <BooleanPick
+                                        isLocked={this.state.isWeekSevenLockedOut}
+                                        pick={this.state.picks.isHeatherMadeContestantWeekSeven}
+                                        title='Does Heather get a rose in the first rose ceremony? (5 points)'
+                                        subtitle='This will be scored as "No" if she does not participate in the rose ceremoney'
+                                        radiosIds='isHeatherMadeContestantWeekSeven'
+                                        handleChange={this.handleChange}/>
+
+                                <SinglePickDrag
+                                            isLocked={this.state.isWeekSevenLockedOut}
+                                            droppableId='sent-home-early-week-seven'
+                                            pick={this.state.picks.sentHomeEarlyWeekSeven}
+                                            onDragEnd={this.onDragEnd}
+                                            removeSelection={this.removeSelection}
+                                            title='Who does Matt Send Home Early? (10 points)'
+                                            subtitle='You CAN NOT choose Heather for this question and will receive no points if you do.  Must be sent home anytime outside of a rose ceremony. If this does not happen no points will be awarded'/>     
+
+
+                                <BooleanPick
+                                        isLocked={this.state.isWeekSevenLockedOut}
+                                        pick={this.state.picks.isTwoOrLessWeekSeven}
+                                        title='How many girls does Matt send home? (5 points)'
+                                        subtitle='Must be sent home by Matt, Heather must be made a contestant in order to count towards this total'
+                                        radiosIds='isTwoOrLessWeekSeven'
+                                        yesValue='Two or Less'
+                                        noValue="Three or More"
+                                        handleChange={this.handleChange}/>    
+
                                 <SinglePickDrag
                                             isLocked={this.state.isWeekSevenLockedOut}
                                             droppableId='one-on-one-date-week-seven'
@@ -577,7 +612,7 @@ class BatchelorGame extends React.Component {
                                         pick={this.state.picks.eliminatedWeekSeven}
                                         onDragEnd={this.onDragEnd}
                                         removeSelection={this.removeSelection}
-                                        title='Who gets sent during a Rose Ceremony (10 points)'
+                                        title='Who gets sent home during a Rose Ceremony (10 points)'
                                         subtitle='Contestant must be at the rose ceremony and not receive a rose.  Being sent home or leaving in any other way does not count'/>     
 
 

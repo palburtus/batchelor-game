@@ -10,6 +10,9 @@ export const getScore = (picks) => {
         score += calculateSingleAnswerScore(picks.groupDateRoseWeekSeven, constants.perfectPicks.groupDateRoseWeekSeven, 'groupDateRoseWeekSeven');
         score += calculateBoolScore(picks.isHotTubWeekSeven, constants.perfectPicks.isHotTubWeekSeven, 'isHotTubWeekSeven');
         score += calculateSingleAnswerScore(picks.eliminatedWeekSeven, constants.perfectPicks.eliminatedWeekSeven, 'eliminatedWeekSeven');
+        score += calculateBoolScore(picks.isTwoOrLessWeekSeven, constants.perfectPicks.isTwoOrLessWeekSeven, 'isTwoOrLessWeekSeven');
+        score += calculateSingleAnswerScore(picks.sentHomeEarlyWeekSeven, constants.perfectPicks.sentHomeEarlyWeekSeven, 'sentHomeEarlyWeekSeven');
+        score += calculateBoolScore(picks.isHeatherMadeContestantWeekSeven, constants.perfectPicks.isHeatherMadeContestantWeekSeven, 'isHeatherMadeContestantWeekSeven');
 
         //WEEK 6
         score += calculateMultipleCorrectAnswersScore(picks.oneOnOneDateWeekSix, constants.perfectPicks.oneOnOneDateWeekSix, 'oneOnOneDateWeekSix');
