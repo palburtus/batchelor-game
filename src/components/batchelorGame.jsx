@@ -626,7 +626,7 @@ class BatchelorGame extends React.Component {
                                         handleChange={this.handleChange}/>    
 
 
-                                <SinglePickDrag
+                                <SinglePikDrag
                                             isLocked={this.state.isWeekSixLockedOut}
                                             droppableId='one-on-one-date-week-six'
                                             pick={this.state.picks.oneOnOneDateWeekSix}
