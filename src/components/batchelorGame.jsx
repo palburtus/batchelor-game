@@ -6,7 +6,7 @@ import Cookies from 'universal-cookie';
 import * as constants from '../constants';
 import * as utils from '../utils';
 import * as picksRepository from '../firebaseFirestoreRepository';
-import * as gameService from '../gameService';
+import * as gameService from '../services/gameService';
 import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
