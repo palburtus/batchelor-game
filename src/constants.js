@@ -73,12 +73,14 @@ export const scoreMap = {
     'isTwoOrLessWeekSeven' : 5,
     'sentHomeEarlyWeekSeven' : 10,
     'isHeatherMadeContestantWeekSeven' : 5,
+    //WEEK 8 
     //SEASON
     'isMattAndFinalRoseACouple' : 10,
     'bachelorette' : 20,
     'isSentHomeOnAOneOnOneDate' : 10,
     'isLeaveOnOwn' : 10,
-    'isMultipleInLove' : 10
+    'isMultipleInLove' : 10,
+    'finalSix'  : 10
 }
 
 export function defaultPicks() {
@@ -137,25 +139,26 @@ export function defaultPicks() {
         isHeathMartinMadeContestant: NO_SELECTION,
         isTylerCameronOnDateWeekSix: NO_SELECTION,
         //WEEK 7
-        oneOnOneDateWeekSeven: NO_SELECTION,
-        groupDateRoseWeekSeven: NO_SELECTION,
+        oneOnOneDateWeekSeven: [NO_SELECTION],
+        groupDateRoseWeekSeven: [NO_SELECTION],
         isHotTubWeekSeven: NO_SELECTION,
-        eliminatedWeekSeven: NO_SELECTION,
+        eliminatedWeekSeven: [NO_SELECTION],
         isTwoOrLessWeekSeven: NO_SELECTION,
-        sentHomeEarlyWeekSeven: NO_SELECTION,
+        sentHomeEarlyWeekSeven: [NO_SELECTION],
         isHeatherMadeContestantWeekSeven: NO_SELECTION,
+        //WEEK 8
         //SEASON
         isMattAndFinalRoseACouple: NO_SELECTION,
         bachelorette: NO_SELECTION,
         isSentHomeOnAOneOnOneDate: NO_SELECTION,
-        isLeaveOnOwn: NO_SELECTION,
+        isLeaveOnOwn: TRUE,
         isMultipleInLove: NO_SELECTION
     }       
 }
 
 export const perfectPicks = {
-    finalSix: [NOT_SETTLED, (NOT_SETTLED + 1), (NOT_SETTLED + 2), (NOT_SETTLED + 3), (NOT_SETTLED + 4), (NOT_SETTLED + 5)],
-    finalFour: [NOT_SETTLED, (NOT_SETTLED + 1), (NOT_SETTLED + 2), (NOT_SETTLED + 3)],
+    finalSix: ['6', '25', '26', '30', '34'],
+    finalFour: ['6', '26', '30', '34'],
     finalTwo: [NOT_SETTLED, (NOT_SETTLED + 1)],
     finalOne: NOT_SETTLED,
     isTylerCameronApperance: FALSE,
@@ -207,18 +210,19 @@ export const perfectPicks = {
     isHeathMartinMadeContestant: FALSE,
     isTylerCameronOnDateWeekSix: TRUE,
     //WEEK 7
-    oneOnOneDateWeekSeven: NOT_SETTLED,
-    groupDateRoseWeekSeven: NOT_SETTLED,
-    isHotTubWeekSeven: NOT_SETTLED,
-    eliminatedWeekSeven: NOT_SETTLED,
-    isTwoOrLessWeekSeven: NOT_SETTLED,
-    sentHomeEarlyWeekSeven: NOT_SETTLED,
-    isHeatherMadeContestantWeekSeven: NOT_SETTLED,
+    oneOnOneDateWeekSeven: ['30'],
+    groupDateRoseWeekSeven: ['26'],
+    isHotTubWeekSeven: FALSE,
+    eliminatedWeekSeven: ['9', '29'],
+    isTwoOrLessWeekSeven: FALSE,
+    sentHomeEarlyWeekSeven: ['1', '13'],
+    isHeatherMadeContestantWeekSeven: FALSE,
+    //WEEK 8
     //SEASON
     isMattAndFinalRoseACouple: NOT_SETTLED,
     bachelorette: NOT_SETTLED,
     isSentHomeOnAOneOnOneDate: TRUE,
-    isLeaveOnOwn: NOT_SETTLED,
+    isLeaveOnOwn: TRUE,
     isMultipleInLove: NOT_SETTLED
 }
 
@@ -227,7 +231,7 @@ export const girls = [
         id: '1',
         name: 'Abigail',
         thumb: './thumbs/abigail.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '2',
@@ -275,7 +279,7 @@ export const girls = [
         id: '9',
         name: 'Chelsea',
         thumb: './thumbs/chelsea.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '10',
@@ -299,7 +303,7 @@ export const girls = [
         id: '13',
         name: 'Jessenia',
         thumb: './thumbs/jessenia.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '14',
@@ -329,7 +333,7 @@ export const girls = [
         id: '18',
         name: 'Kit',
         thumb: './thumbs/kit.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '19',
@@ -371,7 +375,7 @@ export const girls = [
         id: '25',
         name: 'Pieper',
         thumb: './thumbs/pieper.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '26',
@@ -395,7 +399,7 @@ export const girls = [
         id: '29',
         name: 'Serena C',
         thumb: './thumbs/serena_c.jpg',
-        isActive: true
+        isActive: false
     },
     {
         id: '30',
@@ -449,6 +453,6 @@ export const girls = [
         id: '38',
         name: 'Heather',
         thumb: './thumbs/heather.jpg',
-        isActive: true
+        isActive: false
     }
   ];

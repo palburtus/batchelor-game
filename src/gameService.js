@@ -6,12 +6,12 @@ export const getScore = (picks) => {
 
 
         //WEEk 7 
-        score += calculateSingleAnswerScore(picks.oneOnOneDateWeekSeven, constants.perfectPicks.oneOnOneDateWeekSeven, 'oneOnOneDateWeekSeven');
-        score += calculateSingleAnswerScore(picks.groupDateRoseWeekSeven, constants.perfectPicks.groupDateRoseWeekSeven, 'groupDateRoseWeekSeven');
+        score += calculateMultipleCorrectAnswersScore(picks.oneOnOneDateWeekSeven, constants.perfectPicks.oneOnOneDateWeekSeven, 'oneOnOneDateWeekSeven');
+        score += calculateMultipleCorrectAnswersScore(picks.groupDateRoseWeekSeven, constants.perfectPicks.groupDateRoseWeekSeven, 'groupDateRoseWeekSeven');
         score += calculateBoolScore(picks.isHotTubWeekSeven, constants.perfectPicks.isHotTubWeekSeven, 'isHotTubWeekSeven');
-        score += calculateSingleAnswerScore(picks.eliminatedWeekSeven, constants.perfectPicks.eliminatedWeekSeven, 'eliminatedWeekSeven');
+        score += calculateMultipleCorrectAnswersScore(picks.eliminatedWeekSeven, constants.perfectPicks.eliminatedWeekSeven, 'eliminatedWeekSeven');
         score += calculateBoolScore(picks.isTwoOrLessWeekSeven, constants.perfectPicks.isTwoOrLessWeekSeven, 'isTwoOrLessWeekSeven');
-        score += calculateSingleAnswerScore(picks.sentHomeEarlyWeekSeven, constants.perfectPicks.sentHomeEarlyWeekSeven, 'sentHomeEarlyWeekSeven');
+        score += calculateMultipleCorrectAnswersScore(picks.sentHomeEarlyWeekSeven, constants.perfectPicks.sentHomeEarlyWeekSeven, 'sentHomeEarlyWeekSeven');
         score += calculateBoolScore(picks.isHeatherMadeContestantWeekSeven, constants.perfectPicks.isHeatherMadeContestantWeekSeven, 'isHeatherMadeContestantWeekSeven');
 
         //WEEK 6
@@ -91,12 +91,8 @@ export const getScore = (picks) => {
                 score += constants.scoreMap['finalFour'];
             }
         }
-                
-        for(let i = 0; i < picks.finalSix.length; i++){
-            if(constants.perfectPicks.finalSix.indexOf(picks.finalSix[i]) >= 0){
-                score += constants.scoreMap['finalSix'];
-            }
-        }
+        
+        score += calculateTopListsAnswersScore(picks.finalSix, constants.perfectPicks.finalSix, 'finalSix');
         
     }
     
@@ -106,6 +102,18 @@ export const getScore = (picks) => {
   
 var calculateSingleAnswerScore = (pick, perfectPick, scoreMapKey) => {
     return pick === perfectPick ? constants.scoreMap[scoreMapKey] : 0;
+}
+
+var calculateTopListsAnswersScore = (pick, perfectPick, scoreMapKey) => {
+    let score = 0;
+    
+    for(let i = 0; i < perfectPick.length; i++){
+        if(perfectPick[i] === pick){
+            score += constants.scoreMap[scoreMapKey];
+        }
+    }  
+
+    return score;
 }
 
 var calculateMultipleCorrectAnswersScore = (pick, perfectPick, scoreMapKey) => {
