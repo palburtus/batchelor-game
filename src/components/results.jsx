@@ -176,7 +176,7 @@ class Results extends React.Component {
                                 
                                 
                                 </div>
-
+                                <Card></Card>
                                 <h4>Week 5 Answers</h4>
                                     
                                 <p><strong>Is a Rose Given Out on the Group Date Thats in Progress:</strong> Yes (wait what!?)</p>
