@@ -76,6 +76,7 @@ export const getScore = (picks) => {
         score += calculateBoolScore(picks.isLeaveOnOwn, constants.perfectPicks.isLeaveOnOwn, 'isLeaveOnOwn');
         score += calculateBoolScore(picks.isMultipleInLove, constants.perfectPicks.isMultipleInLove, 'isMultipleInLove');
        
+        
         if(picks.finalOne === constants.perfectPicks.finalOne){
             score += constants.scoreMap['finalOne'];
         }
@@ -91,9 +92,12 @@ export const getScore = (picks) => {
                 score += constants.scoreMap['finalFour'];
             }
         }
-        
-        score += calculateTopListsAnswersScore(picks.finalSix, constants.perfectPicks.finalSix, 'finalSix');
-        
+
+        for(let i = 0; i < picks.finalSix.length; i++){
+            if(constants.perfectPicks.finalSix.indexOf(picks.finalSix[i]) >= 0){
+                score += constants.scoreMap['finalSix'];
+            }
+        }
     }
     
 
@@ -102,18 +106,6 @@ export const getScore = (picks) => {
   
 var calculateSingleAnswerScore = (pick, perfectPick, scoreMapKey) => {
     return pick === perfectPick ? constants.scoreMap[scoreMapKey] : 0;
-}
-
-var calculateTopListsAnswersScore = (pick, perfectPick, scoreMapKey) => {
-    let score = 0;
-    
-    for(let i = 0; i < perfectPick.length; i++){
-        if(perfectPick[i] === pick){
-            score += constants.scoreMap[scoreMapKey];
-        }
-    }  
-
-    return score;
 }
 
 var calculateMultipleCorrectAnswersScore = (pick, perfectPick, scoreMapKey) => {

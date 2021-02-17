@@ -13,10 +13,7 @@ export function getGirlsById(id){
 }
 
 export const scoreMap = {
-    'finalOne' : 30,
-    'finalTwo' : 25,
-    'finalFour' : 20,
-    'finalSix' : 10,
+    //WEEK 1
     'isTylerCameronApperance' : 5,
     'firstImpressionRose' : 10,
     'firstOutOfLimo' : 10,
@@ -80,15 +77,14 @@ export const scoreMap = {
     'isSentHomeOnAOneOnOneDate' : 10,
     'isLeaveOnOwn' : 10,
     'isMultipleInLove' : 10,
-    'finalSix'  : 10
+    'finalOne' : 30,
+    'finalTwo' : 25,
+    'finalFour' : 20,
+    'finalSix' : 10,
 }
 
 export function defaultPicks() {
     return {
-        finalSix: [],
-        finalFour: [],
-        finalTwo: [],
-        finalOne: -1,
         //WEEK 1
         isTylerCameronApperance: NO_SELECTION,
         firstImpressionRose: -1,
@@ -148,19 +144,20 @@ export function defaultPicks() {
         isHeatherMadeContestantWeekSeven: NO_SELECTION,
         //WEEK 8
         //SEASON
+        finalSix: [],
+        finalFour: [],
+        finalTwo: [],
+        finalOne: -1,
         isMattAndFinalRoseACouple: NO_SELECTION,
         bachelorette: NO_SELECTION,
         isSentHomeOnAOneOnOneDate: NO_SELECTION,
-        isLeaveOnOwn: TRUE,
+        isLeaveOnOwn: NO_SELECTION,
         isMultipleInLove: NO_SELECTION
     }       
 }
 
 export const perfectPicks = {
-    finalSix: ['6', '25', '26', '30', '34'],
-    finalFour: ['6', '26', '30', '34'],
-    finalTwo: [NOT_SETTLED, (NOT_SETTLED + 1)],
-    finalOne: NOT_SETTLED,
+    //WEEK 1
     isTylerCameronApperance: FALSE,
     firstImpressionRose: '1',
     firstOutOfLimo: '6',
@@ -219,6 +216,10 @@ export const perfectPicks = {
     isHeatherMadeContestantWeekSeven: FALSE,
     //WEEK 8
     //SEASON
+    finalSix: ['6', '13', '25', '26', '30', '34'],
+    finalFour: ['6', '26', '30', '34'],
+    finalTwo: [NOT_SETTLED, (NOT_SETTLED + 1)],
+    finalOne: NOT_SETTLED,
     isMattAndFinalRoseACouple: NOT_SETTLED,
     bachelorette: NOT_SETTLED,
     isSentHomeOnAOneOnOneDate: TRUE,
