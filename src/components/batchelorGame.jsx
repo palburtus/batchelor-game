@@ -11,6 +11,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
+import cheering from '../assets/cheering.gif';
+import under from '../assets/under.jpg';
 
 class BatchelorGame extends React.Component {
     
@@ -27,7 +29,8 @@ class BatchelorGame extends React.Component {
             isWeekFourLockedOut: true,
             isWeekFiveLockedOut: true,
             isWeekSixLockedOut: true,
-            isWeekSevenLockedOut: false,
+            isWeekSevenLockedOut: true,
+            isWeekEightLockedOut: false,
             isSeasonLongLockedOut: true,
             infoMessage: '',
             warningMessage: '',
@@ -160,6 +163,11 @@ class BatchelorGame extends React.Component {
       
         let picks = this.state.picks;
         
+        //WEEK 8 
+        if(!this.state.isWeekEightLockedOut){
+            
+        }
+
         //WEEK 7
         if(!this.state.isWeekSevenLockedOut){
             if(listId === 'one-on-one-date-week-seven'){
@@ -327,6 +335,11 @@ class BatchelorGame extends React.Component {
             picks.bachelorette = this.handleSingleDragAdd(picks.bachelorette, this.state.picks.bachelorette, 'bachelorette', result);
         }
 
+        //WEEK 8 
+        if(!this.state.isWeekEightLockedOut){
+            
+        }
+
         //WEEK 7
         if(!this.state.isWeekSevenLockedOut){
             picks.oneOnOneDateWeekSeven = this.handleSingleDragAdd(picks.oneOnOneDateWeekSeven, this.state.picks.oneOnOneDateWeekSeven, 'one-on-one-date-week-seven', result);
@@ -391,6 +404,11 @@ class BatchelorGame extends React.Component {
     handleChange(evt) {
        
         let picks = this.state.picks;
+
+        //WEEK 8 
+        if(!this.state.isWeekEightLockedOut){
+                    
+        }
 
         //WEEK 7
         if(!this.state.isWeekSevenLockedOut){
@@ -477,20 +495,61 @@ class BatchelorGame extends React.Component {
                         <Row>
                             <Col>
 
-                                <div className="alert alert-warning">
-                                    <p>
-                                        Due to the possibility of being added to the show <strong>Heather Martin</strong> has been added 
-                                        to the list of contestants.  This will allow you to choose her for questions next week such as group date, one-one-one, etc.
-                                    </p>
 
-                                    <p>
-                                        If she actually joins the show as a contestant and survives Week 7 we have a contingency in place 
-                                        to include her in the locked-out season long questions.  We will however, cross that bridge if/when we come to it.
-                                    </p>
+                                <div className="answers">
+                                    <h4>Season Long Answers</h4>
+                                    <p><strong>Does someone leave on their own:</strong> Yes</p>
+                                    <p><strong>Top Six: </strong></p>
+                                    <ul>
+                                        <li>Bri</li>
+                                        <li>Jessenia</li>
+                                        <li>Pieper</li>
+                                        <li>Rachael</li>
+                                        <li>Serena P</li>
+                                        <li>Michelle</li>
+                                    </ul>
+
+                                    <p><strong>Top Four: </strong></p>
+                                    <ul>
+                                        <li>Bri</li>
+                                        <li>Pieper</li>
+                                        <li>Rachael</li>
+                                        <li>Serena P</li>
+                                        <li>Michelle</li>
+                                    </ul>
+
+                                    <h4>Week 7 Answers</h4>
+
+                                    <p><strong>Does Heather get a rose:</strong> No</p>
+                                    <ul>
+                                        <li>A Hi and Goodbye for Heather, lets see how the rest of the girls took it? </li>
+                                    </ul>
+                                    <img src={cheering} className="answers-gif" width="250" height="200" alt="cheering"/>
+
+                                    <p><strong>Who does Matt Send Home Early:</strong></p>
+                                    <ul>
+                                        <li>Abigail</li>
+                                        <li>Jessenia</li>
+                                    </ul>
+                                    
+                                    <p><strong>How many girls does Matt send home: </strong> Three or More</p>
+                                    <img src={under} className="answers-gif" width="200" height="250" alt="under"/>
+                                    <p><strong>Who gets a one on one date this week</strong></p>
+                                    <ul>
+                                        <li>Serena P.</li>
+                                        <li>Jessenia</li>
+                                    </ul>
+                                    <p><strong>Who gets a Group Date Rose</strong></p>
+                                    <p><strong>Hot Tub</strong></p>
+                                    <p><strong>Who gets sent home during a Rose Ceremony:</strong></p>
+                                    <ul>
+                                        <li>Chelsea (The one everyone was secretly rooting for)</li>
+                                        <li>Serena C. (The one everone was openly rooting against)</li>
+                                    </ul>
 
                                 </div>
                                                                 
-{/*                                <Alert key='previous-results' variant='info'>
+                                <Alert key='previous-results' variant='info'>
                                     <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
                                 </Alert>                                
 
@@ -501,7 +560,7 @@ class BatchelorGame extends React.Component {
                                     </Card.Body>
                                 </Card>
                                 
-            */}
+            
                             </Col>
                         </Row>
                         

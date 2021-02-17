@@ -12,10 +12,7 @@ test('default picks to equal 0', () => {
 test('perfect score to equal 650', () => {
     
     let picks = {
-        finalSix: [999, 1000, 1001, 1002, 1003, 1004],
-        finalFour: [999, 1000, 1001, 1002],
-        finalTwo: [999, 1000],
-        finalOne: 999,
+        //WEEK 1
         isTylerCameronApperance: 0,
         firstImpressionRose: '1',
         firstOutOfLimo: '6',
@@ -65,19 +62,23 @@ test('perfect score to equal 650', () => {
         isTylerCameronOnDateWeekSix: 1,
         isMJSentHomeWeekSix: 1,
         //WEEK 7 
-        oneOnOneDateWeekSeven: 999,
-        groupDateRoseWeekSeven: 999,
-        isHotTubWeekSeven: 999,
-        eliminatedWeekSeven: 999,
-        isTwoOrLessWeekSeven: 999,
-        sentHomeEarlyWeekSeven: 999,
-        isHeatherMadeContestantWeekSeven: 999,
+        oneOnOneDateWeekSeven: '30',
+        groupDateRoseWeekSeven: '26',
+        isHotTubWeekSeven: 0,
+        eliminatedWeekSeven: '9',
+        isTwoOrLessWeekSeven: 0,
+        sentHomeEarlyWeekSeven: '1',
+        isHeatherMadeContestantWeekSeven: 0,
         //SEASON
         isMattAndFinalRoseACouple: 999,
         bachelorette: 999,
         isSentHomeOnAOneOnOneDate: 1,
-        isLeaveOnOwn: 999,
-        isMultipleInLove: 999
+        isLeaveOnOwn: 1,
+        isMultipleInLove: 999,
+        finalSix: ['6', '13', '25', '26', '30', '34'],
+        finalFour: ['6', '26', '30', '34'],
+        finalTwo: [999, 1000],
+        finalOne: 999,
     }
 
     let result = gameService.getScore(picks);
@@ -87,7 +88,7 @@ test('perfect score to equal 650', () => {
 
 test('is heather receive rose during first rose ceremony week 7 correct to equal 5', () =>{
     let picks = constants.defaultPicks();
-    picks.isHeatherMadeContestantWeekSeven = 999;
+    picks.isHeatherMadeContestantWeekSeven = 0;
 
     let result = gameService.getScore(picks);
 
@@ -96,25 +97,32 @@ test('is heather receive rose during first rose ceremony week 7 correct to equal
 
 test('is heather receive rose during first rose ceremony week 7 incorrect to equal 0', () =>{
     let picks = constants.defaultPicks();
-    picks.isHeatherMadeContestantWeekSeven = 998;
+    picks.isHeatherMadeContestantWeekSeven = 1;
     
     let result = gameService.getScore(picks);
 
     expect(result).toBe(0);
 })
 
-//sentHomeEarlyWeekSeven
-
 test('sent home early week 7 correct to equal 10', () =>{
     let picks = constants.defaultPicks();
-    picks.sentHomeEarlyWeekSeven = 999;
+    picks.sentHomeEarlyWeekSeven = '1';
 
     let result = gameService.getScore(picks);
 
     expect(result).toBe(10);
 })
 
-test(' incorrect to equal 0', () =>{
+test('sent home early week 7 alternate correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.sentHomeEarlyWeekSeven = '13';
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('sent home early incorrect to equal 0', () =>{
     let picks = constants.defaultPicks();
     picks.sentHomeEarlyWeekSeven = 998;
     
@@ -125,8 +133,8 @@ test(' incorrect to equal 0', () =>{
 
 test('is two or less eliminated week 7 correct to equal 5', () =>{
     let picks = constants.defaultPicks();
-    picks.isTwoOrLessWeekSeven = 999;
-
+    picks.isTwoOrLessWeekSeven = 0;
+    //3
     let result = gameService.getScore(picks);
 
     expect(result).toBe(5);
@@ -134,18 +142,26 @@ test('is two or less eliminated week 7 correct to equal 5', () =>{
 
 test('is two or less eliminated week 7 incorrect to equal 5', () =>{
     let picks = constants.defaultPicks();
-    picks.isTwoOrLessWeekSeven = 998;
+    picks.isTwoOrLessWeekSeven = 1;
     
     let result = gameService.getScore(picks);
 
     expect(result).toBe(0);
 })
 
-//isTwoOrLessWeekSeven
 
 test('eliminated week seven correct to equal 10', () =>{
     let picks = constants.defaultPicks();
-    picks.eliminatedWeekSeven = 999;
+    picks.eliminatedWeekSeven = '9';
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('eliminated week seven alternate correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.eliminatedWeekSeven = '29';
 
     let result = gameService.getScore(picks);
 
@@ -163,7 +179,7 @@ test('eliminated week seven incorrect to equal 0', () =>{
 
 test('is hot tub week seven correct to equal 5', () =>{
     let picks = constants.defaultPicks();
-    picks.isHotTubWeekSeven = 999;
+    picks.isHotTubWeekSeven = 0;
 
     let result = gameService.getScore(picks);
 
@@ -172,7 +188,7 @@ test('is hot tub week seven correct to equal 5', () =>{
 
 test('is hot tub week 7 incorrect to equal 0', () =>{
     let picks = constants.defaultPicks();
-    picks.isHotTubWeekSeven = 998;
+    picks.isHotTubWeekSeven = 1;
     
     let result = gameService.getScore(picks);
 
@@ -181,7 +197,7 @@ test('is hot tub week 7 incorrect to equal 0', () =>{
 
 test('week seven group date correct to equal 10', () =>{
     let picks = constants.defaultPicks();
-    picks.groupDateRoseWeekSeven = 999;
+    picks.groupDateRoseWeekSeven = '26';
 
     let result = gameService.getScore(picks);
 
@@ -199,7 +215,7 @@ test('week seven group date incorrect to equal 0', () =>{
 
 test('one on one week seven correct to equal 10', () =>{
     let picks = constants.defaultPicks();
-    picks.oneOnOneDateWeekSeven = 999;
+    picks.oneOnOneDateWeekSeven = '30';
 
     let result = gameService.getScore(picks);
 
@@ -235,7 +251,7 @@ test('is multiple in love incorrect to equal 0', () =>{
 
 test('is leave on own correct to equal 10', () =>{
     let picks = constants.defaultPicks();
-    picks.isLeaveOnOwn = 999;
+    picks.isLeaveOnOwn = 1;
 
     let result = gameService.getScore(picks);
 
@@ -1174,7 +1190,7 @@ test('final two both correct reverse order to equal 50', () => {
 test('final four first correct to equal 20', () => {
     
     let picks = constants.defaultPicks();
-    picks.finalFour = [999, 998, 997, 996];
+    picks.finalFour = ['6', '2', '1', '4'];
 
     let result = gameService.getScore(picks);
 
@@ -1184,7 +1200,7 @@ test('final four first correct to equal 20', () => {
 test('final four second correct to equal 20', () => {
     
     let picks = constants.defaultPicks();
-    picks.finalFour = [998, 999, 997, 996];
+    picks.finalFour = ['1', '6', '2', '4'];
 
     let result = gameService.getScore(picks);
 
@@ -1194,7 +1210,7 @@ test('final four second correct to equal 20', () => {
 test('final four third correct to equal 20', () => {
     
     let picks = constants.defaultPicks();
-    picks.finalFour = [998, 997, 999, 996];
+    picks.finalFour = ['1', '2', '6', '4'];
 
     let result = gameService.getScore(picks);
 
@@ -1204,7 +1220,7 @@ test('final four third correct to equal 20', () => {
 test('final four fourth correct to equal 20', () => {
     
     let picks = constants.defaultPicks();
-    picks.finalFour = [998, 997, 996, 999];
+    picks.finalFour = ['1', '2', '3', '34'];
 
     let result = gameService.getScore(picks);
 
@@ -1214,7 +1230,7 @@ test('final four fourth correct to equal 20', () => {
 test('final four two answers correct to equal 40', () => {
     
     let picks = constants.defaultPicks();
-    picks.finalFour = [1000, 997, 999, 996];
+    picks.finalFour = ['6', '1', '30', '2'];
 
     let result = gameService.getScore(picks);
 
@@ -1224,7 +1240,7 @@ test('final four two answers correct to equal 40', () => {
 test('final four three answers correct to equal 60', () => {
     
     let picks = constants.defaultPicks();
-    picks.finalFour = [998, 1000, 999, 1001];
+    picks.finalFour = ['1', '26', '30', '34'];
 
     let result = gameService.getScore(picks);
 
@@ -1234,7 +1250,7 @@ test('final four three answers correct to equal 60', () => {
 test('final four all correct to equal 80', () => {
     
     let picks = constants.defaultPicks();
-    picks.finalFour = [999, 1000, 1001, 1002];
+    picks.finalFour = ['6', '26', '30', '34'];
 
     let result = gameService.getScore(picks);
 
@@ -1244,7 +1260,7 @@ test('final four all correct to equal 80', () => {
 test('final four all correct out of order to equal 80', () => {
     
     let picks = constants.defaultPicks();
-    picks.finalFour = [1001, 1002, 999, 1000];
+    picks.finalFour = ['26', '6', '34', '30'];
 
     let result = gameService.getScore(picks);
 
@@ -1254,7 +1270,7 @@ test('final four all correct out of order to equal 80', () => {
 test('final six none correct to equal 0', () => {
     
     let picks = constants.defaultPicks();
-    picks.finalSix = [998, 997, 996, 995, 994, 993];
+    picks.finalSix = ['0', '1', '2', '3', '4', '5'];
 
     let result = gameService.getScore(picks);
 
@@ -1264,7 +1280,7 @@ test('final six none correct to equal 0', () => {
 test('final six first correct to equal 10', () => {
     
     let picks = constants.defaultPicks();
-    picks.finalSix = [999, 998, 997, 996, 995, 994];
+    picks.finalSix = ['6', '1', '2', '3', '4', '5'];
 
     let result = gameService.getScore(picks);
 
@@ -1274,7 +1290,7 @@ test('final six first correct to equal 10', () => {
 test('final six two correct to equal 20', () => {
     
     let picks = constants.defaultPicks();
-    picks.finalSix = [1002, 999, 995, 994, 993, 992];
+    picks.finalSix = ['6', '13', '1', '2', '3', '4'];
 
     let result = gameService.getScore(picks);
 
@@ -1284,7 +1300,7 @@ test('final six two correct to equal 20', () => {
 test('final six three correct to equal 30', () => {
     
     let picks = constants.defaultPicks();
-    picks.finalSix = [1002, 999, 996, 1000, 994, 992];
+    picks.finalSix = ['6', '13', '1', '25', '2', '3'];
 
     let result = gameService.getScore(picks);
 
@@ -1294,7 +1310,7 @@ test('final six three correct to equal 30', () => {
 test('final six four correct to equal 40', () => {
     
     let picks = constants.defaultPicks();
-    picks.finalSix = [1002, 1000, 994, 993, 1003, 999];
+    picks.finalSix = ['6', '13', '1', '2', '30', '34'];
 
     let result = gameService.getScore(picks);
 
@@ -1304,16 +1320,16 @@ test('final six four correct to equal 40', () => {
 test('final six five correct to equal 50', () => {
     
     let picks = constants.defaultPicks();
-    picks.finalSix = [1002, 996, 1000, 1001, 1003, 999];
+    picks.finalSix = ['6', '1', '26', '25', '30', '34'];
 
     let result = gameService.getScore(picks);
 
     expect(result).toBe(50);
 });
 
-test('final six all correct out of order to equal 80', () => {
+test('final six all correct out of order to equal 60', () => {
     let picks = constants.defaultPicks();
-    picks.finalSix = [1004, 1003, 1002, 1001, 1000, 999];
+    picks.finalSix = ['6', '13', '25', '26', '30', '34'];
 
     let result = gameService.getScore(picks);
 
