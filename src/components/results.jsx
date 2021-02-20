@@ -20,7 +20,10 @@ import conspiracy from '../assets/conspiracy.gif';
 import annaImage from '../assets/anna.gif';
 import paradise from '../assets/paradise.gif';
 import tylercameron from '../assets/tylercameron.gif';
-
+import cheering from '../assets/cheering.gif';
+import under from '../assets/under.jpg';
+import bachelorbracketbusted from '../assets/bachelorbracketbusted.png';
+import chrisharrison from '../assets/chrisharrison.gif';
 
 class Results extends React.Component {
 
@@ -121,6 +124,7 @@ class Results extends React.Component {
                                     <h3>Question Results</h3>  
 
                                     <h4>Season Long Answers</h4>
+                                    
                                     <p>
                                         In an exciting development we had a season long question answered in the first week!  
                                         We will keep updating this list as the results come int
@@ -174,8 +178,91 @@ class Results extends React.Component {
                                         I would say brutal, but given the minimal tears in the car after being sent home I can't help but think the feeling was a little bit mutual. 
                                     </p>
                                 
-                                
+                                    <p><strong>Does someone leave on their own:</strong> Yes</p>
+                                    <ul>
+                                        <li>
+                                            Kit - This week saw the departure of Kit who didn't get her way and bailed at the first sign of trouble (Let's hope she lands on her feet somewhere)
+                                        </li>                                      
+                                        <li>
+                                            Chris Harrison (Yet another American Treasure brought low by not knowing when to shut the fuck up)
+                                        </li>
+                                    </ul>
+
+                                    <img src={chrisharrison} className="answers-gif" width="250" height="200" alt="chris harrison"/>
+
+                                    <p><strong>Top Six: </strong></p>
+                                    <ul>
+                                        <li>Bri</li>
+                                        <li>Jessenia</li>
+                                        <li>Pieper</li>
+                                        <li>Rachael</li>
+                                        <li>Serena P</li>
+                                        <li>Michelle</li>
+                                    </ul>
+
+                                    <p>
+                                        Not supprisingly this week saw the <strong>biggest shake up</strong> in the standings so far this season with
+                                        Kristen K, Kim K and William C making big moves with the best top 6 results.  
+                                        Two sisters and a boyfriend leaving a prohibitive favorite out of their top 6 was a 
+                                        bold play that paid off. <span className="badge bg-info white">#suspicious</span> 
+                                    </p>
+
+                                    <p>As for the rest of us...</p>
+
+                                    <img src={bachelorbracketbusted} className="answers-gif" width="250" height="200" alt="bracket busted"/>                                    
+
+                                    <p><strong>Top Four: </strong></p>
+                                    <ul>
+                                        <li>Bri</li>
+                                        <li>Rachael</li>
+                                        <li>Serena P</li>
+                                        <li>Michelle</li>
+                                    </ul>
+
+                                    <p>Every bracket had at least half of the Final Four correct by virtue of including Rachael and Michelle.</p>
+                                    <p>Willaim C and Kim K are looking to make a strong finish with perfect final fours.</p>
+                                    <p>The most popular bracket buster was of course Abigail, followed by Pieper</p>
+
                                 </div>
+
+                                
+                                    
+                                <h4>Week 7 Answers</h4>
+
+                                <p><strong>Does Heather get a rose:</strong> No</p>
+                                <ul>
+                                    <li>A Hi and Goodbye for Heather, lets see how the rest of the girls took the news... </li>
+                                </ul>
+                                <img src={cheering} className="answers-gif" width="250" height="200" alt="cheering"/>
+
+                                <p><strong>Who does Matt Send Home Early:</strong></p>
+                                <ul>
+                                    <li>Abigail</li>
+                                    <li>Jessenia</li>
+                                </ul>
+                                
+                                <p><strong>How many girls does Matt send home: </strong> Three or More</p>
+                                <img src={under} className="answers-gif" width="200" height="250" alt="under"/>
+                                <p><strong>Who gets a one on one date this week</strong></p>
+                                <ul>
+                                    <li>Serena P.</li>
+                                    <li>Jessenia</li>
+                                </ul>
+                                <p><strong>Who gets a Group Date Rose</strong></p>
+                                <ul>
+                                    <li>Rachael</li>
+                                </ul>
+
+                                <p><strong>Hot Tub: </strong> No</p>
+                                <p><strong>Who gets sent home during a Rose Ceremony:</strong></p>
+                                <ul>
+                                    <li>Chelsea (The one everyone was secretly rooting for)</li>
+                                    <li>Serena C. (The one everone was openly rooting against)</li>
+                                </ul>
+
+
+                                <Card></Card>
+
                                 <Card></Card>
                                 <h4>Week 5 Answers</h4>
                                     

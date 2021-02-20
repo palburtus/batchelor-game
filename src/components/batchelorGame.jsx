@@ -11,10 +11,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
-import cheering from '../assets/cheering.gif';
-import under from '../assets/under.jpg';
-import bachelorbracketbusted from '../assets/bachelorbracketbusted.png';
-import chrisharrison from '../assets/chrisharrison.gif';
 
 class BatchelorGame extends React.Component {
     
@@ -167,7 +163,17 @@ class BatchelorGame extends React.Component {
         
         //WEEK 8 
         if(!this.state.isWeekEightLockedOut){
-            
+            if(listId === 'first-home-town-date'){
+                picks.firstHomeTownDate = -1;
+            }
+
+            if(listId === 'sent-home-week-eight'){
+                picks.sentHomeWeekEight = -1;
+            }
+
+            if(listId === 'in-love-week-eight'){
+                picks.inLoveWeekEight = -1;
+            }
         }
 
         //WEEK 7
@@ -339,7 +345,9 @@ class BatchelorGame extends React.Component {
 
         //WEEK 8 
         if(!this.state.isWeekEightLockedOut){
-            
+            picks.firstHomeTownDate = this.handleSingleDragAdd(picks.firstHomeTownDate, this.state.picks.firstHomeTownDate, 'first-home-town-date', result);
+            picks.sentHomeWeekEight = this.handleSingleDragAdd(picks.sentHomeWeekEight, this.state.picks.sentHomeWeekEight, 'sent-home-week-eight', result);
+            picks.inLoveWeekEight = this.handleSingleDragAdd(picks.inLoveWeekEight, this.state.picks.inLoveWeekEight, 'in-love-week-eight', result);
         }
 
         //WEEK 7
@@ -409,7 +417,8 @@ class BatchelorGame extends React.Component {
 
         //WEEK 8 
         if(!this.state.isWeekEightLockedOut){
-                    
+            picks.isMattAskingAllForPermission = this.handleBooleanEventChange(evt, 'isMattAskingAllForPermission', picks.isMattAskingAllForPermission);
+            picks.isSkyDivingInjured = this.handleBooleanEventChange(evt, 'isSkyDivingInjured', picks.isSkyDivingInjured);
         }
 
         //WEEK 7
@@ -500,90 +509,12 @@ class BatchelorGame extends React.Component {
                         <Row>
                             <Col>
 
-
-                                <div className="answers">
-                                    <h4>Season Long Answers</h4>
-                                    <p><strong>Does someone leave on their own:</strong> Yes</p>
-                                    <ul>
-                                        <li>
-                                            Kit - This week saw the departure of Kit who didn't get her way and bailed at the first sign of trouble (Let's hope she lands on her feet somewhere)
-                                        </li>                                      
-                                        <li>
-                                            Chris Harrison (Yet another American Treasure brought low by not knowing when to shut the fuck up)
-                                        </li>
-                                    </ul>
-
-                                    <img src={chrisharrison} className="answers-gif" width="250" height="200" alt="chris harrison"/>
-
-                                    <p><strong>Top Six: </strong></p>
-                                    <ul>
-                                        <li>Bri</li>
-                                        <li>Jessenia</li>
-                                        <li>Pieper</li>
-                                        <li>Rachael</li>
-                                        <li>Serena P</li>
-                                        <li>Michelle</li>
-                                    </ul>
-
-                                    <p>
-                                        Not supprisingly this week saw the <strong>biggest shake up</strong> in the standings so far this season with
-                                        Kristen K, Kim K and William C making big moves with the best top 6 results.  
-                                        Two sisters and a boyfriend leaving a prohibitive favorite out of their top 6 was a 
-                                        bold play that paid off. <span className="badge bg-info white">#suspicious</span> 
-                                    </p>
-
-                                    <p>As for the rest of us...</p>
-
-                                    <img src={bachelorbracketbusted} className="answers-gif" width="250" height="200" alt="bracket busted"/>                                    
-
-                                    <p><strong>Top Four: </strong></p>
-                                    <ul>
-                                        <li>Bri</li>
-                                        <li>Rachael</li>
-                                        <li>Serena P</li>
-                                        <li>Michelle</li>
-                                    </ul>
-
-                                    <p>Every bracket had at least half of the Final Four correct by virtue of including Rachael and Michelle.</p>
-                                    <p>Willaim C and Kim K are looking to make a strong finish with perfect final fours.</p>
-                                    <p>The most popular bracket buster was of course Abigail, followed by Pieper</p>
-
-                                    <h4>Week 7 Answers</h4>
-
-                                    <p><strong>Does Heather get a rose:</strong> No</p>
-                                    <ul>
-                                        <li>A Hi and Goodbye for Heather, lets see how the rest of the girls took the news... </li>
-                                    </ul>
-                                    <img src={cheering} className="answers-gif" width="250" height="200" alt="cheering"/>
-
-                                    <p><strong>Who does Matt Send Home Early:</strong></p>
-                                    <ul>
-                                        <li>Abigail</li>
-                                        <li>Jessenia</li>
-                                    </ul>
+                           
+                                {/*<div className="answers">*/}
                                     
-                                    <p><strong>How many girls does Matt send home: </strong> Three or More</p>
-                                    <img src={under} className="answers-gif" width="200" height="250" alt="under"/>
-                                    <p><strong>Who gets a one on one date this week</strong></p>
-                                    <ul>
-                                        <li>Serena P.</li>
-                                        <li>Jessenia</li>
-                                    </ul>
-                                    <p><strong>Who gets a Group Date Rose</strong></p>
-                                    <ul>
-                                        <li>Rachael</li>
-                                    </ul>
-
-                                    <p><strong>Hot Tub: </strong> No</p>
-                                    <p><strong>Who gets sent home during a Rose Ceremony:</strong></p>
-                                    <ul>
-                                        <li>Chelsea (The one everyone was secretly rooting for)</li>
-                                        <li>Serena C. (The one everone was openly rooting against)</li>
-                                    </ul>
-
-                                </div>
+                                {/*</div>*/}{/*End div ansers*/}
                                                                 
-                                <Alert key='previous-results' variant='info'>
+                                {/*<Alert key='previous-results' variant='info'>
                                     <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
                                 </Alert>                                
 
@@ -592,7 +523,7 @@ class BatchelorGame extends React.Component {
                                         <Card.Title>New Questions Available Friday</Card.Title>
                                         <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
                                     </Card.Body>
-                                </Card>
+                                </Card>*/}
                                 
             
                             </Col>
@@ -639,9 +570,56 @@ class BatchelorGame extends React.Component {
                                     </Card>
                                 </Col>
                                 <Col>
-                                                                
+
+                                <h3>Week 8 Questions</h3>
+                                <h4>Answers due by February 22nd at 8pm EST</h4>
+                                
+                                <SinglePickDrag
+                                    isLocked={this.state.isWeekEightLockedOut}
+                                    droppableId='in-love-week-eight'
+                                    pick={this.state.picks.inLoveWeekEight}
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='Who tells Matt they are "In Love" or "Falling in Love" with him? (10 points)'
+                                    subtitle='Contestant must tell Matt.  Any similar phrases will count'/>     
+
+                                <BooleanPick
+                                    isLocked={this.state.isWeekEightLockedOut}
+                                    pick={this.state.picks.isSkyDivingInjured}
+                                    title='Does the Sky Diving result in a non-trivial injury? (5 points)'
+                                    subtitle='Contestant must be injured during skydiving enough that they require medical attention and/or cause the date to end early.  Cuts and scrapes do NOT count, if the contestant can "walk it off" it does not count.  If the answer to this question is too close to call it will be scored as no action and no points will be issued.'
+                                    radiosIds='isSkyDivingInjured'
+                                    handleChange={this.handleChange}/>
+
+                                <BooleanPick
+                                    isLocked={this.state.isWeekEightLockedOut}
+                                    pick={this.state.picks.isMattAskingAllForPermission}
+                                    title='Does Matt ask at least one family member of EACH of the contestants for their permission/blessing? (5 points)'
+                                    subtitle='Matt must ask on EACH of the seperate hometown dates on the hometowns permission to propose or marry.  "Permisison" and/or "Blessing" do not have to be the words used.  Any language that resembles the tradition asking for a girls hand in marraige will be acceptble for this answer.'
+                                    radiosIds='isMattAskingAllForPermission'
+                                    handleChange={this.handleChange}/>
+
+                                <SinglePickDrag
+                                    isLocked={this.state.isWeekEightLockedOut}
+                                    droppableId='first-home-town-date'
+                                    pick={this.state.picks.firstHomeTownDate}
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='First Hometown Date? (10 points)'
+                                    subtitle='Which contestants hometown date airs first?'/>     
+
+                                <SinglePickDrag
+                                    isLocked={this.state.isWeekEightLockedOut}
+                                    droppableId='sent-home-week-eight'
+                                    pick={this.state.picks.sentHomeWeekEight}
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='Who Gets Sent Home? (10 points)'
+                                    subtitle='Must be eliminated in any way including during a Rose Cermoney and also outside of a Rose Ceremoney'/>      
+
+
                                 <h3>Season Questions</h3>
-                                <h4>Answers due by February 8th at 8pm EST</h4>
+                                <h4>Answers submitted on February 8th at 8pm EST</h4>
                                 
                                 <p className="foot-note"><strong>*</strong>Any questions that mention "After the Final Rose" will still apply to any substitue recap they air in the case that
                                 there is no "After the Final Rose" this season for COVID related reasons.</p>
@@ -729,7 +707,7 @@ class BatchelorGame extends React.Component {
                                     title="Final Rose (30 points)"
                                     subtitle="Drag 1 Selection or don't leave a name if you think no one gets the final rose"/>   
 
-                                         
+                                
                                 </Col>
                             </Row>
                         

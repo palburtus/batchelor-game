@@ -9,7 +9,7 @@ test('default picks to equal 0', () => {
 });
 
 
-test('perfect score to equal 650', () => {
+test('perfect score to equal 690', () => {
     
     let picks = {
         //WEEK 1
@@ -69,6 +69,12 @@ test('perfect score to equal 650', () => {
         isTwoOrLessWeekSeven: 0,
         sentHomeEarlyWeekSeven: '1',
         isHeatherMadeContestantWeekSeven: 0,
+        //WEEK 8
+        firstHomeTownDate: 999,
+        sentHomeWeekEight: 999,
+        isMattAskingAllForPermission: 999,
+        isSkyDivingInjured: 999,
+        inLoveWeekEight: 999,
         //SEASON
         isMattAndFinalRoseACouple: 999,
         bachelorette: 999,
@@ -83,8 +89,100 @@ test('perfect score to equal 650', () => {
 
     let result = gameService.getScore(picks);
 
-    expect(result).toBe(650);
+    expect(result).toBe(690);
 });
+
+
+test('is falling in love week eight correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.inLoveWeekEight = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('is falling in love week eight incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.inLoveWeekEight = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+
+test('sky diving injury correct to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.isSkyDivingInjured = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('sky diving injury incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isSkyDivingInjured = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is Matt ask for all hometown permission correct to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.isMattAskingAllForPermission = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('is Matt ask for all hometown permissions incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isMattAskingAllForPermission = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('send home week eight correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.sentHomeWeekEight = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('sent home week eight incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.sentHomeWeekEight = 998;
+        
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('first home town date correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.firstHomeTownDate = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('first home town date incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.firstHomeTownDate = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
 
 test('is heather receive rose during first rose ceremony week 7 correct to equal 5', () =>{
     let picks = constants.defaultPicks();

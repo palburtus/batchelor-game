@@ -71,6 +71,11 @@ export const scoreMap = {
     'sentHomeEarlyWeekSeven' : 10,
     'isHeatherMadeContestantWeekSeven' : 5,
     //WEEK 8 
+    'firstHomeTownDate': 10,
+    'sentHomeWeekEight': 10,
+    'isMattAskingAllForPermission': 5,
+    'isSkyDivingInjured': 5,
+    'inLoveWeekEight': 10,
     //SEASON
     'isMattAndFinalRoseACouple' : 10,
     'bachelorette' : 20,
@@ -143,6 +148,11 @@ export function defaultPicks() {
         sentHomeEarlyWeekSeven: [NO_SELECTION],
         isHeatherMadeContestantWeekSeven: NO_SELECTION,
         //WEEK 8
+        firstHomeTownDate: NO_SELECTION,
+        sentHomeWeekEight: NO_SELECTION,
+        isMattAskingAllForPermission: NO_SELECTION,
+        isSkyDivingInjured: NO_SELECTION,
+        inLoveWeekEight: NO_SELECTION,
         //SEASON
         finalSix: [],
         finalFour: [],
@@ -215,6 +225,11 @@ export const perfectPicks = {
     sentHomeEarlyWeekSeven: ['1', '13'],
     isHeatherMadeContestantWeekSeven: FALSE,
     //WEEK 8
+    firstHomeTownDate: NOT_SETTLED,
+    sentHomeWeekEight: [NOT_SETTLED],
+    isMattAskingAllForPermission: NOT_SETTLED,
+    isSkyDivingInjured: NOT_SETTLED,
+    inLoveWeekEight: [NOT_SETTLED],
     //SEASON
     finalSix: ['6', '13', '25', '26', '30', '34'],
     finalFour: ['6', '26', '30', '34'],
