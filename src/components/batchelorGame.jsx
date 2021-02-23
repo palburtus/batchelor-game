@@ -524,15 +524,19 @@ class BatchelorGame extends React.Component {
 
                                     <p><strong>Who gets sent home: </strong> No One</p>
                                     <ul>
-                                        <li>No top 2 yet but Serena lets her stupid Candian family talk her into leaving.</li>
+                                        <li>No top 2 yet but Serena lets her stupid Canadian family talk her into leaving.</li>
                                         <li>I hope Serena P promptly enjoys some shitty Tim Horton's coffee and free health care</li>
-                                        <li>God Damn Canucks (Excuse me.... Bon Dieu Canadians)</li>
+                                        <li>God Damn Canucks! (Excuse me.... Bon Dieu Canadians!)</li>
                                     </ul>
                                     
-                                    <img src={canadianbacon} className="answers-gif" width="250" height="200" />
+                                    <img src={canadianbacon} className="answers-gif" width="250" height="200" alt="canadia o"/>
 
-                                    <p>As the only person who had her in my top two I'm offically done for</p>
-                                    <img src={throwipad} className="answers-gif" width="250" height="200" />
+                                    <ul>
+                                        <li>As the only person who had Serena P in my top two I'm offically done for</li>
+                                        <li><strong>Correction</strong>, it looks like Matt had Serena P in his top two as well, he seems pretty done for himself</li>
+                                    </ul>
+
+                                    <img src={throwipad} className="answers-gif" width="250" height="200" alt="throw ipad"/>
                                     
 
                                     <p><strong>First Home Town Date: </strong>Michelle</p> 
@@ -540,14 +544,15 @@ class BatchelorGame extends React.Component {
                                         <li>For those who were excited about getting this right, all nine of us had the same answer</li>
                                     </ul>   
                                     
-                                    <img src={disappointment} className="answers-gif" width="250" height="200" />
+                                    <img src={disappointment} className="answers-gif" width="250" height="200" alt="disappointment"/>
 
                                     <ul>
                                         <li>Full disclosure totally caught off guard by Michelle's Mom's looking like the 4th Golden Girl</li>
                                         <li>She looks like the OG Karen</li>
+                                        <li><span className="badge bg-info white">#sorrynotsorry</span></li>
                                     </ul>
 
-                                    <img src={whitewomen} className="answers-gif" width="350" height="200" />
+                                    <img src={whitewomen} className="answers-gif" width="300" height="200" alt="what"/>
 
                                     <p><strong>Tells Matt they are falling / in love with him:</strong> </p>
                                     <ul>
@@ -563,7 +568,7 @@ class BatchelorGame extends React.Component {
                                     </ul>
 
                                     <p>Speaking of class and Rachael... Rachael drives a Plymouth Prowler....... !!????</p>
-                                    <img src={prowler} className="ansers-gif" width="250" height="200"/>
+                                    <img src={prowler} className="ansers-gif" width="250" height="200" alt="prowler"/>
 
                                     <p>Here are some actual <strong>top</strong> Google search result when you type in Plymouth Prowler</p>
                                     <ul>
@@ -574,13 +579,14 @@ class BatchelorGame extends React.Component {
                                         <li>The Plymouth Prowler; A Failure? </li>
                                     </ul>
 
-                                    <img src={gosslinglaugh} className="ansers-gif" width="250" height="200"/>
+                                    <img src={gosslinglaugh} className="ansers-gif" width="250" height="200" alt="laughing"/>
 
                                     <p><strong>Is Sky Diving a Legit Injury: </strong> No</p>
                                     <ul>
                                         <li>Not even close</li>
-                                        <li>Unclear if Rachael would even be considered down by contact in an NFL game based on her interaction with that Paramedic</li>
+                                        <li>Unclear if Rachael would even be considered down by contact in an NFL game based on her interaction with that paramedic</li>
                                         <li>"I was fine" -Racheal's words not mine</li>
+                                        <li>That Plymouth Prowler hurt me worse then that fall hurt Rachael</li>
                                     </ul>
 
                                 </div>{/*End div ansers*/}
