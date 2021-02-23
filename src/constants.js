@@ -225,11 +225,11 @@ export const perfectPicks = {
     sentHomeEarlyWeekSeven: ['1', '13'],
     isHeatherMadeContestantWeekSeven: FALSE,
     //WEEK 8
-    firstHomeTownDate: NOT_SETTLED,
-    sentHomeWeekEight: [NOT_SETTLED],
-    isMattAskingAllForPermission: NOT_SETTLED,
-    isSkyDivingInjured: NOT_SETTLED,
-    inLoveWeekEight: [NOT_SETTLED],
+    firstHomeTownDate: '34',
+    sentHomeWeekEight: [NO_ACTION],
+    isMattAskingAllForPermission: 0,
+    isSkyDivingInjured: 0,
+    inLoveWeekEight: ['6','34'],
     //SEASON
     finalSix: ['6', '13', '25', '26', '30', '34'],
     finalFour: ['6', '26', '30', '34'],
