@@ -30,7 +30,7 @@ export const getPicks = (token) => {
                 });   
             })
             .catch((error) => {
-               
+                debugger;
                 reject(error);
             });
 
@@ -44,7 +44,7 @@ export const getAllPicks = (token) => {
         
         firebase.auth().signInAnonymously()
             .then(() => {
-                
+               
                 db.collection('picks').get().then((collection) => {
                 
                     let documents = [];
@@ -61,7 +61,7 @@ export const getAllPicks = (token) => {
                     reject('Connection error please try again')
                 });             
             }).catch((error) => {
-               
+                debugger;
                 reject(error);
             })       
     });
