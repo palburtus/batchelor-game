@@ -70,11 +70,11 @@ test('perfect score to equal 690', () => {
         sentHomeEarlyWeekSeven: '1',
         isHeatherMadeContestantWeekSeven: 0,
         //WEEK 8
-        firstHomeTownDate: 999,
-        sentHomeWeekEight: 999,
-        isMattAskingAllForPermission: 999,
-        isSkyDivingInjured: 999,
-        inLoveWeekEight: 999,
+        firstHomeTownDate: '34',
+        sentHomeWeekEight: 777,
+        isMattAskingAllForPermission: 0,
+        isSkyDivingInjured: 0,
+        inLoveWeekEight: '34',
         //SEASON
         isMattAndFinalRoseACouple: 999,
         bachelorette: 999,
@@ -92,10 +92,18 @@ test('perfect score to equal 690', () => {
     expect(result).toBe(690);
 });
 
+test('is falling in love alternate week eight correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.inLoveWeekEight = '6';
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
 
 test('is falling in love week eight correct to equal 10', () =>{
     let picks = constants.defaultPicks();
-    picks.inLoveWeekEight = 999;
+    picks.inLoveWeekEight = '34';
 
     let result = gameService.getScore(picks);
 
@@ -104,7 +112,7 @@ test('is falling in love week eight correct to equal 10', () =>{
 
 test('is falling in love week eight incorrect to equal 0', () =>{
     let picks = constants.defaultPicks();
-    picks.inLoveWeekEight = 998;
+    picks.inLoveWeekEight = '1';
 
     let result = gameService.getScore(picks);
 
@@ -114,7 +122,7 @@ test('is falling in love week eight incorrect to equal 0', () =>{
 
 test('sky diving injury correct to equal 5', () =>{
     let picks = constants.defaultPicks();
-    picks.isSkyDivingInjured = 999;
+    picks.isSkyDivingInjured = 0;
 
     let result = gameService.getScore(picks);
 
@@ -123,7 +131,7 @@ test('sky diving injury correct to equal 5', () =>{
 
 test('sky diving injury incorrect to equal 0', () =>{
     let picks = constants.defaultPicks();
-    picks.isSkyDivingInjured = 998;
+    picks.isSkyDivingInjured = 1;
 
     let result = gameService.getScore(picks);
 
@@ -132,7 +140,7 @@ test('sky diving injury incorrect to equal 0', () =>{
 
 test('is Matt ask for all hometown permission correct to equal 5', () =>{
     let picks = constants.defaultPicks();
-    picks.isMattAskingAllForPermission = 999;
+    picks.isMattAskingAllForPermission = 0;
 
     let result = gameService.getScore(picks);
 
@@ -141,7 +149,7 @@ test('is Matt ask for all hometown permission correct to equal 5', () =>{
 
 test('is Matt ask for all hometown permissions incorrect to equal 0', () =>{
     let picks = constants.defaultPicks();
-    picks.isMattAskingAllForPermission = 998;
+    picks.isMattAskingAllForPermission = 1;
 
     let result = gameService.getScore(picks);
 
@@ -150,7 +158,7 @@ test('is Matt ask for all hometown permissions incorrect to equal 0', () =>{
 
 test('send home week eight correct to equal 10', () =>{
     let picks = constants.defaultPicks();
-    picks.sentHomeWeekEight = 999;
+    picks.sentHomeWeekEight = 777;
 
     let result = gameService.getScore(picks);
 
@@ -168,7 +176,7 @@ test('sent home week eight incorrect to equal 0', () =>{
 
 test('first home town date correct to equal 10', () =>{
     let picks = constants.defaultPicks();
-    picks.firstHomeTownDate = 999;
+    picks.firstHomeTownDate = '34';
 
     let result = gameService.getScore(picks);
 
@@ -177,7 +185,7 @@ test('first home town date correct to equal 10', () =>{
 
 test('first home town date incorrect to equal 0', () =>{
     let picks = constants.defaultPicks();
-    picks.firstHomeTownDate = 998;
+    picks.firstHomeTownDate = '1';
 
     let result = gameService.getScore(picks);
 

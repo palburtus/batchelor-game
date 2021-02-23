@@ -11,6 +11,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
+import disappointment from '../assets/disappointment.gif';
+import whitewomen from '../assets/whitewomen.gif';
+import prowler from '../assets/prowler.jpg';
+import gosslinglaugh from '../assets/gosslinglaugh.gif';
+import throwipad from '../assets/throwipad.gif';
+import canadianbacon from '../assets/canadianbacon.gif';
 
 class BatchelorGame extends React.Component {
     
@@ -28,7 +34,8 @@ class BatchelorGame extends React.Component {
             isWeekFiveLockedOut: true,
             isWeekSixLockedOut: true,
             isWeekSevenLockedOut: true,
-            isWeekEightLockedOut: false,
+            isWeekEightLockedOut: true,
+            isWeekNineLockedOut: false,
             isSeasonLongLockedOut: true,
             infoMessage: '',
             warningMessage: '',
@@ -510,11 +517,81 @@ class BatchelorGame extends React.Component {
                             <Col>
 
                            
-                                {/*<div className="answers">*/}
+                                <div className="answers">
+                                  
+
+                                    <h4>Week 8</h4>
+
+                                    <p><strong>Who gets sent home: </strong> No One</p>
+                                    <ul>
+                                        <li>No top 2 yet but Serena lets her stupid Canadian family talk her into leaving.</li>
+                                        <li>I hope Serena P promptly enjoys some shitty Tim Horton's coffee and free health care</li>
+                                        <li>God Damn Canucks! (Excuse me.... Bon Dieu Canadians!)</li>
+                                    </ul>
                                     
-                                {/*</div>*/}{/*End div ansers*/}
+                                    <img src={canadianbacon} className="answers-gif" width="250" height="200" alt="canadia o"/>
+
+                                    <ul>
+                                        <li>As the only person who had Serena P in my top two I'm offically done for</li>
+                                        <li><strong>Correction</strong>, it looks like Matt had Serena P in his top two as well, he seems pretty done for himself</li>
+                                    </ul>
+
+                                    <img src={throwipad} className="answers-gif" width="250" height="200" alt="throw ipad"/>
+                                    
+
+                                    <p><strong>First Home Town Date: </strong>Michelle</p> 
+                                    <ul>
+                                        <li>For those who were excited about getting this right, all nine of us had the same answer</li>
+                                    </ul>   
+                                    
+                                    <img src={disappointment} className="answers-gif" width="250" height="200" alt="disappointment"/>
+
+                                    <ul>
+                                        <li>Full disclosure totally caught off guard by Michelle's Mom's looking like the 4th Golden Girl</li>
+                                        <li>She looks like the OG Karen</li>
+                                        <li><span className="badge bg-info white">#sorrynotsorry</span></li>
+                                    </ul>
+
+                                    <img src={whitewomen} className="answers-gif" width="300" height="200" alt="what"/>
+
+                                    <p><strong>Tells Matt they are falling / in love with him:</strong> </p>
+                                    <ul>
+                                        <li>Michelle</li>
+                                        <li>Bri</li>
+                                    </ul>
+
+                                    <p><strong>Does Ask for Permission from Each Family: </strong> No</p>
+                                    <ul>
+                                        <li>No Ask</li>
+                                        <li>No Class</li>
+                                        <li>No I do not care that he explain his reasoning to Rachael and it was incredibly reasonable</li>
+                                    </ul>
+
+                                    <p>Speaking of class and Rachael... Rachael drives a Plymouth Prowler....... !!????</p>
+                                    <img src={prowler} className="ansers-gif" width="250" height="200" alt="prowler"/>
+
+                                    <p>Here are some actual <strong>top</strong> Google search result when you type in Plymouth Prowler</p>
+                                    <ul>
+                                        <li>Here's Why the Plymouth Prowler Is the Weirdest Car of the 1990s</li>
+                                        <li>Plymouth Prowler Was A Rolling Midlife Crisis</li>
+                                        <li>Worst Sports Cars: Plymouth Prowler</li>
+                                        <li>Was The Plymouth Prowler Really That Bad?</li>
+                                        <li>The Plymouth Prowler; A Failure? </li>
+                                    </ul>
+
+                                    <img src={gosslinglaugh} className="ansers-gif" width="250" height="200" alt="laughing"/>
+
+                                    <p><strong>Is Sky Diving a Legit Injury: </strong> No</p>
+                                    <ul>
+                                        <li>Not even close</li>
+                                        <li>Unclear if Rachael would even be considered down by contact in an NFL game based on her interaction with that paramedic</li>
+                                        <li>"I was fine" -Racheal's words not mine</li>
+                                        <li>That Plymouth Prowler hurt me worse then that fall hurt Rachael</li>
+                                    </ul>
+
+                                </div>{/*End div ansers*/}
                                                                 
-                                {/*<Alert key='previous-results' variant='info'>
+                                <Alert key='previous-results' variant='info'>
                                     <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
                                 </Alert>                                
 
@@ -523,7 +600,7 @@ class BatchelorGame extends React.Component {
                                         <Card.Title>New Questions Available Friday</Card.Title>
                                         <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
                                     </Card.Body>
-                                </Card>*/}
+                                </Card>
                                 
             
                             </Col>
@@ -570,52 +647,6 @@ class BatchelorGame extends React.Component {
                                     </Card>
                                 </Col>
                                 <Col>
-
-                                <h3>Week 8 Questions</h3>
-                                <h4>Answers due by February 22nd at 8pm EST</h4>
-                                
-                                <SinglePickDrag
-                                    isLocked={this.state.isWeekEightLockedOut}
-                                    droppableId='in-love-week-eight'
-                                    pick={this.state.picks.inLoveWeekEight}
-                                    onDragEnd={this.onDragEnd}
-                                    removeSelection={this.removeSelection}
-                                    title='Who tells Matt they are "In Love" or "Falling in Love" with him? (10 points)'
-                                    subtitle='Contestant must tell Matt.  Any similar phrases will count'/>     
-
-                                <BooleanPick
-                                    isLocked={this.state.isWeekEightLockedOut}
-                                    pick={this.state.picks.isSkyDivingInjured}
-                                    title='Does the Sky Diving result in a non-trivial injury? (5 points)'
-                                    subtitle='Contestant must be injured during skydiving enough that they require medical attention and/or cause the date to end early.  Cuts and scrapes do NOT count, if the contestant can "walk it off" it does not count.  If the answer to this question is too close to call it will be scored as no action and no points will be issued.'
-                                    radiosIds='isSkyDivingInjured'
-                                    handleChange={this.handleChange}/>
-
-                                <BooleanPick
-                                    isLocked={this.state.isWeekEightLockedOut}
-                                    pick={this.state.picks.isMattAskingAllForPermission}
-                                    title='Does Matt ask at least one family member of EACH of the contestants for their permission/blessing? (5 points)'
-                                    subtitle='Matt must ask on EACH of the seperate hometown dates on the hometowns permission to propose or marry.  "Permisison" and/or "Blessing" do not have to be the words used.  Any language that resembles the tradition asking for a girls hand in marraige will be acceptble for this answer.'
-                                    radiosIds='isMattAskingAllForPermission'
-                                    handleChange={this.handleChange}/>
-
-                                <SinglePickDrag
-                                    isLocked={this.state.isWeekEightLockedOut}
-                                    droppableId='first-home-town-date'
-                                    pick={this.state.picks.firstHomeTownDate}
-                                    onDragEnd={this.onDragEnd}
-                                    removeSelection={this.removeSelection}
-                                    title='First Hometown Date? (10 points)'
-                                    subtitle='Which contestants hometown date airs first?'/>     
-
-                                <SinglePickDrag
-                                    isLocked={this.state.isWeekEightLockedOut}
-                                    droppableId='sent-home-week-eight'
-                                    pick={this.state.picks.sentHomeWeekEight}
-                                    onDragEnd={this.onDragEnd}
-                                    removeSelection={this.removeSelection}
-                                    title='Who Gets Sent Home? (10 points)'
-                                    subtitle='Must be eliminated in any way including during a Rose Cermoney and also outside of a Rose Ceremoney'/>      
 
 
                                 <h3>Season Questions</h3>
@@ -715,7 +746,54 @@ class BatchelorGame extends React.Component {
                                 
                                 <Col>
                                     <h2>Previous Week's Questions</h2>
-                                                            
+
+                                    <h3>Week 8 Questions</h3>
+                                    <h4>Answers submitted on February 22nd at 8pm EST</h4>
+                                    
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekEightLockedOut}
+                                        droppableId='in-love-week-eight'
+                                        pick={this.state.picks.inLoveWeekEight}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who tells Matt they are "In Love" or "Falling in Love" with him? (10 points)'
+                                        subtitle='Contestant must tell Matt.  Any similar phrases will count'/>     
+
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekEightLockedOut}
+                                        pick={this.state.picks.isSkyDivingInjured}
+                                        title='Does the Sky Diving result in a non-trivial injury? (5 points)'
+                                        subtitle='Contestant must be injured during skydiving enough that they require medical attention and/or cause the date to end early.  Cuts and scrapes do NOT count, if the contestant can "walk it off" it does not count.  If the answer to this question is too close to call it will be scored as no action and no points will be issued.'
+                                        radiosIds='isSkyDivingInjured'
+                                        handleChange={this.handleChange}/>
+
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekEightLockedOut}
+                                        pick={this.state.picks.isMattAskingAllForPermission}
+                                        title='Does Matt ask at least one family member of EACH of the contestants for their permission/blessing? (5 points)'
+                                        subtitle='Matt must ask on EACH of the seperate hometown dates on the hometowns permission to propose or marry.  "Permisison" and/or "Blessing" do not have to be the words used.  Any language that resembles the tradition asking for a girls hand in marraige will be acceptble for this answer.'
+                                        radiosIds='isMattAskingAllForPermission'
+                                        handleChange={this.handleChange}/>
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekEightLockedOut}
+                                        droppableId='first-home-town-date'
+                                        pick={this.state.picks.firstHomeTownDate}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='First Hometown Date? (10 points)'
+                                        subtitle='Which contestants hometown date airs first?'/>     
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekEightLockedOut}
+                                        droppableId='sent-home-week-eight'
+                                        pick={this.state.picks.sentHomeWeekEight}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who Gets Sent Home? (10 points)'
+                                        subtitle='Must be eliminated in any way including during a Rose Cermoney and also outside of a Rose Ceremoney'/>      
+
+
                                     <h3>Week 7 Questions</h3>
                                     <h4>Answers submitted on February 15th at 8pm EST</h4>
                                     
