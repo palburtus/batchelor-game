@@ -4,6 +4,13 @@ export const getScore = (picks) => {
     let score = 0;
     if(picks){
 
+        //Week 9
+        score += calculateBoolScore(picks.isSerenaRegretLeaving, constants.perfectPicks.isSerenaRegretLeaving, 'isSerenaRegretLeaving');
+        score += calculateBoolScore(picks.isVictoriaAplogize, constants.perfectPicks.isVictoriaAplogize, 'isVictoriaAplogize');
+        score += calculateMultipleCorrectAnswersScore(picks.firstGirlOnHotSeat, constants.perfectPicks.firstGirlOnHotSeat, 'firstGirlOnHotSeat');
+        score += calculateMultipleCorrectAnswersScore(picks.alludedToBeOnParadise, constants.perfectPicks.alludedToBeOnParadise, 'alludedToBeOnParadise');
+        score += calculateBoolScore(picks.howManyGirlsSitOnHotSeat, constants.perfectPicks.howManyGirlsSitOnHotSeat, 'howManyGirlsSitOnHotSeat');
+
         //Week 8 
         score += calculateSingleAnswerScore(picks.firstHomeTownDate, constants.perfectPicks.firstHomeTownDate, 'firstHomeTownDate');
         score += calculateMultipleCorrectAnswersScore(picks.sentHomeWeekEight, constants.perfectPicks.sentHomeWeekEight, 'sentHomeWeekEight');

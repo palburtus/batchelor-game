@@ -76,6 +76,12 @@ export const scoreMap = {
     'isMattAskingAllForPermission': 5,
     'isSkyDivingInjured': 5,
     'inLoveWeekEight': 10,
+    //WEEK 9
+    'isSerenaRegretLeaving' : 5,
+    'isVictoriaAplogize' : 5,
+    'firstGirlOnHotSeat' : 10,
+    'alludedToBeOnParadise' : 10,
+    'howManyGirlsSitOnHotSeat': 5,
     //SEASON
     'isMattAndFinalRoseACouple' : 10,
     'bachelorette' : 20,
@@ -153,6 +159,12 @@ export function defaultPicks() {
         isMattAskingAllForPermission: NO_SELECTION,
         isSkyDivingInjured: NO_SELECTION,
         inLoveWeekEight: NO_SELECTION,
+        //WEEK 9
+        isSerenaRegretLeaving: NO_SELECTION,
+        isVictoriaAplogize: NO_SELECTION,
+        firstGirlOnHotSeat: [NO_SELECTION],
+        alludedToBeOnParadise: [NO_SELECTION],
+        howManyGirlsSitOnHotSeat: NO_SELECTION,
         //SEASON
         finalSix: [],
         finalFour: [],
@@ -230,6 +242,12 @@ export const perfectPicks = {
     isMattAskingAllForPermission: 0,
     isSkyDivingInjured: 0,
     inLoveWeekEight: ['6','34'],
+    //WEEK 9
+    isSerenaRegretLeaving: NOT_SETTLED,
+    isVictoriaAplogize: NOT_SETTLED,
+    firstGirlOnHotSeat: [NOT_SETTLED],
+    alludedToBeOnParadise: [NOT_SETTLED],
+    howManyGirlsSitOnHotSeat: NOT_SETTLED,
     //SEASON
     finalSix: ['6', '13', '25', '26', '30', '34'],
     finalFour: ['6', '26', '30', '34'],

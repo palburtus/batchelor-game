@@ -11,12 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
-import disappointment from '../assets/disappointment.gif';
-import whitewomen from '../assets/whitewomen.gif';
-import prowler from '../assets/prowler.jpg';
-import gosslinglaugh from '../assets/gosslinglaugh.gif';
-import throwipad from '../assets/throwipad.gif';
-import canadianbacon from '../assets/canadianbacon.gif';
+
 
 class BatchelorGame extends React.Component {
     
@@ -168,6 +163,17 @@ class BatchelorGame extends React.Component {
       
         let picks = this.state.picks;
         
+        //WEEK 9
+        if(!this.state.isWeekNineLockedOut){
+            if(listId === 'first-girl-on-hot-seat'){
+                picks.firstGirlOnHotSeat = -1;
+            }
+
+            if(listId === 'alluded-to-be-on-paradise'){
+                picks.alludedToBeOnParadise = -1;
+            }
+        }
+
         //WEEK 8 
         if(!this.state.isWeekEightLockedOut){
             if(listId === 'first-home-town-date'){
@@ -350,6 +356,12 @@ class BatchelorGame extends React.Component {
             picks.bachelorette = this.handleSingleDragAdd(picks.bachelorette, this.state.picks.bachelorette, 'bachelorette', result);
         }
 
+        //WEEK 9
+        if(!this.state.isWeekNineLockedOut){
+            picks.firstGirlOnHotSeat = this.handleSingleDragAdd(picks.firstGirlOnHotSeat, this.state.picks.firstGirlOnHotSeat, 'first-girl-on-hot-seat', result);
+            picks.alludedToBeOnParadise = this.handleSingleDragAdd(picks.alludedToBeOnParadise, this.state.picks.alludedToBeOnParadise, 'alluded-to-be-on-paradise', result);
+        }
+
         //WEEK 8 
         if(!this.state.isWeekEightLockedOut){
             picks.firstHomeTownDate = this.handleSingleDragAdd(picks.firstHomeTownDate, this.state.picks.firstHomeTownDate, 'first-home-town-date', result);
@@ -421,6 +433,13 @@ class BatchelorGame extends React.Component {
     handleChange(evt) {
        
         let picks = this.state.picks;
+
+        //WEEK 9
+        if(!this.state.isWeekNineLockedOut){
+            picks.isSerenaRegretLeaving = this.handleBooleanEventChange(evt, 'isSerenaRegretLeaving', picks.isSerenaRegretLeaving);
+            picks.isVictoriaAplogize = this.handleBooleanEventChange(evt, 'isVictoriaAplogize', picks.isVictoriaAplogize);
+            picks.howManyGirlsSitOnHotSeat = this.handleBooleanEventChange(evt, 'howManyGirlsSitOnHotSeat', picks.howManyGirlsSitOnHotSeat);
+        }
 
         //WEEK 8 
         if(!this.state.isWeekEightLockedOut){
@@ -517,81 +536,13 @@ class BatchelorGame extends React.Component {
                             <Col>
 
                            
-                                <div className="answers">
+                                {/*<div className="answers">*/}
                                   
 
-                                    <h4>Week 8</h4>
-
-                                    <p><strong>Who gets sent home: </strong> No One</p>
-                                    <ul>
-                                        <li>No top 2 yet but Serena lets her stupid Canadian family talk her into leaving.</li>
-                                        <li>I hope Serena P promptly enjoys some shitty Tim Horton's coffee and free health care</li>
-                                        <li>God Damn Canucks! (Excuse me.... Bon Dieu Canadians!)</li>
-                                    </ul>
                                     
-                                    <img src={canadianbacon} className="answers-gif" width="250" height="200" alt="canadia o"/>
-
-                                    <ul>
-                                        <li>As the only person who had Serena P in my top two I'm offically done for</li>
-                                        <li><strong>Correction</strong>, it looks like Matt had Serena P in his top two as well, he seems pretty done for himself</li>
-                                    </ul>
-
-                                    <img src={throwipad} className="answers-gif" width="250" height="200" alt="throw ipad"/>
-                                    
-
-                                    <p><strong>First Home Town Date: </strong>Michelle</p> 
-                                    <ul>
-                                        <li>For those who were excited about getting this right, all nine of us had the same answer</li>
-                                    </ul>   
-                                    
-                                    <img src={disappointment} className="answers-gif" width="250" height="200" alt="disappointment"/>
-
-                                    <ul>
-                                        <li>Full disclosure totally caught off guard by Michelle's Mom's looking like the 4th Golden Girl</li>
-                                        <li>She looks like the OG Karen</li>
-                                        <li><span className="badge bg-info white">#sorrynotsorry</span></li>
-                                    </ul>
-
-                                    <img src={whitewomen} className="answers-gif" width="300" height="200" alt="what"/>
-
-                                    <p><strong>Tells Matt they are falling / in love with him:</strong> </p>
-                                    <ul>
-                                        <li>Michelle</li>
-                                        <li>Bri</li>
-                                    </ul>
-
-                                    <p><strong>Does Ask for Permission from Each Family: </strong> No</p>
-                                    <ul>
-                                        <li>No Ask</li>
-                                        <li>No Class</li>
-                                        <li>No I do not care that he explain his reasoning to Rachael and it was incredibly reasonable</li>
-                                    </ul>
-
-                                    <p>Speaking of class and Rachael... Rachael drives a Plymouth Prowler....... !!????</p>
-                                    <img src={prowler} className="ansers-gif" width="250" height="200" alt="prowler"/>
-
-                                    <p>Here are some actual <strong>top</strong> Google search result when you type in Plymouth Prowler</p>
-                                    <ul>
-                                        <li>Here's Why the Plymouth Prowler Is the Weirdest Car of the 1990s</li>
-                                        <li>Plymouth Prowler Was A Rolling Midlife Crisis</li>
-                                        <li>Worst Sports Cars: Plymouth Prowler</li>
-                                        <li>Was The Plymouth Prowler Really That Bad?</li>
-                                        <li>The Plymouth Prowler; A Failure? </li>
-                                    </ul>
-
-                                    <img src={gosslinglaugh} className="ansers-gif" width="250" height="200" alt="laughing"/>
-
-                                    <p><strong>Is Sky Diving a Legit Injury: </strong> No</p>
-                                    <ul>
-                                        <li>Not even close</li>
-                                        <li>Unclear if Rachael would even be considered down by contact in an NFL game based on her interaction with that paramedic</li>
-                                        <li>"I was fine" -Racheal's words not mine</li>
-                                        <li>That Plymouth Prowler hurt me worse then that fall hurt Rachael</li>
-                                    </ul>
-
-                                </div>{/*End div ansers*/}
+                                {/*</div>*/}{/*End div ansers*/}
                                                                 
-                                <Alert key='previous-results' variant='info'>
+                                {/*<Alert key='previous-results' variant='info'>
                                     <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
                                 </Alert>                                
 
@@ -600,7 +551,7 @@ class BatchelorGame extends React.Component {
                                         <Card.Title>New Questions Available Friday</Card.Title>
                                         <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
                                     </Card.Body>
-                                </Card>
+                                </Card>*/}
                                 
             
                             </Col>
@@ -649,7 +600,57 @@ class BatchelorGame extends React.Component {
                                 <Col>
 
 
+                                <h3>After the Final Rose Questions (Week 9)</h3>
+
+                                <h4>Answers due on March 1st 2021</h4>
+                                
+                                <BooleanPick
+                                    isLocked={this.state.isWeekNineLockedOut}
+                                    pick={this.state.picks.howManyGirlsSitOnHotSeat}
+                                    title='How Many Girls Sit on the Hotseat? (5 points)'
+                                    subtitle='Number of girls on the hotseat '
+                                    radiosIds='howManyGirlsSitOnHotSeat'
+                                    yesValue='2 or less'
+                                    noValue='3 or more'
+                                    handleChange={this.handleChange}/>
+
+                                <SinglePickDrag
+                                    isLocked={this.state.isWeekNineLockedOut}
+                                    droppableId='first-girl-on-hot-seat'
+                                    pick={this.state.picks.firstGirlOnHotSeat}
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='Who is the first girl on the hot seat? (10 points)'
+                                    subtitle='First girl interviewed on the hot seat'/>     
+
+
+                                <BooleanPick
+                                    isLocked={this.state.isWeekNineLockedOut}
+                                    pick={this.state.picks.isVictoriaAplogize}
+                                    title='Does Victoria Apologize? (5 points)'
+                                    subtitle='Must aplogize to one, many, or all of the contestants'
+                                    radiosIds='isVictoriaAplogize'
+                                    handleChange={this.handleChange}/>
+
+                                <BooleanPick
+                                    isLocked={this.state.isWeekNineLockedOut}
+                                    pick={this.state.picks.isSerenaRegretLeaving}
+                                    title='Will Serena P say she regrets leaving? (5 points)'
+                                    subtitle='Must say that she regrets leaving on her own or answer yes if she is asked if she regrets leaving'
+                                    radiosIds='isSerenaRegretLeaving'
+                                    handleChange={this.handleChange}/>
+
+                                <SinglePickDrag
+                                    isLocked={this.state.isWeekNineLockedOut}
+                                    droppableId='alluded-to-be-on-paradise'
+                                    pick={this.state.picks.alludedToBeOnParadise}
+                                    onDragEnd={this.onDragEnd}
+                                    removeSelection={this.removeSelection}
+                                    title='Who is annouced to be or hinted at being on Paradise? (10 points)'
+                                    subtitle='Requires any mention of a contestant going to Paradise, a beach, or Mexico.  Game master has final decision of what counts'/>  
+
                                 <h3>Season Questions</h3>
+
                                 <h4>Answers submitted on February 8th at 8pm EST</h4>
                                 
                                 <p className="foot-note"><strong>*</strong>Any questions that mention "After the Final Rose" will still apply to any substitue recap they air in the case that

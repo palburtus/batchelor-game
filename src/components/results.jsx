@@ -24,6 +24,12 @@ import cheering from '../assets/cheering.gif';
 import under from '../assets/under.jpg';
 import bachelorbracketbusted from '../assets/bachelorbracketbusted.png';
 import chrisharrison from '../assets/chrisharrison.gif';
+import disappointment from '../assets/disappointment.gif';
+import whitewomen from '../assets/whitewomen.gif';
+import prowler from '../assets/prowler.jpg';
+import gosslinglaugh from '../assets/gosslinglaugh.gif';
+import throwipad from '../assets/throwipad.gif';
+import canadianbacon from '../assets/canadianbacon.gif';
 
 class Results extends React.Component {
 
@@ -176,6 +182,77 @@ class Results extends React.Component {
                                         We will keep updating this list as the results come int
                                     </p>
                                     <p><strong>Will someone be sent home on a one-on-one date:</strong> Yes</p>
+
+                                    <Card></Card>
+                                    <h4>Week 8</h4>
+
+                                    <p><strong>Who gets sent home: </strong> No One</p>
+                                    <ul>
+                                        <li>No top 2 yet but Serena lets her stupid Canadian family talk her into leaving.</li>
+                                        <li>I hope Serena P promptly enjoys some shitty Tim Horton's coffee and free health care</li>
+                                        <li>God Damn Canucks! (Excuse me.... Bon Dieu Canadians!)</li>
+                                    </ul>
+                                    
+                                    <img src={canadianbacon} className="answers-gif" width="250" height="200" alt="canadia o"/>
+
+                                    <ul>
+                                        <li>As the only person who had Serena P in my top two I'm offically done for</li>
+                                        <li><strong>Correction</strong>, it looks like Matt had Serena P in his top two as well, he seems pretty done for himself</li>
+                                    </ul>
+
+                                    <img src={throwipad} className="answers-gif" width="250" height="200" alt="throw ipad"/>
+                                    
+
+                                    <p><strong>First Home Town Date: </strong>Michelle</p> 
+                                    <ul>
+                                        <li>For those who were excited about getting this right, all nine of us had the same answer</li>
+                                    </ul>   
+                                    
+                                    <img src={disappointment} className="answers-gif" width="250" height="200" alt="disappointment"/>
+
+                                    <ul>
+                                        <li>Full disclosure totally caught off guard by Michelle's Mom's looking like the 4th Golden Girl</li>
+                                        <li>She looks like the OG Karen</li>
+                                        <li><span className="badge bg-info white">#sorrynotsorry</span></li>
+                                    </ul>
+
+                                    <img src={whitewomen} className="answers-gif" width="300" height="200" alt="what"/>
+
+                                    <p><strong>Tells Matt they are falling / in love with him:</strong> </p>
+                                    <ul>
+                                        <li>Michelle</li>
+                                        <li>Bri</li>
+                                    </ul>
+
+                                    <p><strong>Does Ask for Permission from Each Family: </strong> No</p>
+                                    <ul>
+                                        <li>No Ask</li>
+                                        <li>No Class</li>
+                                        <li>No I do not care that he explain his reasoning to Rachael and it was incredibly reasonable</li>
+                                    </ul>
+
+                                    <p>Speaking of class and Rachael... Rachael drives a Plymouth Prowler....... !!????</p>
+                                    <img src={prowler} className="ansers-gif" width="250" height="200" alt="prowler"/>
+
+                                    <p>Here are some actual <strong>top</strong> Google search result when you type in Plymouth Prowler</p>
+                                    <ul>
+                                        <li>Here's Why the Plymouth Prowler Is the Weirdest Car of the 1990s</li>
+                                        <li>Plymouth Prowler Was A Rolling Midlife Crisis</li>
+                                        <li>Worst Sports Cars: Plymouth Prowler</li>
+                                        <li>Was The Plymouth Prowler Really That Bad?</li>
+                                        <li>The Plymouth Prowler; A Failure? </li>
+                                    </ul>
+
+                                    <img src={gosslinglaugh} className="ansers-gif" width="250" height="200" alt="laughing"/>
+
+                                    <p><strong>Is Sky Diving a Legit Injury: </strong> No</p>
+                                    <ul>
+                                        <li>Not even close</li>
+                                        <li>Unclear if Rachael would even be considered down by contact in an NFL game based on her interaction with that paramedic</li>
+                                        <li>"I was fine" -Racheal's words not mine</li>
+                                        <li>That Plymouth Prowler hurt me worse then that fall hurt Rachael</li>
+                                    </ul>
+
 
                                     <Card></Card>
 

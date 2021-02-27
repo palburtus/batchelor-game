@@ -9,7 +9,7 @@ test('default picks to equal 0', () => {
 });
 
 
-test('perfect score to equal 690', () => {
+test('perfect score to equal 725', () => {
     
     let picks = {
         //WEEK 1
@@ -75,6 +75,12 @@ test('perfect score to equal 690', () => {
         isMattAskingAllForPermission: 0,
         isSkyDivingInjured: 0,
         inLoveWeekEight: '34',
+        //WEEK 9
+        isSerenaRegretLeaving: 999,
+        isVictoriaAplogize: 999,
+        firstGirlOnHotSeat: 999,
+        alludedToBeOnParadise: 999,
+        howManyGirlsSitOnHotSeat: 999,
         //SEASON
         isMattAndFinalRoseACouple: 999,
         bachelorette: 999,
@@ -89,8 +95,99 @@ test('perfect score to equal 690', () => {
 
     let result = gameService.getScore(picks);
 
-    expect(result).toBe(690);
+    expect(result).toBe(725);
 });
+
+test('sit on hot seat two or less correct to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.howManyGirlsSitOnHotSeat = 999;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('sit on hot seat three or more to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.howManyGirlsSitOnHotSeat = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('will be on paradise correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.alludedToBeOnParadise = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('will be on paradise incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.alludedToBeOnParadise = 998;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+
+test('first girl on after the final rose hot seat correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.firstGirlOnHotSeat = 999;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('first girl on after the final rose hot seat incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.firstGirlOnHotSeat = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('does Victoria apologize correct to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.isVictoriaAplogize = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('does victoria apologize incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isVictoriaAplogize = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('is Serena regreat leaving correct to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.isSerenaRegretLeaving = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('is Serena regret leaving incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isSerenaRegretLeaving = 999;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
 
 test('is falling in love alternate week eight correct to equal 10', () =>{
     let picks = constants.defaultPicks();
