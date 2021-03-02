@@ -243,11 +243,11 @@ export const perfectPicks = {
     isSkyDivingInjured: 0,
     inLoveWeekEight: ['6','34'],
     //WEEK 9
-    isSerenaRegretLeaving: NOT_SETTLED,
-    isVictoriaAplogize: NOT_SETTLED,
-    firstGirlOnHotSeat: [NOT_SETTLED],
-    alludedToBeOnParadise: [NOT_SETTLED],
-    howManyGirlsSitOnHotSeat: NOT_SETTLED,
+    isSerenaRegretLeaving: 0,
+    isVictoriaAplogize: 1,
+    firstGirlOnHotSeat: ['33'],
+    alludedToBeOnParadise: [999],
+    howManyGirlsSitOnHotSeat: 0, // IIII
     //SEASON
     finalSix: ['6', '13', '25', '26', '30', '34'],
     finalFour: ['6', '26', '30', '34'],
