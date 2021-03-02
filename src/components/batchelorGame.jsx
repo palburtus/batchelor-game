@@ -30,7 +30,8 @@ class BatchelorGame extends React.Component {
             isWeekSixLockedOut: true,
             isWeekSevenLockedOut: true,
             isWeekEightLockedOut: true,
-            isWeekNineLockedOut: false,
+            isWeekNineLockedOut: true,
+            isWeekTenLockedOut: false,
             isSeasonLongLockedOut: true,
             infoMessage: '',
             warningMessage: '',
@@ -163,6 +164,11 @@ class BatchelorGame extends React.Component {
       
         let picks = this.state.picks;
         
+        //WEEK 10
+        if(!this.state.isWeekTenLockedOut){
+
+        }
+
         //WEEK 9
         if(!this.state.isWeekNineLockedOut){
             if(listId === 'first-girl-on-hot-seat'){
@@ -356,6 +362,11 @@ class BatchelorGame extends React.Component {
             picks.bachelorette = this.handleSingleDragAdd(picks.bachelorette, this.state.picks.bachelorette, 'bachelorette', result);
         }
 
+        //WEEK 10
+        if(!this.state.isWeekTenLockedOut){
+            
+        }
+
         //WEEK 9
         if(!this.state.isWeekNineLockedOut){
             picks.firstGirlOnHotSeat = this.handleSingleDragAdd(picks.firstGirlOnHotSeat, this.state.picks.firstGirlOnHotSeat, 'first-girl-on-hot-seat', result);
@@ -434,6 +445,11 @@ class BatchelorGame extends React.Component {
        
         let picks = this.state.picks;
 
+        //WEEK 10
+        if(!this.state.isWeekTenLockedOut){
+            
+        }
+        
         //WEEK 9
         if(!this.state.isWeekNineLockedOut){
             picks.isSerenaRegretLeaving = this.handleBooleanEventChange(evt, 'isSerenaRegretLeaving', picks.isSerenaRegretLeaving);
