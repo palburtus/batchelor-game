@@ -559,10 +559,10 @@ class BatchelorGame extends React.Component {
                            
                                 <div className="answers">
                                   
-                                    <h3>After the Final Rose (Week 9 Answers)</h3>
+                                    <h3>Women Tell All (Week 9 Answers)</h3>
 
                                     <p>
-                                        Another <i>After the Final Rose</i> another snooze fest as usual.  It is in this writer's opinion 
+                                        Another <i>Women Tell All</i> another snooze fest as usual.  It is in this writer's opinion 
                                         that this is the Batchelor franchises' bi-anual snooze fest. Anyway I'll try my best to remain enthusiastic 
                                         during this recap.
                                     </p>
