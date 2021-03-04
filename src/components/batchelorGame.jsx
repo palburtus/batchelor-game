@@ -11,6 +11,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
+import moneygun from '../assets/moneygun.gif';
+import sleep from '../assets/sleep.gif';
+import sorry from '../assets/sorry.gif';
+import noregrets from '../assets/noregrets.gif';
+import paradisenotokay from '../assets/paradisenotokay.gif';
 
 
 class BatchelorGame extends React.Component {
@@ -449,7 +454,7 @@ class BatchelorGame extends React.Component {
         if(!this.state.isWeekTenLockedOut){
             
         }
-        
+
         //WEEK 9
         if(!this.state.isWeekNineLockedOut){
             picks.isSerenaRegretLeaving = this.handleBooleanEventChange(evt, 'isSerenaRegretLeaving', picks.isSerenaRegretLeaving);
@@ -552,13 +557,69 @@ class BatchelorGame extends React.Component {
                             <Col>
 
                            
-                                {/*<div className="answers">*/}
+                                <div className="answers">
                                   
+                                    <h3>After the Final Rose (Week 9 Answers)</h3>
 
+                                    <p>
+                                        Another <i>After the Final Rose</i> another snooze fest as usual.  It is in this writer's opinion 
+                                        that this is the Batchelor franchises' bi-anual snooze fest. Anyway I'll try my best to remain enthusiastic 
+                                        during this recap.
+                                    </p>
                                     
-                                {/*</div>*/}{/*End div ansers*/}
+                                    <p><strong>How Many Girls Sit on the Hotseat: </strong> 3 or more</p>
+                                    <ul>
+                                        <li>Who put this line at 3? Vegas would have gone broke might as well have been 15</li>
+                                        <li>Yet another friendly reminder that "Life is to short to bet the under"</li>
+                                    </ul>
+
+                                    <img src={moneygun} className="answers-gif" width="250" height="200" alt="money gun"/>
+                                    
+                                    <p><strong>Who is the first girl on the Hot Seat: </strong> Britanny</p>
+                                    <ul>
+                                        <li>A bit of a sleeper here with Bit An Ey</li>
+                                        <li>I didn't even remeber what she did while she was on the show and I've already forgotten what she said on the Hot Seat</li>
+                                    </ul>
+
+                                    <img src={sleep} className="answers-gif" width="250" height="200" alt="sleep"/>
+
+                                    <p><strong>Does Victoria Apologize: </strong> Yes (Early and Often)</p>
+                                    <ul>
+                                        <li>This seemed very sincere</li>
+                                        <li>As in she sincerely wants to go to paradise and did a great job coming accross as genuine</li>
+                                        <li>I think trading an exposed bra strap for a bikini will suit her well</li>
+                                    </ul>
+
+                                    <img src={sorry} className="answers-gif" width="250" height="200" alt="sorry"/>
+
+                                    <p><strong>Will Serena P say she regrets leaving: </strong> No</p>
+                                    <ul>
+                                        <li>Wished Matt all the best and while she clearly wasn't trilled with the decision her answer was a clear no</li>
+                                        <li>
+                                            Matt is still shook as hell about this, Serena P was his girl, he got a boner just watching her get out of a hot tub, 
+                                            he met her family, no way he though she'd just up and leave
+                                        </li>
+                                        <li>That James Harden beard says it all</li>
+                                    </ul>
+
+                                    <img src={noregrets} className="answers-gif" width="250" height="200" alt="no regrets"/>
+
+                                    <p><strong>Hinted at being on Paradise: </strong> No Action</p>
+                                    <ul>
+                                        <li>
+                                            As many of you know I view the Bachelor and Bachelorette as meerly the proving ground for the main 
+                                            event that is Paradise.  This makes be very nervous about Paradise 2021
+                                        </li>
+                                        <li>
+                                            Hoping to use this question again for After the Final Rose.  America needs answers!  
+                                        </li>
+                                    </ul>
+
+                                    <img src={paradisenotokay} className="answers-gif" width="250" height="200" alt="paradise not okay"/>
+
+                                </div>{/*End div ansers*/}
                                                                 
-                                {/*<Alert key='previous-results' variant='info'>
+                                <Alert key='previous-results' variant='info'>
                                     <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
                                 </Alert>                                
 
@@ -567,7 +628,7 @@ class BatchelorGame extends React.Component {
                                         <Card.Title>New Questions Available Friday</Card.Title>
                                         <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
                                     </Card.Body>
-                                </Card>*/}
+                                </Card>
                                 
             
                             </Col>
@@ -615,56 +676,11 @@ class BatchelorGame extends React.Component {
                                 </Col>
                                 <Col>
 
+                                {/*<h3>Week 10 Questions</h3>
 
-                                <h3>After the Final Rose Questions (Week 9)</h3>
+                                <h4>Answers due on March 8th 2021</h4>*/}
 
-                                <h4>Answers due on March 1st 2021</h4>
                                 
-                                <BooleanPick
-                                    isLocked={this.state.isWeekNineLockedOut}
-                                    pick={this.state.picks.howManyGirlsSitOnHotSeat}
-                                    title='How Many Girls Sit on the Hotseat? (5 points)'
-                                    subtitle='Number of girls on the hotseat '
-                                    radiosIds='howManyGirlsSitOnHotSeat'
-                                    yesValue='2 or less'
-                                    noValue='3 or more'
-                                    handleChange={this.handleChange}/>
-
-                                <SinglePickDrag
-                                    isLocked={this.state.isWeekNineLockedOut}
-                                    droppableId='first-girl-on-hot-seat'
-                                    pick={this.state.picks.firstGirlOnHotSeat}
-                                    onDragEnd={this.onDragEnd}
-                                    removeSelection={this.removeSelection}
-                                    title='Who is the first girl on the hot seat? (10 points)'
-                                    subtitle='First girl interviewed on the hot seat'/>     
-
-
-                                <BooleanPick
-                                    isLocked={this.state.isWeekNineLockedOut}
-                                    pick={this.state.picks.isVictoriaAplogize}
-                                    title='Does Victoria Apologize? (5 points)'
-                                    subtitle='Must aplogize to one, many, or all of the contestants'
-                                    radiosIds='isVictoriaAplogize'
-                                    handleChange={this.handleChange}/>
-
-                                <BooleanPick
-                                    isLocked={this.state.isWeekNineLockedOut}
-                                    pick={this.state.picks.isSerenaRegretLeaving}
-                                    title='Will Serena P say she regrets leaving? (5 points)'
-                                    subtitle='Must say that she regrets leaving on her own or answer yes if she is asked if she regrets leaving'
-                                    radiosIds='isSerenaRegretLeaving'
-                                    handleChange={this.handleChange}/>
-
-                                <SinglePickDrag
-                                    isLocked={this.state.isWeekNineLockedOut}
-                                    droppableId='alluded-to-be-on-paradise'
-                                    pick={this.state.picks.alludedToBeOnParadise}
-                                    onDragEnd={this.onDragEnd}
-                                    removeSelection={this.removeSelection}
-                                    title='Who is annouced to be or hinted at being on Paradise? (10 points)'
-                                    subtitle='Requires any mention of a contestant going to Paradise, a beach, or Mexico.  Game master has final decision of what counts'/>  
-
                                 <h3>Season Questions</h3>
 
                                 <h4>Answers submitted on February 8th at 8pm EST</h4>
@@ -763,6 +779,56 @@ class BatchelorGame extends React.Component {
                                 
                                 <Col>
                                     <h2>Previous Week's Questions</h2>
+
+                                    <h3>After the Final Rose Questions (Week 9)</h3>
+
+                                    <h4>Answers submitted on March 1st 2021</h4>
+                                    
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekNineLockedOut}
+                                        pick={this.state.picks.howManyGirlsSitOnHotSeat}
+                                        title='How Many Girls Sit on the Hotseat? (5 points)'
+                                        subtitle='Number of girls on the hotseat '
+                                        radiosIds='howManyGirlsSitOnHotSeat'
+                                        yesValue='2 or less'
+                                        noValue='3 or more'
+                                        handleChange={this.handleChange}/>
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekNineLockedOut}
+                                        droppableId='first-girl-on-hot-seat'
+                                        pick={this.state.picks.firstGirlOnHotSeat}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who is the first girl on the hot seat? (10 points)'
+                                        subtitle='First girl interviewed on the hot seat'/>     
+
+
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekNineLockedOut}
+                                        pick={this.state.picks.isVictoriaAplogize}
+                                        title='Does Victoria Apologize? (5 points)'
+                                        subtitle='Must aplogize to one, many, or all of the contestants'
+                                        radiosIds='isVictoriaAplogize'
+                                        handleChange={this.handleChange}/>
+
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekNineLockedOut}
+                                        pick={this.state.picks.isSerenaRegretLeaving}
+                                        title='Will Serena P say she regrets leaving? (5 points)'
+                                        subtitle='Must say that she regrets leaving on her own or answer yes if she is asked if she regrets leaving'
+                                        radiosIds='isSerenaRegretLeaving'
+                                        handleChange={this.handleChange}/>
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekNineLockedOut}
+                                        droppableId='alluded-to-be-on-paradise'
+                                        pick={this.state.picks.alludedToBeOnParadise}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who is annouced to be or hinted at being on Paradise? (10 points)'
+                                        subtitle='Requires any mention of a contestant going to Paradise, a beach, or Mexico.  Game master has final decision of what counts'/>  
+
 
                                     <h3>Week 8 Questions</h3>
                                     <h4>Answers submitted on February 22nd at 8pm EST</h4>

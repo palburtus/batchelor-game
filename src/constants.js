@@ -245,7 +245,7 @@ export const perfectPicks = {
     //WEEK 9
     isSerenaRegretLeaving: 0,
     isVictoriaAplogize: 1,
-    firstGirlOnHotSeat: ['33'],
+    firstGirlOnHotSeat: '33',
     alludedToBeOnParadise: [999],
     howManyGirlsSitOnHotSeat: 0, // IIII
     //SEASON
