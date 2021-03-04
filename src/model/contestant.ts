@@ -3,3 +3,5 @@ interface IContestant {
     id: number;
     season: number;
 }
+
+export {}

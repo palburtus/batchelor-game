@@ -7,6 +7,7 @@ import * as constants from '../constants';
 import * as utils from '../utils';
 import * as picksRepository from '../firebaseFirestoreRepository';
 import * as gameService from '../services/gameService';
+import * as contentService from '../services/contentService';
 import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
@@ -49,7 +50,9 @@ class BatchelorGame extends React.Component {
         const cookies = new Cookies();
 
         let token = utils.getParameterByName('token');
-        
+
+        let result = await contentService.getContent();
+        debugger;
         if(token){
             let cookieDate = new Date(2199, 1, 1);
             cookies.set('aaks_token', null, { path: '/', expires: cookieDate});
@@ -626,7 +629,7 @@ class BatchelorGame extends React.Component {
                                         handleChange={this.handleChange}/>    
 
 
-                                <SinglePikDrag
+                                <SinglePickDrag
                                             isLocked={this.state.isWeekSixLockedOut}
                                             droppableId='one-on-one-date-week-six'
                                             pick={this.state.picks.oneOnOneDateWeekSix}

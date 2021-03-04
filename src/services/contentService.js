@@ -1,13 +1,17 @@
 import axios from 'axios';
-import * as contestantParser from '../parsers/contestantParser';
 
 export const getContent = () => {
 
-    axios.get('http://patricka32.sg-host.com/jsonapi/node/Contestant')
-        .then((response) => {
-            debugger;
-            var constesnat = contestantParser.parseContestants(response);
-        }).catch(error => {
+    return new Promise((resolve, reject) => {
         
+        axios.get('http://patricka32.sg-host.com/jsonapi/node/Contestant')
+        .then((response) => {
+            resolve(response);
+        }).catch(error => {
+            reject(error);
         });
+    
+    });
+
+    
 }

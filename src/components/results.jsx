@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Col, Row, Card, Table, Alert} from 'react-bootstrap';
 import * as picksRepository from '../firebaseFirestoreRepository';
-import * as gameService from '../gameService';
+import * as gameService from '../services/gameService';
 import * as utils from '../utils';
 import interrupt from '../assets/interrupt.gif';
 import cheerocracy from '../assets/cheerocracy.gif';
