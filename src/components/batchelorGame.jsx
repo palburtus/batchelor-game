@@ -11,11 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
-import moneygun from '../assets/moneygun.gif';
-import sleep from '../assets/sleep.gif';
-import sorry from '../assets/sorry.gif';
-import noregrets from '../assets/noregrets.gif';
-import paradisenotokay from '../assets/paradisenotokay.gif';
+
 
 
 class BatchelorGame extends React.Component {
@@ -171,7 +167,21 @@ class BatchelorGame extends React.Component {
         
         //WEEK 10
         if(!this.state.isWeekTenLockedOut){
+            if(listId === 'sent-home-week-ten'){
+                picks.sentHomeWeekTen = -1;
+            }
 
+            if(listId === 'first-fantasy-suite'){
+                picks.firstFantasySuite = -1;
+            }
+
+            if(listId === 'budget-fantasy-suite'){
+                picks.budgetFantasySuite = -1;
+            }
+
+            if(listId === 'fantasy-suite-relations'){
+                picks.fantasySuiteRelations = -1;
+            }
         }
 
         //WEEK 9
@@ -300,6 +310,7 @@ class BatchelorGame extends React.Component {
 
         //WEEK 1
         if(!this.state.isWeekOneLockedOut){
+
             if(listId === 'first-wearing-costume'){
                 picks.firstWearingCostume = -1;
             }
@@ -369,7 +380,10 @@ class BatchelorGame extends React.Component {
 
         //WEEK 10
         if(!this.state.isWeekTenLockedOut){
-            
+            picks.budgetFantasySuite = this.handleSingleDragAdd(picks.budgetFantasySuite, this.state.picks.budgetFantasySuite, 'budget-fantasy-suite', result);
+            picks.sentHomeWeekTen = this.handleSingleDragAdd(picks.sentHomeWeekTen, this.state.picks.sentHomeWeekTen, 'sent-home-week-ten', result);
+            picks.firstFantasySuite = this.handleSingleDragAdd(picks.firstFantasySuite, this.state.picks.firstFantasySuite, 'first-fantasy-suite', result);
+            picks.fantasySuiteRelations = this.handleSingleDragAdd(picks.fantasySuiteRelations, this.state.fantasySuiteRelations, 'fantasy-suite-relations', result);
         }
 
         //WEEK 9
@@ -452,7 +466,8 @@ class BatchelorGame extends React.Component {
 
         //WEEK 10
         if(!this.state.isWeekTenLockedOut){
-            
+            picks.isLeaveOnOwnWeekTen = this.handleBooleanEventChange(evt, 'isLeaveOnOwnWeekTen', picks.isLeaveOnOwnWeekTen);
+            picks.hotTubWeekTen = this.handleBooleanEventChange(evt, 'hotTubWeekTen', picks.hotTubWeekTen);
         }
 
         //WEEK 9
@@ -557,69 +572,13 @@ class BatchelorGame extends React.Component {
                             <Col>
 
                            
-                                <div className="answers">
+                                {/*<div className="answers">*/}
+                                
                                   
-                                    <h3>Women Tell All (Week 9 Answers)</h3>
-
-                                    <p>
-                                        Another <i>Women Tell All</i> another snooze fest as usual.  It is in this writer's opinion 
-                                        that this is the Batchelor franchises' bi-anual snooze fest. Anyway I'll try my best to remain enthusiastic 
-                                        during this recap.
-                                    </p>
                                     
-                                    <p><strong>How Many Girls Sit on the Hotseat: </strong> 3 or more</p>
-                                    <ul>
-                                        <li>Who put this line at 3? Vegas would have gone broke might as well have been 15</li>
-                                        <li>Yet another friendly reminder that "Life is to short to bet the under"</li>
-                                    </ul>
-
-                                    <img src={moneygun} className="answers-gif" width="250" height="200" alt="money gun"/>
-                                    
-                                    <p><strong>Who is the first girl on the Hot Seat: </strong> Britanny</p>
-                                    <ul>
-                                        <li>A bit of a sleeper here with Bit An Ey</li>
-                                        <li>I didn't even remeber what she did while she was on the show and I've already forgotten what she said on the Hot Seat</li>
-                                    </ul>
-
-                                    <img src={sleep} className="answers-gif" width="250" height="200" alt="sleep"/>
-
-                                    <p><strong>Does Victoria Apologize: </strong> Yes (Early and Often)</p>
-                                    <ul>
-                                        <li>This seemed very sincere</li>
-                                        <li>As in she sincerely wants to go to paradise and did a great job coming accross as genuine</li>
-                                        <li>I think trading an exposed bra strap for a bikini will suit her well</li>
-                                    </ul>
-
-                                    <img src={sorry} className="answers-gif" width="250" height="200" alt="sorry"/>
-
-                                    <p><strong>Will Serena P say she regrets leaving: </strong> No</p>
-                                    <ul>
-                                        <li>Wished Matt all the best and while she clearly wasn't trilled with the decision her answer was a clear no</li>
-                                        <li>
-                                            Matt is still shook as hell about this, Serena P was his girl, he got a boner just watching her get out of a hot tub, 
-                                            he met her family, no way he though she'd just up and leave
-                                        </li>
-                                        <li>That James Harden beard says it all</li>
-                                    </ul>
-
-                                    <img src={noregrets} className="answers-gif" width="250" height="200" alt="no regrets"/>
-
-                                    <p><strong>Hinted at being on Paradise: </strong> No Action</p>
-                                    <ul>
-                                        <li>
-                                            As many of you know I view the Bachelor and Bachelorette as meerly the proving ground for the main 
-                                            event that is Paradise.  This makes be very nervous about Paradise 2021
-                                        </li>
-                                        <li>
-                                            Hoping to use this question again for After the Final Rose.  America needs answers!  
-                                        </li>
-                                    </ul>
-
-                                    <img src={paradisenotokay} className="answers-gif" width="250" height="200" alt="paradise not okay"/>
-
-                                </div>{/*End div ansers*/}
+                                {/*</div>*/}{/*End div ansers*/}
                                                                 
-                                <Alert key='previous-results' variant='info'>
+                                {/*<Alert key='previous-results' variant='info'>
                                     <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
                                 </Alert>                                
 
@@ -628,7 +587,7 @@ class BatchelorGame extends React.Component {
                                         <Card.Title>New Questions Available Friday</Card.Title>
                                         <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
                                     </Card.Body>
-                                </Card>
+                                </Card>*/}
                                 
             
                             </Col>
@@ -676,11 +635,63 @@ class BatchelorGame extends React.Component {
                                 </Col>
                                 <Col>
 
-                                {/*<h3>Week 10 Questions</h3>
+                                <h3>Week 10 Questions</h3>
 
-                                <h4>Answers due on March 8th 2021</h4>*/}
-
+                                <h4>Answers due on March 8th 2021</h4>
                                 
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        droppableId='first-fantasy-suite'
+                                        pick={this.state.picks.firstFantasySuite}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='First Overnight Date? (10 points)'
+                                        subtitle='Which contestant&apos; fantasy suite 0date airs first?'/>     
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        droppableId='fantasy-suite-relations'
+                                        pick={this.state.picks.fantasySuiteRelations}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who does not have adult relations in the fantasy suite? (10 points)'
+                                        subtitle='No points will be awarded for no answer.  Matt or contestant must either choose NOT to "forgo their own accomidations" 
+                                            or must clearly admit after the date that nothing "physical" happened.  In other words guilty until proven innocent'/>    
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        droppableId='sent-home-week-ten'
+                                        pick={this.state.picks.sentHomeWeekTen}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who Gets Sent Home? (10 points)'
+                                        subtitle='Must be eliminated in any way including during a Rose Cermoney and also outside of a Rose Ceremoney'/>      
+
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        pick={this.state.picks.isLeaveOnOwnWeekTen}
+                                        title='Does Anyone Leave on their Own? (5 points)'
+                                        subtitle='Includes anyone who leaves the show voluntarily'
+                                        radiosIds='isLeaveOnOwnWeekTen'
+                                        handleChange={this.handleChange}/>
+                                    
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        pick={this.state.picks.hotTubWeekTen}
+                                        title='Will someone get in a Hot Tub with the Bachelor? (5 points)'
+                                        subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, etc. do not count'
+                                        radiosIds='hotTubWeekTen'
+                                        handleChange={this.handleChange}/>    
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        droppableId='budget-fantasy-suite'
+                                        pick={this.state.picks.budgetFantasySuite}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who Gets the Low Budget Overnight Date Setting? (10 points)'
+                                        subtitle='Points awarded if one of the overnights is visibile less appealing then the other two ex. Taysh&apos;s RV date.  GM has final descrition on scoring'/>    
+
                                 <h3>Season Questions</h3>
 
                                 <h4>Answers submitted on February 8th at 8pm EST</h4>

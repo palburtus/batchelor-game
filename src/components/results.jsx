@@ -30,6 +30,11 @@ import prowler from '../assets/prowler.jpg';
 import gosslinglaugh from '../assets/gosslinglaugh.gif';
 import throwipad from '../assets/throwipad.gif';
 import canadianbacon from '../assets/canadianbacon.gif';
+import moneygun from '../assets/moneygun.gif';
+import sleep from '../assets/sleep.gif';
+import sorry from '../assets/sorry.gif';
+import noregrets from '../assets/noregrets.gif';
+import paradisenotokay from '../assets/paradisenotokay.gif';
 
 class Results extends React.Component {
 
@@ -182,6 +187,67 @@ class Results extends React.Component {
                                         We will keep updating this list as the results come int
                                     </p>
                                     <p><strong>Will someone be sent home on a one-on-one date:</strong> Yes</p>
+
+                                    <Card></Card>
+
+                                    <h3>Women Tell All (Week 9 Answers)</h3>
+
+                                    <p>
+                                        Another <i>Women Tell All</i> another snooze fest as usual.  It is in this writer's opinion 
+                                        that this is the Batchelor franchises' bi-anual snooze fest. Anyway I'll try my best to remain enthusiastic 
+                                        during this recap.
+                                    </p>
+                                    
+                                    <p><strong>How Many Girls Sit on the Hotseat: </strong> 3 or more</p>
+                                    <ul>
+                                        <li>Who put this line at 3? Vegas would have gone broke might as well have been 15</li>
+                                        <li>Yet another friendly reminder that "Life is to short to bet the under"</li>
+                                    </ul>
+
+                                    <img src={moneygun} className="answers-gif" width="250" height="200" alt="money gun"/>
+                                    
+                                    <p><strong>Who is the first girl on the Hot Seat: </strong> Britanny</p>
+                                    <ul>
+                                        <li>A bit of a sleeper here with Bit An Ey</li>
+                                        <li>I didn't even remeber what she did while she was on the show and I've already forgotten what she said on the Hot Seat</li>
+                                    </ul>
+
+                                    <img src={sleep} className="answers-gif" width="250" height="200" alt="sleep"/>
+
+                                    <p><strong>Does Victoria Apologize: </strong> Yes (Early and Often)</p>
+                                    <ul>
+                                        <li>This seemed very sincere</li>
+                                        <li>As in she sincerely wants to go to paradise and did a great job coming accross as genuine</li>
+                                        <li>I think trading an exposed bra strap for a bikini will suit her well</li>
+                                    </ul>
+
+                                    <img src={sorry} className="answers-gif" width="250" height="200" alt="sorry"/>
+
+                                    <p><strong>Will Serena P say she regrets leaving: </strong> No</p>
+                                    <ul>
+                                        <li>Wished Matt all the best and while she clearly wasn't trilled with the decision her answer was a clear no</li>
+                                        <li>
+                                            Matt is still shook as hell about this, Serena P was his girl, he got a boner just watching her get out of a hot tub, 
+                                            he met her family, no way he though she'd just up and leave
+                                        </li>
+                                        <li>That James Harden beard says it all</li>
+                                    </ul>
+
+                                    <img src={noregrets} className="answers-gif" width="250" height="200" alt="no regrets"/>
+
+                                    <p><strong>Hinted at being on Paradise: </strong> No Action</p>
+                                    <ul>
+                                        <li>
+                                            As many of you know I view the Bachelor and Bachelorette as meerly the proving ground for the main 
+                                            event that is Paradise.  This makes be very nervous about Paradise 2021
+                                        </li>
+                                        <li>
+                                            Hoping to use this question again for After the Final Rose.  America needs answers!  
+                                        </li>
+                                    </ul>
+
+                                    <img src={paradisenotokay} className="answers-gif" width="250" height="200" alt="paradise not okay"/>
+
 
                                     <Card></Card>
                                     <h4>Week 8</h4>
