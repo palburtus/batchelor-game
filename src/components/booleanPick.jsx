@@ -14,6 +14,18 @@ class BooleanPick extends React.Component{
     }
 
     render(){
+
+        let yesLabel = 'Yes';
+        let noLabel = 'No';
+
+        if(this.props.yesValue){
+            yesLabel = this.props.yesValue;
+        }
+
+        if(this.props.noValue){
+            noLabel = this.props.noValue;
+        }
+
         return(
             <div>
 
@@ -23,8 +35,8 @@ class BooleanPick extends React.Component{
                         <Card.Subtitle>{this.props.subtitle}</Card.Subtitle>
                         
                         <Form.Group>
-                            <Form.Check id="yes" checked={this.props.pick === constants.TRUE} type="radio" name={this.props.radiosIds} label="Yes" onChange={this.handleChange}/>
-                            <Form.Check id="no" checked={this.props.pick === constants.FALSE} type="radio" name={this.props.radiosIds} label="No" onChange={this.handleChange}/>
+                            <Form.Check id="yes" checked={this.props.pick === constants.TRUE} type="radio" name={this.props.radiosIds} label={yesLabel} onChange={this.handleChange}/>
+                            <Form.Check id="no" checked={this.props.pick === constants.FALSE} type="radio" name={this.props.radiosIds} label={noLabel} onChange={this.handleChange}/>
                         </Form.Group>
 
                     </Card.Body>
