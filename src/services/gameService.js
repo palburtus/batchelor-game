@@ -4,6 +4,37 @@ export const getScore = (picks) => {
     let score = 0;
     if(picks){
 
+        //Week 10
+        score += calculateSingleAnswerScore(picks.firstFantasySuite, constants.perfectPicks.firstFantasySuite, 'firstFantasySuite');
+        score += calculateMultipleCorrectAnswersScore(picks.sentHomeWeekTen, constants.perfectPicks.sentHomeWeekTen, 'sentHomeWeekTen');
+        score += calculateBoolScore(picks.isLeaveOnOwnWeekTen, constants.perfectPicks.isLeaveOnOwnWeekTen, 'isLeaveOnOwnWeekTen');
+        score += calculateBoolScore(picks.hotTubWeekTen, constants.perfectPicks.hotTubWeekTen, 'hotTubWeekTen');
+        score += calculateSingleAnswerScore(picks.budgetFantasySuite, constants.perfectPicks.budgetFantasySuite, 'budgetFantasySuite');
+        score += calculateSingleAnswerScore(picks.fantasySuiteRelations, constants.perfectPicks.fantasySuiteRelations, 'fantasySuiteRelations');
+        
+        //Week 9
+        score += calculateBoolScore(picks.isSerenaRegretLeaving, constants.perfectPicks.isSerenaRegretLeaving, 'isSerenaRegretLeaving');
+        score += calculateBoolScore(picks.isVictoriaAplogize, constants.perfectPicks.isVictoriaAplogize, 'isVictoriaAplogize');
+        score += calculateSingleAnswerScore(picks.firstGirlOnHotSeat, constants.perfectPicks.firstGirlOnHotSeat, 'firstGirlOnHotSeat');
+        score += calculateMultipleCorrectAnswersScore(picks.alludedToBeOnParadise, constants.perfectPicks.alludedToBeOnParadise, 'alludedToBeOnParadise');
+        score += calculateBoolScore(picks.howManyGirlsSitOnHotSeat, constants.perfectPicks.howManyGirlsSitOnHotSeat, 'howManyGirlsSitOnHotSeat');
+
+        //Week 8 
+        score += calculateSingleAnswerScore(picks.firstHomeTownDate, constants.perfectPicks.firstHomeTownDate, 'firstHomeTownDate');
+        score += calculateMultipleCorrectAnswersScore(picks.sentHomeWeekEight, constants.perfectPicks.sentHomeWeekEight, 'sentHomeWeekEight');
+        score += calculateBoolScore(picks.isMattAskingAllForPermission, constants.perfectPicks.isMattAskingAllForPermission, 'isMattAskingAllForPermission');
+        score += calculateBoolScore(picks.isSkyDivingInjured, constants.perfectPicks.isSkyDivingInjured, 'isSkyDivingInjured');
+        score += calculateMultipleCorrectAnswersScore(picks.inLoveWeekEight, constants.perfectPicks.inLoveWeekEight, 'inLoveWeekEight');
+        
+        //WEEk 7 
+        score += calculateMultipleCorrectAnswersScore(picks.oneOnOneDateWeekSeven, constants.perfectPicks.oneOnOneDateWeekSeven, 'oneOnOneDateWeekSeven');
+        score += calculateMultipleCorrectAnswersScore(picks.groupDateRoseWeekSeven, constants.perfectPicks.groupDateRoseWeekSeven, 'groupDateRoseWeekSeven');
+        score += calculateBoolScore(picks.isHotTubWeekSeven, constants.perfectPicks.isHotTubWeekSeven, 'isHotTubWeekSeven');
+        score += calculateMultipleCorrectAnswersScore(picks.eliminatedWeekSeven, constants.perfectPicks.eliminatedWeekSeven, 'eliminatedWeekSeven');
+        score += calculateBoolScore(picks.isTwoOrLessWeekSeven, constants.perfectPicks.isTwoOrLessWeekSeven, 'isTwoOrLessWeekSeven');
+        score += calculateMultipleCorrectAnswersScore(picks.sentHomeEarlyWeekSeven, constants.perfectPicks.sentHomeEarlyWeekSeven, 'sentHomeEarlyWeekSeven');
+        score += calculateBoolScore(picks.isHeatherMadeContestantWeekSeven, constants.perfectPicks.isHeatherMadeContestantWeekSeven, 'isHeatherMadeContestantWeekSeven');
+
         //WEEK 6
         score += calculateMultipleCorrectAnswersScore(picks.oneOnOneDateWeekSix, constants.perfectPicks.oneOnOneDateWeekSix, 'oneOnOneDateWeekSix');
         score += calculateMultipleCorrectAnswersScore(picks.groupDateRoseWeekSix, constants.perfectPicks.groupDateRoseWeekSix, 'groupDateRoseWeekSix');
@@ -66,6 +97,7 @@ export const getScore = (picks) => {
         score += calculateBoolScore(picks.isLeaveOnOwn, constants.perfectPicks.isLeaveOnOwn, 'isLeaveOnOwn');
         score += calculateBoolScore(picks.isMultipleInLove, constants.perfectPicks.isMultipleInLove, 'isMultipleInLove');
        
+        
         if(picks.finalOne === constants.perfectPicks.finalOne){
             score += constants.scoreMap['finalOne'];
         }
@@ -81,13 +113,12 @@ export const getScore = (picks) => {
                 score += constants.scoreMap['finalFour'];
             }
         }
-                
+
         for(let i = 0; i < picks.finalSix.length; i++){
             if(constants.perfectPicks.finalSix.indexOf(picks.finalSix[i]) >= 0){
                 score += constants.scoreMap['finalSix'];
             }
         }
-        
     }
     
 

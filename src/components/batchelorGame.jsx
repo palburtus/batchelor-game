@@ -11,8 +11,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
-import paradise from '../assets/paradise.gif';
-import tylercameron from '../assets/tylercameron.gif';
+
+
 
 class BatchelorGame extends React.Component {
     
@@ -29,7 +29,10 @@ class BatchelorGame extends React.Component {
             isWeekFourLockedOut: true,
             isWeekFiveLockedOut: true,
             isWeekSixLockedOut: true,
-            isWeekSevenLockedOut: false,
+            isWeekSevenLockedOut: true,
+            isWeekEightLockedOut: true,
+            isWeekNineLockedOut: true,
+            isWeekTenLockedOut: false,
             isSeasonLongLockedOut: true,
             infoMessage: '',
             warningMessage: '',
@@ -162,9 +165,68 @@ class BatchelorGame extends React.Component {
       
         let picks = this.state.picks;
         
+        //WEEK 10
+        if(!this.state.isWeekTenLockedOut){
+            if(listId === 'sent-home-week-ten'){
+                picks.sentHomeWeekTen = -1;
+            }
+
+            if(listId === 'first-fantasy-suite'){
+                picks.firstFantasySuite = -1;
+            }
+
+            if(listId === 'budget-fantasy-suite'){
+                picks.budgetFantasySuite = -1;
+            }
+
+            if(listId === 'fantasy-suite-relations'){
+                picks.fantasySuiteRelations = -1;
+            }
+        }
+
+        //WEEK 9
+        if(!this.state.isWeekNineLockedOut){
+            if(listId === 'first-girl-on-hot-seat'){
+                picks.firstGirlOnHotSeat = -1;
+            }
+
+            if(listId === 'alluded-to-be-on-paradise'){
+                picks.alludedToBeOnParadise = -1;
+            }
+        }
+
+        //WEEK 8 
+        if(!this.state.isWeekEightLockedOut){
+            if(listId === 'first-home-town-date'){
+                picks.firstHomeTownDate = -1;
+            }
+
+            if(listId === 'sent-home-week-eight'){
+                picks.sentHomeWeekEight = -1;
+            }
+
+            if(listId === 'in-love-week-eight'){
+                picks.inLoveWeekEight = -1;
+            }
+        }
+
         //WEEK 7
         if(!this.state.isWeekSevenLockedOut){
+            if(listId === 'one-on-one-date-week-seven'){
+                picks.oneOnOneDateWeekSeven = -1;
+            }
 
+            if(listId === 'group-date-rose-week-seven'){
+                picks.groupDateRoseWeekSeven = -1;
+            }
+
+            if(listId === 'eliminated-week-seven'){
+                picks.eliminatedWeekSeven = -1;
+            }
+
+            if(listId === 'sent-home-early-week-seven'){
+                picks.sentHomeEarlyWeekSeven = -1;
+            }
         }
 
         //WEEK 6
@@ -248,6 +310,7 @@ class BatchelorGame extends React.Component {
 
         //WEEK 1
         if(!this.state.isWeekOneLockedOut){
+
             if(listId === 'first-wearing-costume'){
                 picks.firstWearingCostume = -1;
             }
@@ -315,9 +378,33 @@ class BatchelorGame extends React.Component {
             picks.bachelorette = this.handleSingleDragAdd(picks.bachelorette, this.state.picks.bachelorette, 'bachelorette', result);
         }
 
+        //WEEK 10
+        if(!this.state.isWeekTenLockedOut){
+            picks.budgetFantasySuite = this.handleSingleDragAdd(picks.budgetFantasySuite, this.state.picks.budgetFantasySuite, 'budget-fantasy-suite', result);
+            picks.sentHomeWeekTen = this.handleSingleDragAdd(picks.sentHomeWeekTen, this.state.picks.sentHomeWeekTen, 'sent-home-week-ten', result);
+            picks.firstFantasySuite = this.handleSingleDragAdd(picks.firstFantasySuite, this.state.picks.firstFantasySuite, 'first-fantasy-suite', result);
+            picks.fantasySuiteRelations = this.handleSingleDragAdd(picks.fantasySuiteRelations, this.state.fantasySuiteRelations, 'fantasy-suite-relations', result);
+        }
+
+        //WEEK 9
+        if(!this.state.isWeekNineLockedOut){
+            picks.firstGirlOnHotSeat = this.handleSingleDragAdd(picks.firstGirlOnHotSeat, this.state.picks.firstGirlOnHotSeat, 'first-girl-on-hot-seat', result);
+            picks.alludedToBeOnParadise = this.handleSingleDragAdd(picks.alludedToBeOnParadise, this.state.picks.alludedToBeOnParadise, 'alluded-to-be-on-paradise', result);
+        }
+
+        //WEEK 8 
+        if(!this.state.isWeekEightLockedOut){
+            picks.firstHomeTownDate = this.handleSingleDragAdd(picks.firstHomeTownDate, this.state.picks.firstHomeTownDate, 'first-home-town-date', result);
+            picks.sentHomeWeekEight = this.handleSingleDragAdd(picks.sentHomeWeekEight, this.state.picks.sentHomeWeekEight, 'sent-home-week-eight', result);
+            picks.inLoveWeekEight = this.handleSingleDragAdd(picks.inLoveWeekEight, this.state.picks.inLoveWeekEight, 'in-love-week-eight', result);
+        }
+
         //WEEK 7
         if(!this.state.isWeekSevenLockedOut){
-            
+            picks.oneOnOneDateWeekSeven = this.handleSingleDragAdd(picks.oneOnOneDateWeekSeven, this.state.picks.oneOnOneDateWeekSeven, 'one-on-one-date-week-seven', result);
+            picks.groupDateRoseWeekSeven = this.handleSingleDragAdd(picks.groupDateRoseWeekSeven, this.state.picks.groupDateRoseWeekSeven, 'group-date-rose-week-seven', result);
+            picks.eliminatedWeekSeven = this.handleSingleDragAdd(picks.eliminatedWeekSeven, this.state.picks.eliminatedWeekSeven, 'eliminated-week-seven', result);
+            picks.sentHomeEarlyWeekSeven = this.handleSingleDragAdd(picks.sentHomeEarlyWeekSeven, this.state.picks.sentHomeEarlyWeekSeven, 'sent-home-early-week-seven', result);
         }
         
         //WEEK 6
@@ -377,9 +464,30 @@ class BatchelorGame extends React.Component {
        
         let picks = this.state.picks;
 
+        //WEEK 10
+        if(!this.state.isWeekTenLockedOut){
+            picks.isLeaveOnOwnWeekTen = this.handleBooleanEventChange(evt, 'isLeaveOnOwnWeekTen', picks.isLeaveOnOwnWeekTen);
+            picks.hotTubWeekTen = this.handleBooleanEventChange(evt, 'hotTubWeekTen', picks.hotTubWeekTen);
+        }
+
+        //WEEK 9
+        if(!this.state.isWeekNineLockedOut){
+            picks.isSerenaRegretLeaving = this.handleBooleanEventChange(evt, 'isSerenaRegretLeaving', picks.isSerenaRegretLeaving);
+            picks.isVictoriaAplogize = this.handleBooleanEventChange(evt, 'isVictoriaAplogize', picks.isVictoriaAplogize);
+            picks.howManyGirlsSitOnHotSeat = this.handleBooleanEventChange(evt, 'howManyGirlsSitOnHotSeat', picks.howManyGirlsSitOnHotSeat);
+        }
+
+        //WEEK 8 
+        if(!this.state.isWeekEightLockedOut){
+            picks.isMattAskingAllForPermission = this.handleBooleanEventChange(evt, 'isMattAskingAllForPermission', picks.isMattAskingAllForPermission);
+            picks.isSkyDivingInjured = this.handleBooleanEventChange(evt, 'isSkyDivingInjured', picks.isSkyDivingInjured);
+        }
+
         //WEEK 7
         if(!this.state.isWeekSevenLockedOut){
-                    
+            picks.isHotTubWeekSeven = this.handleBooleanEventChange(evt, 'isHotTubWeekSeven', picks.isHotTubWeekSeven);    
+            picks.isTwoOrLessWeekSeven = this.handleBooleanEventChange(evt, 'isTwoOrLessWeekSeven', picks.isTwoOrLessWeekSeven);
+            picks.isHeatherMadeContestantWeekSeven = this.handleBooleanEventChange(evt, 'isHeatherMadeContestantWeekSeven', picks.isHeatherMadeContestantWeekSeven);
         }
 
         //WEEK 6
@@ -445,6 +553,9 @@ class BatchelorGame extends React.Component {
 
     render(){
 
+        let finalSixCorrect = constants.perfectPicks.finalSix;
+        let finalFourCorrect = constants.perfectPicks.finalFour;
+
         if(this.state.isLoading){
             return(<div><p>Loading...</p></div>);
         }else if(this.state.picks){
@@ -460,91 +571,25 @@ class BatchelorGame extends React.Component {
                         <Row>
                             <Col>
 
-                                <div className="alert alert-warning">
-                                    <p>
-                                        Due to the possibility of being added to the show <strong>Heather Martin</strong> has been added 
-                                        to the list of contestants.  This will allow you to choose her for questions next week such as group date, one-one-one, etc.
-                                    </p>
-
-                                    <p>
-                                        If she actually joins the show as a contestant and survives Week 7 we have a contingency in place 
-                                        to include her in the locked-out season long questions.  We will however, cross that bridge if/when we come to it.
-                                    </p>
-
-                                </div>
-
-                                <div className="answers">
-                                    <h3>Question Results</h3>  
-
-                                    <h4>Season Long Answers</h4>
-                                    <p>
-                                        In an exciting development we had a season long question answered in the first week!  
-                                        We will keep updating this list as the results come int
-                                    </p>
-                                    <p><strong>Will someone be sent home on a one-on-one date:</strong> Yes</p>
+                           
+                                {/*<div className="answers">*/}
+                                
+                                  
                                     
-                                    <h4>Week 6 Answers</h4>
-
-                                    <p><strong>Does Heather Martin become a contestant: </strong> No</p>
-                                    <ul>
-                                        <li>A photo-finish result, but no decision was made therefore it is a "No"</li>
-                                    </ul>
-
-                                    <p><strong>Does Tyler Cameron appear on a date:</strong> Yes</p>
-                                    <ul>
-                                        <li>Finally we get to lay our eyes on this fine specimen</li>
-                                        <li>Remeber when they chose Pilot Pete to be the bacherlor instead of this guy.</li>
-                                    </ul>
-                                    <img src={tylercameron} className="answers-gif" width="200" height="250" alt="tylercameron"/>
-
-                                    <p><strong>Does MJ get sent home before or during the 1st Rose Ceremony:</strong> Yes</p>
-                                    <ul>
-                                        <li>Oh MJ what a disapointment you turned out to be</li>
-                                        <li>You gave off down to earth sorta punk-rockey vibes in the begining</li>
-                                        <li>But in the end you turned out to be BASIC as hell</li>
-                                        <li>Looking forward to your redemption angle...</li>
-                                    </ul>
-                                    <img src={paradise} className="answers-gif" width="250" height="200" alt="paradise"/>
-
-                                    <p><strong>Does Jessenia get sent home before or during the 1st Rose Ceremony:</strong> No</p>
-                                    <ul>
-                                        <li>Jessenia seems to not have come out of this exchange a whole lot better than MJ</li>
-                                        <li>My guess is she bought herself another week</li>
-                                    </ul>
-
-                                    <p><strong>Hot tub:</strong> No</p>
-
-                                    <p><strong>Group Date Rose:</strong></p>
-                                    <ul>
-                                        <li>Michelle</li>
-                                    </ul>
-
-                                    <p><strong>One-on-One Date Rose:</strong></p>
-                                    <ul>
-                                        <li>Pieper</li>
-                                        <li>Katie</li>
-                                    </ul>
-
-                                    <p>
-                                        A seemingly long overdue one-on-one date for Kaite, only to be sent packing, do not enter the friend zone, do not collect $200, 
-                                        I would say brutal, but given the minimal tears in the car after being sent home I can't help but think the feeling was a little bit mutual. 
-                                    </p>
-                                
-                                
-                                </div>
-                                
-                                <Alert key='previous-results' variant='info'>
+                                {/*</div>*/}{/*End div ansers*/}
+                                                                
+                                {/*<Alert key='previous-results' variant='info'>
                                     <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
                                 </Alert>                                
 
                                 <Card>
                                     <Card.Body>
-                                        <Card.Title>New Questions Available Thursday</Card.Title>
+                                        <Card.Title>New Questions Available Friday</Card.Title>
                                         <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
                                     </Card.Body>
-                                </Card>
+                                </Card>*/}
                                 
-                                
+            
                             </Col>
                         </Row>
                         
@@ -589,72 +634,67 @@ class BatchelorGame extends React.Component {
                                     </Card>
                                 </Col>
                                 <Col>
+
+                                <h3>Week 10 Questions</h3>
+
+                                <h4>Answers due on March 8th 2021</h4>
                                 
-                                <h3>Week 6 Questions</h3>
-                                <h4>Answers due by February 8th at 8pm EST</h4>
-                                
-                                <BooleanPick
-                                        isLocked={this.state.isWeekSixLockedOut}
-                                        pick={this.state.picks.isTylerCameronOnDateWeekSix}
-                                        title='Does Tyler Cameron appear on a date? (5 points)'
-                                        subtitle='Must interact with or be seen by at least one contestant on a date'
-                                        radiosIds='isTylerCameronOnDateWeekSix'
-                                        handleChange={this.handleChange}/> 
-
-                                <BooleanPick
-                                        isLocked={this.state.isWeekSixLockedOut}
-                                        pick={this.state.picks.isHeathMartinMadeContestant}
-                                        title='Does Heather Martin become a contestant? (5 points)'
-                                        subtitle='Must become eligible for a date and/or participate in a rose ceremony during this episode'
-                                        radiosIds='isHeathMartinMadeContestant'
-                                        handleChange={this.handleChange}/> 
-
-                                <BooleanPick
-                                        isLocked={this.state.isWeekSixLockedOut}
-                                        pick={this.state.picks.isMJSentHomeWeekSix}
-                                        title='Does MJ get sent home before or during the 1st Rose Ceremony? (5 points)'
-                                        subtitle='Can either be sent home by Matt prior to, or eliminated during the 1st Rose Ceremony'
-                                        radiosIds='isMJSentHomeWeekSix'
-                                        handleChange={this.handleChange}/>    
-
-                                <BooleanPick
-                                        isLocked={this.state.isWeekSixLockedOut}
-                                        pick={this.state.picks.isJesseniaSentHomeWeekSix}
-                                        title='Does Jessenia get sent home before or during the 1st Rose Ceremony? (5 points)'
-                                        subtitle='Can either be sent home by Matt prior to, or eliminated during the 1st Rose Ceremony'
-                                        radiosIds='isJesseniaSentHomeWeekSix'
-                                        handleChange={this.handleChange}/>    
-
-
-                                <SinglePikDrag
-                                            isLocked={this.state.isWeekSixLockedOut}
-                                            droppableId='one-on-one-date-week-six'
-                                            pick={this.state.picks.oneOnOneDateWeekSix}
-                                            onDragEnd={this.onDragEnd}
-                                            removeSelection={this.removeSelection}
-                                            title='Who gets a one on one date this week? (10 points)'
-                                            subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>      
-
-                                <SinglePickDrag
-                                        isLocked={this.state.isWeekSixLockedOut}
-                                        droppableId='group-date-rose-week-six'
-                                        pick={this.state.picks.groupDateRoseWeekSix}
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        droppableId='first-fantasy-suite'
+                                        pick={this.state.picks.firstFantasySuite}
                                         onDragEnd={this.onDragEnd}
                                         removeSelection={this.removeSelection}
-                                        title='Who gets a Group Date Rose? (10 points)'
-                                        subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>     
+                                        title='First Overnight Date? (10 points)'
+                                        subtitle='Which contestant&apos; fantasy suite 0date airs first?'/>     
 
-                                <BooleanPick
-                                        isLocked={this.state.isWeekSixLockedOut}
-                                        pick={this.state.picks.isHotTubWeekSix}
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        droppableId='fantasy-suite-relations'
+                                        pick={this.state.picks.fantasySuiteRelations}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who does not have adult relations in the fantasy suite? (10 points)'
+                                        subtitle='No points will be awarded for no answer.  Matt or contestant must either choose NOT to "forgo their own accomidations" 
+                                            or must clearly admit after the date that nothing "physical" happened.  In other words guilty until proven innocent'/>    
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        droppableId='sent-home-week-ten'
+                                        pick={this.state.picks.sentHomeWeekTen}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who Gets Sent Home? (10 points)'
+                                        subtitle='Must be eliminated in any way including during a Rose Cermoney and also outside of a Rose Ceremoney'/>      
+
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        pick={this.state.picks.isLeaveOnOwnWeekTen}
+                                        title='Does Anyone Leave on their Own? (5 points)'
+                                        subtitle='Includes anyone who leaves the show voluntarily'
+                                        radiosIds='isLeaveOnOwnWeekTen'
+                                        handleChange={this.handleChange}/>
+                                    
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        pick={this.state.picks.hotTubWeekTen}
                                         title='Will someone get in a Hot Tub with the Bachelor? (5 points)'
                                         subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, etc. do not count'
-                                        radiosIds='isHotTubWeekSix'
+                                        radiosIds='hotTubWeekTen'
                                         handleChange={this.handleChange}/>    
 
-                                
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        droppableId='budget-fantasy-suite'
+                                        pick={this.state.picks.budgetFantasySuite}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who Gets the Low Budget Overnight Date Setting? (10 points)'
+                                        subtitle='Points awarded if one of the overnights is visibile less appealing then the other two ex. Taysh&apos;s RV date.  GM has final descrition on scoring'/>    
+
                                 <h3>Season Questions</h3>
-                                <h4>Answers due by February 8th at 8pm EST</h4>
+
+                                <h4>Answers submitted on February 8th at 8pm EST</h4>
                                 
                                 <p className="foot-note"><strong>*</strong>Any questions that mention "After the Final Rose" will still apply to any substitue recap they air in the case that
                                 there is no "After the Final Rose" this season for COVID related reasons.</p>
@@ -705,6 +745,7 @@ class BatchelorGame extends React.Component {
                                     isLocked={this.state.isSeasonLongLockedOut}
                                     droppableId='final-six'
                                     picks={this.state.picks.finalSix}
+                                    correctPicks={finalSixCorrect}
                                     title='Final Six (10 points each correct answer)'
                                     subtitle='6 Selections (order does not matter)'
                                     removeSelection={this.removeSelection}
@@ -715,6 +756,7 @@ class BatchelorGame extends React.Component {
                                     isLocked={this.state.isSeasonLongLockedOut}
                                     droppableId='final-four'
                                     picks={this.state.picks.finalFour}
+                                    correctPicks={finalFourCorrect}
                                     title='Final Four (20 points each correct answer)'
                                     subtitle='4 Selections (order does not matter)'
                                     removeSelection={this.removeSelection}
@@ -740,7 +782,7 @@ class BatchelorGame extends React.Component {
                                     title="Final Rose (30 points)"
                                     subtitle="Drag 1 Selection or don't leave a name if you think no one gets the final rose"/>   
 
-                                         
+                                
                                 </Col>
                             </Row>
                         
@@ -748,6 +790,235 @@ class BatchelorGame extends React.Component {
                                 
                                 <Col>
                                     <h2>Previous Week's Questions</h2>
+
+                                    <h3>After the Final Rose Questions (Week 9)</h3>
+
+                                    <h4>Answers submitted on March 1st 2021</h4>
+                                    
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekNineLockedOut}
+                                        pick={this.state.picks.howManyGirlsSitOnHotSeat}
+                                        title='How Many Girls Sit on the Hotseat? (5 points)'
+                                        subtitle='Number of girls on the hotseat '
+                                        radiosIds='howManyGirlsSitOnHotSeat'
+                                        yesValue='2 or less'
+                                        noValue='3 or more'
+                                        handleChange={this.handleChange}/>
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekNineLockedOut}
+                                        droppableId='first-girl-on-hot-seat'
+                                        pick={this.state.picks.firstGirlOnHotSeat}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who is the first girl on the hot seat? (10 points)'
+                                        subtitle='First girl interviewed on the hot seat'/>     
+
+
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekNineLockedOut}
+                                        pick={this.state.picks.isVictoriaAplogize}
+                                        title='Does Victoria Apologize? (5 points)'
+                                        subtitle='Must aplogize to one, many, or all of the contestants'
+                                        radiosIds='isVictoriaAplogize'
+                                        handleChange={this.handleChange}/>
+
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekNineLockedOut}
+                                        pick={this.state.picks.isSerenaRegretLeaving}
+                                        title='Will Serena P say she regrets leaving? (5 points)'
+                                        subtitle='Must say that she regrets leaving on her own or answer yes if she is asked if she regrets leaving'
+                                        radiosIds='isSerenaRegretLeaving'
+                                        handleChange={this.handleChange}/>
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekNineLockedOut}
+                                        droppableId='alluded-to-be-on-paradise'
+                                        pick={this.state.picks.alludedToBeOnParadise}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who is annouced to be or hinted at being on Paradise? (10 points)'
+                                        subtitle='Requires any mention of a contestant going to Paradise, a beach, or Mexico.  Game master has final decision of what counts'/>  
+
+
+                                    <h3>Week 8 Questions</h3>
+                                    <h4>Answers submitted on February 22nd at 8pm EST</h4>
+                                    
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekEightLockedOut}
+                                        droppableId='in-love-week-eight'
+                                        pick={this.state.picks.inLoveWeekEight}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who tells Matt they are "In Love" or "Falling in Love" with him? (10 points)'
+                                        subtitle='Contestant must tell Matt.  Any similar phrases will count'/>     
+
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekEightLockedOut}
+                                        pick={this.state.picks.isSkyDivingInjured}
+                                        title='Does the Sky Diving result in a non-trivial injury? (5 points)'
+                                        subtitle='Contestant must be injured during skydiving enough that they require medical attention and/or cause the date to end early.  Cuts and scrapes do NOT count, if the contestant can "walk it off" it does not count.  If the answer to this question is too close to call it will be scored as no action and no points will be issued.'
+                                        radiosIds='isSkyDivingInjured'
+                                        handleChange={this.handleChange}/>
+
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekEightLockedOut}
+                                        pick={this.state.picks.isMattAskingAllForPermission}
+                                        title='Does Matt ask at least one family member of EACH of the contestants for their permission/blessing? (5 points)'
+                                        subtitle='Matt must ask on EACH of the seperate hometown dates on the hometowns permission to propose or marry.  "Permisison" and/or "Blessing" do not have to be the words used.  Any language that resembles the tradition asking for a girls hand in marraige will be acceptble for this answer.'
+                                        radiosIds='isMattAskingAllForPermission'
+                                        handleChange={this.handleChange}/>
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekEightLockedOut}
+                                        droppableId='first-home-town-date'
+                                        pick={this.state.picks.firstHomeTownDate}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='First Hometown Date? (10 points)'
+                                        subtitle='Which contestants hometown date airs first?'/>     
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekEightLockedOut}
+                                        droppableId='sent-home-week-eight'
+                                        pick={this.state.picks.sentHomeWeekEight}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who Gets Sent Home? (10 points)'
+                                        subtitle='Must be eliminated in any way including during a Rose Cermoney and also outside of a Rose Ceremoney'/>      
+
+
+                                    <h3>Week 7 Questions</h3>
+                                    <h4>Answers submitted on February 15th at 8pm EST</h4>
+                                    
+                                    <BooleanPick
+                                            isLocked={this.state.isWeekSevenLockedOut}
+                                            pick={this.state.picks.isHeatherMadeContestantWeekSeven}
+                                            title='Does Heather get a rose in the first rose ceremony? (5 points)'
+                                            subtitle='This will be scored as "No" if she does not participate in the rose ceremoney'
+                                            radiosIds='isHeatherMadeContestantWeekSeven'
+                                            handleChange={this.handleChange}/>
+
+                                    <SinglePickDrag
+                                                isLocked={this.state.isWeekSevenLockedOut}
+                                                droppableId='sent-home-early-week-seven'
+                                                pick={this.state.picks.sentHomeEarlyWeekSeven}
+                                                onDragEnd={this.onDragEnd}
+                                                removeSelection={this.removeSelection}
+                                                title='Who does Matt Send Home Early? (10 points)'
+                                                subtitle='You CAN NOT choose Heather for this question and will receive no points if you do.  Must be sent home anytime outside of a rose ceremony. If this does not happen no points will be awarded'/>     
+
+
+                                    <BooleanPick
+                                            isLocked={this.state.isWeekSevenLockedOut}
+                                            pick={this.state.picks.isTwoOrLessWeekSeven}
+                                            title='How many girls does Matt send home? (5 points)'
+                                            subtitle='Must be sent home by Matt, Heather must be made a contestant in order to count towards this total'
+                                            radiosIds='isTwoOrLessWeekSeven'
+                                            yesValue='Two or Less'
+                                            noValue="Three or More"
+                                            handleChange={this.handleChange}/>    
+
+                                    <SinglePickDrag
+                                                isLocked={this.state.isWeekSevenLockedOut}
+                                                droppableId='one-on-one-date-week-seven'
+                                                pick={this.state.picks.oneOnOneDateWeekSeven}
+                                                onDragEnd={this.onDragEnd}
+                                                removeSelection={this.removeSelection}
+                                                title='Who gets a one on one date this week? (10 points)'
+                                                subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>      
+
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekSevenLockedOut}
+                                        droppableId='group-date-rose-week-seven'
+                                        pick={this.state.picks.groupDateRoseWeekSeven}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who gets a Group Date Rose? (10 points)'
+                                        subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>     
+
+
+                                    <BooleanPick
+                                            isLocked={this.state.isWeekSevenLockedOut}
+                                            pick={this.state.picks.isHotTubWeekSeven}
+                                            title='Will someone get in a Hot Tub with the Bachelor? (5 points)'
+                                            subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, etc. do not count'
+                                            radiosIds='isHotTubWeekSeven'
+                                            handleChange={this.handleChange}/>    
+
+                                    <SinglePickDrag
+                                            isLocked={this.state.isWeekSevenLockedOut}
+                                            droppableId='eliminated-week-seven'
+                                            pick={this.state.picks.eliminatedWeekSeven}
+                                            onDragEnd={this.onDragEnd}
+                                            removeSelection={this.removeSelection}
+                                            title='Who gets sent home during a Rose Ceremony (10 points)'
+                                            subtitle='Contestant must be at the rose ceremony and not receive a rose.  Being sent home or leaving in any other way does not count'/>     
+
+
+                                        <h3>Week 6 Questions</h3>
+                                        <h4>Answers submitted on February 8th at 8pm EST</h4>
+                                        
+                                        <BooleanPick
+                                                isLocked={this.state.isWeekSixLockedOut}
+                                                pick={this.state.picks.isTylerCameronOnDateWeekSix}
+                                                title='Does Tyler Cameron appear on a date? (5 points)'
+                                                subtitle='Must interact with or be seen by at least one contestant on a date'
+                                                radiosIds='isTylerCameronOnDateWeekSix'
+                                                handleChange={this.handleChange}/> 
+
+                                        <BooleanPick
+                                                isLocked={this.state.isWeekSixLockedOut}
+                                                pick={this.state.picks.isHeathMartinMadeContestant}
+                                                title='Does Heather Martin become a contestant? (5 points)'
+                                                subtitle='Must become eligible for a date and/or participate in a rose ceremony during this episode'
+                                                radiosIds='isHeathMartinMadeContestant'
+                                                handleChange={this.handleChange}/> 
+
+                                        <BooleanPick
+                                                isLocked={this.state.isWeekSixLockedOut}
+                                                pick={this.state.picks.isMJSentHomeWeekSix}
+                                                title='Does MJ get sent home before or during the 1st Rose Ceremony? (5 points)'
+                                                subtitle='Can either be sent home by Matt prior to, or eliminated during the 1st Rose Ceremony'
+                                                radiosIds='isMJSentHomeWeekSix'
+                                                handleChange={this.handleChange}/>    
+
+                                        <BooleanPick
+                                                isLocked={this.state.isWeekSixLockedOut}
+                                                pick={this.state.picks.isJesseniaSentHomeWeekSix}
+                                                title='Does Jessenia get sent home before or during the 1st Rose Ceremony? (5 points)'
+                                                subtitle='Can either be sent home by Matt prior to, or eliminated during the 1st Rose Ceremony'
+                                                radiosIds='isJesseniaSentHomeWeekSix'
+                                                handleChange={this.handleChange}/>    
+
+
+                                        <SinglePickDrag
+                                                    isLocked={this.state.isWeekSixLockedOut}
+                                                    droppableId='one-on-one-date-week-six'
+                                                    pick={this.state.picks.oneOnOneDateWeekSix}
+                                                    onDragEnd={this.onDragEnd}
+                                                    removeSelection={this.removeSelection}
+                                                    title='Who gets a one on one date this week? (10 points)'
+                                                    subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>      
+
+                                        <SinglePickDrag
+                                                isLocked={this.state.isWeekSixLockedOut}
+                                                droppableId='group-date-rose-week-six'
+                                                pick={this.state.picks.groupDateRoseWeekSix}
+                                                onDragEnd={this.onDragEnd}
+                                                removeSelection={this.removeSelection}
+                                                title='Who gets a Group Date Rose? (10 points)'
+                                                subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>     
+
+                                        <BooleanPick
+                                                isLocked={this.state.isWeekSixLockedOut}
+                                                pick={this.state.picks.isHotTubWeekSix}
+                                                title='Will someone get in a Hot Tub with the Bachelor? (5 points)'
+                                                subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, etc. do not count'
+                                                radiosIds='isHotTubWeekSix'
+                                                handleChange={this.handleChange}/>    
+
 
                                     <h3>Week 5 Questions</h3>
                                     <h4>Ansers submitted on February 1st at 8pm EST</h4>
@@ -842,7 +1113,6 @@ class BatchelorGame extends React.Component {
                                         title='Who gets a one on one date this week? (10 points)'
                                         subtitle='This may have multiple correct answers, but only choose one contestant.  Order does not matter you will receive points either way'/>      
 
-
                                     <SinglePickDrag
                                         isLocked={this.state.isWeekFourLockedOut}
                                         droppableId='group-date-rose-week-four'
@@ -896,7 +1166,6 @@ class BatchelorGame extends React.Component {
                                         removeSelection={this.removeSelection}
                                         title='Who does not get a date this week? (10 points)'
                                         subtitle='This may have multiple correct answers, but only choose one contestant.  If your choice is eliminated during the rose ceremony that started at the end of Week Two, you will NOT get any points'/>      
-
 
                                     <BooleanPick
                                         isLocked={this.state.isWeekThreeLockedOut}
