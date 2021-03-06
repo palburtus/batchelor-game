@@ -85,6 +85,10 @@ export const scoreMap = {
     //WEEK 10
     'sentHomeWeekTen' : 10,
     'firstFantasySuite': 10,
+    'isLeaveOnOwnWeekTen': 5,
+    'hotTubWeekTen': 5,
+    'budgetFantasySuite' : 10,
+    'fantasySuiteRelations' : 10,
     //SEASON
     'isMattAndFinalRoseACouple' : 10,
     'bachelorette' : 20,
@@ -169,8 +173,12 @@ export function defaultPicks() {
         alludedToBeOnParadise: [NO_SELECTION],
         howManyGirlsSitOnHotSeat: NO_SELECTION,
         //WEEK 10
-        sentHomeWeekTen: NO_SELECTION,
+        sentHomeWeekTen: [NO_SELECTION],
         firstFantasySuite: NO_SELECTION,
+        isLeaveOnOwnWeekTen: NO_SELECTION,
+        hotTubWeekTen: NO_SELECTION,
+        budgetFantasySuite: NO_SELECTION,
+        fantasySuiteRelations: NO_SELECTION,
         //SEASON
         finalSix: [],
         finalFour: [],
@@ -255,8 +263,12 @@ export const perfectPicks = {
     alludedToBeOnParadise: [999],
     howManyGirlsSitOnHotSeat: 0, // IIII
     //WEEK 10
-    sentHomeWeekTen: 999,
-    firstFantasySuite: 999,
+    sentHomeWeekTen: [NOT_SETTLED],
+    firstFantasySuite: NOT_SETTLED,
+    isLeaveOnOwnWeekTen: NOT_SETTLED,
+    hotTubWeekTen: NOT_SETTLED,
+    budgetFantasySuite: NOT_SETTLED,
+    fantasySuiteRelations: NOT_SETTLED,
     //SEASON
     finalSix: ['6', '13', '25', '26', '30', '34'],
     finalFour: ['6', '26', '30', '34'],
@@ -448,7 +460,7 @@ export const girls = [
         id: '30',
         name: 'Serena P',
         thumb: "./thumbs/serena_p.jpg",
-        isActive: true
+        isActive: false
     },
     {
         id: '31',

@@ -11,11 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
-import moneygun from '../assets/moneygun.gif';
-import sleep from '../assets/sleep.gif';
-import sorry from '../assets/sorry.gif';
-import noregrets from '../assets/noregrets.gif';
-import paradisenotokay from '../assets/paradisenotokay.gif';
+
 
 
 class BatchelorGame extends React.Component {
@@ -177,6 +173,14 @@ class BatchelorGame extends React.Component {
 
             if(listId === 'first-fantasy-suite'){
                 picks.firstFantasySuite = -1;
+            }
+
+            if(listId === 'budget-fantasy-suite'){
+                picks.budgetFantasySuite = -1;
+            }
+
+            if(listId === 'fantasy-suite-relations'){
+                picks.fantasySuiteRelations = -1;
             }
         }
 
@@ -376,8 +380,10 @@ class BatchelorGame extends React.Component {
 
         //WEEK 10
         if(!this.state.isWeekTenLockedOut){
+            picks.budgetFantasySuite = this.handleSingleDragAdd(picks.budgetFantasySuite, this.state.picks.budgetFantasySuite, 'budget-fantasy-suite', result);
             picks.sentHomeWeekTen = this.handleSingleDragAdd(picks.sentHomeWeekTen, this.state.picks.sentHomeWeekTen, 'sent-home-week-ten', result);
-            picks.firstFantasySuite = this.handleSingleDragAdd(picks.firstFantasySuite, this.state.picks.firstFantasySuite, 'first-fantasy-suite');
+            picks.firstFantasySuite = this.handleSingleDragAdd(picks.firstFantasySuite, this.state.picks.firstFantasySuite, 'first-fantasy-suite', result);
+            picks.fantasySuiteRelations = this.handleSingleDragAdd(picks.fantasySuiteRelations, this.state.fantasySuiteRelations, 'fantasy-suite-relations', result);
         }
 
         //WEEK 9
@@ -460,7 +466,8 @@ class BatchelorGame extends React.Component {
 
         //WEEK 10
         if(!this.state.isWeekTenLockedOut){
-            
+            picks.isLeaveOnOwnWeekTen = this.handleBooleanEventChange(evt, 'isLeaveOnOwnWeekTen', picks.isLeaveOnOwnWeekTen);
+            picks.hotTubWeekTen = this.handleBooleanEventChange(evt, 'hotTubWeekTen', picks.hotTubWeekTen);
         }
 
         //WEEK 9
@@ -638,8 +645,18 @@ class BatchelorGame extends React.Component {
                                         pick={this.state.picks.firstFantasySuite}
                                         onDragEnd={this.onDragEnd}
                                         removeSelection={this.removeSelection}
-                                        title='First Hometown Date? (10 points)'
-                                        subtitle='Which contestants hometown date airs first?'/>     
+                                        title='First Overnight Date? (10 points)'
+                                        subtitle='Which contestant&apos; fantasy suite 0date airs first?'/>     
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        droppableId='fantasy-suite-relations'
+                                        pick={this.state.picks.fantasySuiteRelations}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who does not have adult relations in the fantasy suite? (10 points)'
+                                        subtitle='No points will be awarded for no answer.  Matt or contestant must either choose NOT to "forgo their own accomidations" 
+                                            or must clearly admit after the date that nothing "physical" happened.  In other words guilty until proven innocent'/>    
 
                                     <SinglePickDrag
                                         isLocked={this.state.isWeekTenLockedOut}
@@ -649,6 +666,31 @@ class BatchelorGame extends React.Component {
                                         removeSelection={this.removeSelection}
                                         title='Who Gets Sent Home? (10 points)'
                                         subtitle='Must be eliminated in any way including during a Rose Cermoney and also outside of a Rose Ceremoney'/>      
+
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        pick={this.state.picks.isLeaveOnOwnWeekTen}
+                                        title='Does Anyone Leave on their Own? (5 points)'
+                                        subtitle='Includes anyone who leaves the show voluntarily'
+                                        radiosIds='isLeaveOnOwnWeekTen'
+                                        handleChange={this.handleChange}/>
+                                    
+                                    <BooleanPick
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        pick={this.state.picks.hotTubWeekTen}
+                                        title='Will someone get in a Hot Tub with the Bachelor? (5 points)'
+                                        subtitle='The Bacherlor and one contestent must get in a purpose made hot tub.  Small pools, natural springs, etc. do not count'
+                                        radiosIds='hotTubWeekTen'
+                                        handleChange={this.handleChange}/>    
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        droppableId='budget-fantasy-suite'
+                                        pick={this.state.picks.budgetFantasySuite}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who Gets the Low Budget Overnight Date Setting? (10 points)'
+                                        subtitle='Points awarded if one of the overnights is visibile less appealing then the other two ex. Taysh&apos;s RV date.  GM has final descrition on scoring'/>    
 
                                 <h3>Season Questions</h3>
 

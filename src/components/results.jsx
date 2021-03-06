@@ -30,6 +30,11 @@ import prowler from '../assets/prowler.jpg';
 import gosslinglaugh from '../assets/gosslinglaugh.gif';
 import throwipad from '../assets/throwipad.gif';
 import canadianbacon from '../assets/canadianbacon.gif';
+import moneygun from '../assets/moneygun.gif';
+import sleep from '../assets/sleep.gif';
+import sorry from '../assets/sorry.gif';
+import noregrets from '../assets/noregrets.gif';
+import paradisenotokay from '../assets/paradisenotokay.gif';
 
 class Results extends React.Component {
 

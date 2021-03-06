@@ -81,6 +81,13 @@ test('perfect score to equal 725', () => {
         firstGirlOnHotSeat: '33',
         alludedToBeOnParadise: 999,
         howManyGirlsSitOnHotSeat: 0,
+        //WEEK 10
+        sentHomeWeekTen: 999,
+        firstFantasySuite: 999,
+        isLeaveOnOwnWeekTen: 999,
+        hotTubWeekTen: 999,
+        budgetFantasySuite: 999,
+        fantasySuiteRelations: 999,
         //SEASON
         isMattAndFinalRoseACouple: 999,
         bachelorette: 999,
@@ -95,8 +102,118 @@ test('perfect score to equal 725', () => {
 
     let result = gameService.getScore(picks);
 
-    expect(result).toBe(725);
+    expect(result).toBe(775);
 });
+
+test('fantasy suite week ten correct to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.firstFantasySuite = 999;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('fatasy suite week ten incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.firstFantasySuite = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('sent home week ten correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.sentHomeWeekTen = 999;  
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('sent home week ten incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.sentHomeWeekTen = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('leave one own week ten correct to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.isLeaveOnOwnWeekTen = 999;
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('leave on own week 10 incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.isLeaveOnOwnWeekTen = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+
+test('hot tub week ten correct to equal 5', () =>{
+    let picks = constants.defaultPicks();
+    picks.hotTubWeekTen = 999;    
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(5);
+})
+
+test('hot tub week ten incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.hotTubWeekTen = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+test('budget fantasy suite week ten correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.budgetFantasySuite = 999;    
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('budget fantasy suite week ten incorrect to equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.budgetFantasySuite = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
+
+
+test('fantasy suite relations correct to equal 10', () =>{
+    let picks = constants.defaultPicks();
+    picks.fantasySuiteRelations = 999;    
+    
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(10);
+})
+
+test('fantasy suite relations incorrect equal 0', () =>{
+    let picks = constants.defaultPicks();
+    picks.fantasySuiteRelations = 998;
+
+    let result = gameService.getScore(picks);
+
+    expect(result).toBe(0);
+})
 
 test('sit on hot seat two or less correct to equal 5', () =>{
     let picks = constants.defaultPicks();
