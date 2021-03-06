@@ -171,7 +171,13 @@ class BatchelorGame extends React.Component {
         
         //WEEK 10
         if(!this.state.isWeekTenLockedOut){
+            if(listId === 'sent-home-week-ten'){
+                picks.sentHomeWeekTen = -1;
+            }
 
+            if(listId === 'first-fantasy-suite'){
+                picks.firstFantasySuite = -1;
+            }
         }
 
         //WEEK 9
@@ -300,6 +306,7 @@ class BatchelorGame extends React.Component {
 
         //WEEK 1
         if(!this.state.isWeekOneLockedOut){
+
             if(listId === 'first-wearing-costume'){
                 picks.firstWearingCostume = -1;
             }
@@ -369,7 +376,8 @@ class BatchelorGame extends React.Component {
 
         //WEEK 10
         if(!this.state.isWeekTenLockedOut){
-            
+            picks.sentHomeWeekTen = this.handleSingleDragAdd(picks.sentHomeWeekTen, this.state.picks.sentHomeWeekTen, 'sent-home-week-ten', result);
+            picks.firstFantasySuite = this.handleSingleDragAdd(picks.firstFantasySuite, this.state.picks.firstFantasySuite, 'first-fantasy-suite');
         }
 
         //WEEK 9
@@ -557,69 +565,13 @@ class BatchelorGame extends React.Component {
                             <Col>
 
                            
-                                <div className="answers">
+                                {/*<div className="answers">*/}
+                                
                                   
-                                    <h3>After the Final Rose (Week 9 Answers)</h3>
-
-                                    <p>
-                                        Another <i>After the Final Rose</i> another snooze fest as usual.  It is in this writer's opinion 
-                                        that this is the Batchelor franchises' bi-anual snooze fest. Anyway I'll try my best to remain enthusiastic 
-                                        during this recap.
-                                    </p>
                                     
-                                    <p><strong>How Many Girls Sit on the Hotseat: </strong> 3 or more</p>
-                                    <ul>
-                                        <li>Who put this line at 3? Vegas would have gone broke might as well have been 15</li>
-                                        <li>Yet another friendly reminder that "Life is to short to bet the under"</li>
-                                    </ul>
-
-                                    <img src={moneygun} className="answers-gif" width="250" height="200" alt="money gun"/>
-                                    
-                                    <p><strong>Who is the first girl on the Hot Seat: </strong> Britanny</p>
-                                    <ul>
-                                        <li>A bit of a sleeper here with Bit An Ey</li>
-                                        <li>I didn't even remeber what she did while she was on the show and I've already forgotten what she said on the Hot Seat</li>
-                                    </ul>
-
-                                    <img src={sleep} className="answers-gif" width="250" height="200" alt="sleep"/>
-
-                                    <p><strong>Does Victoria Apologize: </strong> Yes (Early and Often)</p>
-                                    <ul>
-                                        <li>This seemed very sincere</li>
-                                        <li>As in she sincerely wants to go to paradise and did a great job coming accross as genuine</li>
-                                        <li>I think trading an exposed bra strap for a bikini will suit her well</li>
-                                    </ul>
-
-                                    <img src={sorry} className="answers-gif" width="250" height="200" alt="sorry"/>
-
-                                    <p><strong>Will Serena P say she regrets leaving: </strong> No</p>
-                                    <ul>
-                                        <li>Wished Matt all the best and while she clearly wasn't trilled with the decision her answer was a clear no</li>
-                                        <li>
-                                            Matt is still shook as hell about this, Serena P was his girl, he got a boner just watching her get out of a hot tub, 
-                                            he met her family, no way he though she'd just up and leave
-                                        </li>
-                                        <li>That James Harden beard says it all</li>
-                                    </ul>
-
-                                    <img src={noregrets} className="answers-gif" width="250" height="200" alt="no regrets"/>
-
-                                    <p><strong>Hinted at being on Paradise: </strong> No Action</p>
-                                    <ul>
-                                        <li>
-                                            As many of you know I view the Bachelor and Bachelorette as meerly the proving ground for the main 
-                                            event that is Paradise.  This makes be very nervous about Paradise 2021
-                                        </li>
-                                        <li>
-                                            Hoping to use this question again for After the Final Rose.  America needs answers!  
-                                        </li>
-                                    </ul>
-
-                                    <img src={paradisenotokay} className="answers-gif" width="250" height="200" alt="paradise not okay"/>
-
-                                </div>{/*End div ansers*/}
+                                {/*</div>*/}{/*End div ansers*/}
                                                                 
-                                <Alert key='previous-results' variant='info'>
+                                {/*<Alert key='previous-results' variant='info'>
                                     <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
                                 </Alert>                                
 
@@ -628,7 +580,7 @@ class BatchelorGame extends React.Component {
                                         <Card.Title>New Questions Available Friday</Card.Title>
                                         <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
                                     </Card.Body>
-                                </Card>
+                                </Card>*/}
                                 
             
                             </Col>
@@ -676,11 +628,28 @@ class BatchelorGame extends React.Component {
                                 </Col>
                                 <Col>
 
-                                {/*<h3>Week 10 Questions</h3>
+                                <h3>Week 10 Questions</h3>
 
-                                <h4>Answers due on March 8th 2021</h4>*/}
-
+                                <h4>Answers due on March 8th 2021</h4>
                                 
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        droppableId='first-fantasy-suite'
+                                        pick={this.state.picks.firstFantasySuite}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='First Hometown Date? (10 points)'
+                                        subtitle='Which contestants hometown date airs first?'/>     
+
+                                    <SinglePickDrag
+                                        isLocked={this.state.isWeekTenLockedOut}
+                                        droppableId='sent-home-week-ten'
+                                        pick={this.state.picks.sentHomeWeekTen}
+                                        onDragEnd={this.onDragEnd}
+                                        removeSelection={this.removeSelection}
+                                        title='Who Gets Sent Home? (10 points)'
+                                        subtitle='Must be eliminated in any way including during a Rose Cermoney and also outside of a Rose Ceremoney'/>      
+
                                 <h3>Season Questions</h3>
 
                                 <h4>Answers submitted on February 8th at 8pm EST</h4>
