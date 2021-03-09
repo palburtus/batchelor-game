@@ -264,15 +264,15 @@ export const perfectPicks = {
     howManyGirlsSitOnHotSeat: 0, // IIII
     //WEEK 10
     sentHomeWeekTen: [NOT_SETTLED],
-    firstFantasySuite: NOT_SETTLED,
-    isLeaveOnOwnWeekTen: NOT_SETTLED,
-    hotTubWeekTen: NOT_SETTLED,
-    budgetFantasySuite: NOT_SETTLED,
-    fantasySuiteRelations: NOT_SETTLED,
+    firstFantasySuite: '34',
+    isLeaveOnOwnWeekTen: 0,
+    hotTubWeekTen: 0,
+    budgetFantasySuite: '6',
+    fantasySuiteRelations: NO_ACTION,
     //SEASON
     finalSix: ['6', '13', '25', '26', '30', '34'],
     finalFour: ['6', '26', '30', '34'],
-    finalTwo: [NOT_SETTLED, (NOT_SETTLED + 1)],
+    finalTwo: ['34', '26'],
     finalOne: NOT_SETTLED,
     isMattAndFinalRoseACouple: NOT_SETTLED,
     bachelorette: NOT_SETTLED,

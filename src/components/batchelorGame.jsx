@@ -11,8 +11,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import SinglePickDrag from './singlePickDrag';
 import MultiPickDrag from './multiPickDrag';
 import BooleanPick from './booleanPick';
-
-
+import boldstrategy from '../assets/boldstrategy.gif';
+import chuckycheese from '../assets/chuckycheese.gif';
+import amishparadise from '../assets/amishparadise.gif';
+import lebronintamite from '../assets/lebronintamite.gif'; 
+import steve from '../assets/steve.jpg';
+import gigitty from '../assets/gigitty.gif';
 
 class BatchelorGame extends React.Component {
     
@@ -32,7 +36,8 @@ class BatchelorGame extends React.Component {
             isWeekSevenLockedOut: true,
             isWeekEightLockedOut: true,
             isWeekNineLockedOut: true,
-            isWeekTenLockedOut: false,
+            isWeekTenLockedOut: true,
+            isWeekElevenLockedOut: false,
             isSeasonLongLockedOut: true,
             infoMessage: '',
             warningMessage: '',
@@ -165,6 +170,12 @@ class BatchelorGame extends React.Component {
       
         let picks = this.state.picks;
         
+        //WEEK 11
+        if(!this.state.isWeekElevenLockedOut){
+
+        }
+
+
         //WEEK 10
         if(!this.state.isWeekTenLockedOut){
             if(listId === 'sent-home-week-ten'){
@@ -378,6 +389,11 @@ class BatchelorGame extends React.Component {
             picks.bachelorette = this.handleSingleDragAdd(picks.bachelorette, this.state.picks.bachelorette, 'bachelorette', result);
         }
 
+        //WEEK 11
+        if(!this.state.isWeekElevenLockedOut){
+
+        }
+
         //WEEK 10
         if(!this.state.isWeekTenLockedOut){
             picks.budgetFantasySuite = this.handleSingleDragAdd(picks.budgetFantasySuite, this.state.picks.budgetFantasySuite, 'budget-fantasy-suite', result);
@@ -463,6 +479,11 @@ class BatchelorGame extends React.Component {
     handleChange(evt) {
        
         let picks = this.state.picks;
+
+        //WEEK 11
+        if(!this.state.isWeekElevenLockedOut){
+
+        }
 
         //WEEK 10
         if(!this.state.isWeekTenLockedOut){
@@ -572,13 +593,104 @@ class BatchelorGame extends React.Component {
                             <Col>
 
                            
-                                {/*<div className="answers">*/}
+                                <div className="answers">
                                 
+                                  <h4>Week 10</h4>
+
+                                  <p><strong>First Overnight Date: </strong> Michelle</p>
+                                  <ul>
+                                      <li>Matt pre-games his overnight with Michelle by calling out his (estranged?) father on his shit</li>
+                                  </ul>
+
+                                  <img src={boldstrategy} className="answers-gif" width="250" height="200" alt="bold"/>
+
+                                  <ul>
+                                    <li>Something doesn't add up here because any father willing to go to Chucky Cheese is a hero</li>
+                                  </ul>
                                   
-                                    
-                                {/*</div>*/}{/*End div ansers*/}
+                                  <img src={chuckycheese} className="answers-gif" width="250" height="200" alt="chucky cheese"/>
+                                  
+                                  <ul>
+                                      <li>They proceed to enjoy a "Pennsylvania Dutch Spa" day and I have some questions</li>
+                                      
+                                        <ul>
+                                            <li>Does the Mennonite commnuity not believe in masseuses as well as modern conveniences?</li>
+                                            <li>Can't you just burn some essential oils with a candle instead of electricity?</li>
+                                            <li>
+                                                All the contestants had to quaratine for two weeks due to a virius but 
+                                                but give them some unpasturized dairy and they jump in no questions asked?
+                                            </li>
+                                        </ul>
+                                  </ul>
+
+                                  <img src={amishparadise} className="answers-gif" width="250" height="200" alt="amish"/>
+
+                                  <p><strong>Hot Tub: </strong> No</p>
+                                  <ul>
+                                      <li>For those of you who said "Yes" to this and think the Milk Tub should count</li>
+                                      <li>Submit proof that you have been in a hot tub filled with milk and we'll reverse the decision</li>
+                                  </ul>
+
+                                  <p><strong>Budget Date: </strong>Bri</p>
+                                  <ul>
+                                      <li>Bri's date started out in the woods, so not a great start</li>
+                                      <li>Dinner with deer atlers on the wall didn't help their cause</li>
+                                      <li>Even the bedroom would be at best described as "cozy"</li>
+                                      <li>
+                                          She was the prohibitive favorite answer to this question with 7 of 9 people picking Bri 
+                                      </li>
+                                      <li>
+                                          Probably because everyone including the producers know she is the 3rd wheel in this love triangle
+                                      </li>
+                                      
+                                      <li>The Altman household apparently did not get this memo</li>
+                                  </ul>
+
+                                  <img src={steve} className="answers-gif" width="200" height="200" alt="steve"/>
+                                  
+                                  <p><strong>Leave on their own: </strong> No</p>
+                                  <ul>
+                                      <li>Nobody was passing up their ticket to pound town this season</li>
+                                  </ul>
+
+                                  <p><strong>Adult Relations: </strong>No Action (due to lots of action)</p>
+
+                                  <img src={gigitty} className="answers-gif" width="250" height="200" alt="gigitty"/>
+                                  
+                                  <ul>
+                                    <li>It looked like Rachael was not ready to be sloppy 3rds there for a moment</li>
+                                    <li>Matt that silver tounged devil talked her right into the bedroom</li>
+                                    <li>Its like they always say "It takes banging three women in three days to know your ready to get engaged"</li>
+                                    <li>Congrats on the sex Matt</li>
+                                  </ul>                                    
+
+                                  <img src={lebronintamite} className="answers-gif" width="250" height="200" alt="lebron intamite"/>
+                                  
+                                  <p><strong>Sent Home: </strong> Bri</p>
+                                  <ul>
+                                      <li>Seemed like an obvious outcome at the begining of the episode</li>
+                                      <li>Turned into a bit of a nail-biter by the time the final rose ceremoney rolled around</li>
+                                      <li>This of course means we have a final two!</li>
+                                  </ul>
+
+                                  <h4>Season Long Updates</h4>
+                                  <p><strong>Final Two</strong></p>
+
+                                  <ul>
+                                      <li>Michelle</li>
+                                      <li>Rachael</li>
+                                  </ul>
+
+                                  <p>
+                                      With all of the people who had Bri as the final rose recipient It looks like no one is catching known scoundrel 
+                                      Lauren L for 1st place however Pat A still has a slim chance of retaining his undefeated streak in the men's 
+                                      division so stay tuned for the most shocking finale in fantasy bachelor history!
+                                  </p>
+                                  
+
+                                </div>{/*End div ansers*/}
                                                                 
-                                {/*<Alert key='previous-results' variant='info'>
+                                <Alert key='previous-results' variant='info'>
                                     <strong>To view all previous weeks results please check the recap underneath the Standings on the "Results" tab!</strong>
                                 </Alert>                                
 
@@ -587,7 +699,7 @@ class BatchelorGame extends React.Component {
                                         <Card.Title>New Questions Available Friday</Card.Title>
                                         <Card.Subtitle>Weekly questions will be added each Thursday before the next week's episode airs</Card.Subtitle>
                                     </Card.Body>
-                                </Card>*/}
+                                </Card>
                                 
             
                             </Col>
@@ -690,7 +802,7 @@ class BatchelorGame extends React.Component {
                                         onDragEnd={this.onDragEnd}
                                         removeSelection={this.removeSelection}
                                         title='Who Gets the Low Budget Overnight Date Setting? (10 points)'
-                                        subtitle='Points awarded if one of the overnights is visibile less appealing then the other two ex. Taysh&apos;s RV date.  GM has final descrition on scoring'/>    
+                                        subtitle='Points awarded if one of the overnights is visibile less appealing then the other two ex. Taysh&apos;s RV date.  GM has final decision on scoring'/>    
 
                                 <h3>Season Questions</h3>
 
